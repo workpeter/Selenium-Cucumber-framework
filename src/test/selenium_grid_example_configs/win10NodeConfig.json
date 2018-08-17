@@ -1,0 +1,25 @@
+{
+  "capabilities": [
+    {
+      "browserName": "MicrosoftEdge",
+      "platform": "WINDOWS",
+      "maxInstances": 1
+    },
+    {
+      "browserName": "firefox",
+      "platform": "WINDOWS",
+      "maxInstances": 5
+    },
+    {
+      "browserName": "chrome",
+      "platform": "WINDOWS",
+      "maxInstances": 5
+    },
+    {
+      "browserName": "internet explorer",
+      "platform": "WINDOWS",
+      "maxInstances": 1
+    }
+  ],
+  "hub": "http://192.168.0.17:4444"
+}

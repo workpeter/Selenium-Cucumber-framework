@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8c5209c3-ff58-4901-9858-5c5a54bf8511" activeEnvironment="Default" name="REST Project - PayPal Payment" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="Export JUnit Results" value="true"/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="TestSuite" value="TestsSuites"/>
+  <con:entry key="Endpoint" value=""/>
+  <con:entry key="Select Report Type" value=""/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="Print Report" value="false"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Export JUnit Results with test properties" value="false"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="TestCase" value="testPayment"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="user-settings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="Root Folder" value="C:\Users\workpeter\Desktop"/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Save Project" value="false"/>
+</xml-fragment>]]></con:setting></con:settings><con:interface xsi:type="con:RestService" id="42063083-04e4-4a65-928a-ad804d9f3c8f" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://api.sandbox.paypal.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>https://api.sandbox.paypal.com</con:endpoint></con:endpoints><con:resource name="Token" path="/v1/oauth2/token" id="edf74dea-8e5c-4c47-aa97-1664373db67c"><con:settings/><con:parameters><con:parameter><con:name>grant_type</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="Token 1" id="ac509729-7a84-423e-9339-cb2defa92dd4" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>401 400</con:status><con:params/><con:element xmlns:tok="https://api.sandbox.paypal.com/v1/oauth2/token">tok:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="REQUEST"><con:mediaType>application/x-www-form-urlencoded</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/plain; charset=ISO-8859-1</con:mediaType><con:status>404</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:tok="https://api.sandbox.paypal.com/v1/oauth2/token">tok:Response</con:element></con:representation><con:request name="Request 1" id="3aa7cb27-f504-4e8b-b485-fc1642223077" mediaType="application/x-www-form-urlencoded" postQueryString="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Accept" value="application/json"/>
+  &lt;con:entry key="Accept-Language" value="en_US"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding xsi:nil="true"/><con:endpoint>https://api.sandbox.paypal.com</con:endpoint><con:request/><con:originalUri>https://api.sandbox.paypal.com/v1/oauth2/token</con:originalUri><con:credentials><con:username>AcBQRrwuUQf2JA2WIdcuF5HUS5lCOMqxS4japNZtavXo8ivXMBkwYYoFqLtNe9Lxw6XnCObU8KabmkBD</con:username><con:password>EOXRjU7EQcUsDx3o0ircrcIeqob5PmHX1pbXjMe_YTkWbYqz7Ha4SsWQTjj9IHZg39OsYEr3Fq_y6-YX</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="grant_type" value="client_credentials" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>grant_type</con:entry></con:parameterOrder></con:request></con:method></con:resource><con:resource name="payment" path="/v1/payments/payment" id="b3154139-e6ed-499c-a8ac-cebc8f625578"><con:settings/><con:parameters/><con:resource name="execute" path="PAY-21X7565167454434TLMGTPIA/execute" id="9f039ca2-a7c3-4d50-bc40-ecb682b95fbd"><con:settings/><con:parameters/><con:method name="Method 1" id="0f104b8f-9b21-4dc3-81e0-a145293bdbab" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>405 400</con:status><con:params/><con:element xmlns:exec="https://api.sandbox.paypal.com/v1/payments/payment/PAY-21X7565167454434TLMGTPIA/execute">exec:Fault</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:exec="https://api.sandbox.paypal.com/v1/payments/payment/PAY-21X7565167454434TLMGTPIA/execute">exec:Response</con:element></con:representation><con:request name="Request 1" id="905fb995-8b5e-4b3b-8847-f119b8ad4098" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer A21AAH7I3hpjn4dstS35xYKl-j_afyI6L1ba3wkgr3lNGCx9OEw5JiO2paYC5KeAgrjI7fI3lknbBGxTuaI_lXtOSE63YtkGw"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:endpoint>https://api.sandbox.paypal.com</con:endpoint><con:request>{
+  "payer_id": "G2EF25X9TZW3E"
+}</con:request><con:originalUri>https://api.sandbox.paypal.com/v1/payments/payment/PAY-21X7565167454434TLMGTPIA/execute</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:method name="Method 1" id="31730c45-fe47-4ed6-bdd0-c96d411513e6" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>201</con:status><con:params/><con:element xmlns:pay="https://api.sandbox.paypal.com/v1/payments/payment">pay:Response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:pay="https://api.sandbox.paypal.com/v1/payments/payment">pay:Fault</con:element></con:representation><con:request name="Request 1" id="ae83ab40-72fe-4fb9-9d66-12f9e78e64c1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer A21AAH7I3hpjn4dstS35xYKl-j_afyI6L1ba3wkgr3lNGCx9OEw5JiO2paYC5KeAgrjI7fI3lknbBGxTuaI_lXtOSE63YtkGw"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:endpoint>https://api.sandbox.paypal.com</con:endpoint><con:request>{
+  "intent": "sale",
+  "payer": {
+  "payment_method": "paypal"
+  },
+  "transactions": [
+  {
+    "amount": {
+    "total": "30.11",
+    "currency": "USD",
+    "details": {
+      "subtotal": "30.00",
+      "tax": "0.07",
+      "shipping": "0.03",
+      "handling_fee": "1.00",
+      "shipping_discount": "-1.00",
+      "insurance": "0.01"
+    }
+    },
+    "description": "This is the payment transaction description.",
+    "custom": "EBAY_EMS_90048630024435",
+    "invoice_number": "48787589673",
+    "payment_options": {
+    "allowed_payment_method": "INSTANT_FUNDING_SOURCE"
+    },
+    "soft_descriptor": "ECHI5786786",
+    "item_list": {
+    "items": [
+      {
+      "name": "hat",
+      "description": "Brown color hat",
+      "quantity": "5",
+      "price": "3",
+      "tax": "0.01",
+      "sku": "1",
+      "currency": "USD"
+      },
+      {
+      "name": "handbag",
+      "description": "Black color hand bag",
+      "quantity": "1",
+      "price": "15",
+      "tax": "0.02",
+      "sku": "product34",
+      "currency": "USD"
+      }
+    ],
+    "shipping_address": {
+      "recipient_name": "Hello World",
+      "line1": "4thFloor",
+      "line2": "unit#34",
+      "city": "SAn Jose",
+      "country_code": "US",
+      "postal_code": "95131",
+      "phone": "011862212345678",
+      "state": "CA"
+    }
+    }
+  }
+  ],
+  "note_to_payer": "Contact us for any questions on your order.",
+  "redirect_urls": {
+  "return_url": "https://example.com",
+  "cancel_url": "https://example.com"
+  }
+}</con:request><con:originalUri>https://api.sandbox.paypal.com/v1/payments/payment</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="a1ba3392-688c-4ae9-bec9-17941a26ce12" name="PAYPAL_PAYMENT_TESTCASE"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="6e71c45c-0ff2-4f36-88bf-6a32816efd4f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="setPayment" searchProperties="true"><con:settings/><con:testStep type="restrequest" name="getTokenBearer" id="3b83532c-5768-4125-8474-ac412ff6ed39"><con:settings/><con:config service="https://api.sandbox.paypal.com" resourcePath="/v1/oauth2/token" methodName="Token 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="getTokenBearer" id="3aa7cb27-f504-4e8b-b485-fc1642223077" mediaType="application/x-www-form-urlencoded" postQueryString="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Accept" value="application/json"/>
+  &lt;con:entry key="Accept-Language" value="en_US"/>
+&lt;/xml-fragment></con:setting></con:settings><con:encoding xsi:nil="true"/><con:endpoint>https://api.sandbox.paypal.com</con:endpoint><con:request/><con:originalUri>https://api.sandbox.paypal.com/v1/oauth2/token</con:originalUri><con:assertion type="Valid HTTP Status Codes" id="98ab1491-3810-47bd-b82b-9374b232b1ce" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="a3247f1b-ece7-45ad-811c-2c79ef7825cd" name="Script Assertion - Verify access token exists"><con:configuration><scriptText>
+import groovy.json.JsonSlurper
+ 
+//grab the response 
+//messageExchange only works in assertions, not seperate groovy script)
+def ResponseMessage = messageExchange.response.responseContent
+def jsonSlurper = new JsonSlurper().parseText(ResponseMessage)
+ 
+//verify the slurper isn't empty
+assert !(jsonSlurper.isEmpty())
+ 
+//verify the access_token isnt null
+assert jsonSlurper.access_token != null</scriptText></con:configuration></con:assertion><con:credentials><con:username>AcBQRrwuUQf2JA2WIdcuF5HUS5lCOMqxS4japNZtavXo8ivXMBkwYYoFqLtNe9Lxw6XnCObU8KabmkBD</con:username><con:password>EOXRjU7EQcUsDx3o0ircrcIeqob5PmHX1pbXjMe_YTkWbYqz7Ha4SsWQTjj9IHZg39OsYEr3Fq_y6-YX</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><entry key="grant_type" value="client_credentials" xmlns="http://eviware.com/soapui/config"/></con:parameters><con:parameterOrder><con:entry>grant_type</con:entry></con:parameterOrder></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="save TokenBearer into a testcase parameter" id="3db11a49-0bc3-4e2e-8ae7-551a6f872623"><con:settings/><con:config><script>
+import com.eviware.soapui.support.XmlHolder
+import net.sf.*
+import net.sf.json.*
+import net.sf.json.groovy.*
+
+def ResponseMessage = testRunner.testCase.testSteps["getTokenBearer"].testRequest.response.contentAsString
+def jsonSlurper = new JsonSlurper().parseText(ResponseMessage)
+//log.info jsonSlurper.access_token
+
+//examples of how to transfer local variable into a testCase variable to be
+//accessed from any step within the testCase. 
+//Below shows how to both set and get the value. 
+
+//testRunner.testCase.setPropertyValue("access_token", jsonSlurper.access_token )
+testRunner.testCase.testSuite.project.setPropertyValue("access_token", jsonSlurper.access_token )
+
+
+
+def _access_token = testRunner.testCase.testSuite.project.getPropertyValue( "access_token")
+
+//def testCaseProperty = testRunner.testCase.getPropertyValue("access_token")
+log.info _access_token
+
+//To access this property in a step request use this: ${#TestCase#access_token} or Bearer ${#TestSuite#access_token}
+//depending if the param is TestCase or TestSuite level</script></con:config></con:testStep><con:testStep type="groovy" name="Create  Invoice ID" id="ed77b3cf-0509-45bb-b325-17a422fea368"><con:settings/><con:config><script>import org.apache.commons.lang.RandomStringUtils
+
+String charset = ('0'..'9').join()
+Integer length = 11
+String _invoice_id = RandomStringUtils.random(length, charset.toCharArray())
+
+testRunner.testCase.testSuite.project.setPropertyValue("invoice_id", _invoice_id ) 
+
+log.info testRunner.testCase.testSuite.project.getPropertyValue("invoice_id")
+</script></con:config></con:testStep><con:testStep type="restrequest" name="createPayement" id="d7fbdc12-2cb9-4451-af96-594df1e72def"><con:settings/><con:config service="https://api.sandbox.paypal.com" resourcePath="/v1/payments/payment" methodName="Method 1" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="createPayement" id="ae83ab40-72fe-4fb9-9d66-12f9e78e64c1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer ${#Project#access_token}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:endpoint>https://api.sandbox.paypal.com</con:endpoint><con:request>{
+  "intent": "sale",
+  "payer": {
+  "payment_method": "paypal"
+  },
+  "transactions": [
+  {
+    "amount": {
+    "total": "30.11",
+    "currency": "USD",
+    "details": {
+      "subtotal": "30.00",
+      "tax": "0.07",
+      "shipping": "0.03",
+      "handling_fee": "1.00",
+      "shipping_discount": "-1.00",
+      "insurance": "0.01"
+    }
+    },
+    "description": "This is the payment transaction description.",
+    "custom": "EBAY_EMS_90048630024435",
+    "invoice_number": "${#Project#invoice_id}",
+    "payment_options": {
+    "allowed_payment_method": "INSTANT_FUNDING_SOURCE"
+    },
+    "soft_descriptor": "ECHI5786786",
+    "item_list": {
+    "items": [
+      {
+      "name": "hat",
+      "description": "Brown color hat",
+      "quantity": "5",
+      "price": "3",
+      "tax": "0.01",
+      "sku": "1",
+      "currency": "USD"
+      },
+      {
+      "name": "handbag",
+      "description": "White color hand bag",
+      "quantity": "1",
+      "price": "15",
+      "tax": "0.02",
+      "sku": "product34",
+      "currency": "USD"
+      }
+    ],
+    "shipping_address": {
+      "recipient_name": "Hello World",
+      "line1": "4thFloor",
+      "line2": "unit#34",
+      "city": "SAn Jose",
+      "country_code": "US",
+      "postal_code": "95131",
+      "phone": "011862212345678",
+      "state": "CA"
+    }
+    }
+  }
+  ],
+  "note_to_payer": "Contact us for any questions on your order.",
+  "redirect_urls": {
+  "return_url": "https://example.com",
+  "cancel_url": "https://example.com"
+  }
+}</con:request><con:originalUri>https://api.sandbox.paypal.com/v1/payments/payment</con:originalUri><con:assertion type="GroovyScriptAssertion" id="494e0969-c153-4ae7-a45c-f582680dc9e8" name="Script Assertion"><con:configuration><scriptText>
+import groovy.json.JsonSlurper
+ 
+//grab the response 
+//messageExchange only works in assertions, not seperate groovy script)
+def ResponseMessage = messageExchange.response.responseContent
+def jsonSlurper = new JsonSlurper().parseText(ResponseMessage)
+ 
+//verify the slurper isn't empty
+assert !(jsonSlurper.isEmpty())
+ 
+//verify the access_token isnt null
+assert jsonSlurper.id != null</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="groovy" name="save payerConfirmURL into a testcase paramter" id="32b88cc4-8408-4a8c-ae11-b00b34a3d667"><con:settings/><con:config><script>
+import com.eviware.soapui.support.XmlHolder
+import net.sf.*
+import net.sf.json.*
+import net.sf.json.groovy.*
+
+def ResponseMessage = testRunner.testCase.testSteps["createPayement"].testRequest.response.contentAsString
+def jsonSlurper = new JsonSlurper().parseText(ResponseMessage)
+
+//access the second link
+//log.info jsonSlurper.links.href[1]
+
+//examples of how to transfer local variable into a testCase variable to be
+//accessed from any step within the testCase. 
+//Below shows how to both set and get the value. 
+//testRunner.testCase.setPropertyValue("confirm_url", jsonSlurper.links.href[1] )
+testRunner.testCase.testSuite.project.setPropertyValue("confirm_url", jsonSlurper.links.href[1] ) 
+testRunner.testCase.testSuite.project.setPropertyValue("execute_url", jsonSlurper.links.href[2] )
+
+
+//def testCaseProperty = testRunner.testCase.getPropertyValue("confirm_url")
+def _confirm_url = testRunner.testCase.testSuite.project.getPropertyValue("confirm_url")
+def _execute_url = testRunner.testCase.testSuite.project.getPropertyValue("execute_url")
+//log.info "(confirm_url): " + testCaseProperty
+log.info _confirm_url
+log.info _execute_url
+//To access this property in a step request use this: ${#TestCase#confirm_url} or Bearer ${#TestSuite#confirm_url}
+//depending if the param is TestCase or TestSuite level</script></con:config></con:testStep><con:properties><con:property><con:name>access_token</con:name><con:value>A21AAF2erK9nw2pg--bevxq7hYClHwzBX-armIj6wOqHtdhLj76DN4Z1oDIo4hVZSRGHhabZgXoKDEG0Viq4zLvsMFYGhqWHA</con:value></con:property><con:property><con:name>confirm_url</con:name><con:value>https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&amp;token=EC-6DE34998WF553234W</con:value></con:property></con:properties></con:testCase><con:testCase id="4f5abd20-056d-4356-9507-b8e79844dacb" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="executePayment" searchProperties="true"><con:settings/><con:testStep type="httprequest" name="executePayment" id="a3bb7991-436c-4929-b855-56a96cd7b055"><con:settings/><con:config method="POST" xsi:type="con:HttpRequest" id="55b7316f-54aa-469d-a66b-7d69d1be3dfc" name="executePayment" postQueryString="false" mediaType="application/json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="Authorization" value="Bearer ${#Project#access_token}"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:endpoint>${#Project#execute_url}</con:endpoint><con:request>{
+  "payer_id": "G2EF25X9TZW3E"
+  
+}</con:request><con:assertion type="GroovyScriptAssertion" id="bc007d6e-65cf-4e1b-92e7-abbcd23ea292" name="Script Assertion"><con:configuration><scriptText>
+import groovy.json.JsonSlurper
+ 
+//grab the response 
+//messageExchange only works in assertions, not seperate groovy script)
+def ResponseMessage = messageExchange.response.responseContent
+def jsonSlurper = new JsonSlurper().parseText(ResponseMessage)
+ 
+//verify the slurper isn't empty
+assert !(jsonSlurper.isEmpty())
+ 
+//verify the access_token isnt null
+assert jsonSlurper.id != null</scriptText></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c0efbedc-7cb2-4114-995a-52276d09cc05" name="Contains: approved"><con:configuration><token>"state":"approved"</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0cda85e0-97a7-4705-b18b-246e4eabf696" name="Contains: VERIFIED"><con:configuration><token>"status":"VERIFIED"</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="79bb2776-d0f9-4f2a-9fee-118f9fd2c532" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>access_token</con:name><con:value>A21AAE4XfW0lsz4WULWNLpohNWDbDEdUfO_qUl5BFFSPf9hO00LwL1Mar7d7wDA604nKUmspN6DfivmhzmsuVJiWf7G84pmDw</con:value></con:property><con:property><con:name>confirm_url</con:name><con:value>https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&amp;token=EC-2HS644324S3704511</con:value></con:property><con:property><con:name>execute_url</con:name><con:value>https://api.sandbox.paypal.com/v1/payments/payment/PAY-69878732N1838581VLMKZ3ZQ/execute</con:value></con:property><con:property><con:name>invoice_id</con:name><con:value>69188163375</con:value></con:property></con:properties></con:testSuite><con:properties><con:property><con:name>access_token</con:name><con:value>A21AAFTu55ugB9sVUclyzMgZiIoYVqHw13DcxdY_XVCsj6zEXki0T-TKK4hfw3O2-OlSUGLXwQ667zvrJxuU7ZKxpBWT1k2Nw</con:value></con:property><con:property><con:name>invoice_id</con:name><con:value>93411754292</con:value></con:property><con:property><con:name>confirm_url</con:name><con:value>https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&amp;token=EC-3FJ52388MR792483E</con:value></con:property><con:property><con:name>execute_url</con:name><con:value>https://api.sandbox.paypal.com/v1/payments/payment/PAY-73409696MM3905335LMOCXXA/execute</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

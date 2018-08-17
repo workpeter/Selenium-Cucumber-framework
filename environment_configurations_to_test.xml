@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Environment config tsts" parallel="tests"
+	thread-count="3">
+
+
+	<test name="windows chrome">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<parameter name="browser_headless" value="no" />
+		<classes>
+			<class name="integrationTests.Start_Test_Instance" />
+		</classes>
+		
+
+	</test>
+
+	<test name="windows firefox">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="firefox" />
+		<parameter name="browser_headless" value="no" />
+		<classes>
+			<class name="integrationTests.Start_Test_Instance" />
+		</classes>
+	</test>
+
+	<test name="windows edge">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="edge" />
+		<parameter name="browser_headless" value="no" />
+		<classes>
+			<class name="integrationTests.Start_Test_Instance" />
+		</classes>
+	</test>
+	
+</suite> 
+
+
