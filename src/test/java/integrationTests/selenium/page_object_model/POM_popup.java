@@ -16,16 +16,16 @@ public class POM_popup extends Common_methods_and_pom {
 		
 		waitForAjaxComplete();
 
-		if(elementExists(btnClose)){ 
+		if(element_displayed(btnClose)){ 
 
 			click(btnClose);
-			waitForElementInvisible(btnClose);
+			wait_until_invisible(btnClose);
 		}
 
-		if(elementExists(linkCookieGotIt)){
+		if(element_displayed(linkCookieGotIt)){
 
 			click(linkCookieGotIt);
-			waitForElementInvisible(linkCookieGotIt);
+			wait_until_invisible(linkCookieGotIt);
 
 		}	
 		

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.*;
 import net.lightbody.bmp.core.har.Har;
 
 import integrationTests.selenium.page_object_model.*;
-import static integrationTests.Start_Test_Instance.test_instance;
+import static integrationTests.Runner.test_instance;
 
 public class Common_methods_and_pom {
 
@@ -30,192 +30,24 @@ public class Common_methods_and_pom {
 	// Common methods
 	//===========================
 
-	private WebDriverWait wait;
-	
+
 	public void gotoPage(String url) throws Exception{
 
-	
-		
 		test_instance.get().get_webdriver().get(url);
-		waitForAjaxComplete();
-
-	}
-
-	public void navigateBack() throws Exception{
-
-		test_instance.get().get_webdriver().navigate().back();
-		waitForAjaxComplete();
-
-	}
-
-	public int elementCount(By target) throws Exception {
-
-		waitForAjaxComplete();
-		return test_instance.get().get_webdriver().findElements(target).size();
-
-	}	
-
-	public List<WebElement> getAllElements(By target) throws Exception {
-
-		waitForAjaxComplete();
-		return  test_instance.get().get_webdriver().findElements(target);
-
-	}	
-
-	public boolean elementExists(By target) throws Exception{
-
-		waitForAjaxComplete();
-
-		if (test_instance.get().get_webdriver().findElements(target).size()>0){
-
-			//[Fail-safe] check its clickable, to ensure it really does exist.
-			try{
-
-				WebDriverWait quickWait = new WebDriverWait(test_instance.get().get_webdriver(), 1);
-
-				quickWait.until(ExpectedConditions.elementToBeClickable(target));
-
-				return true;
-			}
-			catch (Exception e){
-				return false;
-			}
-		}
-
-		return false;
-
-	}	
-
-	public void waitForElement(By target) throws Exception{
-
-		waitForAjaxComplete();
-
-		try{
-
-			wait = new WebDriverWait(test_instance.get().get_webdriver(),60);
-			wait.until(ExpectedConditions.visibilityOfElementLocated(target));
-		}
-		catch (Exception e){
-			System.out.println("Selenium has waiting its max time for the following element to be visible" + target );	
-		}
-	}
-
-	public void waitForElementInvisible(By target) throws Exception{
-
-		waitForAjaxComplete();
-
-		try{
-			wait = new WebDriverWait(test_instance.get().get_webdriver(),60);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(target));
-		}catch(Exception e){
-
-			System.out.println("Selenium has waiting its max time for the following element to not be visible" + target );	
-		}
-
-	}
-
-	public void waitForElementNotClickable(By target) throws Exception{
-
-		waitForAjaxComplete();
-
-		try{
-			wait = new WebDriverWait(test_instance.get().get_webdriver(),60);
-			wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(target)));
-		}catch(Exception e){
-
-			System.out.println("Selenium has waiting its max time for the following element to not be clickable: " + target );	
-		}
-
-	}
-
-	//==================================================
-	// Wait for DOM ready and Ajax calls on page to complete (Start)
-	//==================================================
-
-	public void waitForPageLoad() throws Exception {
-
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) test_instance.get().get_webdriver();
-
-		int iWaitTime = 0;
-		int iWaitFinish = 200;	
-
-		while (!javascriptExecutor.executeScript("return document.readyState")
-				.toString().equals("complete")) {
-
-			Thread.sleep(500);
-			iWaitTime++;
-
-			//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
-
-			//fail-safe 
-			if (iWaitTime==iWaitFinish){break;}
-		}
-
-	}
-
-	public void waitForAjaxComplete() throws Exception {
-
-		long startTime = System.currentTimeMillis();
-
-		waitForPageLoad(); 
-
-		try{
-
-			test_instance.get().get_webdriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
-			((JavascriptExecutor) test_instance.get().get_webdriver()).executeAsyncScript(
-					"var callback = arguments[arguments.length - 1];" +
-							"var xhr = new XMLHttpRequest();" +
-							"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
-							"xhr.onreadystatechange = function() {" +
-							"  if (xhr.readyState == 4) {" +
-							"    callback(xhr.responseText);" +
-							"  }" +
-							"};" +
-					"xhr.send();");
-
-		}catch(Exception e){
-
-			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
-
-			long endTime = System.currentTimeMillis();
-			long duration = (endTime - startTime); 
-			//			System.out.println("waiting for AJAX took: " + duration + "MS on URL: " 
-			//					+ WebDriver_factory.getLocalThreadWebDriver().getCurrentUrl());
-
-		}
-
-	}
-
-	//==================================================
-	// Wait for DOM ready and Ajax calls on page to complete (End)
-	//==================================================
-
-	public boolean textExists(String text) throws Exception {
-
-		waitForAjaxComplete();
-
-		return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
 
 	}
 
 	public void click(By target) throws Exception{
 
-		waitForElement(target);
+		scrollTo(target);
 
-		try{
-			wait = new WebDriverWait(test_instance.get().get_webdriver(),60);
-			wait.until(ExpectedConditions.elementToBeClickable(target));
-		}catch(Exception e){
-			System.out.println("Selenium has waiting its max time for the following element to be clickable: " + target );	
-		}finally{
-			test_instance.get().get_webdriver().findElement(target).click();
-		}
+		test_instance.get().get_webdriver().findElement(target).click();
 
 	}
 
 	public void sendkeys(By target,String textToSend) throws Exception{
 
-		waitForElement(target);
+		scrollTo(target);
 
 		try{
 
@@ -234,7 +66,7 @@ public class Common_methods_and_pom {
 
 	public String getText(By target) throws Exception{
 
-		waitForElement(target);
+		scrollTo(target);
 
 		return test_instance.get().get_webdriver().findElement(target).getText();
 
@@ -242,7 +74,7 @@ public class Common_methods_and_pom {
 
 	public String getInnerHTML(By target) throws Exception{
 
-		waitForElement(target);
+		scrollTo(target);
 
 		return test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML");
 
@@ -250,23 +82,21 @@ public class Common_methods_and_pom {
 
 	public void selectByIndex(By target,int index) throws Exception{
 
-		waitForElement(target);
+		scrollTo(target);
 
 		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
 		select.selectByIndex(index);
 
-		waitForAjaxComplete();
 
 	}
 
 	public void selectByVisibleText(By target,String text) throws Exception{
 
-		waitForElement(target);
+		scrollTo(target);
 
 		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
 		select.selectByVisibleText(text);
 
-		waitForAjaxComplete();
 
 		//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 		int iWaitTime = 0;
@@ -282,13 +112,139 @@ public class Common_methods_and_pom {
 
 	public String getDropDownMenuText(By target) throws Exception {
 
-		waitForElement(target);
+		scrollTo(target);
 
 		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
 
 		return select.getFirstSelectedOption().getText();
 
 	}
+
+
+	public int elementCount(By target) throws Exception {
+
+
+		return test_instance.get().get_webdriver().findElements(target).size();
+
+	}	
+
+	public List<WebElement> getAllElements(By target) throws Exception {
+
+		return test_instance.get().get_webdriver().findElements(target);
+
+	}	
+
+	public boolean elementExists(By target) throws Exception{
+
+
+		if (test_instance.get().get_webdriver().findElements(target).size()>0){
+
+			return true;
+		}
+
+		return false;
+
+	}	
+
+
+	public boolean element_displayed(By target) throws Exception{
+
+		if (elementExists(target)){
+
+			return test_instance.get().get_webdriver().findElement(target).isDisplayed();
+		}
+
+
+		return false;
+
+	}	
+
+
+	public boolean element_enabled(By target) throws Exception{
+
+		if (elementExists(target)){
+
+			return test_instance.get().get_webdriver().findElement(target).isEnabled();
+		}
+
+		return false;
+
+	}	
+
+
+	public boolean textExists(String text) throws Exception {
+
+
+		return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
+
+	}	
+
+
+	public void wait_until_present(By target) throws Exception{
+
+		try{
+
+			test_instance.get().get_wait()
+			.until(ExpectedConditions.presenceOfElementLocated(target));
+		}
+		catch (Exception e){
+
+			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to be present" + target );	
+
+		}
+	}	
+
+
+	public void wait_until_visible(By target) throws Exception{
+
+		try{
+
+			test_instance.get().get_wait()
+			.until(ExpectedConditions.visibilityOfElementLocated(target));
+		}
+		catch (Exception e){
+
+			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to be visible" + target );	
+
+		}
+	}
+
+	public void wait_until_invisible(By target) throws Exception{
+
+		try{
+			test_instance.get().get_wait()
+			.until(ExpectedConditions.invisibilityOfElementLocated(target));
+		}catch(Exception e){
+
+			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to NOT be visible" + target );	
+		}
+	}
+
+	public void wait_until_clickable(By target) throws Exception{
+
+		try{
+			test_instance.get().get_wait()
+			.until(ExpectedConditions.elementToBeClickable(target));
+		}catch(Exception e){
+
+			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to be clickable" + target );	
+
+
+		}
+	}	
+
+	public void wait_until_not_clickable(By target) throws Exception{
+
+		try{
+			test_instance.get().get_wait()
+			.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(target)));
+		}catch(Exception e){
+
+			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to NOT be clickable" + target );	
+
+		}
+	}
+
 
 	public void gotoNewTabIfExists() throws Exception{
 
@@ -320,7 +276,7 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public void deleteCookies() throws Exception{
+	public static void deleteCookies() throws Exception{
 
 		if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
 				test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
@@ -338,31 +294,42 @@ public class Common_methods_and_pom {
 
 	public void scrollTo(By target) throws Exception {
 
-		WebElement element = test_instance.get().get_webdriver().findElement(target);
-		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+		wait_until_present(target);
 
-		waitForAjaxComplete();
+		try{
+			WebElement element = test_instance.get().get_webdriver().findElement(target);
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+
+		}catch(Exception e){
+
+			System.out.println("Selenium failed to scroll to the following element " + target );	
+
+		}
+
+		wait_until_visible(target);
+
+
+
 
 	}
 
 	public void scrollBy(int pixels) throws Exception {
 
 		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollBy(0," + pixels +")", "");
-		waitForAjaxComplete();
 
 	}
 
 	public void scrollBottom() throws Exception {
 
 		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		waitForAjaxComplete();
+
 
 	}
 
 	public void scrollTop() throws Exception {
 
 		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, 0)");
-		waitForAjaxComplete();
+
 
 	}	
 
@@ -372,33 +339,28 @@ public class Common_methods_and_pom {
 
 	public void mouseTo(By target) throws Exception {
 
-		waitForElement(target);
+		scrollTo(target);
 
 		Actions action = new Actions(test_instance.get().get_webdriver());
 		action.moveToElement(test_instance.get().get_webdriver().findElement(target)).build().perform();
-		waitForAjaxComplete();
 
 	}	
 
 	public void highLightElement(By by) throws Exception  {
+
 
 		WebElement we = test_instance.get().get_webdriver().findElement(by);
 		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].style.border='3px dotted blue'", we);
 
 	}	
 
-	
-	
-	
+
 	//================================================
 	// Save Screenshots and log info (includes HTTP response code)
 	//================================================
 
 	public static void takeSnapShotAndLogs(String scenarioName) throws Exception{
 
-		
-		
-		
 		String browser = test_instance.get().get_browser();
 		String operatingSystem = test_instance.get().get_operating_system();
 
@@ -458,6 +420,64 @@ public class Common_methods_and_pom {
 
 	}
 
+	//==================================================
+	// Wait for DOM ready and Ajax calls on page to complete (Start)
+	//==================================================
+
+	public void waitForPageLoad() throws Exception {
+
+		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) test_instance.get().get_webdriver();
+
+		int iWaitTime = 0;
+		int iWaitFinish = 200;	
+
+		while (!javascriptExecutor.executeScript("return document.readyState")
+				.toString().equals("complete")) {
+
+			Thread.sleep(500);
+			iWaitTime++;
+
+			//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
+
+			//fail-safe 
+			if (iWaitTime==iWaitFinish){break;}
+		}
+
+	}
+
+	public void waitForAjaxComplete() throws Exception {
+
+		long startTime = System.currentTimeMillis();
+
+		waitForPageLoad(); 
+
+		try{
+
+			test_instance.get().get_webdriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeAsyncScript(
+					"var callback = arguments[arguments.length - 1];" +
+							"var xhr = new XMLHttpRequest();" +
+							"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
+							"xhr.onreadystatechange = function() {" +
+							"  if (xhr.readyState == 4) {" +
+							"    callback(xhr.responseText);" +
+							"  }" +
+							"};" +
+					"xhr.send();");
+
+		}finally{
+
+			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
+
+			long endTime = System.currentTimeMillis();
+			long duration = (endTime - startTime); 
+			//System.out.println("waiting for AJAX took: " + duration + "MS");
+
+		}
+
+	}	
+
+
 	public void getAllJS() throws Exception{
 
 		waitForAjaxComplete();
@@ -494,7 +514,6 @@ public class Common_methods_and_pom {
 
 	public boolean checkImageExists(By by) throws Exception{
 
-		waitForAjaxComplete();
 
 		WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
 		return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);

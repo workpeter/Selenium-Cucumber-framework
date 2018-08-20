@@ -92,7 +92,7 @@ public class POM_mainHeader extends Common_methods_and_pom {
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
-		waitForElement(popupMenu);
+		wait_until_visible(popupMenu);
 
 	}
 	

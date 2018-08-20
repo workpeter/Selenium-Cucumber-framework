@@ -1,9 +1,11 @@
 package integrationTests.selenium.step_definitions;
 
+import static integrationTests.Runner.test_instance;
+
 import org.testng.Assert;
 
 import cucumber.api.java.en.*;
-import integrationTests.Start_Test_Instance;
+import integrationTests.Runner;
 import integrationTests.selenium.Common_methods_and_pom;
 
 public class Homepage extends Common_methods_and_pom {
@@ -11,8 +13,7 @@ public class Homepage extends Common_methods_and_pom {
 	@Given("^customer is on homepage$")
 	public void customer_is_on_homepage() throws Throwable {
 
-		gotoPage(Start_Test_Instance.getBaseURL());
-		deleteCookies();
+		gotoPage(Runner.get_env_url());
 		popup.escPopup(); 
 		
 	}

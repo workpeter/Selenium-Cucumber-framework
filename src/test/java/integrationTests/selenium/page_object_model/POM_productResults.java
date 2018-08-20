@@ -1,5 +1,7 @@
 package integrationTests.selenium.page_object_model;
 
+import static integrationTests.Runner.test_instance;
+
 import org.openqa.selenium.By;
 
 import integrationTests.selenium.Common_methods_and_pom;
@@ -28,8 +30,9 @@ public class POM_productResults extends Common_methods_and_pom {
 
 			}else{
 				click(btnChooseOptionsFirstProduct);
-				new Basket_feature().adds_product_to_basket();
-				navigateBack();
+				
+				productPage.adds_product_to_basket_via_productPage();
+				test_instance.get().get_webdriver().navigate().back();
 			}
 
 		}
@@ -49,8 +52,8 @@ public class POM_productResults extends Common_methods_and_pom {
 
 			}else{
 				click(btnChooseOptionsSecondProduct);
-				new Basket_feature().adds_product_to_basket();
-				navigateBack();
+				productPage.adds_product_to_basket_via_productPage();
+				test_instance.get().get_webdriver().navigate().back();
 			}
 
 		}

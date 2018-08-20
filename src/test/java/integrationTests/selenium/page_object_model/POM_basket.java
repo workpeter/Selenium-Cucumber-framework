@@ -66,7 +66,7 @@ public class POM_basket extends Common_methods_and_pom {
 	
 	public void wait_for_basket_to_load() throws Exception{
 	
-		waitForElement(dropQuantity);
+		wait_until_visible(dropQuantity);
 		
 	}
 	

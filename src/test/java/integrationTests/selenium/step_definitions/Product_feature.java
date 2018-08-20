@@ -1,8 +1,10 @@
 package integrationTests.selenium.step_definitions;
 
+import static integrationTests.Runner.test_instance;
+
 import org.testng.Assert;
 import cucumber.api.java.en.*;
-import integrationTests.Start_Test_Instance;
+import integrationTests.Runner;
 import integrationTests.selenium.Common_methods_and_pom;
 
 
@@ -14,8 +16,7 @@ public class Product_feature extends Common_methods_and_pom {
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
 		//Goto Homepage
-		gotoPage(Start_Test_Instance.getBaseURL());
-		deleteCookies();
+		gotoPage(Runner.get_env_url());
 		popup.escPopup(); 
 		
 		customer_searches_by_product_using_search_feature(product);
