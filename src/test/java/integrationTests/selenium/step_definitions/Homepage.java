@@ -13,7 +13,7 @@ public class Homepage extends Common_methods_and_pom {
 	@Given("^customer is on homepage$")
 	public void customer_is_on_homepage() throws Throwable {
 
-		gotoPage(Runner.get_env_url());
+		goto_url(Runner.get_env_url());
 		popup.escPopup(); 
 		
 	}

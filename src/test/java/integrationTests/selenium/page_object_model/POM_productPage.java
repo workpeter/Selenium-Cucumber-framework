@@ -49,7 +49,7 @@ public class POM_productPage extends Common_methods_and_pom {
 		
 		scrollBottom();
 
-		if (!textExists("Not available online")){
+		if (!text_exists("Not available online")){
 			click(btnAddToBasket);
 			popupBasket.checkContinueShopping();
 		}else{
@@ -65,7 +65,7 @@ public class POM_productPage extends Common_methods_and_pom {
 
 		popup.escPopup();
 		
-		sendkeys(txtPostCode,postcode);
+		send_keys(txtPostCode,postcode);
 		wait_until_invisible(loadingWheel);
 		click(btnCheckPostcode);
 		wait_until_invisible(btnCheckPostcode);

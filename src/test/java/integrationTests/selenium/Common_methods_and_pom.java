@@ -31,23 +31,64 @@ public class Common_methods_and_pom {
 	//===========================
 
 
-	public void gotoPage(String url) throws Exception{
+	public void goto_url(String url) throws Exception {
 
-		test_instance.get().get_webdriver().get(url);
+
+		try{
+
+			test_instance.get().get_webdriver().get(url);
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 
 	}
 
-	public void click(By target) throws Exception{
+	public void click(By target) throws Exception  {
 
-		scrollTo(target);
+		focus_on(target);
 
-		test_instance.get().get_webdriver().findElement(target).click();
+		try{
+
+			test_instance.get().get_webdriver().findElement(target).click();
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 
 	}
 
-	public void sendkeys(By target,String textToSend) throws Exception{
 
-		scrollTo(target);
+	public void send_keys(By target,String textToSend) throws Exception {
+
+		focus_on(target);
+		clear_text(target);
+
+		try{
+
+			test_instance.get().get_webdriver().findElement(target).sendKeys(textToSend);
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
+
+	}
+
+
+	public void clear_text(By target) {
+
 
 		try{
 
@@ -58,88 +99,173 @@ public class Common_methods_and_pom {
 				test_instance.get().get_webdriver().findElement(target).clear();
 			}
 
-		}finally{
-			test_instance.get().get_webdriver().findElement(target).sendKeys(textToSend);	
-		}	
 
-	}
+		}catch(Throwable t){
 
-	public String getText(By target) throws Exception{
+			standard_warning_output(t.getMessage());
+			
+		}
+	}	
 
-		scrollTo(target);
 
-		return test_instance.get().get_webdriver().findElement(target).getText();
+	public String get_text(By target) throws Exception {
+
+		focus_on(target);
+
+		try{
+
+			return test_instance.get().get_webdriver().findElement(target).getText();
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 
 	}	
 
 	public String getInnerHTML(By target) throws Exception{
 
-		scrollTo(target);
+		focus_on(target);
 
-		return test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML");
+		try{
 
+			return test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML");
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 	}	
 
 	public void selectByIndex(By target,int index) throws Exception{
 
-		scrollTo(target);
+		focus_on(target);
 
-		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
-		select.selectByIndex(index);
+		try{
 
+			Select select = new Select(test_instance.get().get_webdriver().findElement(target));
+			select.selectByIndex(index);
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 
 	}
 
 	public void selectByVisibleText(By target,String text) throws Exception{
 
-		scrollTo(target);
+		focus_on(target);
 
-		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
-		select.selectByVisibleText(text);
+		try{
+
+			Select select = new Select(test_instance.get().get_webdriver().findElement(target));
+			select.selectByVisibleText(text);
 
 
-		//[Fail-safe] Poll until dropDown menu text changes to what we expect.
-		int iWaitTime = 0;
-		while(!getDropDownMenuText(target).contains(text)){
-			Thread.sleep(500);
-			iWaitTime++;
+			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
+			int iWaitTime = 0;
+			while(!getDropDownMenuText(target).contains(text)){
+				Thread.sleep(500);
+				iWaitTime++;
 
-			//System.out.println(iWaitTime + " polling element" + target);
-			if (iWaitTime==10){break;}
-		}	
+				//System.out.println(iWaitTime + " polling element" + target);
+				if (iWaitTime==10){break;}
+			}	
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 
 	}
 
 	public String getDropDownMenuText(By target) throws Exception {
 
-		scrollTo(target);
+		focus_on(target);
 
-		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
+		try{
 
-		return select.getFirstSelectedOption().getText();
+			Select select = new Select(test_instance.get().get_webdriver().findElement(target));
+
+			return select.getFirstSelectedOption().getText();
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 
 	}
 
 
-	public int elementCount(By target) throws Exception {
+	public int elementCount(By target) {
 
 
-		return test_instance.get().get_webdriver().findElements(target).size();
+		try{
+
+			return test_instance.get().get_webdriver().findElements(target).size();
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+			
+			standard_warning_output(t.getMessage());
+
+		}
+
+		return 0;
 
 	}	
 
-	public List<WebElement> getAllElements(By target) throws Exception {
+	public List<WebElement> getAllElements(By target)  {
 
-		return test_instance.get().get_webdriver().findElements(target);
+		try{
+
+			return test_instance.get().get_webdriver().findElements(target);
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
+
+		return null;
+
 
 	}	
 
-	public boolean elementExists(By target) throws Exception{
+	public boolean elementExists(By target) {
 
 
-		if (test_instance.get().get_webdriver().findElements(target).size()>0){
+		try{
 
-			return true;
+			if (test_instance.get().get_webdriver().findElements(target).size()>0){
+
+				return true;
+			}
+
+			return false;
+
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
 		}
 
 		return false;
@@ -147,24 +273,44 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public boolean element_displayed(By target) throws Exception{
+	public boolean element_displayed(By target) {
 
-		if (elementExists(target)){
+		try{
 
-			return test_instance.get().get_webdriver().findElement(target).isDisplayed();
+			if (elementExists(target)){
+
+				return test_instance.get().get_webdriver().findElement(target).isDisplayed();
+			}
+
+
+			return false;
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
 		}
-
 
 		return false;
 
 	}	
 
 
-	public boolean element_enabled(By target) throws Exception{
+	public boolean element_enabled(By target) {
 
-		if (elementExists(target)){
+		try{
 
-			return test_instance.get().get_webdriver().findElement(target).isEnabled();
+			if (elementExists(target)){
+
+				return test_instance.get().get_webdriver().findElement(target).isEnabled();
+			}
+
+			return false;
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
 		}
 
 		return false;
@@ -172,127 +318,133 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public boolean textExists(String text) throws Exception {
+	public boolean text_exists(String text) throws Exception {
 
+		try{
 
-		return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
+			return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
 
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
 	}	
 
 
-	public void wait_until_present(By target) throws Exception{
+	public void wait_until_present(By target) {
 
 		try{
 
 			test_instance.get().get_wait()
 			.until(ExpectedConditions.presenceOfElementLocated(target));
 		}
-		catch (Exception e){
+		catch (Throwable t){
 
-			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to be present" + target );	
+			standard_warning_output(t.getMessage());
 
 		}
 	}	
 
 
-	public void wait_until_visible(By target) throws Exception{
+	public void wait_until_visible(By target) {
 
 		try{
 
 			test_instance.get().get_wait()
 			.until(ExpectedConditions.visibilityOfElementLocated(target));
 		}
-		catch (Exception e){
+		catch (Throwable t){
 
-			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to be visible" + target );	
-
+			standard_warning_output(t.getMessage());
+			
 		}
 	}
 
-	public void wait_until_invisible(By target) throws Exception{
+	public void wait_until_invisible(By target) {
 
 		try{
 			test_instance.get().get_wait()
 			.until(ExpectedConditions.invisibilityOfElementLocated(target));
-		}catch(Exception e){
+		}catch(Throwable t){
 
-			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to NOT be visible" + target );	
+			standard_warning_output(t.getMessage());
+			
 		}
 	}
 
-	public void wait_until_clickable(By target) throws Exception{
+	public void wait_until_clickable(By target) {
 
 		try{
 			test_instance.get().get_wait()
 			.until(ExpectedConditions.elementToBeClickable(target));
-		}catch(Exception e){
+		}catch(Throwable t){
 
-			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to be clickable" + target );	
-
-
+			standard_warning_output(t.getMessage());
+			
 		}
 	}	
 
-	public void wait_until_not_clickable(By target) throws Exception{
+	public void wait_until_not_clickable(By target) {
 
 		try{
 			test_instance.get().get_wait()
 			.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(target)));
-		}catch(Exception e){
+		}catch(Throwable t){
 
-			System.out.println("Selenium has waited " + test_instance.get().get_max_wait_time() + " seconds for the following element to NOT be clickable" + target );	
-
+			standard_warning_output(t.getMessage());
+		
 		}
 	}
 
 
-	public void gotoNewTabIfExists() throws Exception{
+	public void goto_new_tab_if_exists() {
 
-		String parentWindow;
-		String childWindow;
+		try{
 
-		parentWindow = test_instance.get().get_webdriver().getWindowHandle();
-		childWindow = null;
+			String parentWindow;
+			String childWindow;
 
-		Set <String> allWindows =  test_instance.get().get_webdriver().getWindowHandles();
+			parentWindow = test_instance.get().get_webdriver().getWindowHandle();
+			childWindow = null;
 
-		//Only attempt to switch to RecentTab, if a new tab exists. 
-		for(String wHandle: allWindows){
+			Set <String> allWindows =  test_instance.get().get_webdriver().getWindowHandles();
 
-			if (wHandle != parentWindow) {
+			//Only attempt to switch to RecentTab, if a new tab exists. 
+			for(String wHandle: allWindows){
 
-				childWindow = wHandle;
+				if (wHandle != parentWindow) {
+
+					childWindow = wHandle;
+				}
 			}
-		}
 
-		int attempts=1;
-		if (!childWindow.equals(parentWindow)){
-			while(test_instance.get().get_webdriver().getWindowHandle().equals(parentWindow)) {
-				test_instance.get().get_webdriver().switchTo().window(childWindow);
-				//Reporter.log("Switch window attempt:" +  attempts,true);
-				attempts++;
+			int attempts=1;
+			if (!childWindow.equals(parentWindow)){
+				while(test_instance.get().get_webdriver().getWindowHandle().equals(parentWindow)) {
+					test_instance.get().get_webdriver().switchTo().window(childWindow);
+					//Reporter.log("Switch window attempt:" +  attempts,true);
+					attempts++;
+				}
 			}
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
 		}
 
 	}	
 
-	public static void deleteCookies() throws Exception{
-
-		if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
-				test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
-
-			return;
-		}
-
-		test_instance.get().get_webdriver().manage().deleteAllCookies();
-
-	}
 
 	//================================================
 	// - Scrolling  (code Start)
 	//================================================
 
-	public void scrollTo(By target) throws Exception {
+	public void focus_on(By target)  {
+
 
 		wait_until_present(target);
 
@@ -300,36 +452,56 @@ public class Common_methods_and_pom {
 			WebElement element = test_instance.get().get_webdriver().findElement(target);
 			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].scrollIntoView(true);", element);
 
-		}catch(Exception e){
+		}catch(Throwable t){
 
-			System.out.println("Selenium failed to scroll to the following element " + target );	
-
+			standard_warning_output(t.getMessage());
+			
 		}
 
 		wait_until_visible(target);
 
 
+	}
 
+	public void scrollBy(int pixels) {
+
+		try{
+
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollBy(0," + pixels +")", "");
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
 
 	}
 
-	public void scrollBy(int pixels) throws Exception {
+	public void scrollBottom()  {
 
-		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollBy(0," + pixels +")", "");
+		try{
+
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
 
 	}
 
-	public void scrollBottom() throws Exception {
+	public void scrollTop() {
 
-		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		try{
 
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, 0)");
 
-	}
+		}catch(Throwable t){
 
-	public void scrollTop() throws Exception {
+			standard_warning_output(t.getMessage());
 
-		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, 0)");
-
+		}
 
 	}	
 
@@ -337,29 +509,61 @@ public class Common_methods_and_pom {
 	// - Scrolling  (code End)
 	//================================================
 
-	public void mouseTo(By target) throws Exception {
+	public void mouse_to(By target)  {
 
-		scrollTo(target);
+		focus_on(target);
 
-		Actions action = new Actions(test_instance.get().get_webdriver());
-		action.moveToElement(test_instance.get().get_webdriver().findElement(target)).build().perform();
+		try{
+
+			Actions action = new Actions(test_instance.get().get_webdriver());
+			action.moveToElement(test_instance.get().get_webdriver().findElement(target)).build().perform();
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
 
 	}	
 
-	public void highLightElement(By by) throws Exception  {
+	public void highLight_element(By by)  {
 
+		try{
 
-		WebElement we = test_instance.get().get_webdriver().findElement(by);
-		((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].style.border='3px dotted blue'", we);
+			WebElement we = test_instance.get().get_webdriver().findElement(by);
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].style.border='3px dotted blue'", we);
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
 
 	}	
+
+	public boolean image_exists(By by) throws Exception {
+
+		try{
+
+			WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
+			return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
+
+	}
 
 
 	//================================================
 	// Save Screenshots and log info (includes HTTP response code)
 	//================================================
 
-	public static void takeSnapShotAndLogs(String scenarioName) throws Exception{
+	public static void log_output_and_screenshot(String scenarioName) throws Exception {
 
 		String browser = test_instance.get().get_browser();
 		String operatingSystem = test_instance.get().get_operating_system();
@@ -383,13 +587,22 @@ public class Common_methods_and_pom {
 		//Copy file at destination
 		FileUtils.copyFile(SrcFile, DestFile);
 
+		System.out.println("==============================================");
+		System.out.println("[Scenario Failed]");
+		System.out.println(scenarioName);
 		System.out.println("");
-		System.out.println("Scenario Failed: " + scenarioName);
-		System.out.println("Environment: " + operatingSystem + "_" + browser);
-		System.out.println("Screenshot ands logs found here: ");		
+		System.out.println("[Environment]");
+		System.out.println(operatingSystem + "_" + browser);
+		System.out.println("");
+		System.out.println("[Screenshot ands logs found here]");		
 		System.out.println(filePath);
 		System.out.println("");
-
+		System.out.println("[Failure message]");		
+		System.out.println(test_instance.get().get_test_instance_failure_message());	
+		System.out.println("");
+		System.out.println("==============================================");
+		
+		
 		if(test_instance.get().get_web_proxy() != null){
 
 			//Get the HAR data
@@ -411,7 +624,9 @@ public class Common_methods_and_pom {
 		try {
 			fw.write("Failed Scenario: " + scenarioName + System.lineSeparator() +
 					"Failed URL: " + test_instance.get().get_webdriver().getCurrentUrl() + System.lineSeparator() +
-					"Page Title: " + test_instance.get().get_webdriver().getTitle()); 	
+					"Page Title: " + test_instance.get().get_webdriver().getTitle() +
+					"Failure message:" + test_instance.get().get_test_instance_failure_message());
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
@@ -420,36 +635,57 @@ public class Common_methods_and_pom {
 
 	}
 
+	public static void delete_cookies() throws Exception {
+
+		if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
+				test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
+
+			return;
+		}
+
+		test_instance.get().get_webdriver().manage().deleteAllCookies();
+
+	}
+
 	//==================================================
 	// Wait for DOM ready and Ajax calls on page to complete (Start)
 	//==================================================
 
-	public void waitForPageLoad() throws Exception {
+	public void wait_for_page_load() {
 
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) test_instance.get().get_webdriver();
+		try{
 
-		int iWaitTime = 0;
-		int iWaitFinish = 200;	
+			JavascriptExecutor javascriptExecutor = (JavascriptExecutor) test_instance.get().get_webdriver();
 
-		while (!javascriptExecutor.executeScript("return document.readyState")
-				.toString().equals("complete")) {
+			int iWaitTime = 0;
+			int iWaitFinish = 200;	
 
-			Thread.sleep(500);
-			iWaitTime++;
+			while (!javascriptExecutor.executeScript("return document.readyState")
+					.toString().equals("complete")) {
 
-			//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
+				Thread.sleep(500);
+				iWaitTime++;
 
-			//fail-safe 
-			if (iWaitTime==iWaitFinish){break;}
+				//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
+
+				//fail-safe 
+				if (iWaitTime==iWaitFinish){break;}
+			}
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
 		}
+
 
 	}
 
-	public void waitForAjaxComplete() throws Exception {
+	public void wait_for_ajax_to_finish() {
 
 		long startTime = System.currentTimeMillis();
 
-		waitForPageLoad(); 
+		wait_for_page_load(); 
 
 		try{
 
@@ -465,6 +701,11 @@ public class Common_methods_and_pom {
 							"};" +
 					"xhr.send();");
 
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
 		}finally{
 
 			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
@@ -478,46 +719,62 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public void getAllJS() throws Exception{
+	//==================================================
+	// Wait for DOM ready and Ajax calls on page to complete (End)
+	//==================================================	
 
-		waitForAjaxComplete();
+	public void get_all_scripts() {
 
-		//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
-		String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
+		wait_for_ajax_to_finish();
 
-		String netData = ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript(scriptToExecute).toString();
-		String[] resourceNames = netData.split("name=");
+		try{
 
-		//========================================
-		// Output resource details
-		//========================================
-		String[] _resourceNames = new String[resourceNames.length];
+			//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
+			String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
 
-		System.out.println("==================================================");
+			String netData = ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript(scriptToExecute).toString();
+			String[] resourceNames = netData.split("name=");
 
-		int scriptCounter = 0;
+			//========================================
+			// Output resource details
+			//========================================
+			String[] _resourceNames = new String[resourceNames.length];
 
-		for (int i=1;i<resourceNames.length;i++){
+			System.out.println("==================================================");
 
-			if (resourceNames[i].contains("initiatorType=script")){
+			int scriptCounter = 0;
 
-				_resourceNames[i] = resourceNames[i].split(", ")[0];
-				System.out.println(_resourceNames[i]);
-				scriptCounter++;
+			for (int i=1;i<resourceNames.length;i++){
+
+				if (resourceNames[i].contains("initiatorType=script")){
+
+					_resourceNames[i] = resourceNames[i].split(", ")[0];
+					System.out.println(_resourceNames[i]);
+					scriptCounter++;
+				}
+
 			}
+			System.out.println("==================================================");
+			System.out.println(scriptCounter + " scripts executed by " + test_instance.get().get_webdriver().getCurrentUrl());
+
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
 
 		}
-		System.out.println("==================================================");
-		System.out.println(scriptCounter + " scripts executed by " + test_instance.get().get_webdriver().getCurrentUrl());
 
 	}	
-
-	public boolean checkImageExists(By by) throws Exception{
-
-
-		WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
-		return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
-
+	
+	private void standard_warning_output(String message){
+		
+		System.out.println("[Warning]");
+		System.out.println(message);
+		System.out.println("");
+		System.out.println("[Continuing test scenerio]");	
+		System.out.println("Selenium will fail if normal execution flow is impacted");
+		System.out.println("");	
+		
 	}
 
 }

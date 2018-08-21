@@ -81,14 +81,14 @@ public class POM_mainHeader extends Common_methods_and_pom {
 		popup.escPopup(); 
 
 		switch(category){
-		case "TECHNOLOGY": {mouseTo(LinkTechnology); break;}
-		case "HOME AND GARDEN": {mouseTo(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {mouseTo(LinkBabyAndNursery); break;}
-		case "TOYS": {mouseTo(LinkToys); break;}
-		case "SPORTS AND LEISURE": {mouseTo(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {mouseTo(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {mouseTo(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {mouseTo(LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {mouse_to(LinkTechnology); break;}
+		case "HOME AND GARDEN": {mouse_to(LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {mouse_to(LinkBabyAndNursery); break;}
+		case "TOYS": {mouse_to(LinkToys); break;}
+		case "SPORTS AND LEISURE": {mouse_to(LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {mouse_to(LinkHealthAndBeauty); break;}
+		case "CLOTHING": {mouse_to(LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {mouse_to(LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
@@ -137,7 +137,7 @@ public class POM_mainHeader extends Common_methods_and_pom {
 		
 		popup.escPopup(); 
 		
-		sendkeys(txtSearchBar,category);
+		send_keys(txtSearchBar,category);
 		click(btnSearch);
 		
 	}	

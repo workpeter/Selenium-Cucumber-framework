@@ -14,7 +14,7 @@ public class POM_popup extends Common_methods_and_pom {
 	public void escPopup() throws Exception{
 
 		
-		waitForAjaxComplete();
+		wait_for_ajax_to_finish();
 
 		if(element_displayed(btnClose)){ 
 

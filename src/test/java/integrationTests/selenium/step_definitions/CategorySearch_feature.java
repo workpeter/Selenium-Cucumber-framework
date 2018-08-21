@@ -74,7 +74,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	public void category_splash_screen_is_shown() throws Throwable {
 
 		popup.escPopup();
-		Assert.assertEquals(getText(categorySplashPage.txtH1).toLowerCase(),category.toLowerCase());
+		Assert.assertEquals(get_text(categorySplashPage.txtH1).toLowerCase(),category.toLowerCase());
 		
 	}
 	
@@ -98,7 +98,7 @@ public class CategorySearch_feature extends Common_methods_and_pom {
 	public void no_search_results_page_is_shown() throws Throwable {
 		
 		popup.escPopup(); 
-		Assert.assertTrue(getText(productResults.txtNoResults).contains("couldn't find any products"));
+		Assert.assertTrue(get_text(productResults.txtNoResults).contains("couldn't find any products"));
 			
 	}	
 

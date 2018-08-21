@@ -109,7 +109,7 @@ public class Runner {
 
 		}
 
-		Common_methods_and_pom.deleteCookies();
+		Common_methods_and_pom.delete_cookies();
 		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
 
 	}
@@ -166,7 +166,7 @@ public class Runner {
 
 		if(scenario.isFailed()) {
 
-			Common_methods_and_pom.takeSnapShotAndLogs(scenario.getName());
+			Common_methods_and_pom.log_output_and_screenshot(scenario.getName());
 
 		}
 

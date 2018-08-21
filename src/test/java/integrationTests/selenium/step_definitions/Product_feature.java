@@ -16,7 +16,7 @@ public class Product_feature extends Common_methods_and_pom {
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
 		//Goto Homepage
-		gotoPage(Runner.get_env_url());
+		goto_url(Runner.get_env_url());
 		popup.escPopup(); 
 		
 		customer_searches_by_product_using_search_feature(product);
@@ -29,7 +29,7 @@ public class Product_feature extends Common_methods_and_pom {
 
 		mainHeader.searchBar(product);
 		
-		Assert.assertTrue(textExists("Filter by"));
+		Assert.assertTrue(text_exists("Filter by"));
 		
 		this.product = product;
 
@@ -78,9 +78,9 @@ public class Product_feature extends Common_methods_and_pom {
 	@Then("^product page is shown$")
 	public void product_page_is_shown() throws Throwable {
 		
-		Assert.assertTrue(textExists("About this product"));
+		Assert.assertTrue(text_exists("About this product"));
 		Assert.assertTrue(elementExists(productPage.txtProductPrice));
-		Assert.assertTrue(getText(productPage.txtProductPrice).contains("£"));
+		Assert.assertTrue(get_text(productPage.txtProductPrice).contains("£"));
 	}
 	
 	@Then("^results of matching products are shown by order of price low-to-high$")
@@ -108,11 +108,11 @@ public class Product_feature extends Common_methods_and_pom {
 	@Then("^customer can see stock availability$")
 	public void customer_can_see_stock_availability() throws Throwable {
 
-		Assert.assertTrue(textExists("Order now, collect right away") || 
-						  textExists("Not in stock") || 
-						  textExists("Not available") || 
-						  textExists("Delivery within") ||
-						  textExists("How would you like to get your item")
+		Assert.assertTrue(text_exists("Order now, collect right away") || 
+						  text_exists("Not in stock") || 
+						  text_exists("Not available") || 
+						  text_exists("Delivery within") ||
+						  text_exists("How would you like to get your item")
 				);
 				
 	}
@@ -122,7 +122,7 @@ public class Product_feature extends Common_methods_and_pom {
 
 		Assert.assertTrue(elementExists(productPage.txtPrice));		
 		Assert.assertTrue(elementExists(productPage.txtProductDescription));	
-		Assert.assertTrue(checkImageExists(productPage.imgProduct));			
+		Assert.assertTrue(image_exists(productPage.imgProduct));			
 		Assert.assertTrue(elementExists(productPage.linkProductOwner));		
 
 	}	

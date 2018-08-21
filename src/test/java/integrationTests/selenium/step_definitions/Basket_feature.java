@@ -64,8 +64,8 @@ public class Basket_feature extends Common_methods_and_pom {
 
 		popup.escPopup(); 
 		
-		Assert.assertTrue(textExists("Your trolley is currently empty") ||
-				textExists("your shopping trolley is empty"));
+		Assert.assertTrue(text_exists("Your trolley is currently empty") ||
+				text_exists("your shopping trolley is empty"));
 		
 	}
 	

@@ -40,6 +40,8 @@ public class Test_instance {
 	private final int max_wait_time = 30;
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
+	
+	private String test_instance_failure_message;
 
 	@SuppressWarnings("deprecation")
 	public Test_instance(
@@ -152,12 +154,21 @@ public class Test_instance {
 		
 	}
 	
-	public int get_max_wait_time() {
-		
-		return max_wait_time;
-		
 	
+	public String get_test_instance_failure_message(){
+		
+		return test_instance_failure_message;
+		
 	}
+	
+	public void set_test_instance_failure_message(String failure){
+		
+		test_instance_failure_message = failure;
+		
+	}
+	
+	
+	
 	
 	
 	private void load_driver_from_file(String operating_system){
