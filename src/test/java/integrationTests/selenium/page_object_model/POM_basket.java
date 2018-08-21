@@ -2,32 +2,30 @@ package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-
-import integrationTests.selenium.Common_methods_and_pom;
-
 import java.util.*;
+import integrationTests.selenium.ESM;
 
-public class POM_basket extends Common_methods_and_pom {
+public final class POM_basket {
 
-	public By txtH1 = By.xpath("//*[@id=\"emptytrolleylister\"]/div[1]/h1");
-	public By dropQuantity = By.xpath("//select[starts-with(@id,'quantity')]");
-	public By txtPrice = By.xpath("//span[@class=\"price\"]");
-	public By btnRemove = By.xpath("//input[@value=\"Remove\"]");	
-	public By btnRemoveAlternative = By.xpath("//button[starts-with(@class,'ProductCard')]");
+	public static By txtH1 = By.xpath("//*[@id=\"emptytrolleylister\"]/div[1]/h1");
+	public static By dropQuantity = By.xpath("//select[starts-with(@id,'quantity')]");
+	public static By txtPrice = By.xpath("//span[@class=\"price\"]");
+	public static By btnRemove = By.xpath("//input[@value=\"Remove\"]");	
+	public static By btnRemoveAlternative = By.xpath("//button[starts-with(@class,'ProductCard')]");
 
-	public int productCount() throws Exception{
+	public static int productCount() throws Exception{
 	
-		int productCount = elementCount(dropQuantity);
+		int productCount = ESM.elementCount(dropQuantity);
 		//System.out.println("number of different products: " + productCount);
 		return  productCount;
 		
 	}
 
-	public int quantityCount() throws Exception{
+	public static int quantityCount() throws Exception{
 
 		int quantityCount = 0;
 		
-		List<WebElement> rows = getAllElements(dropQuantity);
+		List<WebElement> rows = ESM.getAllElements(dropQuantity);
 
 		Iterator<WebElement> iter = rows.iterator();
 		while (iter.hasNext()) {
@@ -44,29 +42,28 @@ public class POM_basket extends Common_methods_and_pom {
 
 	}
 	
-	
-	public void remove_first_product_from_basket() throws Throwable {
+	public static void remove_first_product_from_basket() throws Throwable {
 
-		popup.escPopup();
+		POM_popup.escPopup();
 		
-		if (elementExists(btnRemove)){click(btnRemove);}
-		else{click(btnRemoveAlternative);}
+		if (ESM.elementExists(btnRemove)){
+			ESM.click(btnRemove);
+		}else{
+			ESM.click(btnRemoveAlternative);
+		}
 
 	}
 	
-	
-	public void change_quantity_first_product(int quantity) throws Throwable {
+	public static void change_quantity_first_product(int quantity) throws Throwable {
 
-		popup.escPopup();
-		selectByVisibleText(dropQuantity,String.valueOf(quantity));
+		POM_popup.escPopup();
+		ESM.selectByVisibleText(dropQuantity,String.valueOf(quantity));
 		
 	}
 	
+	public static void wait_for_basket_to_load() throws Exception{
 	
-	
-	public void wait_for_basket_to_load() throws Exception{
-	
-		wait_until_visible(dropQuantity);
+		ESM.wait_until_visible(dropQuantity);
 		
 	}
 	

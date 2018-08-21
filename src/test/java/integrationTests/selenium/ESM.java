@@ -8,35 +8,25 @@ import org.apache.commons.io.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
 import org.openqa.selenium.support.ui.*;
+
 import net.lightbody.bmp.core.har.Har;
 
-import integrationTests.selenium.page_object_model.*;
+//Any Selenium calls need to be against a specific instance of test_instance webdriver
 import static integrationTests.Runner.test_instance;
 
-public class Common_methods_and_pom {
+//Enhanced Selenium Methods
+public final class ESM {
 
 	//===========================
-	//create POM objects
+	// Actions which if fail should stop test execution
 	//===========================
-	protected static POM_mainHeader mainHeader = new POM_mainHeader();
-	protected static POM_basket basket = new POM_basket();
-	protected static POM_productResults productResults = new POM_productResults();
-	protected static POM_categorySplashPage categorySplashPage = new POM_categorySplashPage();	
-	protected static POM_popup popup = new POM_popup();
-	protected static POM_productPage productPage = new POM_productPage();
-	protected static POM_popupBasket popupBasket = new POM_popupBasket();	
-
-	//===========================
-	// Common methods
-	//===========================
-
-
-	public void goto_url(String url) throws Exception {
-
+		
+	public static void goto_home_url() throws Exception {
 
 		try{
 
-			test_instance.get().get_webdriver().get(url);
+			String home_url = test_instance.get().get_home_url();
+			test_instance.get().get_webdriver().get(home_url);
 
 		}catch(Throwable t){
 
@@ -48,7 +38,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public void click(By target) throws Exception  {
+	public static void click(By target) throws Exception  {
 
 		focus_on(target);
 
@@ -67,7 +57,7 @@ public class Common_methods_and_pom {
 	}
 
 
-	public void send_keys(By target,String textToSend) throws Exception {
+	public static void send_keys(By target,String textToSend) throws Exception {
 
 		focus_on(target);
 		clear_text(target);
@@ -87,28 +77,7 @@ public class Common_methods_and_pom {
 	}
 
 
-	public void clear_text(By target) {
-
-
-		try{
-
-			//Clear text field if it has text before sending text.
-			if(!test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML").equals("") ||
-					!test_instance.get().get_webdriver().findElement(target).getText().equals("")){
-
-				test_instance.get().get_webdriver().findElement(target).clear();
-			}
-
-
-		}catch(Throwable t){
-
-			standard_warning_output(t.getMessage());
-			
-		}
-	}	
-
-
-	public String get_text(By target) throws Exception {
+	public static String get_text(By target) throws Exception {
 
 		focus_on(target);
 
@@ -126,7 +95,7 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public String getInnerHTML(By target) throws Exception{
+	public static String getInnerHTML(By target) throws Exception{
 
 		focus_on(target);
 
@@ -143,7 +112,7 @@ public class Common_methods_and_pom {
 		}
 	}	
 
-	public void selectByIndex(By target,int index) throws Exception{
+	public static void selectByIndex(By target,int index) throws Exception{
 
 		focus_on(target);
 
@@ -162,7 +131,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public void selectByVisibleText(By target,String text) throws Exception{
+	public static void selectByVisibleText(By target,String text) throws Exception{
 
 		focus_on(target);
 
@@ -192,7 +161,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public String getDropDownMenuText(By target) throws Exception {
+	public static String getDropDownMenuText(By target) throws Exception {
 
 		focus_on(target);
 
@@ -212,8 +181,65 @@ public class Common_methods_and_pom {
 
 	}
 
+	public static boolean text_exists(String text) throws Exception {
 
-	public int elementCount(By target) {
+		try{
+
+			return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
+	}	
+	
+	
+	public static boolean image_exists(By by) throws Exception {
+
+		try{
+
+			WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
+			return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
+
+		}catch(Throwable t){
+
+			test_instance.get().set_test_instance_failure_message(t.getMessage());
+
+			throw new Exception("Error: " + t.getMessage(), t); 
+
+		}
+
+	}	
+	
+
+	//===========================
+	// Actions which if fail should give warning, but are not critical to stop test execution
+	//===========================
+
+	public static void clear_text(By target) {
+
+		try{
+
+			//Clear text field if it has text before sending text.
+			if(!test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML").equals("") ||
+					!test_instance.get().get_webdriver().findElement(target).getText().equals("")){
+
+				test_instance.get().get_webdriver().findElement(target).clear();
+			}
+
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
+	}	
+	
+
+	public static int elementCount(By target) {
 
 
 		try{
@@ -232,7 +258,7 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public List<WebElement> getAllElements(By target)  {
+	public static List<WebElement> getAllElements(By target)  {
 
 		try{
 
@@ -249,7 +275,7 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public boolean elementExists(By target) {
+	public static boolean elementExists(By target) {
 
 
 		try{
@@ -273,7 +299,7 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public boolean element_displayed(By target) {
+	public static boolean element_displayed(By target) {
 
 		try{
 
@@ -296,7 +322,7 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public boolean element_enabled(By target) {
+	public static boolean element_enabled(By target) {
 
 		try{
 
@@ -318,23 +344,7 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public boolean text_exists(String text) throws Exception {
-
-		try{
-
-			return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
-
-		}catch(Throwable t){
-
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
-
-		}
-	}	
-
-
-	public void wait_until_present(By target) {
+	public static void wait_until_present(By target) {
 
 		try{
 
@@ -349,7 +359,7 @@ public class Common_methods_and_pom {
 	}	
 
 
-	public void wait_until_visible(By target) {
+	public static void wait_until_visible(By target) {
 
 		try{
 
@@ -363,7 +373,7 @@ public class Common_methods_and_pom {
 		}
 	}
 
-	public void wait_until_invisible(By target) {
+	public static void wait_until_invisible(By target) {
 
 		try{
 			test_instance.get().get_wait()
@@ -375,7 +385,7 @@ public class Common_methods_and_pom {
 		}
 	}
 
-	public void wait_until_clickable(By target) {
+	public static void wait_until_clickable(By target) {
 
 		try{
 			test_instance.get().get_wait()
@@ -387,7 +397,7 @@ public class Common_methods_and_pom {
 		}
 	}	
 
-	public void wait_until_not_clickable(By target) {
+	public static void wait_until_not_clickable(By target) {
 
 		try{
 			test_instance.get().get_wait()
@@ -400,7 +410,7 @@ public class Common_methods_and_pom {
 	}
 
 
-	public void goto_new_tab_if_exists() {
+	public static void goto_new_tab_if_exists() {
 
 		try{
 
@@ -439,11 +449,7 @@ public class Common_methods_and_pom {
 	}	
 
 
-	//================================================
-	// - Scrolling  (code Start)
-	//================================================
-
-	public void focus_on(By target)  {
+	public static void focus_on(By target)  {
 
 
 		wait_until_present(target);
@@ -463,7 +469,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public void scrollBy(int pixels) {
+	public static void scrollBy(int pixels) {
 
 		try{
 
@@ -477,7 +483,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public void scrollBottom()  {
+	public static void scrollBottom()  {
 
 		try{
 
@@ -491,7 +497,7 @@ public class Common_methods_and_pom {
 
 	}
 
-	public void scrollTop() {
+	public static void scrollTop() {
 
 		try{
 
@@ -505,11 +511,8 @@ public class Common_methods_and_pom {
 
 	}	
 
-	//================================================
-	// - Scrolling  (code End)
-	//================================================
 
-	public void mouse_to(By target)  {
+	public static void mouse_to(By target)  {
 
 		focus_on(target);
 
@@ -526,7 +529,7 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public void highLight_element(By by)  {
+	public static void highLight_element(By by)  {
 
 		try{
 
@@ -541,24 +544,140 @@ public class Common_methods_and_pom {
 
 	}	
 
-	public boolean image_exists(By by) throws Exception {
+	public static void delete_cookies() throws Exception {
 
 		try{
+		
+		if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
+				test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
 
-			WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
-			return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
+			return;
+		}
 
+		test_instance.get().get_webdriver().manage().deleteAllCookies();
+		
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
-
+			standard_warning_output(t.getMessage());
+			
 		}
 
 	}
 
 
+	public static void wait_for_page_load() {
+
+		try{
+
+			JavascriptExecutor javascriptExecutor = (JavascriptExecutor) test_instance.get().get_webdriver();
+
+			int iWaitTime = 0;
+			int iWaitFinish = 200;	
+
+			while (!javascriptExecutor.executeScript("return document.readyState")
+					.toString().equals("complete")) {
+
+				Thread.sleep(500);
+				iWaitTime++;
+
+				//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
+
+				//fail-safe 
+				if (iWaitTime==iWaitFinish){break;}
+			}
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}
+
+
+	}
+
+	public static void wait_for_ajax_to_finish() {
+
+		long startTime = System.currentTimeMillis();
+
+		wait_for_page_load(); 
+
+		try{
+
+			test_instance.get().get_webdriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
+			((JavascriptExecutor) test_instance.get().get_webdriver()).executeAsyncScript(
+					"var callback = arguments[arguments.length - 1];" +
+							"var xhr = new XMLHttpRequest();" +
+							"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
+							"xhr.onreadystatechange = function() {" +
+							"  if (xhr.readyState == 4) {" +
+							"    callback(xhr.responseText);" +
+							"  }" +
+							"};" +
+					"xhr.send();");
+
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+			
+		}finally{
+
+			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
+
+			long endTime = System.currentTimeMillis();
+			long duration = (endTime - startTime); 
+			//System.out.println("waiting for AJAX took: " + duration + "MS");
+
+		}
+
+	}	
+	
+
+	public static void get_all_scripts() {
+
+		wait_for_ajax_to_finish();
+
+		try{
+
+			//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
+			String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
+
+			String netData = ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript(scriptToExecute).toString();
+			String[] resourceNames = netData.split("name=");
+
+			//========================================
+			// Output resource details
+			//========================================
+			String[] _resourceNames = new String[resourceNames.length];
+
+			System.out.println("==================================================");
+
+			int scriptCounter = 0;
+
+			for (int i=1;i<resourceNames.length;i++){
+
+				if (resourceNames[i].contains("initiatorType=script")){
+
+					_resourceNames[i] = resourceNames[i].split(", ")[0];
+					System.out.println(_resourceNames[i]);
+					scriptCounter++;
+				}
+
+			}
+			System.out.println("==================================================");
+			System.out.println(scriptCounter + " scripts executed by " + test_instance.get().get_webdriver().getCurrentUrl());
+
+
+		}catch(Throwable t){
+
+			standard_warning_output(t.getMessage());
+
+		}
+
+	}	
+	
+	
+	
 	//================================================
 	// Save Screenshots and log info (includes HTTP response code)
 	//================================================
@@ -635,138 +754,8 @@ public class Common_methods_and_pom {
 
 	}
 
-	public static void delete_cookies() throws Exception {
 
-		if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
-				test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
-
-			return;
-		}
-
-		test_instance.get().get_webdriver().manage().deleteAllCookies();
-
-	}
-
-	//==================================================
-	// Wait for DOM ready and Ajax calls on page to complete (Start)
-	//==================================================
-
-	public void wait_for_page_load() {
-
-		try{
-
-			JavascriptExecutor javascriptExecutor = (JavascriptExecutor) test_instance.get().get_webdriver();
-
-			int iWaitTime = 0;
-			int iWaitFinish = 200;	
-
-			while (!javascriptExecutor.executeScript("return document.readyState")
-					.toString().equals("complete")) {
-
-				Thread.sleep(500);
-				iWaitTime++;
-
-				//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
-
-				//fail-safe 
-				if (iWaitTime==iWaitFinish){break;}
-			}
-
-		}catch(Throwable t){
-
-			standard_warning_output(t.getMessage());
-			
-		}
-
-
-	}
-
-	public void wait_for_ajax_to_finish() {
-
-		long startTime = System.currentTimeMillis();
-
-		wait_for_page_load(); 
-
-		try{
-
-			test_instance.get().get_webdriver().manage().timeouts().setScriptTimeout(15, TimeUnit.SECONDS);
-			((JavascriptExecutor) test_instance.get().get_webdriver()).executeAsyncScript(
-					"var callback = arguments[arguments.length - 1];" +
-							"var xhr = new XMLHttpRequest();" +
-							"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
-							"xhr.onreadystatechange = function() {" +
-							"  if (xhr.readyState == 4) {" +
-							"    callback(xhr.responseText);" +
-							"  }" +
-							"};" +
-					"xhr.send();");
-
-
-		}catch(Throwable t){
-
-			standard_warning_output(t.getMessage());
-			
-		}finally{
-
-			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
-
-			long endTime = System.currentTimeMillis();
-			long duration = (endTime - startTime); 
-			//System.out.println("waiting for AJAX took: " + duration + "MS");
-
-		}
-
-	}	
-
-
-	//==================================================
-	// Wait for DOM ready and Ajax calls on page to complete (End)
-	//==================================================	
-
-	public void get_all_scripts() {
-
-		wait_for_ajax_to_finish();
-
-		try{
-
-			//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
-			String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
-
-			String netData = ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript(scriptToExecute).toString();
-			String[] resourceNames = netData.split("name=");
-
-			//========================================
-			// Output resource details
-			//========================================
-			String[] _resourceNames = new String[resourceNames.length];
-
-			System.out.println("==================================================");
-
-			int scriptCounter = 0;
-
-			for (int i=1;i<resourceNames.length;i++){
-
-				if (resourceNames[i].contains("initiatorType=script")){
-
-					_resourceNames[i] = resourceNames[i].split(", ")[0];
-					System.out.println(_resourceNames[i]);
-					scriptCounter++;
-				}
-
-			}
-			System.out.println("==================================================");
-			System.out.println(scriptCounter + " scripts executed by " + test_instance.get().get_webdriver().getCurrentUrl());
-
-
-		}catch(Throwable t){
-
-			standard_warning_output(t.getMessage());
-
-		}
-
-	}	
-	
-	private void standard_warning_output(String message){
+	private static void standard_warning_output(String message){
 		
 		System.out.println("[Warning]");
 		System.out.println(message);

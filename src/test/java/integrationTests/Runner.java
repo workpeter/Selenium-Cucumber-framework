@@ -6,22 +6,20 @@ import cucumber.api.java.After;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import java.util.Map;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+import java.util.Map;
 
-import integrationTests.selenium.Common_methods_and_pom;
 import integrationTests.selenium.Test_instance;
+import integrationTests.selenium.ESM; //Enhanced Selenium Methods
 
 @CucumberOptions( 
 		//Tags (Send using Maven:[clean verify -Dcucumber.options="-t @Retest"]
@@ -31,9 +29,21 @@ import integrationTests.selenium.Test_instance;
 		)
 public class Runner {
 
-	//Parallel processing achieved in testNG using ThreadLocal
+	/*
+	 * A test_instance contains a configured webdriver, this webdriver can be:
+	 * (1) Any major browser against specific OS (2) Local or Remote (3) headless mode (4) contain Web Proxy (5) configured explicit wait
+	 * test_instance webdriver is static and so can be referenced directly from other classes via Runner class. 
+	 * Its using ThreadLocal and so there is a copy of test_instance per instance of Runner.
+	 * Multiple Runner classes are generated via testNG xml file. This enables parallel processing.
+	 * This gives scaleability control to testNG, rather than individual tests creating their own test_instance webdrivers. 
+	 * This ensures central control of how many test_instance objects are created and configured via testNG xml.
+	 * Any other class wanting to manipulate the webdriver just needs to reference test_instance, and only their local thread copy instance is affected.
+	 */
+	
+	private Test_instance test; 
 	public static ThreadLocal<Test_instance> test_instance = new ThreadLocal<Test_instance>();
 
+	
 	//==============================================
 	// Calls the Grid (or non Grid) webdriver and pass on paramters to it
 	//==============================================
@@ -59,7 +69,7 @@ public class Runner {
 		//environment_configurations_to_test.xml values may change between instances
 		//POM.xml will remain consistent
 
-		Test_instance test = new Test_instance(
+		test = new Test_instance(
 				operating_system, 
 				browser, 
 				browser_version, 
@@ -68,6 +78,11 @@ public class Runner {
 				selenium_grid_enabled,
 				selenium_grid_hub);
 
+		
+		String home_url = System.getProperty("env.qa.url");
+		
+		test.set_home_url(home_url);
+		
 		test_instance.set(test);
 
 		//==========================
@@ -78,7 +93,7 @@ public class Runner {
 
 		//Output once
 		if (testID == 1){
-			System.out.println("Test URL: " + get_env_url());	
+			System.out.println("Test URL: " + home_url);	
 			System.out.println("Web Proxy Enabled: " + web_proxy_enabled);		
 			System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
 			if (selenium_grid_enabled.equals("yes")) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
@@ -102,14 +117,14 @@ public class Runner {
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
 
-		if(test_instance.get().get_web_proxy()!= null){
+		if(test.get_web_proxy()!= null){
 
-
-			test_instance.get().get_web_proxy().newHar(test_instance.get().get_operating_system() + "_" + test_instance.get().get_browser() + ".har");
+			test.get_web_proxy().newHar(test.get_operating_system() + "_" + test.get_browser() + ".har");
 
 		}
 
-		Common_methods_and_pom.delete_cookies();
+		
+		ESM.delete_cookies();
 		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
 
 	}
@@ -117,7 +132,6 @@ public class Runner {
 	@DataProvider
 	public Object[][] scenarios() {
 
-	
 		return testNGCucumberRunner.provideScenarios();
 
 
@@ -128,9 +142,9 @@ public class Runner {
 
 		testNGCucumberRunner.finish();
 
-		if(test_instance.get().get_web_proxy() != null){
+		if(test.get_web_proxy() != null){
 
-			test_instance.get().get_web_proxy().stop();
+			test.get_web_proxy().stop();
 
 		}
 
@@ -138,12 +152,12 @@ public class Runner {
 		// Generate report and quit local thread web driver 
 		//==========================	
 
-		if (test_instance.get().get_webdriver() != null){
+		if (test.get_webdriver() != null){
 
 			Report_generator.GenerateMasterthoughtReport();	
 
 			try {
-				test_instance.get().get_webdriver().quit();
+				test.get_webdriver().quit();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -151,8 +165,8 @@ public class Runner {
 		}else{
 
 			System.out.println("There was an issue generating WebDriver for [OS/Browser]:"
-					+ " " + test_instance.get().get_operating_system()
-					+ "/" + test_instance.get().get_browser());
+					+ " " + test.get_operating_system()
+					+ "/" + test.get_browser());
 
 		}
 	}
@@ -166,7 +180,7 @@ public class Runner {
 
 		if(scenario.isFailed()) {
 
-			Common_methods_and_pom.log_output_and_screenshot(scenario.getName());
+			ESM.log_output_and_screenshot(scenario.getName());
 
 		}
 
@@ -195,13 +209,7 @@ public class Runner {
 		//add the new key-value pair. The annotation is now updated.
 
 
-		
 	}  
 
-	public static String get_env_url(){
-
-		return System.getProperty("env.qa.url");
-
-	}
 
 }

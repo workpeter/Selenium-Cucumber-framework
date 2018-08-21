@@ -2,56 +2,54 @@ package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
 import cucumber.api.PendingException;
-import integrationTests.selenium.Common_methods_and_pom;
+import integrationTests.selenium.ESM;
 
-public class POM_productPage extends Common_methods_and_pom {
+public final class POM_productPage  {
 
-	public By linkProduct = By.xpath("//a[@class=\"ac-product-link ac-product-card__details\"]");
-	public By linkChangeStore = By.xpath("//class[@class=\"a xs-5--none change-store\"]");	
-	
-	public By linkChangePostcode =By.xpath("//*[@id=\"branch\"]/div[5]/div[2]/div/span");	
-	public By linkProductOwner = By.xpath("//a[@itemprop=\"brand\"]");	
-	
-	public By txtProductPrice = By.xpath("//li[@class=\"price product-price-primary\"]");
-	public By txtPostCode = By.xpath("//input[@class=\"form-control form-group__input fulfilment-search\"]");
-	public By txtAvail = By.xpath("//span[@class=\"availability-message message-tick  has-fast-track has-fast-track-clickable\"]");		
-	public By txtPrice = By.xpath("//li[@itemprop=\"price\"]");		
-	public By txtProductDescription = By.xpath("//div[@class=\"product-description-content-text\"]");	
-	public By btnCheckPostcode = By.xpath("//button[@class=\"button button--secondary button--quarter\"]");	
-	public By btnAddBasketSmall = By.xpath("//button[@class=\" add-to-trolley-button button button--secondary button--quarter button--tiny\"]");	
-	public By btnAddToBasket = By.xpath("//button[@class=\" add-to-trolley-button button button--primary button--full\"]");	
-	public By imgProduct = By.xpath("//img[contains(@style, 'transform:translate(0px, 0px)')]");	
-	public By imgRelatedProduct = By.xpath("//img[@class=\"product-card__image\"]");				
-	public By dropSort = By.xpath("//select[@class=\"font-standard form-control sort-select\"]");
-	public By loadingWheel = By.xpath("//div[@class=\"ac-loading-wheel ac-loading-wheel--contained\"]");	
+	public static By linkProduct = By.xpath("//a[@class=\"ac-product-link ac-product-card__details\"]");
+	public static By linkChangeStore = By.xpath("//class[@class=\"a xs-5--none change-store\"]");	
+	public static By linkChangePostcode =By.xpath("//*[@id=\"branch\"]/div[5]/div[2]/div/span");	
+	public static By linkProductOwner = By.xpath("//a[@itemprop=\"brand\"]");	
+	public static By txtProductPrice = By.xpath("//li[@class=\"price product-price-primary\"]");
+	public static By txtPostCode = By.xpath("//input[@class=\"form-control form-group__input fulfilment-search\"]");
+	public static By txtAvail = By.xpath("//span[@class=\"availability-message message-tick  has-fast-track has-fast-track-clickable\"]");		
+	public static By txtPrice = By.xpath("//li[@itemprop=\"price\"]");		
+	public static By txtProductDescription = By.xpath("//div[@class=\"product-description-content-text\"]");	
+	public static By btnCheckPostcode = By.xpath("//button[@class=\"button button--secondary button--quarter\"]");	
+	public static By btnAddBasketSmall = By.xpath("//button[@class=\" add-to-trolley-button button button--secondary button--quarter button--tiny\"]");	
+	public static By btnAddToBasket = By.xpath("//button[@class=\" add-to-trolley-button button button--primary button--full\"]");	
+	public static By imgProduct = By.xpath("//img[contains(@style, 'transform:translate(0px, 0px)')]");	
+	public static By imgRelatedProduct = By.xpath("//img[@class=\"product-card__image\"]");				
+	public static By dropSort = By.xpath("//select[@class=\"font-standard form-control sort-select\"]");
+	public static By loadingWheel = By.xpath("//div[@class=\"ac-loading-wheel ac-loading-wheel--contained\"]");	
 		
 	
-	public void click_on_first_product() throws Exception{
+	public static void click_on_first_product() throws Exception{
 		
-		popup.escPopup(); 
-		click(linkProduct);
+		POM_popup.escPopup(); 
+		ESM.click(linkProduct);
 	}
 
 	
 	
-	public void sort_products(String sortBy) throws Exception{
+	public static void sort_products(String sortBy) throws Exception{
 		
-		popup.escPopup(); 
-		selectByVisibleText(dropSort,sortBy);
+		POM_popup.escPopup(); 
+		ESM.selectByVisibleText(dropSort,sortBy);
 		
 	}
 	
 	
 	
-	public void adds_product_to_basket_via_productPage() throws Throwable {
+	public static void adds_product_to_basket_via_productPage() throws Throwable {
 
-		popup.escPopup();
+		POM_popup.escPopup(); 
 		
-		scrollBottom();
+		ESM.scrollBottom();
 
-		if (!text_exists("Not available online")){
-			click(btnAddToBasket);
-			popupBasket.checkContinueShopping();
+		if (!ESM.text_exists("Not available online")){
+			ESM.click(btnAddToBasket);
+			POM_popupBasket.checkContinueShopping();
 		}else{
 			System.out.println("[Skipping next scenerio step/s] This item is not available online to add to basket");
 			throw new PendingException();
@@ -61,14 +59,14 @@ public class POM_productPage extends Common_methods_and_pom {
 	
 	
 	
-	public void change_store_location(String postcode) throws Throwable {
+	public static void change_store_location(String postcode) throws Throwable {
 
-		popup.escPopup();
+		POM_popup.escPopup(); 
 		
-		send_keys(txtPostCode,postcode);
-		wait_until_invisible(loadingWheel);
-		click(btnCheckPostcode);
-		wait_until_invisible(btnCheckPostcode);
+		ESM.send_keys(txtPostCode,postcode);
+		ESM.wait_until_invisible(loadingWheel);
+		ESM.click(btnCheckPostcode);
+		ESM.wait_until_invisible(btnCheckPostcode);
 		
 	}
 	

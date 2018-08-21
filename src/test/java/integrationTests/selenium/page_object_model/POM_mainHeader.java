@@ -2,54 +2,52 @@ package integrationTests.selenium.page_object_model;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import integrationTests.selenium.ESM;
 
-import integrationTests.selenium.Common_methods_and_pom;
+public final class POM_mainHeader {
 
-public class POM_mainHeader extends Common_methods_and_pom {
-
-	public By btnWishList = By.xpath("(//span[@class=\"argos-header__link-label\"])[1]");
-	public By btnBasket = By.xpath("(//span[@class=\"argos-header__link-label\"])[2]");
-	public By txtBasketCount = By.xpath("//span[@class=\"argos-header__trolley-count argos-header__trolley-badge badge\"]");
-	public By txtSearchBar = By.xpath("//*[@id=\"searchTerm\"]");
-	public By btnSearch = By.xpath("//button[@class=\"argos-header__search-button\"]");
-	public By btnLogin = By.xpath("//a[@class=\"font-condensed uppercase argos-header__link argos-header__link--signin\"]");
-	public By txtCategory = By.xpath("//li[@class=\"font-condensed-extra-bold uppercase meganav__nav-item meganav__nav-item--categories \"]");
-	public By btnLogo = By.xpath("//*[@id=\"argos-logo\"]/path[2]");
+	public static By btnWishList = By.xpath("(//span[@class=\"argos-header__link-label\"])[1]");
+	public static By btnBasket = By.xpath("(//span[@class=\"argos-header__link-label\"])[2]");
+	public static By txtBasketCount = By.xpath("//span[@class=\"argos-header__trolley-count argos-header__trolley-badge badge\"]");
+	public static By txtSearchBar = By.xpath("//*[@id=\"searchTerm\"]");
+	public static By btnSearch = By.xpath("//button[@class=\"argos-header__search-button\"]");
+	public static By btnLogin = By.xpath("//a[@class=\"font-condensed uppercase argos-header__link argos-header__link--signin\"]");
+	public static By txtCategory = By.xpath("//li[@class=\"font-condensed-extra-bold uppercase meganav__nav-item meganav__nav-item--categories \"]");
+	public static By btnLogo = By.xpath("//*[@id=\"argos-logo\"]/path[2]");
 
 	//Category Links
-	public By LinkTechnology = By.xpath("//a[contains(.,'Technology')]");
-	public By LinkHomeAndGarden = By.xpath("//a[contains(.,'Home & Garden')]");
-	public By LinkBabyAndNursery = By.xpath("//a[contains(.,'Baby & Nursery')]");
-	public By LinkToys = By.xpath("//a[contains(.,'Toys')]");
-	public By LinkSportsAndLeisure =By.xpath("//a[contains(.,'Sports & Leisure')]");
-	public By LinkHealthAndBeauty = By.xpath("//a[contains(.,'Health & Beauty')]");
-	public By LinkClothing = By.xpath("//a[contains(.,'Clothing')]");
-	public By LinkJewelleryAndWatches = By.xpath("//a[contains(.,'Jewellery &')]");
+	public static By LinkTechnology = By.xpath("//a[contains(.,'Technology')]");
+	public static By LinkHomeAndGarden = By.xpath("//a[contains(.,'Home & Garden')]");
+	public static By LinkBabyAndNursery = By.xpath("//a[contains(.,'Baby & Nursery')]");
+	public static By LinkToys = By.xpath("//a[contains(.,'Toys')]");
+	public static By LinkSportsAndLeisure =By.xpath("//a[contains(.,'Sports & Leisure')]");
+	public static By LinkHealthAndBeauty = By.xpath("//a[contains(.,'Health & Beauty')]");
+	public static By LinkClothing = By.xpath("//a[contains(.,'Clothing')]");
+	public static By LinkJewelleryAndWatches = By.xpath("//a[contains(.,'Jewellery &')]");
 
 	//Sub-Category links
-	public By LinkTelevisionsAndAccessories = By.xpath(buildLinkXpath("technology/televisions-and-accessories/c:29955/"));
-	public By LinkLaptopsAndPCs = By.xpath(buildLinkXpath("technology/laptops-and-pcs/c:29953/"));
-	public By LinkLivingRoomFurniture = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/c:29368/"));
-	public By LinkBedding = By.xpath(buildLinkXpath("home-and-garden/bedding/c:29358/"));
-	public By LinkTravel = By.xpath(buildLinkXpath("baby-and-nursery/travel/c:29002/"));
-	public By LinkMaternity = By.xpath(buildLinkXpath("baby-and-nursery/maternity/c:29007/")); 
-	public By LinkWomenClothing = By.xpath(buildLinkXpath("clothing/womens/c:691104/"));
-	public By LinkMenClothing = By.xpath(buildLinkXpath("clothing/mens/c:691144/"));
+	public static By LinkTelevisionsAndAccessories = By.xpath(buildLinkXpath("technology/televisions-and-accessories/c:29955/"));
+	public static By LinkLaptopsAndPCs = By.xpath(buildLinkXpath("technology/laptops-and-pcs/c:29953/"));
+	public static By LinkLivingRoomFurniture = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/c:29368/"));
+	public static By LinkBedding = By.xpath(buildLinkXpath("home-and-garden/bedding/c:29358/"));
+	public static By LinkTravel = By.xpath(buildLinkXpath("baby-and-nursery/travel/c:29002/"));
+	public static By LinkMaternity = By.xpath(buildLinkXpath("baby-and-nursery/maternity/c:29007/")); 
+	public static By LinkWomenClothing = By.xpath(buildLinkXpath("clothing/womens/c:691104/"));
+	public static By LinkMenClothing = By.xpath(buildLinkXpath("clothing/mens/c:691144/"));
 
 	//Niche-Category links
-	public By LinkDashCams = By.xpath(buildLinkXpath("technology/dash-cams/c:30278/"));
-	public By LinkSofas = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/sofas/c:29643/")); 
-	public By LinkPushchairs = By.xpath(buildLinkXpath("baby-and-nursery/travel/pushchairs/c:29042/"));
-	public By LinkBatteries = By.xpath(buildLinkXpath("technology/batteries-and-chargers/batteries-and-rechargeable-batteries/c:30218/"));
-	public By LinkTreadmills = By.xpath(buildLinkXpath("sports-and-leisure/fitness-equipment/treadmills/c:30612/")); 
-	public By LinkHairDryers = By.xpath(buildLinkXpath("health-and-beauty/hair-care/hair-dryers/c:29235/"));
-	public By LinkBras = By.xpath(buildLinkXpath("clothing/womens/lingerie/bras/c:691137/"));
-	public By LinkLadiesEarrings = By.xpath(buildLinkXpath("jewellery-and-watches/ladies'-jewellery/ladies'-earrings/c:29315/"));
-	            
-	public By popupMenu = By.xpath("//span[@class=\"meganav__level-2-title\"]");	
-	//<span class="meganav__level-2-title">Womens Clothing</span>
-	
-	private String buildLinkXpath(String indentifier){
+	public static By LinkDashCams = By.xpath(buildLinkXpath("technology/dash-cams/c:30278/"));
+	public static By LinkSofas = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/sofas/c:29643/")); 
+	public static By LinkPushchairs = By.xpath(buildLinkXpath("baby-and-nursery/travel/pushchairs/c:29042/"));
+	public static By LinkBatteries = By.xpath(buildLinkXpath("technology/batteries-and-chargers/batteries-and-rechargeable-batteries/c:30218/"));
+	public static By LinkTreadmills = By.xpath(buildLinkXpath("sports-and-leisure/fitness-equipment/treadmills/c:30612/")); 
+	public static By LinkHairDryers = By.xpath(buildLinkXpath("health-and-beauty/hair-care/hair-dryers/c:29235/"));
+	public static By LinkBras = By.xpath(buildLinkXpath("clothing/womens/lingerie/bras/c:691137/"));
+	public static By LinkLadiesEarrings = By.xpath(buildLinkXpath("jewellery-and-watches/ladies'-jewellery/ladies'-earrings/c:29315/"));        
+	public static By popupMenu = By.xpath("//span[@class=\"meganav__level-2-title\"]");	
+
+
+	private static String buildLinkXpath(String indentifier){
 		
 		String path = "//a[@href=\"/browse/" + indentifier + "\"]";
 		
@@ -57,97 +55,97 @@ public class POM_mainHeader extends Common_methods_and_pom {
 			
 	}
 	
-	public void clickCategory(String category) throws Exception{
+	public static void clickCategory(String category) throws Exception{
 		
-		popup.escPopup(); 
+		POM_popup.escPopup(); 
 		
 		switch(category){
-		case "TECHNOLOGY": {click(LinkTechnology); break;}
-		case "HOME AND GARDEN": {click(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {click(LinkBabyAndNursery); break;}
-		case "TOYS": {click(LinkToys); break;}
-		case "SPORTS AND LEISURE": {click(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {click(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {click(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {click(LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {ESM.click(LinkTechnology); break;}
+		case "HOME AND GARDEN": {ESM.click(LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {ESM.click(LinkBabyAndNursery); break;}
+		case "TOYS": {ESM.click(LinkToys); break;}
+		case "SPORTS AND LEISURE": {ESM.click(LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {ESM.click(LinkHealthAndBeauty); break;}
+		case "CLOTHING": {ESM.click(LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {ESM.click(LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 		
 	}
 	
 	
-	public void mouseToCategory(String category) throws Exception{
+	public static void mouseToCategory(String category) throws Exception{
 		
-		popup.escPopup(); 
+		POM_popup.escPopup(); 
 
 		switch(category){
-		case "TECHNOLOGY": {mouse_to(LinkTechnology); break;}
-		case "HOME AND GARDEN": {mouse_to(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {mouse_to(LinkBabyAndNursery); break;}
-		case "TOYS": {mouse_to(LinkToys); break;}
-		case "SPORTS AND LEISURE": {mouse_to(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {mouse_to(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {mouse_to(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {mouse_to(LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {ESM.mouse_to(LinkTechnology); break;}
+		case "HOME AND GARDEN": {ESM.mouse_to(LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {ESM.mouse_to(LinkBabyAndNursery); break;}
+		case "TOYS": {ESM.mouse_to(LinkToys); break;}
+		case "SPORTS AND LEISURE": {ESM.mouse_to(LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {ESM.mouse_to(LinkHealthAndBeauty); break;}
+		case "CLOTHING": {ESM.mouse_to(LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {ESM.mouse_to(LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
-		wait_until_visible(popupMenu);
+		ESM.wait_until_visible(popupMenu);
 
 	}
 	
-	public void clickSubCategory(String category) throws Exception{
+	public static void clickSubCategory(String category) throws Exception{
 		
-		popup.escPopup(); 
+		POM_popup.escPopup(); 
 		
 		switch(category){
-		case "televisions and accessories": {click(LinkTelevisionsAndAccessories); break;}
-		case "Laptops and PCs": {click(LinkLaptopsAndPCs); break;}
-		case "living room furniture": {click(LinkLivingRoomFurniture); break;}
-		case "Bedding": {click(LinkBedding); break;}
-		case "Travel": {click(LinkTravel); break;}
-		case "Maternity": {click(LinkMaternity); break;}
-		case "Womens": {click(LinkWomenClothing); break;}
-		case "Mens": {click(LinkMenClothing); break;}
+		case "televisions and accessories": {ESM.click(LinkTelevisionsAndAccessories); break;}
+		case "Laptops and PCs": {ESM.click(LinkLaptopsAndPCs); break;}
+		case "living room furniture": {ESM.click(LinkLivingRoomFurniture); break;}
+		case "Bedding": {ESM.click(LinkBedding); break;}
+		case "Travel": {ESM.click(LinkTravel); break;}
+		case "Maternity": {ESM.click(LinkMaternity); break;}
+		case "Womens": {ESM.click(LinkWomenClothing); break;}
+		case "Mens": {ESM.click(LinkMenClothing); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}	
 
 	}
 	
-	public void clickNicheCategory_viaMainheader(String nicheCategory) throws Exception{
+	public static void clickNicheCategory_viaMainheader(String nicheCategory) throws Exception{
 		
-		popup.escPopup(); 
+		POM_popup.escPopup(); 
 		
 		switch(nicheCategory){
 
-		case "Dash Cams": {click(LinkDashCams); break;}
-		case "Sofas": {click(LinkSofas); break;}
-		case "Pushchairs": {click(LinkPushchairs); break;}
-		case "Batteries And Rechargeable Batteries": {click(LinkBatteries); break;}
-		case "Treadmills": {click(LinkTreadmills); break;}
-		case "Hair Dryers": {click(LinkHairDryers); break;}
-		case "Bras": {click(LinkBras); break;}
-		case "Ladies' Earrings": {click(LinkLadiesEarrings); break;}
+		case "Dash Cams": {ESM.click(LinkDashCams); break;}
+		case "Sofas": {ESM.click(LinkSofas); break;}
+		case "Pushchairs": {ESM.click(LinkPushchairs); break;}
+		case "Batteries And Rechargeable Batteries": {ESM.click(LinkBatteries); break;}
+		case "Treadmills": {ESM.click(LinkTreadmills); break;}
+		case "Hair Dryers": {ESM.click(LinkHairDryers); break;}
+		case "Bras": {ESM.click(LinkBras); break;}
+		case "Ladies' Earrings": {ESM.click(LinkLadiesEarrings); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
 	}
 	
-	public void searchBar(String category) throws Exception{
+	public static void searchBar(String category) throws Exception{
 		
-		popup.escPopup(); 
+		POM_popup.escPopup(); 
 		
-		send_keys(txtSearchBar,category);
-		click(btnSearch);
+		ESM.send_keys(txtSearchBar,category);
+		ESM.click(btnSearch);
 		
 	}	
 	
-	public void openBasket() throws Exception{
+	public static void openBasket() throws Exception{
 		
-		popup.escPopup(); 	
+		POM_popup.escPopup(); 	
 		
-		scrollTop();
-		click(btnBasket);	
+		ESM.scrollTop();
+		ESM.click(btnBasket);	
 		
 	}	
 	

@@ -1,52 +1,58 @@
 package integrationTests.selenium.step_definitions;
 
-import org.testng.Assert;
-import cucumber.api.java.en.*;
-import integrationTests.selenium.Common_methods_and_pom;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import integrationTests.selenium.page_object_model.*;
+import integrationTests.selenium.ESM;
 
-public class Basket_feature extends Common_methods_and_pom {
+import org.testng.Assert;
+
+
+//extends TestListenerAdapter
+
+public class Basket_feature {
 
 	@When("^customer views basket$")
 	public void customer_views_basket() throws Throwable {
 
-		popup.escPopup(); 
-		mainHeader.openBasket();
+		POM_popup.escPopup(); 
+		POM_mainHeader.openBasket();
 		
 	}
 
 	@When("^adds product to basket$")
 	public void adds_product_to_basket() throws Throwable {
 
-		productPage.adds_product_to_basket_via_productPage();
+		POM_productPage.adds_product_to_basket_via_productPage();
 
 	}
 
 	@When("^adds product: (.+) to basket twice$")
 	public void adds_product_to_basket_twice(String product) throws Throwable {
 
-		productPage.adds_product_to_basket_via_productPage();
-		productPage.adds_product_to_basket_via_productPage();
+		POM_productPage.adds_product_to_basket_via_productPage();
+		POM_productPage.adds_product_to_basket_via_productPage();
 
 	}
 
 	@When("^adds first product to basket x(\\d+) quantity$")
 	public void adds_first_product_to_basket_x_quantity(int quantity) throws Throwable {
 
-		productResults.add_first_product_to_Basket_via_productResults(quantity);
+		POM_productResults.add_first_product_to_Basket_via_productResults(quantity);
 
 	}
 
 	@When("^adds second product to basket x(\\d+) quantity$")
 	public void adds_second_product_to_basket_x_quantity(int quantity) throws Throwable {
 
-		productResults.add_second_product_to_Basket_via_productResults(quantity);
+		POM_productResults.add_second_product_to_Basket_via_productResults(quantity);
 
 	}
 	
 	@When("customer removes firt product from basket")
 	public void customer_removes_firt_product_from_basket() throws Throwable {
 
-	    basket.remove_first_product_from_basket();
+		POM_basket.remove_first_product_from_basket();
 	    
 	}
 	
@@ -54,7 +60,7 @@ public class Basket_feature extends Common_methods_and_pom {
 	@When("customer changes quantity of first product to x(\\d+)")
 	public void customer_changes_quantity_of_first_product_to_x(int quantity) throws Throwable {
 	
-		basket.change_quantity_first_product(quantity);
+		POM_basket.change_quantity_first_product(quantity);
 		
 	}
 	
@@ -62,25 +68,28 @@ public class Basket_feature extends Common_methods_and_pom {
 	@Then("^empty basket is shown$")
 	public void empty_basket_is_shown() throws Throwable {
 
-		popup.escPopup(); 
+		POM_popup.escPopup(); 
 		
-		Assert.assertTrue(text_exists("Your trolley is currently empty") ||
-				text_exists("your shopping trolley is empty"));
+		Assert.assertTrue(
+				ESM.text_exists("Your trolley is currently empty") ||
+				ESM.text_exists("your shopping trolley is empty"));
+		
 		
 	}
 	
 	@Then("^basket with (.+) products and (.+) quantity is shown$")
 	public void basket_with_products_and_quantity_is_shown(String productCount, String quantityCount) throws Throwable {
 
-		popup.escPopup();
-		basket.wait_for_basket_to_load();
+		POM_popup.escPopup();
+		POM_basket.wait_for_basket_to_load();
 
 		//convert expected cucumber values from strings to integers
 		int iproductCount = Integer.valueOf(productCount);
 		int iquantityCount = Integer.valueOf(quantityCount);	
 
-		Assert.assertEquals(basket.productCount(),iproductCount);
-		Assert.assertEquals(basket.quantityCount(),iquantityCount);
+		Assert.assertEquals(POM_basket.productCount(), iproductCount);
+		Assert.assertEquals(POM_basket.quantityCount(), iquantityCount);	
+
 
 	}
 	

@@ -1,38 +1,36 @@
 package integrationTests.selenium.step_definitions;
 
-import static integrationTests.Runner.test_instance;
-
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import org.testng.Assert;
+import integrationTests.selenium.page_object_model.*;
+import integrationTests.selenium.ESM;
 
-import cucumber.api.java.en.*;
-import integrationTests.Runner;
-import integrationTests.selenium.Common_methods_and_pom;
-
-public class Homepage extends Common_methods_and_pom {
+public class Homepage {
 
 	@Given("^customer is on homepage$")
 	public void customer_is_on_homepage() throws Throwable {
 
-		goto_url(Runner.get_env_url());
-		popup.escPopup(); 
+		ESM.goto_home_url();
+		POM_popup.escPopup(); 
 		
 	}
 	
 	@Then("all key homepage elements are shown")
 	public void all_key_homepage_elements_are_shown() throws Exception {
 	 
-		Assert.assertTrue(elementExists(mainHeader.btnBasket));
-		Assert.assertTrue(elementExists(mainHeader.btnSearch));
-		Assert.assertTrue(elementExists(mainHeader.btnLogin));
-		Assert.assertTrue(elementExists(mainHeader.btnWishList));	
-		Assert.assertTrue(elementExists(mainHeader.LinkTechnology));
-		Assert.assertTrue(elementExists(mainHeader.LinkHomeAndGarden));
-		Assert.assertTrue(elementExists(mainHeader.LinkBabyAndNursery));
-		Assert.assertTrue(elementExists(mainHeader.LinkToys));
-		Assert.assertTrue(elementExists(mainHeader.LinkSportsAndLeisure));
-		Assert.assertTrue(elementExists(mainHeader.LinkHealthAndBeauty));
-		Assert.assertTrue(elementExists(mainHeader.LinkClothing));
-		Assert.assertTrue(elementExists(mainHeader.LinkJewelleryAndWatches));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.btnBasket));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.btnSearch));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.btnLogin));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.btnWishList));	
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkTechnology));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkHomeAndGarden));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkBabyAndNursery));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkToys));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkSportsAndLeisure));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkHealthAndBeauty));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkClothing));
+		Assert.assertTrue(ESM.elementExists(POM_mainHeader.LinkJewelleryAndWatches));
 		
 	}
 	
