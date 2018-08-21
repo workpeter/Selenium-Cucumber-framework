@@ -23,22 +23,13 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 public final class ESM {
 
 	//===========================
-	// Actions which if fail should stop test execution
+	// Actions which if fail should throw Exception causing scenario fail
 	//===========================
-
 
 	public static void goto_home_url() throws Exception  {
 
-		try{
-
-			String home_url = test_instance.get().get_home_url();
-			test_instance.get().get_webdriver().get(home_url);
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
+		String home_url = test_instance.get().get_home_url();
+		test_instance.get().get_webdriver().get(home_url);
 
 	}
 
@@ -46,51 +37,24 @@ public final class ESM {
 
 		focus_on(target);
 
-		try{
-
-			test_instance.get().get_webdriver().findElement(target).click();
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
+		test_instance.get().get_webdriver().findElement(target).click();
 
 	}
-
 
 	public static void send_keys(By target,String textToSend) throws Exception {
 
 		focus_on(target);
 		clear_text(target);
 
-		try{
-
-			test_instance.get().get_webdriver().findElement(target).sendKeys(textToSend);
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
+		test_instance.get().get_webdriver().findElement(target).sendKeys(textToSend);
 
 	}
-
 
 	public static String get_text(By target) throws Exception {
 
 		focus_on(target);
 
-		try{
-
-			return test_instance.get().get_webdriver().findElement(target).getText();
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
-		return null;
+		return test_instance.get().get_webdriver().findElement(target).getText();
 
 	}	
 
@@ -98,32 +62,16 @@ public final class ESM {
 
 		focus_on(target);
 
-		try{
+		return test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML");
 
-			return test_instance.get().get_webdriver().findElement(target).getAttribute("innerHTML");
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
-		return null;
 	}	
 
 	public static void selectByIndex(By target,int index) throws Exception{
 
 		focus_on(target);
 
-		try{
-
-			Select select = new Select(test_instance.get().get_webdriver().findElement(target));
-			select.selectByIndex(index);
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
+		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
+		select.selectByIndex(index);
 
 	}
 
@@ -131,27 +79,18 @@ public final class ESM {
 
 		focus_on(target);
 
-		try{
+		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
+		select.selectByVisibleText(text);
 
-			Select select = new Select(test_instance.get().get_webdriver().findElement(target));
-			select.selectByVisibleText(text);
+		//[Fail-safe] Poll until dropDown menu text changes to what we expect.
+		int iWaitTime = 0;
+		while(!getDropDownMenuText(target).contains(text)){
+			Thread.sleep(500);
+			iWaitTime++;
 
-
-			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
-			int iWaitTime = 0;
-			while(!getDropDownMenuText(target).contains(text)){
-				Thread.sleep(500);
-				iWaitTime++;
-
-				//System.out.println(iWaitTime + " polling element" + target);
-				if (iWaitTime==10){break;}
-			}	
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
+			//System.out.println(iWaitTime + " polling element" + target);
+			if (iWaitTime==10){break;}
+		}	
 
 	}
 
@@ -159,69 +98,34 @@ public final class ESM {
 
 		focus_on(target);
 
-		try{
+		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
 
-			Select select = new Select(test_instance.get().get_webdriver().findElement(target));
-
-			return select.getFirstSelectedOption().getText();
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
-		return null;
+		return select.getFirstSelectedOption().getText();
 
 	}
 
 	public static boolean text_exists(String text) throws Exception {
 
-		try{
+		return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
 
-			return test_instance.get().get_webdriver().getPageSource().toLowerCase().contains(text.toLowerCase());
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
-		
-		return false;
 	}	
-	
-	
+
+
 	public static boolean image_exists(By by) throws Exception {
 
-		try{
-
-			WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
-			return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
-
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-
-		}
-		
-		return false;
+		WebElement ImageFile = test_instance.get().get_webdriver().findElement(by);
+		return  (Boolean) ((JavascriptExecutor)test_instance.get().get_webdriver()).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
 
 	}	
-	
+
 	public static void wait_until_present(By target) throws Exception {
 
-		try{
+		test_instance.get().get_wait()
+		.until(ExpectedConditions.presenceOfElementLocated(target));
 
-			test_instance.get().get_wait()
-			.until(ExpectedConditions.presenceOfElementLocated(target));
-		
-		}catch(Throwable t){
-
-			save_selenium_stack_trace_and_fail_scenario(t);
-			
-		}
 	}	
-	
-	
+
+
 	//===========================
 	// Actions which if fail should give warning, but are not critical to stop test execution
 	//===========================
@@ -241,13 +145,11 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 	}	
-	
 
 	public static int elementCount(By target) {
-
 
 		try{
 
@@ -255,8 +157,6 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_selenium_stack_trace(t.getMessage());
-			
 			standard_warning_output(t.getMessage());
 
 		}
@@ -274,11 +174,10 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 		return null;
-
 
 	}	
 
@@ -298,13 +197,12 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 		return false;
 
 	}	
-
 
 	public static boolean element_displayed(By target) {
 
@@ -321,7 +219,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 		return false;
@@ -343,7 +241,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 		return false;
@@ -360,7 +258,7 @@ public final class ESM {
 		catch (Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 	}
 
@@ -372,7 +270,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 	}
 
@@ -384,7 +282,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 	}	
 
@@ -396,7 +294,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-		
+
 		}
 	}
 
@@ -434,7 +332,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 	}	
@@ -453,7 +351,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 		//======Focusing End ======
 
@@ -471,7 +369,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 	}
@@ -485,7 +383,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 	}
@@ -517,7 +415,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 	}	
@@ -532,7 +430,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 	}	
@@ -540,23 +438,22 @@ public final class ESM {
 	public static void delete_cookies() throws Exception {
 
 		try{
-		
-		if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
-				test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
 
-			return;
-		}
+			if (test_instance.get().get_webdriver().getCurrentUrl().equals("data:,") || 
+					test_instance.get().get_webdriver().getCurrentUrl().equals("about:blank")){
 
-		test_instance.get().get_webdriver().manage().deleteAllCookies();
-		
+				return;
+			}
+
+			test_instance.get().get_webdriver().manage().deleteAllCookies();
+
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 	}
-
 
 	public static void wait_for_page_load() {
 
@@ -582,7 +479,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}
 
 
@@ -612,7 +509,7 @@ public final class ESM {
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
-			
+
 		}finally{
 
 			//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
@@ -624,7 +521,6 @@ public final class ESM {
 		}
 
 	}	
-	
 
 	public static void get_all_scripts() {
 
@@ -668,114 +564,18 @@ public final class ESM {
 		}
 
 	}	
-	
-	
-	
-	//================================================
-	// Save Screenshots and log info (includes HTTP response code)
-	//================================================
 
-	public static void log_output_and_screenshot(String scenarioName) throws Exception {
-
-		String browser = test_instance.get().get_browser();
-		String operatingSystem = test_instance.get().get_operating_system();
-
-		//Convert web driver object to TakeScreenshot
-		TakesScreenshot scrShot =((TakesScreenshot)test_instance.get().get_webdriver());
-
-		//Call getScreenshotAs method to create image file
-		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-		String currentDateTime =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
-
-		String filePath = System.getProperty("user.dir").replace("\\", "/")  + 
-				"/target/screenshots_logs_on_failure/" + 
-				operatingSystem + "-" + browser + "_" + currentDateTime; 
-
-		String screenshotPath = filePath + "/" + "screenshot.png";
-
-		File DestFile=new File(screenshotPath);
-
-		//Copy file at destination
-		FileUtils.copyFile(SrcFile, DestFile);
-
-		System.out.println("==============================================");
-		System.out.println("[Scenario Failed]");
-		System.out.println(scenarioName);
-		System.out.println("");
-		System.out.println("[Environment]");
-		System.out.println(operatingSystem + "_" + browser);
-		System.out.println("");
-		System.out.println("[Screenshot ands logs found here]");		
-		System.out.println(filePath);
-		System.out.println("");
-		System.out.println("[Selenium stack trace]");		
-		System.out.println(test_instance.get().get_selenium_stack_trace());	
-		System.out.println("");
-		System.out.println("[TestNG stack trace]");		
-		System.out.println(test_instance.get().get_testNG_stack_trace());	
-		System.out.println("");
-		System.out.println("==============================================");
-		
-		
-		if(test_instance.get().get_web_proxy() != null){
-
-			//Get the HAR data
-			Har har = test_instance.get().get_web_proxy().getHar();
-			File harFile = new File(filePath + "/" + 
-					operatingSystem + "_" + 
-					browser + ".har");
-
-			//Write the HAR data
-			har.writeTo(harFile);
-
-		}
-
-		//Output failed scenario name, URL + page title to text file next to screenshot
-		File failed_scenario_details_file = new File(filePath + "/" + "failed_scenario_details.txt");
-
-		FileWriter fw = new FileWriter(failed_scenario_details_file, false);
-
-		try {
-			fw.write("Failed Scenario: " + scenarioName + System.lineSeparator() +
-					"Failed URL: " + test_instance.get().get_webdriver().getCurrentUrl() + System.lineSeparator() +
-					"Page Title: " + test_instance.get().get_webdriver().getTitle() + System.lineSeparator() +
-					"Selenium stack trace:" + test_instance.get().get_selenium_stack_trace() + System.lineSeparator() +
-					"TestNG stack trace:" + test_instance.get().get_testNG_stack_trace());
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally{
-			fw.close();
-		}	
-
-	}
-
-
-	private static void save_selenium_stack_trace_and_fail_scenario(Throwable t) throws Exception {
-		
-		System.out.println("Selenium failed");
-		
-		String selenium_stack_trace = ExceptionUtils.getStackTrace(t);
-		test_instance.get().set_selenium_stack_trace(selenium_stack_trace);
-
-		throw new Exception("Error: " + selenium_stack_trace, t); 
-		
-	}
-	
-	
-	
 	private static void standard_warning_output(String message){
-		
+
 		System.out.println("[Warning]");
 		System.out.println(message);
 		System.out.println("");
 		System.out.println("[Continuing test scenerio]");	
 		System.out.println("Selenium will fail if normal execution flow is impacted");
 		System.out.println("");	
-		
+
 	}
-	
+
 
 
 }

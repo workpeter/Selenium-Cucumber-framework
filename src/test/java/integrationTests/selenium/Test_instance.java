@@ -35,8 +35,8 @@ public class Test_instance {
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
-	private String selenium_stack_trace;
-	private String testNG_stack_trace;
+
+	private String stack_trace;
 	private String home_url;
 
 	@SuppressWarnings("deprecation")
@@ -155,33 +155,6 @@ public class Test_instance {
 
 	}
 
-	public String get_selenium_stack_trace() {
-
-		return this.selenium_stack_trace;
-
-	}
-
-	public void set_selenium_stack_trace(String trace) {
-
-		this.selenium_stack_trace = trace;
-
-	}
-	
-	
-	
-	public String get_testNG_stack_trace() {
-
-		return this.testNG_stack_trace;
-
-	}
-	
-
-	public void set_testNG_stack_trace(String trace) {
-
-		this.testNG_stack_trace = trace;
-
-	}
-	
 	
 	Scenario scenario;
 	
