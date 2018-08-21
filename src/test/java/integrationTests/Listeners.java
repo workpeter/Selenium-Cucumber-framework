@@ -26,7 +26,6 @@ public class Listeners implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult iTestResult) {
 
-
 		log_output_and_screenshot(get_stack_trace(iTestResult));
 
 	}

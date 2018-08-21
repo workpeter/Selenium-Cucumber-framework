@@ -30,6 +30,8 @@ public final class ESM {
 
 		String home_url = test_instance.get().get_home_url();
 		test_instance.get().get_webdriver().get(home_url);
+		
+		wait_for_ajax_to_finish();
 
 	}
 
@@ -38,6 +40,8 @@ public final class ESM {
 		focus_on(target);
 
 		test_instance.get().get_webdriver().findElement(target).click();
+		
+		wait_for_ajax_to_finish();
 
 	}
 
@@ -47,6 +51,8 @@ public final class ESM {
 		clear_text(target);
 
 		test_instance.get().get_webdriver().findElement(target).sendKeys(textToSend);
+		
+		wait_for_ajax_to_finish();
 
 	}
 
@@ -72,6 +78,8 @@ public final class ESM {
 
 		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
 		select.selectByIndex(index);
+		
+		wait_for_ajax_to_finish();
 
 	}
 
@@ -82,6 +90,8 @@ public final class ESM {
 		Select select = new Select(test_instance.get().get_webdriver().findElement(target));
 		select.selectByVisibleText(text);
 
+		wait_for_ajax_to_finish();
+		
 		//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 		int iWaitTime = 0;
 		while(!getDropDownMenuText(target).contains(text)){

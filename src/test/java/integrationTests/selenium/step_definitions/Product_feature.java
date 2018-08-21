@@ -3,6 +3,9 @@ package integrationTests.selenium.step_definitions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import static integrationTests.Runner.test_instance;
+
 import org.testng.Assert;
 import integrationTests.selenium.page_object_model.*;
 import integrationTests.selenium.ESM;
@@ -26,7 +29,7 @@ public class Product_feature {
 	@When("^customer searches by product: (.+) using search feature$")
 	public void customer_searches_by_product_using_search_feature(String product) throws Throwable {
 
-		POM_mainHeader.searchBar(product);
+		POM_mainHeader.enter_term_in_search_bar_and_click(product);
 		
 		Assert.assertTrue(ESM.text_exists("Filter by"));
 		

@@ -58,7 +58,7 @@ public class CategorySearch_feature  {
 	@When("^customer searches and misspells (.+) with (.+) using search feature$")
 	public void customer_searches_and_misspells_category_using_search_feature(String category, String misspelling) throws Throwable {
 		
-		POM_mainHeader.searchBar(misspelling);
+		POM_mainHeader.enter_term_in_search_bar_and_click(misspelling);
 
 		this.category = category;
 		
@@ -67,7 +67,7 @@ public class CategorySearch_feature  {
 	@When("^customer searches for unrecognised category: (.+) using search feature$")
 	public void customer_searches_for_unrecognised_category_using_search_feature(String unrecognisedCategory) throws Throwable {
 		
-		POM_mainHeader.searchBar(unrecognisedCategory);
+		POM_mainHeader.enter_term_in_search_bar_and_click(unrecognisedCategory);
 
 	}
 

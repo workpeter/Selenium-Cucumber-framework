@@ -35,8 +35,6 @@ public class Test_instance {
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
-
-	private String stack_trace;
 	private String home_url;
 
 	@SuppressWarnings("deprecation")

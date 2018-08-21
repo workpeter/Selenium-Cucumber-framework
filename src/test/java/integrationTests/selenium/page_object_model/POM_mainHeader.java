@@ -131,7 +131,7 @@ public final class POM_mainHeader {
 	
 	}
 	
-	public static void searchBar(String category) throws Exception{
+	public static void enter_term_in_search_bar_and_click(String category) throws Exception{
 		
 		POM_popup.escPopup(); 
 		
