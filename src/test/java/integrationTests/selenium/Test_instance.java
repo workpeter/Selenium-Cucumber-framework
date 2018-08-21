@@ -20,6 +20,8 @@ import net.lightbody.bmp.proxy.CaptureType;
 
 import org.testng.SkipException;
 
+import cucumber.api.Scenario;
+
 public class Test_instance {
 
 	private final WebDriver webdriver;
@@ -29,11 +31,12 @@ public class Test_instance {
 	private BrowserMobProxyServer mobProxyServer;
 	private WebDriverWait wait;
 
-	private final int max_wait_time = 30;
+	private final int max_wait_time = 10;
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
-	private String test_instance_failure_message;
+	private String selenium_stack_trace;
+	private String testNG_stack_trace;
 	private String home_url;
 
 	@SuppressWarnings("deprecation")
@@ -152,15 +155,46 @@ public class Test_instance {
 
 	}
 
-	public String get_test_instance_failure_message() {
+	public String get_selenium_stack_trace() {
 
-		return test_instance_failure_message;
+		return this.selenium_stack_trace;
 
 	}
 
-	public void set_test_instance_failure_message(String failure) {
+	public void set_selenium_stack_trace(String trace) {
 
-		this.test_instance_failure_message = failure;
+		this.selenium_stack_trace = trace;
+
+	}
+	
+	
+	
+	public String get_testNG_stack_trace() {
+
+		return this.testNG_stack_trace;
+
+	}
+	
+
+	public void set_testNG_stack_trace(String trace) {
+
+		this.testNG_stack_trace = trace;
+
+	}
+	
+	
+	Scenario scenario;
+	
+	public Scenario get_cucumber_scenario() {
+
+		return this.scenario;
+
+	}
+	
+
+	public void set_cucumber_scenario(Scenario scenario) {
+
+		this.scenario = scenario;
 
 	}
 	

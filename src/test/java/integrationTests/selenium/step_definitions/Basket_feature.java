@@ -6,11 +6,12 @@ import integrationTests.selenium.page_object_model.*;
 import integrationTests.selenium.ESM;
 
 import org.testng.Assert;
+import org.testng.TestListenerAdapter;
 
 
 //extends TestListenerAdapter
 
-public class Basket_feature {
+public class Basket_feature  {
 
 	@When("^customer views basket$")
 	public void customer_views_basket() throws Throwable {

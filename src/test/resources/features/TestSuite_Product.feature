@@ -56,8 +56,8 @@ Feature: Products
     | Product 	| Postcode 	|
     | COOKERS	| BL0 9JH	|
     | XBOX		| SE6 1SB	|
-    | PUSHCHAIR	| SS1 2TW	|
-    | SPIDERMAN	| FK7 7TZ	|
+#    | PUSHCHAIR	| SS1 2TW	|
+#    | SPIDERMAN	| FK7 7TZ	|
   
  
 

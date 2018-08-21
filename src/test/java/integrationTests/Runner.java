@@ -171,20 +171,6 @@ public class Runner {
 		}
 	}
 
-	//==========================
-	// Cucumber hook used to capture analysis data on failure
-	//==========================	
-
-	@After
-	public void capture_logs_and_screenshot_on_failure(Scenario scenario) throws Exception{
-
-		if(scenario.isFailed()) {
-
-			ESM.log_output_and_screenshot(scenario.getName());
-
-		}
-
-	}
 
 	//==============================================
 	// Use reflection to dynamically change cucumber options (create unique .json files/results).

@@ -14,14 +14,20 @@ import net.lightbody.bmp.core.har.Har;
 //Any Selenium calls need to be against a specific instance of test_instance webdriver
 import static integrationTests.Runner.test_instance;
 
+
+import cucumber.api.Scenario;
+import junit.framework.Assert;
+import org.apache.commons.lang.exception.ExceptionUtils;
+
 //Enhanced Selenium Methods
 public final class ESM {
 
 	//===========================
 	// Actions which if fail should stop test execution
 	//===========================
-		
-	public static void goto_home_url() throws Exception {
+
+
+	public static void goto_home_url() throws Exception  {
 
 		try{
 
@@ -30,9 +36,7 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
 
@@ -48,9 +52,7 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
 
@@ -68,9 +70,7 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
 
@@ -87,11 +87,10 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
+		return null;
 
 	}	
 
@@ -105,11 +104,10 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
+		return null;
 	}	
 
 	public static void selectByIndex(By target,int index) throws Exception{
@@ -123,9 +121,7 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
 
@@ -153,9 +149,7 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
 
@@ -173,11 +167,10 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
+		return null;
 
 	}
 
@@ -189,11 +182,11 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
+		
+		return false;
 	}	
 	
 	
@@ -206,15 +199,29 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
-
-			throw new Exception("Error: " + t.getMessage(), t); 
+			save_selenium_stack_trace_and_fail_scenario(t);
 
 		}
+		
+		return false;
 
 	}	
 	
+	public static void wait_until_present(By target) throws Exception {
 
+		try{
+
+			test_instance.get().get_wait()
+			.until(ExpectedConditions.presenceOfElementLocated(target));
+		
+		}catch(Throwable t){
+
+			save_selenium_stack_trace_and_fail_scenario(t);
+			
+		}
+	}	
+	
+	
 	//===========================
 	// Actions which if fail should give warning, but are not critical to stop test execution
 	//===========================
@@ -248,7 +255,7 @@ public final class ESM {
 
 		}catch(Throwable t){
 
-			test_instance.get().set_test_instance_failure_message(t.getMessage());
+			test_instance.get().set_selenium_stack_trace(t.getMessage());
 			
 			standard_warning_output(t.getMessage());
 
@@ -343,22 +350,6 @@ public final class ESM {
 
 	}	
 
-
-	public static void wait_until_present(By target) {
-
-		try{
-
-			test_instance.get().get_wait()
-			.until(ExpectedConditions.presenceOfElementLocated(target));
-		}
-		catch (Throwable t){
-
-			standard_warning_output(t.getMessage());
-
-		}
-	}	
-
-
 	public static void wait_until_visible(By target) {
 
 		try{
@@ -449,11 +440,12 @@ public final class ESM {
 	}	
 
 
-	public static void focus_on(By target)  {
+	public static void focus_on(By target) throws Exception  {
 
 
 		wait_until_present(target);
 
+		//======Focusing Start ======
 		try{
 			WebElement element = test_instance.get().get_webdriver().findElement(target);
 			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -463,6 +455,7 @@ public final class ESM {
 			standard_warning_output(t.getMessage());
 			
 		}
+		//======Focusing End ======
 
 		wait_until_visible(target);
 
@@ -512,7 +505,7 @@ public final class ESM {
 	}	
 
 
-	public static void mouse_to(By target)  {
+	public static void mouse_to(By target) throws Exception  {
 
 		focus_on(target);
 
@@ -716,8 +709,11 @@ public final class ESM {
 		System.out.println("[Screenshot ands logs found here]");		
 		System.out.println(filePath);
 		System.out.println("");
-		System.out.println("[Failure message]");		
-		System.out.println(test_instance.get().get_test_instance_failure_message());	
+		System.out.println("[Selenium stack trace]");		
+		System.out.println(test_instance.get().get_selenium_stack_trace());	
+		System.out.println("");
+		System.out.println("[TestNG stack trace]");		
+		System.out.println(test_instance.get().get_testNG_stack_trace());	
 		System.out.println("");
 		System.out.println("==============================================");
 		
@@ -743,8 +739,9 @@ public final class ESM {
 		try {
 			fw.write("Failed Scenario: " + scenarioName + System.lineSeparator() +
 					"Failed URL: " + test_instance.get().get_webdriver().getCurrentUrl() + System.lineSeparator() +
-					"Page Title: " + test_instance.get().get_webdriver().getTitle() +
-					"Failure message:" + test_instance.get().get_test_instance_failure_message());
+					"Page Title: " + test_instance.get().get_webdriver().getTitle() + System.lineSeparator() +
+					"Selenium stack trace:" + test_instance.get().get_selenium_stack_trace() + System.lineSeparator() +
+					"TestNG stack trace:" + test_instance.get().get_testNG_stack_trace());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -755,6 +752,19 @@ public final class ESM {
 	}
 
 
+	private static void save_selenium_stack_trace_and_fail_scenario(Throwable t) throws Exception {
+		
+		System.out.println("Selenium failed");
+		
+		String selenium_stack_trace = ExceptionUtils.getStackTrace(t);
+		test_instance.get().set_selenium_stack_trace(selenium_stack_trace);
+
+		throw new Exception("Error: " + selenium_stack_trace, t); 
+		
+	}
+	
+	
+	
 	private static void standard_warning_output(String message){
 		
 		System.out.println("[Warning]");
@@ -765,5 +775,7 @@ public final class ESM {
 		System.out.println("");	
 		
 	}
+	
+
 
 }

@@ -3,6 +3,10 @@
 <suite name="Environment config tsts" parallel="tests"
 	thread-count="1">
 
+	<listeners>
+		<listener class-name="integrationTests.Listeners"></listener>
+	</listeners>
+
 	<test name="windows chrome">
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="chrome" />
@@ -12,23 +16,23 @@
 		</classes>
 	</test>
 
-	<test name="windows firefox">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="firefox" />
-		<parameter name="browser_headless" value="no" />
-		<classes>
-			<class name="integrationTests.Runner" />
-		</classes>
-	</test>
+<!-- 	<test name="windows firefox"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="firefox" /> -->
+<!-- 		<parameter name="browser_headless" value="no" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="integrationTests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 
-	<test name="windows edge">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="edge" />
-		<parameter name="browser_headless" value="no" />
-		<classes>
-			<class name="integrationTests.Runner" />
-		</classes>
-	</test>
+<!-- 	<test name="windows edge"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="edge" /> -->
+<!-- 		<parameter name="browser_headless" value="no" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="integrationTests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 
 </suite> 
 
