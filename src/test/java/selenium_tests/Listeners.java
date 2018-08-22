@@ -87,7 +87,7 @@ public class Listeners implements ITestListener {
 	private void call_webdriver_failure_logger(ITestResult iTestResult ){
 		
 		//Dont output log if cucumber didnt register scenario failure
-		if(!Listeners.scenario.get().isFailed()) return;
+		if(Listeners.scenario.get() != null & !Listeners.scenario.get().isFailed()) return;
 
 		//Call webriver logger and include the cucumber scenario name and testNG stack trace
 		driver.get().esm.output_logs_and_screenshot(
