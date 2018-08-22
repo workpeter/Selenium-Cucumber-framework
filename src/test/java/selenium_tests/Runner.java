@@ -1,8 +1,7 @@
-package integrationTests;
+package selenium_tests;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
+
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.PickleEventWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
@@ -18,8 +17,30 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Map;
 
-import integrationTests.selenium.Test_instance;
-import integrationTests.selenium.ESM; //Enhanced Selenium Methods
+
+/*
+The runner class is launched via the testNG XML file. 
+It is responsible for generating a webdriver and running cucumber scenarios 
+using the testNG @Test annotation.
+
+When it generates a webdriver it uses parameters from both the TestNG and Maven XML files. 
+These parameters dictate the type of webdriver to be created and its capabilities. 
+
+Multiple runner classes can be generated at the same time via the testNG XML file 
+This enables parallel processing.
+
+In order for parallel processing to work, a unique webdriver instance needs to be created
+for each thread. Runner class achieves this by storing each unique webdriver in a static 
+threadLocal container. 
+
+This enables tests located in other classes to make a static reference to the web driver
+to control it. However, because it's in a ThreadLocal container, static references from different
+threads do not impact each other. Thus allowing for an autonomous webdriver per thread. 
+
+Alternative solutions to achieve parallel processing is to spin up a webdriver object within
+the test classes themselves, however, this is inefficient due to the requirement to
+rebuild a web driver instance per test suite class.
+*/
 
 @CucumberOptions( 
 		//Tags (Send using Maven:[clean verify -Dcucumber.options="-t @Retest"]
@@ -29,29 +50,10 @@ import integrationTests.selenium.ESM; //Enhanced Selenium Methods
 		)
 public class Runner {
 
-	/*
-	 * A test_instance contains a configured webdriver, this webdriver can be:
-	 * (1) Any major browser against specific OS (2) Local or Remote (3) headless mode (4) contain Web Proxy (5) configured explicit wait
-	 * test_instance webdriver is static and so can be referenced directly from other classes via Runner class. 
-	 * Its using ThreadLocal and so there is a copy of test_instance per instance of Runner.
-	 * Multiple Runner classes are generated via testNG xml file. This enables parallel processing.
-	 * This gives scaleability control to testNG, rather than individual tests creating their own test_instance webdrivers. 
-	 * This ensures central control of how many test_instance objects are created and configured via testNG xml.
-	 * Any other class wanting to manipulate the webdriver just needs to reference test_instance, and only their local thread copy instance is affected.
-	 */
-	
-	private Test_instance test; 
-	public static ThreadLocal<Test_instance> test_instance = new ThreadLocal<Test_instance>();
-
-	
-	//==============================================
-	// Calls the Grid (or non Grid) webdriver and pass on paramters to it
-	//==============================================
-
-	private volatile static int testID;
-
+	public static ThreadLocal<Webdriver_builder> driver = new ThreadLocal<Webdriver_builder>();
 	private TestNGCucumberRunner testNGCucumberRunner;
-
+	private volatile static int testID;
+	
 	@BeforeClass(alwaysRun = true)
 	@Parameters({"operating_system","browser","browser_version","browser_headless"})
 	public void setup(
@@ -65,25 +67,21 @@ public class Runner {
 		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
 		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
 
-		//Properties come from the environment_configurations_to_test.xml and POM.xml
-		//environment_configurations_to_test.xml values may change between instances
-		//POM.xml will remain consistent
-
-		test = new Test_instance(
+		
+		driver.set(new Webdriver_builder(
 				operating_system, 
 				browser, 
 				browser_version, 
 				browser_headless, 
 				web_proxy_enabled, 
 				selenium_grid_enabled,
-				selenium_grid_hub);
+				selenium_grid_hub));
 
 		
 		String home_url = System.getProperty("env.qa.url");
 		
-		test.set_home_url(home_url);
+		driver.get().set_home_url(home_url);
 		
-		test_instance.set(test);
 
 		//==========================
 		// Output build configurations being tested
@@ -117,9 +115,9 @@ public class Runner {
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
 
-		if(test.get_web_proxy()!= null){
+		if(driver.get().get_web_proxy()!= null){
 
-			test.get_web_proxy().newHar(test.get_operating_system() + "_" + test.get_browser() + ".har");
+			driver.get().get_web_proxy().newHar(driver.get().get_operating_system() + "_" + driver.get().get_browser() + ".har");
 
 		}
 
@@ -140,9 +138,9 @@ public class Runner {
 
 		testNGCucumberRunner.finish();
 
-		if(test.get_web_proxy() != null){
+		if(driver.get().get_web_proxy() != null){
 
-			test.get_web_proxy().stop();
+			driver.get().get_web_proxy().stop();
 
 		}
 
@@ -150,12 +148,12 @@ public class Runner {
 		// Generate report and quit local thread web driver 
 		//==========================	
 
-		if (test.get_webdriver() != null){
+		if (driver.get().get_webdriver() != null){
 
 			Report_generator.GenerateMasterthoughtReport();	
 
 			try {
-				test.get_webdriver().quit();
+				driver.get().get_webdriver().quit();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -163,8 +161,8 @@ public class Runner {
 		}else{
 
 			System.out.println("There was an issue generating WebDriver for [OS/Browser]:"
-					+ " " + test.get_operating_system()
-					+ "/" + test.get_browser());
+					+ " " + driver.get().get_operating_system()
+					+ "/" + driver.get().get_browser());
 
 		}
 	}

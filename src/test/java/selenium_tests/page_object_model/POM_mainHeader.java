@@ -1,8 +1,9 @@
-package integrationTests.selenium.page_object_model;
+package selenium_tests.page_object_model;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import integrationTests.selenium.ESM;
+import static selenium_tests.Runner.driver;
+
 
 public final class POM_mainHeader {
 
@@ -31,10 +32,10 @@ public final class POM_mainHeader {
 	public static By LinkLivingRoomFurniture = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/c:29368/"));
 	public static By LinkBedding = By.xpath(buildLinkXpath("home-and-garden/bedding/c:29358/"));
 	public static By LinkTravel = By.xpath(buildLinkXpath("baby-and-nursery/travel/c:29002/"));
-	public static By LinkMaternity = By.xpath(buildLinkXpath("baby-and-nursery/maternity/c:29007/")); 
+	public static By LinkSafetyAndHealth = By.xpath(buildLinkXpath("baby-and-nursery/safety-and-health/c:29003/")); 
 	public static By LinkWomenClothing = By.xpath(buildLinkXpath("clothing/womens/c:691104/"));
 	public static By LinkMenClothing = By.xpath(buildLinkXpath("clothing/mens/c:691144/"));
-
+	
 	//Niche-Category links
 	public static By LinkDashCams = By.xpath(buildLinkXpath("technology/dash-cams/c:30278/"));
 	public static By LinkSofas = By.xpath(buildLinkXpath("home-and-garden/living-room-furniture/sofas/c:29643/")); 
@@ -60,14 +61,14 @@ public final class POM_mainHeader {
 		POM_popup.escPopup(); 
 		
 		switch(category){
-		case "TECHNOLOGY": {ESM.click(LinkTechnology); break;}
-		case "HOME AND GARDEN": {ESM.click(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {ESM.click(LinkBabyAndNursery); break;}
-		case "TOYS": {ESM.click(LinkToys); break;}
-		case "SPORTS AND LEISURE": {ESM.click(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {ESM.click(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {ESM.click(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {ESM.click(LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {driver.get().esm.click(LinkTechnology); break;}
+		case "HOME AND GARDEN": {driver.get().esm.click(LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {driver.get().esm.click(LinkBabyAndNursery); break;}
+		case "TOYS": {driver.get().esm.click(LinkToys); break;}
+		case "SPORTS AND LEISURE": {driver.get().esm.click(LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {driver.get().esm.click(LinkHealthAndBeauty); break;}
+		case "CLOTHING": {driver.get().esm.click(LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {driver.get().esm.click(LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 		
@@ -79,18 +80,18 @@ public final class POM_mainHeader {
 		POM_popup.escPopup(); 
 
 		switch(category){
-		case "TECHNOLOGY": {ESM.mouse_to(LinkTechnology); break;}
-		case "HOME AND GARDEN": {ESM.mouse_to(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {ESM.mouse_to(LinkBabyAndNursery); break;}
-		case "TOYS": {ESM.mouse_to(LinkToys); break;}
-		case "SPORTS AND LEISURE": {ESM.mouse_to(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {ESM.mouse_to(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {ESM.mouse_to(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {ESM.mouse_to(LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {driver.get().esm.mouse_to(LinkTechnology); break;}
+		case "HOME AND GARDEN": {driver.get().esm.mouse_to(LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {driver.get().esm.mouse_to(LinkBabyAndNursery); break;}
+		case "TOYS": {driver.get().esm.mouse_to(LinkToys); break;}
+		case "SPORTS AND LEISURE": {driver.get().esm.mouse_to(LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {driver.get().esm.mouse_to(LinkHealthAndBeauty); break;}
+		case "CLOTHING": {driver.get().esm.mouse_to(LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {driver.get().esm.mouse_to(LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
-		ESM.wait_until_visible(popupMenu);
+		driver.get().esm.wait_until_visible(popupMenu);
 
 	}
 	
@@ -99,14 +100,14 @@ public final class POM_mainHeader {
 		POM_popup.escPopup(); 
 		
 		switch(category){
-		case "televisions and accessories": {ESM.click(LinkTelevisionsAndAccessories); break;}
-		case "Laptops and PCs": {ESM.click(LinkLaptopsAndPCs); break;}
-		case "living room furniture": {ESM.click(LinkLivingRoomFurniture); break;}
-		case "Bedding": {ESM.click(LinkBedding); break;}
-		case "Travel": {ESM.click(LinkTravel); break;}
-		case "Maternity": {ESM.click(LinkMaternity); break;}
-		case "Womens": {ESM.click(LinkWomenClothing); break;}
-		case "Mens": {ESM.click(LinkMenClothing); break;}
+		case "televisions and accessories": {driver.get().esm.click(LinkTelevisionsAndAccessories); break;}
+		case "Laptops and PCs": {driver.get().esm.click(LinkLaptopsAndPCs); break;}
+		case "living room furniture": {driver.get().esm.click(LinkLivingRoomFurniture); break;}
+		case "Bedding": {driver.get().esm.click(LinkBedding); break;}
+		case "Travel": {driver.get().esm.click(LinkTravel); break;}
+		case "safety and health": {driver.get().esm.click(LinkSafetyAndHealth); break;}
+		case "Womens": {driver.get().esm.click(LinkWomenClothing); break;}
+		case "Mens": {driver.get().esm.click(LinkMenClothing); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}	
 
@@ -118,14 +119,14 @@ public final class POM_mainHeader {
 		
 		switch(nicheCategory){
 
-		case "Dash Cams": {ESM.click(LinkDashCams); break;}
-		case "Sofas": {ESM.click(LinkSofas); break;}
-		case "Pushchairs": {ESM.click(LinkPushchairs); break;}
-		case "Batteries And Rechargeable Batteries": {ESM.click(LinkBatteries); break;}
-		case "Treadmills": {ESM.click(LinkTreadmills); break;}
-		case "Hair Dryers": {ESM.click(LinkHairDryers); break;}
-		case "Bras": {ESM.click(LinkBras); break;}
-		case "Ladies' Earrings": {ESM.click(LinkLadiesEarrings); break;}
+		case "Dash Cams": {driver.get().esm.click(LinkDashCams); break;}
+		case "Sofas": {driver.get().esm.click(LinkSofas); break;}
+		case "Pushchairs": {driver.get().esm.click(LinkPushchairs); break;}
+		case "Batteries And Rechargeable Batteries": {driver.get().esm.click(LinkBatteries); break;}
+		case "Treadmills": {driver.get().esm.click(LinkTreadmills); break;}
+		case "Hair Dryers": {driver.get().esm.click(LinkHairDryers); break;}
+		case "Bras": {driver.get().esm.click(LinkBras); break;}
+		case "Ladies' Earrings": {driver.get().esm.click(LinkLadiesEarrings); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
@@ -135,8 +136,8 @@ public final class POM_mainHeader {
 		
 		POM_popup.escPopup(); 
 		
-		ESM.send_keys(txtSearchBar,category);
-		ESM.click(btnSearch);
+		driver.get().esm.send_keys(txtSearchBar,category);
+		driver.get().esm.click(btnSearch);
 		
 	}	
 	
@@ -144,8 +145,8 @@ public final class POM_mainHeader {
 		
 		POM_popup.escPopup(); 	
 		
-		ESM.scrollTop();
-		ESM.click(btnBasket);	
+		driver.get().esm.scrollTop();
+		driver.get().esm.click(btnBasket);	
 		
 	}	
 	

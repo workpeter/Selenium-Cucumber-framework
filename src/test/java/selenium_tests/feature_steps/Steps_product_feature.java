@@ -1,16 +1,16 @@
-package integrationTests.selenium.step_definitions;
+package selenium_tests.feature_steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import selenium_tests.page_object_model.*;
 
-import static integrationTests.Runner.test_instance;
+import static selenium_tests.Runner.driver;
+
 
 import org.testng.Assert;
-import integrationTests.selenium.page_object_model.*;
-import integrationTests.selenium.ESM;
 
-public class Product_feature {
+public class Steps_product_feature {
 
 	String product;
 	
@@ -18,7 +18,7 @@ public class Product_feature {
 	public void customer_is_on_product_page(String product) throws Throwable {
 		
 		//Goto Homepage
-		ESM.goto_home_url();
+		driver.get().esm.goto_home_url();
 		POM_popup.escPopup(); 
 		
 		customer_searches_by_product_using_search_feature(product);
@@ -31,7 +31,7 @@ public class Product_feature {
 
 		POM_mainHeader.enter_term_in_search_bar_and_click(product);
 		
-		Assert.assertTrue(ESM.text_exists("Filter by"));
+		Assert.assertTrue(driver.get().esm.text_exists("Filter by"));
 		
 		this.product = product;
 
@@ -80,29 +80,29 @@ public class Product_feature {
 	@Then("^product page is shown$")
 	public void product_page_is_shown() throws Throwable {
 		
-		Assert.assertTrue(ESM.text_exists("About this product"));
-		Assert.assertTrue(ESM.elementExists(POM_productPage.txtProductPrice));
-		Assert.assertTrue(ESM.get_text(POM_productPage.txtProductPrice).contains("£"));
+		Assert.assertTrue(driver.get().esm.text_exists("About this product"));
+		Assert.assertTrue(driver.get().esm.elementExists(POM_productPage.txtProductPrice));
+		Assert.assertTrue(driver.get().esm.get_text(POM_productPage.txtProductPrice).contains("£"));
 	}
 	
 	@Then("^results of matching products are shown by order of price low-to-high$")
 	public void results_of_matching_products_are_shown_by_order_of_price_low_to_high() throws Throwable {
 	
-		Assert.assertEquals(ESM.getDropDownMenuText(POM_productPage.dropSort),"Price: Low - High");
+		Assert.assertEquals(driver.get().esm.getDropDownMenuText(POM_productPage.dropSort),"Price: Low - High");
 	}
 	
 	
 	@Then("^results of matching products are shown by order of price high-to-low$")
 	public void results_of_matching_products_are_shown_by_order_of_price_high_to_low() throws Throwable {
 
-		Assert.assertEquals(ESM.getDropDownMenuText(POM_productPage.dropSort),"Price: High - Low");	
+		Assert.assertEquals(driver.get().esm.getDropDownMenuText(POM_productPage.dropSort),"Price: High - Low");	
 		
 	}
 	
 	@Then("^results of matching products are shown by order of customer rating$")
 	public void results_of_matching_products_are_shown_by_order_of_customer_rating() throws Throwable {
 		
-		Assert.assertEquals(ESM.getDropDownMenuText(POM_productPage.dropSort),"Customer Rating");	
+		Assert.assertEquals(driver.get().esm.getDropDownMenuText(POM_productPage.dropSort),"Customer Rating");	
 		
 	}
 	
@@ -111,11 +111,11 @@ public class Product_feature {
 	public void customer_can_see_stock_availability() throws Throwable {
 
 		Assert.assertTrue(
-				ESM.text_exists("Order now, collect right away") || 
-				ESM.text_exists("Not in stock") || 
-				ESM.text_exists("Not available") || 
-				ESM.text_exists("Delivery within") ||
-				ESM.text_exists("How would you like to get your item")
+				driver.get().esm.text_exists("Order now, collect right away") || 
+				driver.get().esm.text_exists("Not in stock") || 
+				driver.get().esm.text_exists("Not available") || 
+				driver.get().esm.text_exists("Delivery within") ||
+				driver.get().esm.text_exists("How would you like to get your item")
 				);
 				
 	}
@@ -123,17 +123,17 @@ public class Product_feature {
 	@Then("^customer can see important product data$")
 	public void customer_can_see_important_product_data() throws Throwable {
 
-		Assert.assertTrue(ESM.elementExists(POM_productPage.txtPrice));		
-		Assert.assertTrue(ESM.elementExists(POM_productPage.txtProductDescription));	
-		Assert.assertTrue(ESM.image_exists(POM_productPage.imgProduct));			
-		Assert.assertTrue(ESM.elementExists(POM_productPage.linkProductOwner));		
+		Assert.assertTrue(driver.get().esm.elementExists(POM_productPage.txtPrice));		
+		Assert.assertTrue(driver.get().esm.elementExists(POM_productPage.txtProductDescription));	
+		Assert.assertTrue(driver.get().esm.image_exists(POM_productPage.imgProduct));			
+		Assert.assertTrue(driver.get().esm.elementExists(POM_productPage.linkProductOwner));		
 
 	}	
 	
 	@Then("^customer can see related products$")
 	public void customer_can_see_related_products() throws Throwable {
 
-		Assert.assertTrue(ESM.elementExists(POM_productPage.imgRelatedProduct));
+		Assert.assertTrue(driver.get().esm.elementExists(POM_productPage.imgRelatedProduct));
 		
 	}
 

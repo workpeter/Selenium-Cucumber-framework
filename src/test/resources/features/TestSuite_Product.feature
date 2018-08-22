@@ -6,7 +6,7 @@ Feature: Products
   Scenario: Quick scenerio for testing saucelabs selenium grid
   Given customer is on homepage
 
-  @Product 
+  @Product @Retest
   Scenario Outline: customer searches for product by name 
   	Given customer is on homepage
     When customer searches by product: <Product> using search feature
@@ -47,7 +47,7 @@ Feature: Products
     | RING					 	| 	
     
      
-  @Product @Retest
+  @Product  @Retest
   Scenario Outline: customer changes store location
 	Given customer is on product page : <Product>
 	When customer changes store location to : <Postcode>
@@ -56,8 +56,8 @@ Feature: Products
     | Product 	| Postcode 	|
     | COOKERS	| BL0 9JH	|
     | XBOX		| SE6 1SB	|
-#    | PUSHCHAIR	| SS1 2TW	|
-#    | SPIDERMAN	| FK7 7TZ	|
+    | PUSHCHAIR	| SS1 2TW	|
+    | SPIDERMAN	| FK7 7TZ	|
   
  
 

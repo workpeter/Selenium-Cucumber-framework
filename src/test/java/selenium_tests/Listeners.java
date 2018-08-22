@@ -1,22 +1,23 @@
-package integrationTests;
+package selenium_tests;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
-import integrationTests.selenium.ESM;
 import net.lightbody.bmp.core.har.Har;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+
+import static selenium_tests.Runner.driver;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import static integrationTests.Runner.test_instance;
 
 public class Listeners implements ITestListener {
 	
@@ -49,7 +50,7 @@ public class Listeners implements ITestListener {
 		
 		try {
 			
-			ESM.delete_cookies();
+			driver.get().esm.delete_cookies();
 			
 		} catch (Exception e) {
 
@@ -73,7 +74,7 @@ public class Listeners implements ITestListener {
 	public void save_cucumber_scenario_details(Scenario scenario) throws Exception{
 
 		//Required to be able to query the scenario failure within the other methods
-		test_instance.get().set_cucumber_scenario(scenario);
+		driver.get().set_cucumber_scenario(scenario);
 
 	}
 
@@ -92,14 +93,14 @@ public class Listeners implements ITestListener {
 		try{
 
 			//exit method is cucumber scenario didnt fail
-			if(!test_instance.get().get_cucumber_scenario().isFailed()) return;
+			if(!driver.get().get_cucumber_scenario().isFailed()) return;
 
-			String scenario_name = test_instance.get().get_cucumber_scenario().getName();
-			String browser = test_instance.get().get_browser();
-			String operatingSystem = test_instance.get().get_operating_system();
+			String scenario_name = driver.get().get_cucumber_scenario().getName();
+			String browser = driver.get().get_browser();
+			String operatingSystem = driver.get().get_operating_system();
 
 			//Convert web driver object to TakeScreenshot
-			TakesScreenshot scrShot =((TakesScreenshot)test_instance.get().get_webdriver());
+			TakesScreenshot scrShot =((TakesScreenshot)driver.get().get_webdriver());
 
 			//Call getScreenshotAs method to create image file
 			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
@@ -131,10 +132,10 @@ public class Listeners implements ITestListener {
 			System.out.println(stack_trace);	
 			System.out.println("");
 
-			if(test_instance.get().get_web_proxy() != null){
+			if(driver.get().get_web_proxy() != null){
 
 				//Get the HAR data
-				Har har = test_instance.get().get_web_proxy().getHar();
+				Har har = driver.get().get_web_proxy().getHar();
 				File harFile = new File(filePath + "/" + 
 						operatingSystem + "_" + 
 						browser + ".har");
@@ -151,8 +152,8 @@ public class Listeners implements ITestListener {
 
 			try {
 				fw.write("Failed Scenario: " + scenario_name + System.lineSeparator() +
-						"Failed URL: " + test_instance.get().get_webdriver().getCurrentUrl() + System.lineSeparator() +
-						"Page Title: " + test_instance.get().get_webdriver().getTitle() + System.lineSeparator() +
+						"Failed URL: " + driver.get().get_webdriver().getCurrentUrl() + System.lineSeparator() +
+						"Page Title: " + driver.get().get_webdriver().getTitle() + System.lineSeparator() +
 						"Stack trace:" + stack_trace);
 
 			} catch (IOException e) {

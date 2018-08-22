@@ -1,8 +1,7 @@
-package integrationTests.selenium.page_object_model;
+package selenium_tests.page_object_model;
 
 import org.openqa.selenium.By;
-import integrationTests.selenium.ESM;
-import static integrationTests.Runner.test_instance;
+import static selenium_tests.Runner.driver;
 
 public final class POM_productResults  {
 
@@ -20,16 +19,16 @@ public final class POM_productResults  {
 
 			POM_popup.escPopup(); 
 
-			if(!ESM.elementExists(btnChooseOptionsFirstProduct)){
+			if(!driver.get().esm.elementExists(btnChooseOptionsFirstProduct)){
 
-				ESM.click(btnAddToBasketFirstProduct);
+				driver.get().esm.click(btnAddToBasketFirstProduct);
 				POM_popupBasket.checkContinueShopping();
 
 			}else{
-				ESM.click(btnChooseOptionsFirstProduct);
+				driver.get().esm.click(btnChooseOptionsFirstProduct);
 				
 				POM_productPage.adds_product_to_basket_via_productPage();
-				test_instance.get().get_webdriver().navigate().back();
+				driver.get().get_webdriver().navigate().back();
 			}
 
 		}
@@ -42,15 +41,15 @@ public final class POM_productResults  {
 
 			POM_popup.escPopup(); //if required
 
-			if(!ESM.elementExists(btnChooseOptionsSecondProduct)){
+			if(!driver.get().esm.elementExists(btnChooseOptionsSecondProduct)){
 
-				ESM.click(btnAddToBasketSecondProduct);
+				driver.get().esm.click(btnAddToBasketSecondProduct);
 				POM_popupBasket.checkContinueShopping();
 
 			}else{
-				ESM.click(btnChooseOptionsSecondProduct);
+				driver.get().esm.click(btnChooseOptionsSecondProduct);
 				POM_productPage.adds_product_to_basket_via_productPage();
-				test_instance.get().get_webdriver().navigate().back();
+				driver.get().get_webdriver().navigate().back();
 			}
 
 		}

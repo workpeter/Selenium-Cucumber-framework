@@ -20,7 +20,7 @@ Feature: CategorySearch
     | CLOTHING 					|        
     | JEWELLERY AND WATCHES 	| 	
 
-  @CategorySearch   
+  @CategorySearch @Retest  
  Scenario Outline: customer navigates to subcategory via category menu hover feature then goes to niche-category
 	When customer hovers on category: <Category> in the menu
 	And clicks on sub-category: <Sub-category>
@@ -39,7 +39,7 @@ Feature: CategorySearch
     | HOME AND GARDEN 		|Bedding						|pillows						|
     | BABY AND NURSERY 		|Travel							|pushchairs						|
     | BABY AND NURSERY 		|Travel							|baby-carriers					|
-    | BABY AND NURSERY 		|Maternity						|maternity-accessories			|
+    | BABY AND NURSERY 		|safety and health				|baby health         			|
     | CLOTHING 				|Womens 						|accessories					| 
     | CLOTHING 				|Womens 						|dresses						|
     | CLOTHING 				|Mens 							|coats-and-jackets				|      
@@ -78,7 +78,7 @@ Feature: CategorySearch
     | JEWELLERY				 	| JEWLERY					|
 
 
-  @CategorySearch
+  @CategorySearch @Retest
   Scenario Outline: customer searches for unrecognised category
 	When customer searches for unrecognised category: <Category> using search feature
 	Then no search results page is shown

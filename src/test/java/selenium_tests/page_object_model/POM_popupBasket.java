@@ -1,7 +1,8 @@
-package integrationTests.selenium.page_object_model;
+package selenium_tests.page_object_model;
 
 import org.openqa.selenium.By;
-import integrationTests.selenium.ESM;
+import static selenium_tests.Runner.driver;
+
 
 public final class POM_popupBasket {
 
@@ -12,8 +13,8 @@ public final class POM_popupBasket {
 
 		POM_popup.escPopup();
 		
-		ESM.wait_until_invisible(loadingWheel);
-		ESM.click(btnContinueShopping);
+		driver.get().esm.wait_until_invisible(loadingWheel);
+		driver.get().esm.click(btnContinueShopping);
 
 	}
 

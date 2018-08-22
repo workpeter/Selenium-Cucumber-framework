@@ -1,12 +1,12 @@
-package integrationTests.selenium.step_definitions;
+package selenium_tests.feature_steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import selenium_tests.page_object_model.*;
 import org.testng.Assert;
-import integrationTests.selenium.page_object_model.*;
-import integrationTests.selenium.ESM;
+import static selenium_tests.Runner.driver;
 
-public class CategorySearch_feature  {
+public class Steps_categorySearch_feature  {
 
 	String category;
 	String nicheCategory;
@@ -79,12 +79,12 @@ public class CategorySearch_feature  {
 		
 		
 		Assert.assertEquals(
-				ESM.get_text(POM_categorySplashPage.txtH1).toLowerCase(), 
+				driver.get().esm.get_text(POM_categorySplashPage.txtH1).toLowerCase(), 
 				category.toLowerCase());
 		
 		
 		Assert.assertEquals(
-				ESM.get_text(POM_categorySplashPage.txtH1).toLowerCase(),
+				driver.get().esm.get_text(POM_categorySplashPage.txtH1).toLowerCase(),
 				category.toLowerCase());
 		
 	}
@@ -94,7 +94,7 @@ public class CategorySearch_feature  {
 
 		POM_popup.escPopup();
 		Assert.assertEquals(
-				ESM.getDropDownMenuText(POM_productResults.dropProductSort),
+				driver.get().esm.getDropDownMenuText(POM_productResults.dropProductSort),
 				"Relevance");
 		
 	}
@@ -104,7 +104,7 @@ public class CategorySearch_feature  {
 
 		POM_popup.escPopup();
 		Assert.assertEquals(
-				ESM.getDropDownMenuText(POM_productResults.dropProductSort),
+				driver.get().esm.getDropDownMenuText(POM_productResults.dropProductSort),
 				"Most Popular");
 
 	}
@@ -114,7 +114,8 @@ public class CategorySearch_feature  {
 		
 		POM_popup.escPopup();
 		Assert.assertTrue(
-				ESM.get_text(POM_productResults.txtNoResults).contains("couldn't find any products"));
+				driver.get().esm.text_exists("Please use different words or broaden your search") ||
+				driver.get().esm.text_exists("but you might like"));
 			
 	}	
 

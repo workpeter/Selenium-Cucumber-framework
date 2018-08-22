@@ -1,9 +1,10 @@
-package integrationTests.selenium.page_object_model;
+package selenium_tests.page_object_model;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+
 import java.util.*;
-import integrationTests.selenium.ESM;
+import static selenium_tests.Runner.driver;
 
 public final class POM_basket {
 
@@ -15,7 +16,7 @@ public final class POM_basket {
 
 	public static int productCount() throws Exception{
 	
-		int productCount = ESM.elementCount(dropQuantity);
+		int productCount = driver.get().esm.elementCount(dropQuantity);
 		//System.out.println("number of different products: " + productCount);
 		return  productCount;
 		
@@ -25,7 +26,7 @@ public final class POM_basket {
 
 		int quantityCount = 0;
 		
-		List<WebElement> rows = ESM.getAllElements(dropQuantity);
+		List<WebElement> rows = driver.get().esm.getAllElements(dropQuantity);
 
 		Iterator<WebElement> iter = rows.iterator();
 		while (iter.hasNext()) {
@@ -46,10 +47,10 @@ public final class POM_basket {
 
 		POM_popup.escPopup();
 		
-		if (ESM.elementExists(btnRemove)){
-			ESM.click(btnRemove);
+		if (driver.get().esm.elementExists(btnRemove)){
+			driver.get().esm.click(btnRemove);
 		}else{
-			ESM.click(btnRemoveAlternative);
+			driver.get().esm.click(btnRemoveAlternative);
 		}
 
 	}
@@ -57,13 +58,13 @@ public final class POM_basket {
 	public static void change_quantity_first_product(int quantity) throws Throwable {
 
 		POM_popup.escPopup();
-		ESM.selectByVisibleText(dropQuantity,String.valueOf(quantity));
+		driver.get().esm.selectByVisibleText(dropQuantity,String.valueOf(quantity));
 		
 	}
 	
 	public static void wait_for_basket_to_load() throws Exception{
 	
-		ESM.wait_until_visible(dropQuantity);
+		driver.get().esm.wait_until_visible(dropQuantity);
 		
 	}
 	

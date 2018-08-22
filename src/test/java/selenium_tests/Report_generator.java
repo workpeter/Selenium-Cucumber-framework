@@ -1,4 +1,4 @@
-package integrationTests;
+package selenium_tests;
 
 import java.io.File;
 import java.util.*;

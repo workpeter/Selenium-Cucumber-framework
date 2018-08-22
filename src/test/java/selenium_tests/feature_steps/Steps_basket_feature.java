@@ -1,17 +1,19 @@
-package integrationTests.selenium.step_definitions;
+package selenium_tests.feature_steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import integrationTests.selenium.page_object_model.*;
-import integrationTests.selenium.ESM;
+
+import selenium_tests.page_object_model.*;
+
+import static selenium_tests.Runner.driver;
 
 import org.testng.Assert;
-import org.testng.TestListenerAdapter;
+
 
 
 //extends TestListenerAdapter
 
-public class Basket_feature  {
+public class Steps_basket_feature  {
 
 	@When("^customer views basket$")
 	public void customer_views_basket() throws Throwable {
@@ -72,8 +74,9 @@ public class Basket_feature  {
 		POM_popup.escPopup(); 
 		
 		Assert.assertTrue(
-				ESM.text_exists("Your trolley is currently empty") ||
-				ESM.text_exists("your shopping trolley is empty"));
+				
+				driver.get().esm.text_exists("Your trolley is currently empty") ||
+				driver.get().esm.text_exists("your shopping trolley is empty"));
 		
 		
 	}

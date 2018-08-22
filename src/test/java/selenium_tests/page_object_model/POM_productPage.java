@@ -1,8 +1,8 @@
-package integrationTests.selenium.page_object_model;
+package selenium_tests.page_object_model;
 
 import org.openqa.selenium.By;
 import cucumber.api.PendingException;
-import integrationTests.selenium.ESM;
+import static selenium_tests.Runner.driver;
 
 public final class POM_productPage  {
 
@@ -27,7 +27,7 @@ public final class POM_productPage  {
 	public static void click_on_first_product() throws Exception{
 		
 		POM_popup.escPopup(); 
-		ESM.click(linkProduct);
+		driver.get().esm.click(linkProduct);
 	}
 
 	
@@ -35,7 +35,7 @@ public final class POM_productPage  {
 	public static void sort_products(String sortBy) throws Exception{
 		
 		POM_popup.escPopup(); 
-		ESM.selectByVisibleText(dropSort,sortBy);
+		driver.get().esm.selectByVisibleText(dropSort,sortBy);
 		
 	}
 	
@@ -45,10 +45,10 @@ public final class POM_productPage  {
 
 		POM_popup.escPopup(); 
 		
-		ESM.scrollBottom();
+		driver.get().esm.scrollBottom();
 
-		if (!ESM.text_exists("Not available online")){
-			ESM.click(btnAddToBasket);
+		if (!driver.get().esm.text_exists("Not available online")){
+			driver.get().esm.click(btnAddToBasket);
 			POM_popupBasket.checkContinueShopping();
 		}else{
 			System.out.println("[Skipping next scenerio step/s] This item is not available online to add to basket");
@@ -63,10 +63,10 @@ public final class POM_productPage  {
 
 		POM_popup.escPopup(); 
 		
-		ESM.send_keys(txtPostCode,postcode);
-		ESM.wait_until_invisible(loadingWheel);
-		ESM.click(btnCheckPostcode);
-		ESM.wait_until_invisible(btnCheckPostcode);
+		driver.get().esm.send_keys(txtPostCode,postcode);
+		driver.get().esm.wait_until_invisible(loadingWheel);
+		driver.get().esm.click(btnCheckPostcode);
+		driver.get().esm.wait_until_invisible(btnCheckPostcode);
 		
 	}
 	
