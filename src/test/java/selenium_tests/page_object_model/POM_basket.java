@@ -16,7 +16,7 @@ public final class POM_basket {
 
 	public static int productCount() throws Exception{
 	
-		int productCount = driver.get().esm.elementCount(dropQuantity);
+		int productCount = driver.get().esm.count_matching_elements(dropQuantity);
 		//System.out.println("number of different products: " + productCount);
 		return  productCount;
 		
@@ -26,7 +26,7 @@ public final class POM_basket {
 
 		int quantityCount = 0;
 		
-		List<WebElement> rows = driver.get().esm.getAllElements(dropQuantity);
+		List<WebElement> rows = driver.get().esm.get_all_matching_elements(dropQuantity);
 
 		Iterator<WebElement> iter = rows.iterator();
 		while (iter.hasNext()) {
@@ -47,7 +47,7 @@ public final class POM_basket {
 
 		POM_popup.escPopup();
 		
-		if (driver.get().esm.elementExists(btnRemove)){
+		if (driver.get().esm.check_element_exists(btnRemove)){
 			driver.get().esm.click(btnRemove);
 		}else{
 			driver.get().esm.click(btnRemoveAlternative);
@@ -58,7 +58,7 @@ public final class POM_basket {
 	public static void change_quantity_first_product(int quantity) throws Throwable {
 
 		POM_popup.escPopup();
-		driver.get().esm.selectByVisibleText(dropQuantity,String.valueOf(quantity));
+		driver.get().esm.select_list_value_by_text(dropQuantity,String.valueOf(quantity));
 		
 	}
 	

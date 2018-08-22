@@ -9,10 +9,6 @@ import static selenium_tests.Runner.driver;
 
 import org.testng.Assert;
 
-
-
-//extends TestListenerAdapter
-
 public class Steps_basket_feature  {
 
 	@When("^customer views basket$")
@@ -75,8 +71,8 @@ public class Steps_basket_feature  {
 		
 		Assert.assertTrue(
 				
-				driver.get().esm.text_exists("Your trolley is currently empty") ||
-				driver.get().esm.text_exists("your shopping trolley is empty"));
+				driver.get().esm.check_text_exists("Your trolley is currently empty") ||
+				driver.get().esm.check_text_exists("your shopping trolley is empty"));
 		
 		
 	}

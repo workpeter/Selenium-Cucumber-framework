@@ -20,18 +20,18 @@ public class Steps_homepage_feature {
 	@Then("all key homepage elements are shown")
 	public void all_key_homepage_elements_are_shown() throws Exception {
 	 
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.btnBasket));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.btnSearch));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.btnLogin));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.btnWishList));	
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkTechnology));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkHomeAndGarden));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkBabyAndNursery));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkToys));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkSportsAndLeisure));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkHealthAndBeauty));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkClothing));
-		Assert.assertTrue(driver.get().esm.elementExists(POM_mainHeader.LinkJewelleryAndWatches));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.btnBasket));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.btnSearch));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.btnLogin));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.btnWishList));	
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkTechnology));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkHomeAndGarden));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkBabyAndNursery));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkToys));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkSportsAndLeisure));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkHealthAndBeauty));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkClothing));
+		Assert.assertTrue(driver.get().esm.check_element_exists(POM_mainHeader.LinkJewelleryAndWatches));
 		
 	}
 	

@@ -77,7 +77,6 @@ public class Steps_categorySearch_feature  {
 
 		POM_popup.escPopup();
 		
-		
 		Assert.assertEquals(
 				driver.get().esm.get_text(POM_categorySplashPage.txtH1).toLowerCase(), 
 				category.toLowerCase());
@@ -93,8 +92,9 @@ public class Steps_categorySearch_feature  {
 	public void results_of_matching_products_are_shown_by_order_of_relevance() throws Throwable {
 
 		POM_popup.escPopup();
+		
 		Assert.assertEquals(
-				driver.get().esm.getDropDownMenuText(POM_productResults.dropProductSort),
+				driver.get().esm.get_list_item_text(POM_productResults.dropProductSort),
 				"Relevance");
 		
 	}
@@ -103,8 +103,9 @@ public class Steps_categorySearch_feature  {
 	public void results_of_matching_products_are_shown_by_order_of_popularity() throws Throwable {
 
 		POM_popup.escPopup();
+		
 		Assert.assertEquals(
-				driver.get().esm.getDropDownMenuText(POM_productResults.dropProductSort),
+				driver.get().esm.get_list_item_text(POM_productResults.dropProductSort),
 				"Most Popular");
 
 	}
@@ -113,9 +114,10 @@ public class Steps_categorySearch_feature  {
 	public void no_search_results_page_is_shown() throws Throwable {
 		
 		POM_popup.escPopup();
+		
 		Assert.assertTrue(
-				driver.get().esm.text_exists("Please use different words or broaden your search") ||
-				driver.get().esm.text_exists("but you might like"));
+				driver.get().esm.check_text_exists("Please use different words or broaden your search") ||
+				driver.get().esm.check_text_exists("but you might like"));
 			
 	}	
 

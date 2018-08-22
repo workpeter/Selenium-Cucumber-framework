@@ -19,7 +19,7 @@ public final class POM_productResults  {
 
 			POM_popup.escPopup(); 
 
-			if(!driver.get().esm.elementExists(btnChooseOptionsFirstProduct)){
+			if(!driver.get().esm.check_element_exists(btnChooseOptionsFirstProduct)){
 
 				driver.get().esm.click(btnAddToBasketFirstProduct);
 				POM_popupBasket.checkContinueShopping();
@@ -41,7 +41,7 @@ public final class POM_productResults  {
 
 			POM_popup.escPopup(); //if required
 
-			if(!driver.get().esm.elementExists(btnChooseOptionsSecondProduct)){
+			if(!driver.get().esm.check_element_exists(btnChooseOptionsSecondProduct)){
 
 				driver.get().esm.click(btnAddToBasketSecondProduct);
 				POM_popupBasket.checkContinueShopping();

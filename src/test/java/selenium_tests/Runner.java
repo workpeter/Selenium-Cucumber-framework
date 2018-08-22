@@ -17,35 +17,43 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Map;
 
-
 /*
 The runner class is launched via the testNG XML file. 
 It is responsible for generating a webdriver and running cucumber scenarios 
 using the testNG @Test annotation.
 
-When it generates a webdriver it uses parameters from both the TestNG and Maven XML files. 
-These parameters dictate the type of webdriver to be created and its capabilities. 
+Parameters provided from the TestNG and Maven XML files help build a unique webdriver with
+specific capabilities. 
 
-Multiple runner classes can be generated at the same time via the testNG XML file 
-This enables parallel processing.
+The simpliest most efficient way to build a webdriver is to build it once, and then make it
+static so that it can be referenced by tests in other classes. 
+This avoids other classes having to dynamically build their own webdriver instance, 
+which is inefficent when this process has to be repeated across all 
+the classes containing tests. 
 
-In order for parallel processing to work, a unique webdriver instance needs to be created
-for each thread. Runner class achieves this by storing each unique webdriver in a static 
-threadLocal container. 
+However, the problem with a static webdriver is you only have one, making parallel processing
+problematic. This is because parellel tests are all interacting with the same static webdriver.
+This is overcome using ThreadLocal. 
 
-This enables tests located in other classes to make a static reference to the web driver
-to control it. However, because it's in a ThreadLocal container, static references from different
-threads do not impact each other. Thus allowing for an autonomous webdriver per thread. 
+Whenever a runner() instance is generated, it creates a webdriver instance 
+and puts it in the static ThreadLocal container. 
 
-Alternative solutions to achieve parallel processing is to spin up a webdriver object within
-the test classes themselves, however, this is inefficient due to the requirement to
-rebuild a web driver instance per test suite class.
+Now in an example where 3 runner instances are launched at the same. 
+Each runner generates a webdriver instance and stores it in a static ThreadLocal container.
+Each runner then triggers tests in other classes in parallel. 
+All of those tests dont generate a webdriver, they all simply reference the same 
+ThreadLocal container.
+
+However rather than the parallel tests all impacting the same webdriver, 
+they are now only impacting their thread local webdriver. 
+Thus you achieve autonomous parallel processing without having to inefficiently 
+recreate webdrivers for each test class.  
 */
 
 @CucumberOptions( 
 		//Tags (Send using Maven:[clean verify -Dcucumber.options="-t @Retest"]
 		features = "src/test/resources/Features/",
-		glue={"integrationTests"}
+		glue={"selenium_tests"}
 		//Plugin (Json plugin dynamically created per test env. Used for reporting)
 		)
 public class Runner {
@@ -109,32 +117,27 @@ public class Runner {
 	}
 
 	//==========================
-	// Using TestNG DataProvider execute cucumber scenarios
+	// Using TestNG DataProvider to fetch cucumber scenarios to be run within the @Test method
 	//==========================	
-
-	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
-	public void scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
-
-		if(driver.get().get_web_proxy()!= null){
-
-			driver.get().get_web_proxy().newHar(driver.get().get_operating_system() + "_" + driver.get().get_browser() + ".har");
-
-		}
-
-		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
-
-	}
-
 	@DataProvider
 	public Object[][] scenarios() {
 
 		return testNGCucumberRunner.provideScenarios();
 
+	}
+	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
+	public void run_scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
+
+		driver.get().esm.clear_captured_proxy_data();
+
+		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
 
 	}
 
+
+
 	@AfterClass(alwaysRun = true)
-	public void tearDown() throws Exception {
+	public void tear_down() throws Exception {
 
 		testNGCucumberRunner.finish();
 
@@ -154,6 +157,7 @@ public class Runner {
 
 			try {
 				driver.get().get_webdriver().quit();
+				driver.remove();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -28,6 +28,9 @@ public final class POM_productPage  {
 		
 		POM_popup.escPopup(); 
 		driver.get().esm.click(linkProduct);
+		
+		
+	
 	}
 
 	
@@ -35,7 +38,7 @@ public final class POM_productPage  {
 	public static void sort_products(String sortBy) throws Exception{
 		
 		POM_popup.escPopup(); 
-		driver.get().esm.selectByVisibleText(dropSort,sortBy);
+		driver.get().esm.select_list_value_by_text(dropSort,sortBy);
 		
 	}
 	
@@ -45,9 +48,9 @@ public final class POM_productPage  {
 
 		POM_popup.escPopup(); 
 		
-		driver.get().esm.scrollBottom();
+		driver.get().esm.scroll_bottom_page();
 
-		if (!driver.get().esm.text_exists("Not available online")){
+		if (!driver.get().esm.check_text_exists("Not available online")){
 			driver.get().esm.click(btnAddToBasket);
 			POM_popupBasket.checkContinueShopping();
 		}else{

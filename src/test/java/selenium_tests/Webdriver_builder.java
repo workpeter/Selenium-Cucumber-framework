@@ -1,7 +1,14 @@
 package selenium_tests;
 
-import java.net.*;
+import static selenium_tests.Runner.driver;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.*;
+import java.text.SimpleDateFormat;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
 import org.openqa.selenium.support.ui.*;
@@ -16,9 +23,9 @@ import org.openqa.selenium.ie.*;
 import org.openqa.selenium.remote.*;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.proxy.CaptureType;
 import org.testng.SkipException;
-import cucumber.api.Scenario;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -27,10 +34,9 @@ public class Webdriver_builder {
 	private final WebDriver webdriver;
 	private final String operating_system;
 	private final String browser;
-	private final String browser_headless;
-	private BrowserMobProxyServer mobProxyServer;
+	private BrowserMobProxyServer web_proxy;
 	private WebDriverWait wait;
-	private Scenario scenario;
+
 
 	private final int max_wait_time = 10;
 
@@ -44,14 +50,14 @@ public class Webdriver_builder {
 		
 	Build WebDriver (constructor and private methods)
 		
-	A Webdriver_instance contains a configured webdriver, this webdriver can be:
+	A Webdriver instance contains a configured webdriver, this webdriver can be:
 	(1) Any major browser against specific OS 
-	(2) Local or Remote 
-	(3) headless mode 
-	(4) contain Web Proxy 
-	(5) configured explicit wait 
-	(6) gives access to enhanced selenium methods via inner class
-	
+	(2) Local or Remote (selenium grid)
+	(3) Headless mode 
+	(4) Contain Web Proxy to generate HAR files on error
+	(5) Configured explicit wait 
+	(6) Has access to enhanced selenium methods via inner class
+	(7) Generates log file per failure with scenario name, stack trace, HAR file + screenshot.	
 	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -64,7 +70,6 @@ public class Webdriver_builder {
 
 		this.operating_system = operating_system;
 		this.browser = browser;
-		this.browser_headless = browser_version;
 
 		MutableCapabilities options;
 
@@ -179,7 +184,7 @@ public class Webdriver_builder {
 		}
 	}
 
-	private MutableCapabilities setBrowserCapabilities(String browser, String browser_headless, String web_proxy) {
+	private MutableCapabilities setBrowserCapabilities(String browser, String browser_headless, String web_proxy_enabled) {
 
 		MutableCapabilities options;
 
@@ -237,21 +242,19 @@ public class Webdriver_builder {
 		}
 
 		// Create a browser proxy to capture HTTP data for analysis
-		if (web_proxy.equalsIgnoreCase("yes")) {
+		if (web_proxy_enabled.equalsIgnoreCase("yes")) {
 
-			this.mobProxyServer = new BrowserMobProxyServer();
+			this.web_proxy = new BrowserMobProxyServer();
 
-			mobProxyServer.setTrustAllServers(true);
-			mobProxyServer.setHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-			mobProxyServer.start(0);
+			web_proxy.setTrustAllServers(true);
+			web_proxy.setHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+			web_proxy.start(0);
 
-			Proxy seleniumProxy = ClientUtil.createSeleniumProxy(mobProxyServer);
+			Proxy seleniumProxy = ClientUtil.createSeleniumProxy(web_proxy);
 
 			options.setCapability(CapabilityType.PROXY, seleniumProxy);
 
-			// System.out.println("Port started:" + mobProxyServer.getPort());
-
-			mobProxyServer.newHar(this.operating_system + "_" + this.browser + ".har");
+			web_proxy.newHar();
 
 		}
 
@@ -291,21 +294,14 @@ public class Webdriver_builder {
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */		
 	
-	
 	public WebDriver get_webdriver() throws Exception {
 
-		return this.webdriver;
+		return webdriver;
 
 	}
-
 	public String get_browser() {
 
 		return browser;
-	}
-
-	public String get_browser_headless() {
-
-		return browser_headless;
 	}
 
 	public String get_operating_system() {
@@ -315,20 +311,13 @@ public class Webdriver_builder {
 
 	public BrowserMobProxyServer get_web_proxy() {
 
-		return mobProxyServer;
+		return web_proxy;
 
 	}
 
 	public WebDriverWait get_wait() {
 
 		return wait;
-
-	}
-
-
-	public Scenario get_cucumber_scenario() {
-
-		return this.scenario;
 
 	}
 
@@ -340,20 +329,13 @@ public class Webdriver_builder {
 	}
 
 
-	public void set_cucumber_scenario(Scenario scenario) {
-
-		this.scenario = scenario;
-
-	}
-
 	public void set_home_url(String url) {
 
 		this.home_url = url;
 
 	}
 	
-	
-	
+
 /*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -372,6 +354,15 @@ public class Webdriver_builder {
 		// Actions which if fail should throw Exception causing scenario fail
 		//===========================
 
+
+		public void goto_url(String URL) throws Exception  {
+
+			webdriver.get(URL);
+
+			wait_for_ajax_to_finish();
+
+		}
+		
 		public void goto_home_url() throws Exception  {
 
 			webdriver.get(home_url);
@@ -409,7 +400,7 @@ public class Webdriver_builder {
 
 		}	
 
-		public String getInnerHTML(By target) throws Exception{
+		public String get_inner_html(By target) throws Exception{
 
 			focus_on(target);
 
@@ -417,7 +408,7 @@ public class Webdriver_builder {
 
 		}	
 
-		public void selectByIndex(By target,int index) throws Exception{
+		public void select_list_value_by_index(By target,int index) throws Exception{
 
 			focus_on(target);
 
@@ -428,7 +419,7 @@ public class Webdriver_builder {
 
 		}
 
-		public void selectByVisibleText(By target,String text) throws Exception{
+		public void select_list_value_by_text(By target,String text) throws Exception{
 
 			focus_on(target);
 
@@ -439,7 +430,7 @@ public class Webdriver_builder {
 
 			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 			int iWaitTime = 0;
-			while(!getDropDownMenuText(target).contains(text)){
+			while(!get_list_item_text(target).contains(text)){
 				Thread.sleep(500);
 				iWaitTime++;
 
@@ -449,7 +440,7 @@ public class Webdriver_builder {
 
 		}
 
-		public String getDropDownMenuText(By target) throws Exception {
+		public String get_list_item_text(By target) throws Exception {
 
 			focus_on(target);
 
@@ -459,14 +450,14 @@ public class Webdriver_builder {
 
 		}
 
-		public boolean text_exists(String text) throws Exception {
+		public boolean check_text_exists(String text) throws Exception {
 
 			return webdriver.getPageSource().toLowerCase().contains(text.toLowerCase());
 
 		}	
 
 
-		public boolean image_exists(By by) throws Exception {
+		public boolean verify_image(By by) throws Exception {
 
 			WebElement ImageFile = webdriver.findElement(by);
 			return  (Boolean) ((JavascriptExecutor)webdriver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", ImageFile);
@@ -503,7 +494,7 @@ public class Webdriver_builder {
 			}
 		}	
 
-		public int elementCount(By target) {
+		public int count_matching_elements(By target) {
 
 			try{
 
@@ -519,7 +510,7 @@ public class Webdriver_builder {
 
 		}	
 
-		public List<WebElement> getAllElements(By target)  {
+		public List<WebElement> get_all_matching_elements(By target)  {
 
 			try{
 
@@ -535,7 +526,7 @@ public class Webdriver_builder {
 
 		}	
 
-		public boolean elementExists(By target) {
+		public boolean check_element_exists(By target) {
 
 
 			try{
@@ -558,11 +549,11 @@ public class Webdriver_builder {
 
 		}	
 
-		public boolean element_displayed(By target) {
+		public boolean check_element_displayed(By target) {
 
 			try{
 
-				if (elementExists(target)){
+				if (check_element_exists(target)){
 
 					return webdriver.findElement(target).isDisplayed();
 				}
@@ -579,13 +570,13 @@ public class Webdriver_builder {
 			return false;
 
 		}	
+		
 
-
-		public boolean element_enabled(By target) {
+		public boolean check_element_enabled(By target) {
 
 			try{
 
-				if (elementExists(target)){
+				if (check_element_exists(target)){
 
 					return webdriver.findElement(target).isEnabled();
 				}
@@ -713,7 +704,7 @@ public class Webdriver_builder {
 
 		}
 
-		public void scrollBy(int pixels) {
+		public void scroll_by_pixel(int pixels) {
 
 			try{
 
@@ -729,7 +720,7 @@ public class Webdriver_builder {
 
 		}
 
-		public void scrollBottom()  {
+		public void scroll_bottom_page()  {
 
 			try{
 
@@ -745,7 +736,7 @@ public class Webdriver_builder {
 
 		}
 
-		public void scrollTop() {
+		public void scroll_top_page() {
 
 			try{
 
@@ -762,7 +753,7 @@ public class Webdriver_builder {
 		}	
 
 
-		public void mouse_to(By target) throws Exception  {
+		public void move_mouse_to_element(By target) throws Exception  {
 
 			focus_on(target);
 
@@ -779,11 +770,11 @@ public class Webdriver_builder {
 
 		}	
 
-		public void highLight_element(By by)  {
+		public void highLight_element(By target)  {
 
 			try{
 
-				WebElement we = webdriver.findElement(by);
+				WebElement we = webdriver.findElement(target);
 				((JavascriptExecutor) webdriver).executeScript("arguments[0].style.border='3px dotted blue'", we);
 
 			}catch(Throwable t){
@@ -871,8 +862,6 @@ public class Webdriver_builder {
 
 			}finally{
 
-				//System.out.println("Selenium_core.waitForAjaxComplete() threw: " + e.getMessage());
-
 				long endTime = System.currentTimeMillis();
 				long duration = (endTime - startTime); 
 				//System.out.println("waiting for AJAX took: " + duration + "MS");
@@ -881,6 +870,16 @@ public class Webdriver_builder {
 
 		}	
 
+		public void clear_captured_proxy_data(){
+			
+			if(web_proxy!= null){
+				
+				web_proxy.newHar();
+				
+			}	
+		}
+		
+		
 		public void get_all_scripts() {
 
 			wait_for_ajax_to_finish();
@@ -923,6 +922,88 @@ public class Webdriver_builder {
 			}
 
 		}	
+
+		//================================================
+		// Save Screenshots and log info (includes HTTP response code)
+		//================================================
+
+		public void output_logs_and_screenshot(String testID,String stack_trace)  {
+
+			try{
+
+
+				//Convert web driver object to TakeScreenshot
+				TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+
+				//Call getScreenshotAs method to create image file
+				File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+				String currentDateTime =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
+
+				String filePath = System.getProperty("user.dir").replace("\\", "/")  + 
+						"/target/screenshots_logs_on_failure/" + 
+						operating_system + "-" + browser + "_" + currentDateTime; 
+
+				String screenshotPath = filePath + "/" + "screenshot.png";
+
+				File DestFile=new File(screenshotPath);
+
+				//Copy file at destination
+				FileUtils.copyFile(SrcFile, DestFile);
+
+				System.out.println("==============================================");
+				System.out.println("[Test ID]");
+				System.out.println(testID);
+				System.out.println("");
+				System.out.println("[Environment]");
+				System.out.println(operating_system + "_" + browser);
+				System.out.println("");
+				System.out.println("[Screenshot ands logs found here]");		
+				System.out.println(filePath);
+				System.out.println("");
+				System.out.println("[Stack trace]");		
+				System.out.println(stack_trace);	
+				System.out.println("");
+
+				if(driver.get().get_web_proxy() != null){
+
+					//Get the HAR data
+					Har har = web_proxy.getHar();
+					File harFile = new File(filePath + "/" + 
+							operating_system + "_" + 
+							browser + ".har");
+
+					//Write the HAR data
+					har.writeTo(harFile);
+
+				}
+
+				//Output failed scenario name, URL + page title to text file next to screenshot
+				File failed_scenario_details_file = new File(filePath + "/" + "failed_scenario_details.txt");
+
+				FileWriter fw = new FileWriter(failed_scenario_details_file, false);
+
+				try {
+					fw.write("[Test ID]" + System.lineSeparator()  + testID + System.lineSeparator() + System.lineSeparator() +
+							"[Failed URL]" + System.lineSeparator() + webdriver.getCurrentUrl() + System.lineSeparator() + System.lineSeparator() +
+							"[Page Title]" + System.lineSeparator() + webdriver.getTitle() + System.lineSeparator() + System.lineSeparator() +
+							"[Stack trace]" + System.lineSeparator() + stack_trace);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}finally{
+					fw.close();
+				}	
+
+
+			}catch(Throwable t){
+
+				System.out.println("[Error when logging failure]" + t.getMessage()); 
+
+			}
+
+		}			
+		
 
 		private void standard_warning_output(String message){
 

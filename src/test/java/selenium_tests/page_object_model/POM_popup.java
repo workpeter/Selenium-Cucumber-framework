@@ -14,13 +14,13 @@ public final class POM_popup  {
 		
 		driver.get().esm.wait_for_ajax_to_finish();
 
-		if(driver.get().esm.element_displayed(btnClose)){ 
+		if(driver.get().esm.check_element_displayed(btnClose)){ 
 
 			driver.get().esm.click(btnClose);
 			driver.get().esm.wait_until_invisible(btnClose);
 		}
 
-		if(driver.get().esm.element_displayed(linkCookieGotIt)){
+		if(driver.get().esm.check_element_displayed(linkCookieGotIt)){
 
 			driver.get().esm.click(linkCookieGotIt);
 			driver.get().esm.wait_until_invisible(linkCookieGotIt);

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Environment config tsts" parallel="tests"
-	thread-count="1">
+	thread-count="3">
 
 	<listeners>
-		<listener class-name="integrationTests.Listeners"></listener>
+		<listener class-name="selenium_tests.Listeners"></listener>
 	</listeners>
 
 	<test name="windows chrome">
@@ -12,27 +12,27 @@
 		<parameter name="browser" value="chrome" />
 		<parameter name="browser_headless" value="no" />
 		<classes>
-			<class name="integrationTests.Runner" />
+			<class name="selenium_tests.Runner" />
 		</classes>
 	</test>
 
-<!-- 	<test name="windows firefox"> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="firefox" /> -->
-<!-- 		<parameter name="browser_headless" value="no" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="integrationTests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="windows firefox">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="firefox" />
+		<parameter name="browser_headless" value="no" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
 
-<!-- 	<test name="windows edge"> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="edge" /> -->
-<!-- 		<parameter name="browser_headless" value="no" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="integrationTests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="windows edge">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="edge" />
+		<parameter name="browser_headless" value="no" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
 
 </suite> 
 
