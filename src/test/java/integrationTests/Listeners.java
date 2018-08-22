@@ -5,6 +5,7 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import integrationTests.selenium.ESM;
 import net.lightbody.bmp.core.har.Har;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -18,7 +19,7 @@ import java.util.Date;
 import static integrationTests.Runner.test_instance;
 
 public class Listeners implements ITestListener {
-
+	
 	//==========================
 	// If testNG registers a test as NOT a success then output logs and screenshot
 	//==========================	
@@ -43,11 +44,26 @@ public class Listeners implements ITestListener {
 		log_output_and_screenshot(get_stack_trace(iTestResult));
 	}
 
+	
+	@Override public void onTestStart(ITestResult arg0) {
+		
+		try {
+			
+			ESM.delete_cookies();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+
+	}
+	
 
 	@Override public void onTestSuccess(ITestResult iTestResult) {}
 	@Override public void onFinish(ITestContext arg0) {}
 	@Override public void onStart(ITestContext arg0) {}
-	@Override public void onTestStart(ITestResult arg0) {}
+	
 
 	//==========================
 	// Cucumber hook
@@ -114,8 +130,6 @@ public class Listeners implements ITestListener {
 			System.out.println("[Stack trace]");		
 			System.out.println(stack_trace);	
 			System.out.println("");
-			System.out.println("==============================================");
-
 
 			if(test_instance.get().get_web_proxy() != null){
 

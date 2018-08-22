@@ -366,6 +366,8 @@ public final class ESM {
 		//======Focusing End ======
 
 		wait_until_visible(target);
+		
+		wait_for_ajax_to_finish();
 
 
 	}
@@ -376,11 +378,15 @@ public final class ESM {
 
 			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollBy(0," + pixels +")", "");
 
+			wait_for_ajax_to_finish();
+			
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
 
 		}
+		
+
 
 	}
 
@@ -390,6 +396,8 @@ public final class ESM {
 
 			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
+			wait_for_ajax_to_finish();
+			
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());
@@ -404,6 +412,8 @@ public final class ESM {
 
 			((JavascriptExecutor) test_instance.get().get_webdriver()).executeScript("window.scrollTo(0, 0)");
 
+			wait_for_ajax_to_finish();
+			
 		}catch(Throwable t){
 
 			standard_warning_output(t.getMessage());

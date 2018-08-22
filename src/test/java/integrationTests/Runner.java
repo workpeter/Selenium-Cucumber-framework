@@ -123,8 +123,6 @@ public class Runner {
 
 		}
 
-		
-		ESM.delete_cookies();
 		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
 
 	}
