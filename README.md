@@ -1,5 +1,5 @@
-**This whole section needs updating!!!**   
-**This framework has been refactored, and so the information below will be somewhat misleading.**
+**This section needs updating!!!**   
+**This framework has been refactored, and some of the information below will be somewhat misleading, mainly the 'Selenium design pattern' section**
 
 
 # Introduction
