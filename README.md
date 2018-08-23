@@ -1,3 +1,6 @@
+**This whole section needs updating. this framework has been refactored, and so the information below will be somewhat misleading.**
+
+
 # Introduction
 
 [Link to framework](https://github.com/workpeter/ARGOS)  
