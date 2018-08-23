@@ -4,8 +4,6 @@
 
 # Introduction
 
-[Link to framework](https://github.com/workpeter/ARGOS)  
-
 I created this framework to use as a template for future projects.  
 Although existing projects often have an established (well integrated) framework, there is always room for improvement. This framework does many things well, such as: 
 * Testing across multiple operating systems and browsers in parallel with a single build command
