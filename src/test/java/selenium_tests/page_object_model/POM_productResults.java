@@ -28,7 +28,7 @@ public final class POM_productResults  {
 				driver.get().esm.click(btnChooseOptionsFirstProduct);
 				
 				POM_productPage.adds_product_to_basket_via_productPage();
-				driver.get().get_webdriver().navigate().back();
+				driver.get().navigate().back();
 			}
 
 		}
@@ -49,7 +49,8 @@ public final class POM_productResults  {
 			}else{
 				driver.get().esm.click(btnChooseOptionsSecondProduct);
 				POM_productPage.adds_product_to_basket_via_productPage();
-				driver.get().get_webdriver().navigate().back();
+				driver.get().navigate().back();
+				
 			}
 
 		}

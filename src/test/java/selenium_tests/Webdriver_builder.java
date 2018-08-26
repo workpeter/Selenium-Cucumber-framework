@@ -16,20 +16,20 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.edge.*;
-import org.openqa.selenium.opera.*;
-import org.openqa.selenium.safari.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.ie.*;
 import org.openqa.selenium.remote.*;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.proxy.CaptureType;
 import org.testng.SkipException;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.util.*;
 import java.util.concurrent.*;
 
-public class Webdriver_builder {
+public class Webdriver_builder implements WebDriver {
 
 	private final WebDriver webdriver;
 	private final String operating_system;
@@ -37,44 +37,48 @@ public class Webdriver_builder {
 	private BrowserMobProxyServer web_proxy;
 	private WebDriverWait wait;
 
-
 	private final int max_wait_time = 10;
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
 	private String home_url;
 
-/*
+	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		
-	Build WebDriver (constructor and private methods)
-		
-	A Webdriver instance contains a configured webdriver, this webdriver can be:
-	(1) Any major browser against specific OS 
-	(2) Local or Remote (selenium grid)
-	(3) Headless mode 
-	(4) Contain Web Proxy to generate HAR files on error
-	(5) Configured explicit wait 
-	(6) Has access to enhanced selenium methods via inner class
-	(7) Generates log file per failure with scenario name, stack trace, HAR file + screenshot.	
-	
+
+This class is a webdriver which is self-configuring based on the parameters 
+sent to it when its launched. 
+
+Key features include:
+(1) Can be a local or remote web driver.
+	When used as a remote driver it acts as a hub and can be any 
+	operating system, browser and browser version that your nodes can support.
+
+	When used as a local driver it self-configures web driver binaries and 
+	common driver capabilities for either chrome, firefox or Edge.
+
+(2) Has a web_proxy for capturing HTTP traffic in HAR files. 
+
+(3) Has an inner class with enhanced Selenium methods. This essentially allows the 
+	calling method to utilise more robust Selenium calls for test script creation.
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/	
-	
+	 */	
+
 	@SuppressWarnings("deprecation")
-	public Webdriver_builder(String operating_system, String browser, String browser_version, String browser_headless,
+	public Webdriver_builder(String operating_system, String browser, String browser_version,
 			String web_proxy_enabled, String selenium_grid_enabled, String selenium_grid_hub)
 					throws MalformedURLException {
 
 		this.operating_system = operating_system;
 		this.browser = browser;
 
-		MutableCapabilities options;
+		MutableCapabilities options = null;
 
 		// ==================================
-		// Selenium Grid not Enabled: - will run on current machine. Will still attempt
+		// Selenium Grid not Enabled: - will run on current machine. Will attempt
 		// to execute all tests found in environment_configurations_to_test.xml however
 		// will skip if operating system doesnt match.
 		// ==================================
@@ -90,36 +94,72 @@ public class Webdriver_builder {
 
 			}
 
-			load_driver_from_file(operating_system);
+			// ==================================
+			// Enable web proxy
+			// ==================================
+			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
 
-			// Create browser specific webdriver with capabilities
-			options = setBrowserCapabilities(browser, browser_headless, web_proxy_enabled);
+			// ==================================
+			// Set driver capabilities and launch
+			// ==================================
+			browser = browser.toLowerCase();
 
-			// Create the correct webdriver based on test requirements
 			switch (browser) {
 			case "chrome":
-				this.webdriver = new ChromeDriver((ChromeOptions) options);
+
+				WebDriverManager.chromedriver().setup();
+
+				((ChromeOptions)options).setAcceptInsecureCerts(true);
+				((ChromeOptions)options).setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+				((ChromeOptions)options).addArguments("start-maximized");
+				((ChromeOptions)options).addArguments("disable-infobars");
+				//options.setHeadless(true); 
+
+				this.webdriver = new ChromeDriver((ChromeOptions)options);
 				break;
+
 			case "firefox":
-				this.webdriver = new FirefoxDriver((FirefoxOptions) options);
+
+				WebDriverManager.firefoxdriver().setup();
+
+
+				((FirefoxOptions)options).setAcceptInsecureCerts(true);
+				System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+				System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
+
+				//FirefoxBinary firefoxBinary = new FirefoxBinary();
+				//firefoxBinary.addCommandLineOptions("--headless");
+				//f_options.setBinary(firefoxBinary);
+
+				this.webdriver = new FirefoxDriver((FirefoxOptions)options);
 				break;
+
 			case "edge":
-				this.webdriver = new EdgeDriver((EdgeOptions) options);
+
+				WebDriverManager.edgedriver().setup();	
+
+				this.webdriver = new EdgeDriver((EdgeOptions)options);
 				break;
+
 			default:
-				this.webdriver = new ChromeDriver((ChromeOptions) options);
+
+				System.out.println("===========================");
+				System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
+				System.out.println("===========================");
+				throw new SkipException("skipping test");
 
 			}
 
+
+		// ==================================
+		// Selenium Grid Enabled: will find node/s to match current
+		// environment_configurations_to_test.xml test
+		// ==================================
+
 		} else {
 
-			// ==================================
-			// Selenium Grid Enabled: will find node/s to match current
-			// environment_configurations_to_test.xml test
-			// ==================================
 
-			// build browser options / capabilities
-			options = setBrowserCapabilities(browser, browser_headless, web_proxy_enabled);
+			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
 
 			// Set capabilityType, which is used to find grid node with matching
 			// capabilities
@@ -146,117 +186,20 @@ public class Webdriver_builder {
 
 	}
 
-	private void load_driver_from_file(String operating_system) {
+	private MutableCapabilities set_web_proxy(MutableCapabilities options) {
 
-		// Set driver property
-		switch (operating_system) {
 
-		case "windows":
+		this.web_proxy = new BrowserMobProxyServer();
 
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")
-					+ "\\src\\test\\resources\\browser_drivers\\windows\\chromedriver.exe");
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")
-					+ "\\src\\test\\resources\\browser_drivers\\windows\\geckodriver.exe");
-			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")
-					+ "\\src\\test\\resources\\browser_drivers\\windows\\MicrosoftWebDriver.exe");
-			break;
+		web_proxy.setTrustAllServers(true);
+		web_proxy.setHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+		web_proxy.start(0);
 
-		case "linux":
+		Proxy seleniumProxy = ClientUtil.createSeleniumProxy(web_proxy);
 
-			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\todo");
-			System.setProperty("webdriver.gecko.driver",
-					System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\todo");
-			System.setProperty("webdriver.edge.driver",
-					System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\linux\\todo");
-			break;
+		options.setCapability(CapabilityType.PROXY, seleniumProxy);
 
-		case "mac":
-
-			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\todo");
-			System.setProperty("webdriver.gecko.driver",
-					System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\todo");
-			System.setProperty("webdriver.edge.driver",
-					System.getProperty("user.dir") + "\\src\\test\\resources\\browser_drivers\\mac\\todo");
-			break;
-
-		}
-	}
-
-	private MutableCapabilities setBrowserCapabilities(String browser, String browser_headless, String web_proxy_enabled) {
-
-		MutableCapabilities options;
-
-		browser = browser.toLowerCase();
-
-		switch (browser) {
-
-		case "chrome":
-
-			options = new ChromeOptions();
-			((ChromeOptions) options).setAcceptInsecureCerts(true);
-
-			if (browser_headless.equalsIgnoreCase("yes"))
-				((ChromeOptions) options).addArguments("headless");
-
-			break;
-
-		case "firefox":
-
-			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
-
-			options = new FirefoxOptions();
-			((FirefoxOptions) options).setAcceptInsecureCerts(true);
-
-			if (browser_headless.equalsIgnoreCase("yes")) {
-
-				FirefoxBinary firefoxBinary = new FirefoxBinary();
-				firefoxBinary.addCommandLineOptions("--headless");
-				((FirefoxOptions) options).setBinary(firefoxBinary);
-
-			}
-
-			break;
-
-		case "edge":
-			options = new EdgeOptions();
-			break;
-
-		case "internet explorer":
-			options = new InternetExplorerOptions();
-			break;
-		case "safari":
-			options = new SafariOptions();
-			break;
-		case "opera":
-			options = new OperaOptions();
-			break;
-
-		default:
-			System.out.println("===========================");
-			System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
-			System.out.println("===========================");
-			throw new SkipException("skipping test");
-		}
-
-		// Create a browser proxy to capture HTTP data for analysis
-		if (web_proxy_enabled.equalsIgnoreCase("yes")) {
-
-			this.web_proxy = new BrowserMobProxyServer();
-
-			web_proxy.setTrustAllServers(true);
-			web_proxy.setHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-			web_proxy.start(0);
-
-			Proxy seleniumProxy = ClientUtil.createSeleniumProxy(web_proxy);
-
-			options.setCapability(CapabilityType.PROXY, seleniumProxy);
-
-			web_proxy.newHar();
-
-		}
+		web_proxy.newHar();
 
 		return options;
 
@@ -284,21 +227,37 @@ public class Webdriver_builder {
 	}
 
 
-/*
+	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		
-	Getters and Setters
-		
+
+	Class methods
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/		
-	
-	public WebDriver get_webdriver() throws Exception {
+	 */		
 
-		return webdriver;
+	@Override public void get(String url) {webdriver.get(url);}
+	@Override public String getCurrentUrl() {return webdriver.getCurrentUrl();}
+	@Override public String getTitle() {return webdriver.getTitle();}
+	@Override public List<WebElement> findElements(By by) {return webdriver.findElements(by);}
+	@Override public WebElement findElement(By by) {return webdriver.findElement(by);}
+	@Override public String getPageSource() {return webdriver.getPageSource();}
+	@Override public void close() {webdriver.close();}
+	@Override public void quit() {webdriver.quit();}
+	@Override public Set<String> getWindowHandles() {return webdriver.getWindowHandles();}
+	@Override public String getWindowHandle() {return webdriver.getWindowHandle();}
+	@Override public TargetLocator switchTo() {return webdriver.switchTo();}
+	@Override public Navigation navigate() {return webdriver.navigate();}
+	@Override public Options manage() {return webdriver.manage();}	
 
+
+	public boolean get_driver_enabled() {
+
+		if (webdriver != null) return true;
+		return false;
 	}
+
 	public String get_browser() {
 
 		return browser;
@@ -334,20 +293,20 @@ public class Webdriver_builder {
 		this.home_url = url;
 
 	}
-	
 
-/*
+
+	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	
+
 	[INNER CLASS] - gives access to enhanced selenium methods through esm instance
-	
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/
+	 */
 
 	public Enhanced_selenium_methods esm = new Enhanced_selenium_methods();  
-	
+
 	public final class Enhanced_selenium_methods {
 
 		//===========================
@@ -362,7 +321,7 @@ public class Webdriver_builder {
 			wait_for_ajax_to_finish();
 
 		}
-		
+
 		public void goto_home_url() throws Exception  {
 
 			webdriver.get(home_url);
@@ -570,7 +529,7 @@ public class Webdriver_builder {
 			return false;
 
 		}	
-		
+
 
 		public boolean check_element_enabled(By target) {
 
@@ -871,15 +830,15 @@ public class Webdriver_builder {
 		}	
 
 		public void clear_captured_proxy_data(){
-			
+
 			if(web_proxy!= null){
-				
+
 				web_proxy.newHar();
-				
+
 			}	
 		}
-		
-		
+
+
 		public void get_all_scripts() {
 
 			wait_for_ajax_to_finish();
@@ -938,7 +897,7 @@ public class Webdriver_builder {
 				//Call getScreenshotAs method to create image file
 				File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
-				String currentDateTime =  new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
+				String currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
 
 				String filePath = System.getProperty("user.dir").replace("\\", "/")  + 
 						"/target/screenshots_logs_on_failure/" + 
@@ -1003,7 +962,7 @@ public class Webdriver_builder {
 			}
 
 		}			
-		
+
 
 		private void standard_warning_output(String message){
 

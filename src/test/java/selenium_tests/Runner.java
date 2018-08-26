@@ -48,7 +48,7 @@ However rather than the parallel tests all impacting the same webdriver,
 they are now only impacting their thread local webdriver. 
 Thus you achieve autonomous parallel processing without having to inefficiently 
 recreate webdrivers for each test class.  
-*/
+ */
 
 @CucumberOptions( 
 		//Tags (Send using Maven:[clean verify -Dcucumber.options="-t @Retest"]
@@ -61,35 +61,34 @@ public class Runner {
 	public static ThreadLocal<Webdriver_builder> driver = new ThreadLocal<Webdriver_builder>();
 	private TestNGCucumberRunner testNGCucumberRunner;
 	private volatile static int testID;
-	
+
 	@BeforeClass(alwaysRun = true)
-	@Parameters({"operating_system","browser","browser_version","browser_headless"})
+	@Parameters({"operating_system","browser","browser_version"})
 	public void setup(
 			String operating_system,
 			String browser,
-			@Optional("") String browser_version,
-			@Optional("no") String browser_headless ) throws Exception{
+			@Optional("") String browser_version
+			) throws Exception{
 
 		//System properties set in Maven POM.xml
 		String selenium_grid_enabled= System.getProperty("selenium.grid.enabled");
 		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
 		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
 
-		
+
 		driver.set(new Webdriver_builder(
 				operating_system, 
 				browser, 
 				browser_version, 
-				browser_headless, 
 				web_proxy_enabled, 
 				selenium_grid_enabled,
 				selenium_grid_hub));
 
-		
+
 		String home_url = System.getProperty("env.qa.url");
-		
+
 		driver.get().set_home_url(home_url);
-		
+
 
 		//==========================
 		// Output build configurations being tested
@@ -112,7 +111,7 @@ public class Runner {
 		create_unique_json_file(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
 
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-		
+
 
 	}
 
@@ -135,7 +134,6 @@ public class Runner {
 	}
 
 
-
 	@AfterClass(alwaysRun = true)
 	public void tear_down() throws Exception {
 
@@ -151,12 +149,14 @@ public class Runner {
 		// Generate report and quit local thread web driver 
 		//==========================	
 
-		if (driver.get().get_webdriver() != null){
+		
+		
+		if (driver.get().get_driver_enabled()){
 
 			Report_generator.GenerateMasterthoughtReport();	
 
 			try {
-				driver.get().get_webdriver().quit();
+				driver.get().quit();
 				driver.remove();
 			} catch (Exception e) {
 				e.printStackTrace();

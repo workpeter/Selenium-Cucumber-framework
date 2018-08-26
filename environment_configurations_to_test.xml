@@ -10,29 +10,26 @@
 	<test name="windows chrome">
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="chrome" />
-		<parameter name="browser_headless" value="no" />
 		<classes>
 			<class name="selenium_tests.Runner" />
 		</classes>
 	</test>
 
-	<test name="windows firefox">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="firefox" />
-		<parameter name="browser_headless" value="no" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+<!-- 	<test name="windows firefox"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="firefox" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 
-	<test name="windows edge">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="edge" />
-		<parameter name="browser_headless" value="no" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+<!-- 	<test name="windows edge"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="edge" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 
 </suite> 
 
