@@ -1,0 +1,41 @@
+# Created on 2018-08-26T20:50:45.024
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created on 2018-08-26T20:50:45.199
+Unexpected IOException with stream: http://www.argos.co.uk/Ajax_call : 404
+
+
+# Created on 2018-08-26T20:50:45.201
+Unexpected IOException with stream: POST
+
+
+# Created on 2018-08-26T20:50:45.201
+Unexpected IOException with stream: http://www.argos.co.uk/Ajax_call : 404
+
+
+# Created on 2018-08-26T20:50:45.202
+Unexpected IOException with stream: POST
+
+
+# Created on 2018-08-26T20:50:45.202
+Unexpected IOException with stream: http://www.argos.co.uk/Ajax_call : 404
+
+
+# Created on 2018-08-26T20:50:45.203
+Unexpected IOException with stream: POST
+
+
+# Created on 2018-08-26T20:50:45.204
+Unexpected IOException with stream: http://www.argos.co.uk/Ajax_call : 404
+
+
+# Created on 2018-08-26T20:50:45.204
+Unexpected IOException with stream: POST
+
+

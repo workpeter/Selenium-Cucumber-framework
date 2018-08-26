@@ -70,26 +70,12 @@ public class Runner {
 			@Optional("") String browser_version
 			) throws Exception{
 
+		
+		
 		//System properties set in Maven POM.xml
 		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
 		String selenium_grid_enabled= System.getProperty("selenium.grid.enabled");
 		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
-
-
-
-		driver.set(new Webdriver_builder(
-				operating_system, 
-				browser, 
-				browser_version, 
-				web_proxy_enabled, 
-				selenium_grid_enabled,
-				selenium_grid_hub));
-
-
-		String home_url = System.getProperty("env.qa.url");
-
-		driver.get().set_home_url(home_url);
-
 
 		//==========================
 		// Output build configurations being tested
@@ -99,20 +85,29 @@ public class Runner {
 
 		//Output once
 		if (testID == 1){
-			System.out.println("Test URL: " + home_url);	
+			System.out.println("Test URL: " + System.getProperty("env.qa.url"));	
 			System.out.println("Web Proxy Enabled: " + web_proxy_enabled);		
 			System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
 			if (selenium_grid_enabled.equals("yes")) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
 		}
 
 		System.out.println("");
-		System.out.println("Starting Test ID: " + testID +
-				" (" + operating_system + " " +  browser + ")");
+		System.out.println("Starting Test: (" + operating_system + " " +  browser + ")");
+		
+		driver.set(null);
+		driver.set(new Webdriver_builder(
+				operating_system, 
+				browser, 
+				browser_version, 
+				web_proxy_enabled, 
+				selenium_grid_enabled,
+				selenium_grid_hub));
+
+		driver.get().set_home_url(System.getProperty("env.qa.url"));
 
 		create_unique_json_file(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
 
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-
 
 	}
 
@@ -122,15 +117,24 @@ public class Runner {
 	@DataProvider
 	public Object[][] scenarios() {
 
-		return testNGCucumberRunner.provideScenarios();
+		try{
+			return testNGCucumberRunner.provideScenarios();
+		}catch(Exception e){
+			
+			if (driver.get() == null) System.out.println("There was a problem initialising the Webdriver");
+				
+			throw e;
 
+		}
 	}
+	
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void run_scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
 
 		driver.get().esm.clear_captured_proxy_data();
 
 		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
+		
 
 	}
 
@@ -150,8 +154,8 @@ public class Runner {
 		// Generate report and quit local thread web driver 
 		//==========================	
 
-		
-		
+
+
 		if (driver.get().get_driver_enabled()){
 
 			Report_generator.GenerateMasterthoughtReport();	

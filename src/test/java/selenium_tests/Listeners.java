@@ -11,12 +11,12 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import static selenium_tests.Runner.driver;
 
 public class Listeners implements ITestListener {
-	
+
 
 	public static ThreadLocal<Scenario> scenario = new ThreadLocal<Scenario>();
-	
+
 	//private Scenario scenario;
-	
+
 	//==========================
 	// If testNG registers a test as NOT a success then output logs and screenshot
 	//==========================	
@@ -24,43 +24,43 @@ public class Listeners implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult iTestResult) {
 
-		call_webdriver_failure_logger(iTestResult);
+		webdriver_failure_logger(iTestResult);
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
 
-		call_webdriver_failure_logger(iTestResult);
+		webdriver_failure_logger(iTestResult);
 
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult iTestResult) {
 
-		call_webdriver_failure_logger(iTestResult);
-		
+		webdriver_failure_logger(iTestResult);
+
 	}
 
-	
+
 	@Override public void onTestStart(ITestResult arg0) {
-		
+
 		try {
-			
+
 			driver.get().esm.delete_cookies();
-			
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
-		
+
 
 	}
-	
+
 
 	@Override public void onTestSuccess(ITestResult iTestResult) {}
 	@Override public void onFinish(ITestContext arg0) {}
 	@Override public void onStart(ITestContext arg0) {}
-	
+
 
 	//==========================
 	// Cucumber hook
@@ -74,7 +74,7 @@ public class Listeners implements ITestListener {
 		//So there is a need to transfer scenario details to testNG listener, 
 		//to be included in its functionality.
 		Listeners.scenario.set(scenario);
-		
+
 
 	}
 
@@ -83,21 +83,18 @@ public class Listeners implements ITestListener {
 		return ExceptionUtils.getStackTrace(arg0.getThrowable());
 
 	}
-	
-	private void call_webdriver_failure_logger(ITestResult iTestResult ){
-		
+
+	private void webdriver_failure_logger(ITestResult iTestResult ){
+
 		//Dont output log if cucumber didnt register scenario failure
-		if(Listeners.scenario.get() != null & !Listeners.scenario.get().isFailed()) return;
+		if(Listeners.scenario.get() != null && !Listeners.scenario.get().isFailed()) return;
 
 		//Call webriver logger and include the cucumber scenario name and testNG stack trace
 		driver.get().esm.output_logs_and_screenshot(
 				Listeners.scenario.get().getName(),
 				get_stack_trace(iTestResult));	
-		
-		
+
+
 	}
-	
-	
-	
 
 }

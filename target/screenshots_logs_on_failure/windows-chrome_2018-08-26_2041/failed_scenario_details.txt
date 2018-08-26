@@ -1,0 +1,17 @@
+[Test ID]
+customer searches for product by name
+
+[Failed URL]
+http://www.argos.co.uk/product/7019692
+
+[Page Title]
+Buy Cuggl Birch Stroller | Pushchairs | Argos
+
+[Stack trace]
+java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:93)
+	at org.testng.Assert.failNotEquals(Assert.java:512)
+	at org.testng.Assert.assertTrue(Assert.java:41)
+	at org.testng.Assert.assertTrue(Assert.java:51)
+	at selenium_tests.feature_steps.Steps_product_feature.customer_can_see_related_products(Steps_product_feature.java:136)
+	at ?.customer can see related products(src/test/resources/Features/TestSuite_Product.feature:16)

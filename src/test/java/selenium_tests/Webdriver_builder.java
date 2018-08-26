@@ -11,16 +11,23 @@ import java.text.SimpleDateFormat;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.edge.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.remote.*;
+
+import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.core.har.HarEntry;
 import net.lightbody.bmp.proxy.CaptureType;
 import org.testng.SkipException;
 
@@ -32,10 +39,12 @@ import java.util.concurrent.*;
 public class Webdriver_builder implements WebDriver {
 
 	private WebDriver webdriver;
+	private MutableCapabilities options;
 	private final String operating_system;
 	private final String browser;
 	private final String web_proxy_enabled;
 	private BrowserMobProxyServer web_proxy;
+	private Proxy seleniumProxy;
 	private WebDriverWait wait;
 
 	private final int max_wait_time = 10;
@@ -77,7 +86,6 @@ Key features include:
 		this.browser = browser;
 		this.web_proxy_enabled = web_proxy_enabled; 
 
-		MutableCapabilities options = null;
 
 		// ==================================
 		// Selenium Grid not Enabled: - will run on current machine. Will attempt
@@ -100,20 +108,30 @@ Key features include:
 			// Set driver capabilities and launch local driver
 			// ==================================
 
-			configure_driver(options,true);
+			set_driver_options();
 
-			// ==================================
-			// Selenium Grid Enabled: will find node/s to match current
-			// environment_configurations_to_test.xml test
-			// ==================================
+			switch (this.browser.toLowerCase()) {
+			case "chrome": 	this.webdriver = new ChromeDriver((ChromeOptions)options); break;
+			case "firefox":	this.webdriver = new FirefoxDriver((FirefoxOptions)options);break;
+			case "edge":	this.webdriver = new EdgeDriver((EdgeOptions)options);break;
+			case "internet explorer": this.webdriver = new InternetExplorerDriver();break;	
+			case "opera": 	this.webdriver = new OperaDriver();
+
+			}
+
 
 		} else {
 
 			// ==================================
-			// Set driver capabilities and do not launch local driver
+			// Selenium Grid Enabled: will find node/s to match current
+			// environment_configurations_to_test.xml test
+			// ==================================		
+
+			// ==================================
+			// Set driver capabilities and do not launch remote driver
 			// ==================================
 
-			configure_driver(options,false);
+			set_driver_options();
 
 			// Set capabilityType, which is used to find grid node with matching
 			// capabilities
@@ -124,6 +142,7 @@ Key features include:
 				options.setCapability(CapabilityType.PLATFORM_NAME, operating_system);
 			if (!operating_system.equals(""))
 				options.setCapability(CapabilityType.PLATFORM, operating_system);
+
 
 			// Launch Selenium grid, looking for node/s which match above capabilities
 			this.webdriver = new RemoteWebDriver(new URL(selenium_grid_hub), options);
@@ -141,7 +160,7 @@ Key features include:
 	}
 
 
-	private void configure_driver(MutableCapabilities options,boolean local_driver){
+	private void set_driver_options(){
 
 		switch (this.browser.toLowerCase()) {
 		case "chrome":
@@ -157,7 +176,7 @@ Key features include:
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
 
-			if (local_driver) this.webdriver = new ChromeDriver((ChromeOptions)options);
+
 			break;
 
 		case "firefox":
@@ -175,7 +194,6 @@ Key features include:
 			//firefoxBinary.addCommandLineOptions("--headless");
 			//f_options.setBinary(firefoxBinary);
 
-			if (local_driver) this.webdriver = new FirefoxDriver((FirefoxOptions)options);
 			break;
 
 		case "edge":
@@ -186,17 +204,28 @@ Key features include:
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
 
-			if (local_driver) this.webdriver = new EdgeDriver((EdgeOptions)options);
+			break;
+
+		case "internet explorer":	
+
+			WebDriverManager.iedriver().setup();
+			options = new InternetExplorerOptions();
+			break;
+
+		case "opera":
+
+			WebDriverManager.operadriver().setup();
+			options = new OperaOptions();
 			break;
 
 		default:
 
-			if (local_driver){
-				System.out.println("===========================");
-				System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
-				System.out.println("===========================");
-				throw new SkipException("skipping test");
-			}
+
+			System.out.println("===========================");
+			System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
+			System.out.println("===========================");
+			throw new SkipException("skipping test");
+
 
 		}
 
@@ -212,11 +241,12 @@ Key features include:
 		web_proxy.setHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
 		web_proxy.start(0);
 
-		Proxy seleniumProxy = ClientUtil.createSeleniumProxy(web_proxy);
+		seleniumProxy = ClientUtil.createSeleniumProxy(web_proxy);
 
 		options.setCapability(CapabilityType.PROXY, seleniumProxy);
 
 		web_proxy.newHar();
+
 
 		return options;
 
@@ -271,7 +301,8 @@ Key features include:
 
 	public boolean get_driver_enabled() {
 
-		if (webdriver != null) return true;
+		if (webdriver != null)  return true;
+
 		return false;
 	}
 
@@ -354,6 +385,8 @@ Key features include:
 			webdriver.findElement(target).click();
 
 			wait_for_ajax_to_finish();
+			find_http_errors();
+			find_slow_http(2000);
 
 		}
 
@@ -823,7 +856,7 @@ Key features include:
 				((JavascriptExecutor) webdriver).executeAsyncScript(
 						"var callback = arguments[arguments.length - 1];" +
 								"var xhr = new XMLHttpRequest();" +
-								"xhr.open('POST', '/" + "Ajax_call" + "', true);" +
+								"xhr.open('POST', '/" + "selenium_call" + "', true);" +
 								"xhr.onreadystatechange = function() {" +
 								"  if (xhr.readyState == 4) {" +
 								"    callback(xhr.responseText);" +
@@ -848,13 +881,62 @@ Key features include:
 
 		public void clear_captured_proxy_data(){
 
-			if(web_proxy!= null){
+			if (web_proxy_enabled.equalsIgnoreCase("yes")){
 
 				web_proxy.newHar();
 
 			}	
 		}
 
+
+		public void find_http_errors(){
+
+			if (web_proxy_enabled.equalsIgnoreCase("yes")){
+
+				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
+				for (HarEntry entry : entries) {
+		
+					if (entry.getResponse().getStatus() >= 400 & 
+						!entry.getRequest().getUrl().contains("selenium_call")){
+	
+						System.out.println(
+								entry.getRequest().getMethod() + " : " +
+								entry.getRequest().getUrl()  + " :Error " +  
+								entry.getResponse().getStatus() + " : via:" +
+								entries.get(0).getRequest().getUrl());
+						
+
+					}
+					
+				}
+
+			}
+
+		}
+
+		public void find_slow_http(long milliseconds){
+
+			if (web_proxy_enabled.equalsIgnoreCase("yes")){
+
+				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
+				for (HarEntry entry : entries) {
+		
+					if (entry.getTime()>= milliseconds){
+	
+						System.out.println(
+								entry.getTime() + "MS : " +
+								entry.getRequest().getMethod() + " : " +
+								entry.getRequest().getUrl()  + " : " +  
+								entry.getResponse().getStatus());
+
+					}
+					
+				}
+
+			}
+
+		}	
+		
 
 		public void get_all_scripts() {
 

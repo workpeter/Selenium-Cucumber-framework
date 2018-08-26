@@ -1,0 +1,118 @@
+# Created on 2018-08-26T16:48:57.285
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created on 2018-08-26T16:48:57.846
+Unexpected IOException with stream: ==============================================
+
+
+# Created on 2018-08-26T16:48:57.849
+Unexpected IOException with stream: [Test ID]
+
+
+# Created on 2018-08-26T16:48:57.850
+Unexpected IOException with stream: Customer views basket with x1 products, totalling x1 quantity
+
+
+# Created on 2018-08-26T16:48:57.851
+Unexpected IOException with stream: 
+
+
+# Created on 2018-08-26T16:48:57.851
+Unexpected IOException with stream: [Environment]
+
+
+# Created on 2018-08-26T16:48:57.852
+Unexpected IOException with stream: windows_firefox
+
+
+# Created on 2018-08-26T16:48:57.852
+Unexpected IOException with stream: 
+
+
+# Created on 2018-08-26T16:48:57.853
+Unexpected IOException with stream: [Screenshot ands logs found here]
+
+
+# Created on 2018-08-26T16:48:57.853
+Unexpected IOException with stream: C:/Users/workpeter/Documents/Eclipse-workspace/cucumber-selenium-framework/target/screenshots_logs_on_failure/windows-firefox_2018-08-26_1648
+
+
+# Created on 2018-08-26T16:48:57.854
+Unexpected IOException with stream: 
+
+
+# Created on 2018-08-26T16:48:57.855
+Unexpected IOException with stream: [Stack trace]
+
+
+# Created on 2018-08-26T16:48:57.856
+Unexpected IOException with stream: org.openqa.selenium.WebDriverException: Reached error page: about:neterror?e=proxyResolveFailure&u=http%3A//www.argos.co.uk/&c=UTF-8&f=regular&d=Firefox%20is%20configured%20to%20use%20a%20proxy%20server%20that%20can%E2%80%99t%20be%20found.
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'WIN-R1JBAO1CNPS', ip: '10.100.19.82', os.name: 'Windows Server 2008 R2', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{moz:profile=C:\Users\Administrator\AppData\Local\Temp\rust_mozprofile.uHePjbwzCijI, rotatable=false, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, moz:headless=false, platform=ANY, proxy=Proxy(manual, http=desktop-kqs99bn:50723, ssl=desktop-kqs99bn:50723), moz:accessibilityChecks=false, moz:useNonSpecCompliantPointerOrigin=false, acceptInsecureCerts=true, browserVersion=61.0, platformVersion=6.1, moz:processID=1968.0, browserName=firefox, javascriptEnabled=true, platformName=windows_nt, moz:webdriverClick=true}]
+Session ID: XXXXXXXX-XXXX-XXXX-XXXX-XXXX2a6cc227
+Command duration or timeout: 0 milliseconds
+	at sun.reflect.GeneratedConstructorAccessor30.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:271)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.goto_home_url(Webdriver_builder.java:372)
+	at selenium_tests.feature_steps.Steps_product_feature.customer_is_on_product_page(Steps_product_feature.java:21)
+	at ?.customer is on product page : XBOX(src/test/resources/Features/TestSuite_basket.feature:13)
+Caused by: org.openqa.selenium.WebDriverException: Reached error page: about:neterror?e=proxyResolveFailure&u=http%3A//www.argos.co.uk/&c=UTF-8&f=regular&d=Firefox%20is%20configured%20to%20use%20a%20proxy%20server%20that%20can%E2%80%99t%20be%20found.
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'WIN-R1JBAO1CNPS', ip: '10.100.19.82', os.name: 'Windows Server 2008 R2', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_91'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{moz:profile=C:\Users\Administrator\AppData\Local\Temp\rust_mozprofile.uHePjbwzCijI, rotatable=false, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, moz:headless=false, platform=ANY, proxy=Proxy(manual, http=desktop-kqs99bn:50723, ssl=desktop-kqs99bn:50723), moz:accessibilityChecks=false, moz:useNonSpecCompliantPointerOrigin=false, acceptInsecureCerts=true, browserVersion=61.0, platformVersion=6.1, moz:processID=1968.0, browserName=firefox, javascriptEnabled=true, platformName=windows_nt, moz:webdriverClick=true}]
+Session ID: XXXXXXXX-XXXX-XXXX-XXXX-XXXX2a6cc227
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
+Driver info: driver.version: EventFiringWebDriver
+	at sun.reflect.GeneratedConstructorAccessor10.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:150)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:115)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:45)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:82)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:637)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:364)
+	at sun.reflect.GeneratedMethodAccessor15.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:104)
+	at com.sun.proxy.$Proxy4.get(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.get(EventFiringWebDriver.java:163)
+	at org.openqa.selenium.remote.server.handler.ChangeUrl.call(ChangeUrl.java:40)
+	at org.openqa.selenium.remote.server.handler.ChangeUrl.call(ChangeUrl.java:25)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+
+
+# Created on 2018-08-26T16:48:57.856
+Unexpected IOException with stream: 
+
+
+# Created on 2018-08-26T16:48:58.267
+Unexpected IOException: 9,1,selenium_tests.Runner,run_scenario(selenium_tests.Runner),null,Reached error page: about:neterror?e=proxyResolveFailure&u=http%3A//www.argos.co.uk/&c=UTF-8&f=regular&d=Firefox%20is%20configured%20to%20use%20a%20proxy%20server%20that%20can%E2%80%99t%20be%20found.\000ABuild info: version: '3.4.0'\002C revision: 'unknown'\002C time: 'unknown'\000ASystem info: host: 'WIN-R1JBAO1CNPS'\002C ip: '10.100.19.82'\002C os.name: 'Windows Server 2008 R2'\002C os.arch: 'x86'\002C os.version: '6.1'\002C java.version: '1.8.0_91'\000ADriver info: org.openqa.selenium.firefox.FirefoxDriver\000ACapabilities [{moz:profile=C:\005CUsers\005CAdministrator\005CAppData\005CLocal\005CTemp\005Crust_mozprofile.uHePjbwzCijI\002C rotatable=false\002C timeouts={implicit=0.0\002C pageLoad=300000.0\002C script=30000.0}\002C pageLoadStrategy=normal\002C moz:headless=false\002C platform=ANY\002C proxy=Proxy(manual\002C http=desktop-kqs99bn:50723\002C ssl=desktop-kqs99bn:50723)\002C moz:accessibilityChecks=false\002C moz:useNonSpecCompliantPointerOrigin=false\002C acceptInsecureCerts=true\002C browserVersion=61.0\002C platformVersion=6.1\002C moz:processID=1968.0\002C browserName=firefox\002C javascriptEnabled=true\002C platformName=windows_nt\002C moz:webdriverClick=true}]\000ASession ID: XXXXXXXX-XXXX-XXXX-XXXX-XXXX2a6cc227\000ACommand duration or timeout: 0 milliseconds,null
+
+
