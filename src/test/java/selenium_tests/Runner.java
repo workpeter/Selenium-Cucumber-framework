@@ -71,9 +71,10 @@ public class Runner {
 			) throws Exception{
 
 		//System properties set in Maven POM.xml
+		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
 		String selenium_grid_enabled= System.getProperty("selenium.grid.enabled");
 		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
-		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
+
 
 
 		driver.set(new Webdriver_builder(

@@ -1,17 +1,9 @@
-# Created on 2018-08-26T12:16:15.317
+# Created on 2018-08-26T14:52:10.774
 TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
 	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
 	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
 	at java.lang.Thread.run(Thread.java:748)
-
-
-# Created on 2018-08-26T12:16:15.478
-Unexpected IOException: 6,1,selenium_tests.Runner,run_scenario(selenium_tests.Runner),null,null,null
-
-
-# Created on 2018-08-26T12:16:15.763
-Unexpected IOException: 5,1,selenium_tests.Runner,run_scenario(selenium_tests.Runner),cucumber,null,null
 
 

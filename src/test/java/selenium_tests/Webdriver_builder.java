@@ -31,9 +31,10 @@ import java.util.concurrent.*;
 
 public class Webdriver_builder implements WebDriver {
 
-	private final WebDriver webdriver;
+	private WebDriver webdriver;
 	private final String operating_system;
 	private final String browser;
+	private final String web_proxy_enabled;
 	private BrowserMobProxyServer web_proxy;
 	private WebDriverWait wait;
 
@@ -53,7 +54,7 @@ sent to it when its launched.
 Key features include:
 (1) Can be a local or remote web driver.
 	When used as a remote driver it acts as a hub and can be any 
-	operating system, browser and browser version that your nodes can support.
+	operating system, any browsers and browser version that are supported by your nodes.
 
 	When used as a local driver it self-configures web driver binaries and 
 	common driver capabilities for either chrome, firefox or Edge.
@@ -74,6 +75,7 @@ Key features include:
 
 		this.operating_system = operating_system;
 		this.browser = browser;
+		this.web_proxy_enabled = web_proxy_enabled; 
 
 		MutableCapabilities options = null;
 
@@ -95,71 +97,23 @@ Key features include:
 			}
 
 			// ==================================
-			// Enable web proxy
+			// Set driver capabilities and launch local driver
 			// ==================================
-			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
+
+			configure_driver(options,true);
 
 			// ==================================
-			// Set driver capabilities and launch
+			// Selenium Grid Enabled: will find node/s to match current
+			// environment_configurations_to_test.xml test
 			// ==================================
-			browser = browser.toLowerCase();
-
-			switch (browser) {
-			case "chrome":
-
-				WebDriverManager.chromedriver().setup();
-
-				((ChromeOptions)options).setAcceptInsecureCerts(true);
-				((ChromeOptions)options).setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-				((ChromeOptions)options).addArguments("start-maximized");
-				((ChromeOptions)options).addArguments("disable-infobars");
-				//options.setHeadless(true); 
-
-				this.webdriver = new ChromeDriver((ChromeOptions)options);
-				break;
-
-			case "firefox":
-
-				WebDriverManager.firefoxdriver().setup();
-
-
-				((FirefoxOptions)options).setAcceptInsecureCerts(true);
-				System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-				System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
-
-				//FirefoxBinary firefoxBinary = new FirefoxBinary();
-				//firefoxBinary.addCommandLineOptions("--headless");
-				//f_options.setBinary(firefoxBinary);
-
-				this.webdriver = new FirefoxDriver((FirefoxOptions)options);
-				break;
-
-			case "edge":
-
-				WebDriverManager.edgedriver().setup();	
-
-				this.webdriver = new EdgeDriver((EdgeOptions)options);
-				break;
-
-			default:
-
-				System.out.println("===========================");
-				System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
-				System.out.println("===========================");
-				throw new SkipException("skipping test");
-
-			}
-
-
-		// ==================================
-		// Selenium Grid Enabled: will find node/s to match current
-		// environment_configurations_to_test.xml test
-		// ==================================
 
 		} else {
 
+			// ==================================
+			// Set driver capabilities and do not launch local driver
+			// ==================================
 
-			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
+			configure_driver(options,false);
 
 			// Set capabilityType, which is used to find grid node with matching
 			// capabilities
@@ -186,8 +140,71 @@ Key features include:
 
 	}
 
-	private MutableCapabilities set_web_proxy(MutableCapabilities options) {
 
+	private void configure_driver(MutableCapabilities options,boolean local_driver){
+
+		switch (this.browser.toLowerCase()) {
+		case "chrome":
+
+			WebDriverManager.chromedriver().setup();
+
+			options = new ChromeOptions(); 
+			((ChromeOptions)options).setAcceptInsecureCerts(true);
+			((ChromeOptions)options).setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+			((ChromeOptions)options).addArguments("start-maximized");
+			((ChromeOptions)options).addArguments("disable-infobars");
+			//options.setHeadless(true); 
+
+			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
+
+			if (local_driver) this.webdriver = new ChromeDriver((ChromeOptions)options);
+			break;
+
+		case "firefox":
+
+			WebDriverManager.firefoxdriver().setup();
+
+			options = new FirefoxOptions(); 
+			((FirefoxOptions)options).setAcceptInsecureCerts(true);
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, "/dev/null");
+
+			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
+
+			//FirefoxBinary firefoxBinary = new FirefoxBinary();
+			//firefoxBinary.addCommandLineOptions("--headless");
+			//f_options.setBinary(firefoxBinary);
+
+			if (local_driver) this.webdriver = new FirefoxDriver((FirefoxOptions)options);
+			break;
+
+		case "edge":
+
+			WebDriverManager.edgedriver().setup();	
+
+			options = new EdgeOptions();
+
+			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
+
+			if (local_driver) this.webdriver = new EdgeDriver((EdgeOptions)options);
+			break;
+
+		default:
+
+			if (local_driver){
+				System.out.println("===========================");
+				System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
+				System.out.println("===========================");
+				throw new SkipException("skipping test");
+			}
+
+		}
+
+
+
+	}
+
+	private MutableCapabilities set_web_proxy(MutableCapabilities options) {
 
 		this.web_proxy = new BrowserMobProxyServer();
 
