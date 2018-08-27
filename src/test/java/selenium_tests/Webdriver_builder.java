@@ -1,7 +1,5 @@
 package selenium_tests;
 
-import static selenium_tests.Runner.driver;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,7 +21,6 @@ import org.openqa.selenium.edge.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.remote.*;
 
-import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
@@ -57,29 +54,45 @@ public class Webdriver_builder implements WebDriver {
 	private String error_log_base_path = System.getProperty("user.dir").replace("\\", "/")  + 
 			"/target/error-log/";
 
-	/*
+/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-This class is a webdriver which is self-configuring based on the parameters 
-sent to it when its launched. 
+This class is a webdriver which is self-configuring based on the parameters sent to it when its launched. 
 
 Key features include:
-(1) Can be a local or remote web driver.
+(1) Can be a local or remote web driver and includes added driver capabilities 
+	typically used in testing such as bypassing certification issues.
+	
 	When used as a remote driver it acts as a hub and can be any 
-	operating system, any browsers and browser version that are supported by your nodes.
+	operating system, browsers and browser version that are supported by your nodes.
 
-	When used as a local driver it self-configures web driver binaries and 
-	common driver capabilities for either chrome, firefox or Edge.
+	When used as a local driver it self-configures web driver binaries using a driver manager 
+	and supports all major browsers.
 
-(2) Has a web_proxy for capturing HTTP traffic in HAR files. 
+(2) Has enhanced logging for test failures that include a detailed stack trace, screenshot
+    and HAR file dump.  
 
-(3) Has an inner class with enhanced Selenium methods. This essentially allows the 
-	calling method to utilise more robust Selenium calls for test script creation.
+(3) Has an inner class with enhanced Selenium methods. 
+	These methods should be called when building test scripts rather than natively calling 
+	the webdriver, because they are designed to build more robust scripts and 
+	to track HTTP issues. 
+    
+   	Robust scripting is achieved through the auto use of Ajax waiting after events, 
+   	explicit wait conditions and javascript scrolling. 
+   	This has proven to reduce the failure rate of test scripts without 
+   	causing unnecessary test run delay.	
 
+	HTTP tracking is achieved by routing requests through a proxy and then auto logging 
+	requests that result in HTTP error codes or performance issues. 
+
+	There are also some utility methods, for example, the method which logs and takes 
+	screenshots on failure. 
+	Such a method works well when called by a testNG listener on failure.
+	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	 */	
+*/	
 
 	@SuppressWarnings("deprecation")
 	public Webdriver_builder(String operating_system, String browser, String browser_version,
@@ -123,7 +136,6 @@ Key features include:
 
 			}
 
-
 		} else {
 
 			// ==================================
@@ -162,7 +174,6 @@ Key features include:
 
 		wait = new WebDriverWait(this.webdriver, max_wait_time);
 
-
 	}
 
 
@@ -181,7 +192,6 @@ Key features include:
 			//options.setHeadless(true); 
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
-
 
 			break;
 
@@ -226,17 +236,12 @@ Key features include:
 
 		default:
 
-
 			System.out.println("===========================");
 			System.out.println("[skipping test] " + browser + " is not a recognised web browser, please check config.");
 			System.out.println("===========================");
 			throw new SkipException("skipping test");
 
-
 		}
-
-
-
 	}
 
 	private MutableCapabilities set_web_proxy(MutableCapabilities options) {
@@ -279,7 +284,6 @@ Key features include:
 
 	}
 
-
 	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -303,7 +307,6 @@ Key features include:
 	@Override public TargetLocator switchTo() {return webdriver.switchTo();}
 	@Override public Navigation navigate() {return webdriver.navigate();}
 	@Override public Options manage() {return webdriver.manage();}	
-
 
 	public boolean get_driver_enabled() {
 
@@ -341,13 +344,11 @@ Key features include:
 
 	}
 
-
 	public void set_home_url(String url) {
 
 		this.home_url = url;
 
 	}
-
 
 	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
@@ -490,7 +491,6 @@ Key features include:
 			wait.until(ExpectedConditions.presenceOfElementLocated(target));
 
 		}	
-
 
 		//===========================
 		// Actions which if fail should give warning, but are not critical to stop test execution

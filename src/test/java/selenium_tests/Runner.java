@@ -28,11 +28,10 @@ specific capabilities.
 The simpliest most efficient way to build a webdriver is to build it once, and then make it
 static so that it can be referenced by tests in other classes. 
 This avoids other classes having to dynamically build their own webdriver instance, 
-which is inefficent when this process has to be repeated across all 
-the classes containing tests. 
+which is inefficient when this process has to be repeated across all the classes containing tests. 
 
 However, the problem with a static webdriver is you only have one, making parallel processing
-problematic. This is because parellel tests are all interacting with the same static webdriver.
+problematic. This is because parallel tests are all interacting with the same static webdriver.
 This is overcome using ThreadLocal. 
 
 Whenever a runner() instance is generated, it creates a webdriver instance 
@@ -40,12 +39,11 @@ and puts it in the static ThreadLocal container.
 
 Now in an example where 3 runner instances are launched at the same. 
 Each runner generates a webdriver instance and stores it in a static ThreadLocal container.
-Each runner then triggers tests in other classes in parallel. 
-All of those tests dont generate a webdriver, they all simply reference the same 
-ThreadLocal container.
+Each runner then triggers tests (stored in other classes) in parallel. 
 
-However rather than the parallel tests all impacting the same webdriver, 
-they are now only impacting their thread local webdriver. 
+All of those tests don't generate a webdriver, they all simply reference the same 
+ThreadLocal container. However rather than the parallel tests all impacting the same webdriver, 
+they are now only impacting their local thread webdriver. 
 Thus you achieve autonomous parallel processing without having to inefficiently 
 recreate webdrivers for each test class.  
  */
