@@ -1,4 +1,10 @@
-# Introduction
+# Cucumber Selenium framework
+
+## Author
+
+* **Peter Anderson (peter.x4000@gmail.com)** 
+
+## Features
 
 This Selenium cucumber framework has the following features:
 * Run BDD cucumber scenarios using the TestNG framework and Selenium automating the browser.
@@ -13,11 +19,9 @@ This Selenium cucumber framework has the following features:
 * Data-driven testing is supporting via Cucumber feature files and there is also support for using external data files (.xls).  
 * the framework comes with an example project, which utilises the Selenium page object model. This model promotes code modularisation allowing for more efficient script maintenance. 
 
-# Selenium BDD framework 
+## Example Outputs
 
-## Author
-
-* **Peter Anderson (peter.x4000@gmail.com)** 
+**Coming soon**
 
 ## Built With
 
