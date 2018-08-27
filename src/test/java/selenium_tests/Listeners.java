@@ -24,20 +24,20 @@ public class Listeners implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult iTestResult) {
 
-		webdriver_failure_logger(iTestResult);
+		test_fail_logger(iTestResult);
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
 
-		webdriver_failure_logger(iTestResult);
+		test_fail_logger(iTestResult);
 
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult iTestResult) {
 
-		webdriver_failure_logger(iTestResult);
+		test_fail_logger(iTestResult);
 
 	}
 
@@ -59,7 +59,10 @@ public class Listeners implements ITestListener {
 
 	@Override public void onTestSuccess(ITestResult iTestResult) {}
 	@Override public void onFinish(ITestContext arg0) {}
-	@Override public void onStart(ITestContext arg0) {}
+	@Override public void onStart(ITestContext arg0) {
+
+
+	}
 
 
 	//==========================
@@ -84,13 +87,13 @@ public class Listeners implements ITestListener {
 
 	}
 
-	private void webdriver_failure_logger(ITestResult iTestResult ){
+	private void test_fail_logger(ITestResult iTestResult ){
 
 		//Dont output log if cucumber didnt register scenario failure
 		if(Listeners.scenario.get() != null && !Listeners.scenario.get().isFailed()) return;
 
 		//Call webriver logger and include the cucumber scenario name and testNG stack trace
-		driver.get().esm.output_logs_and_screenshot(
+		driver.get().esm.log_test_failure_and_take_screenshot(
 				Listeners.scenario.get().getName(),
 				get_stack_trace(iTestResult));	
 

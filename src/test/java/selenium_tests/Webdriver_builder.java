@@ -47,11 +47,15 @@ public class Webdriver_builder implements WebDriver {
 	private Proxy seleniumProxy;
 	private WebDriverWait wait;
 
-	private final int max_wait_time = 10;
+	private final int max_wait_time = 60;
+	private final int performance_issue_tracking_threshold = 5;
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
 	private String home_url;
+	
+	private String error_log_base_path = System.getProperty("user.dir").replace("\\", "/")  + 
+			"/target/error-log/";
 
 	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
@@ -151,6 +155,8 @@ Key features include:
 
 		}
 
+
+		this.webdriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		this.webdriver.manage().window().setSize(new Dimension(1080, 1920));
 		this.webdriver.manage().window().maximize();
 
@@ -386,7 +392,7 @@ Key features include:
 
 			wait_for_ajax_to_finish();
 			find_http_errors();
-			find_slow_http(2000);
+			find_slow_http(performance_issue_tracking_threshold);
 
 		}
 
@@ -398,6 +404,8 @@ Key features include:
 			webdriver.findElement(target).sendKeys(textToSend);
 
 			wait_for_ajax_to_finish();
+			find_http_errors();
+			find_slow_http(performance_issue_tracking_threshold);
 
 		}
 
@@ -425,6 +433,8 @@ Key features include:
 			select.selectByIndex(index);
 
 			wait_for_ajax_to_finish();
+			find_http_errors();
+			find_slow_http(performance_issue_tracking_threshold);
 
 		}
 
@@ -436,6 +446,8 @@ Key features include:
 			select.selectByVisibleText(text);
 
 			wait_for_ajax_to_finish();
+			find_http_errors();
+			find_slow_http(performance_issue_tracking_threshold);
 
 			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 			int iWaitTime = 0;
@@ -889,53 +901,183 @@ Key features include:
 		}
 
 
-		public void find_http_errors(){
+		public void find_http_errors() throws IOException{
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")){
 
 				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
 				for (HarEntry entry : entries) {
-		
+
 					if (entry.getResponse().getStatus() >= 400 & 
-						!entry.getRequest().getUrl().contains("selenium_call")){
-	
-						System.out.println(
-								entry.getRequest().getMethod() + " : " +
-								entry.getRequest().getUrl()  + " :Error " +  
-								entry.getResponse().getStatus() + " : via:" +
-								entries.get(0).getRequest().getUrl());
+							!entry.getRequest().getUrl().contains("selenium_call")){
+
+						String message = 
+								"[Error:" + 
+								entry.getResponse().getStatus() + "] " +
+								entry.getRequest().getMethod() + " " +
+										entry.getRequest().getUrl()  + " : via:" +
+										entries.get(0).getRequest().getUrl() 
+										+ System.lineSeparator();
 						
+						System.out.print(message);
+						log_http_issues(message,1);
+
 
 					}
-					
+
 				}
 
 			}
 
 		}
 
-		public void find_slow_http(long milliseconds){
+		public void find_slow_http(long seconds) throws IOException{
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")){
 
 				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
 				for (HarEntry entry : entries) {
-		
-					if (entry.getTime()>= milliseconds){
-	
-						System.out.println(
-								entry.getTime() + "MS : " +
-								entry.getRequest().getMethod() + " : " +
-								entry.getRequest().getUrl()  + " : " +  
-								entry.getResponse().getStatus());
+
+					if (entry.getTime()>= (seconds * 1000)){
+
+						String message =
+								"[Performance warning:" + 
+								entry.getTime() + "ms] " +
+										entry.getRequest().getMethod() + " : " +
+										entry.getRequest().getUrl()  + " : " +  
+										entry.getResponse().getStatus() 
+										+ System.lineSeparator();
+
+						System.out.print(message);
+						log_http_issues(message,2);
 
 					}
-					
+
 				}
 
 			}
 
 		}	
+
+		public void log_http_issues(String issue_message, int type) throws IOException  {
+
+			FileWriter fw = null ;
+
+			//functional
+			if (type ==1){
+
+
+				String file_path_http_error_codes = error_log_base_path + "http-error-codes/" + 
+						operating_system + "-" + browser; 
+
+				File file_http_error_codes = new File(file_path_http_error_codes + 
+						"/" + "log.txt");
+
+				FileUtils.touch(file_http_error_codes);
+
+				fw = new FileWriter(file_http_error_codes, true);
+
+			}
+
+			//performance
+			if (type ==2){
+
+
+				String file_path_http_slow_resources = error_log_base_path + "http-slow-resources/" + 
+						operating_system + "-" + browser; 	
+
+				File file_http_slow_resources = new File(file_path_http_slow_resources + 
+						"/" + "log.txt");
+
+				FileUtils.touch(file_http_slow_resources);
+
+				fw = new FileWriter(file_http_slow_resources, true);
+
+			}
+
+			try {
+				fw.write(issue_message + System.lineSeparator());
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally{
+				fw.close();
+			}	
+
+		}
+
+		public void log_test_failure_and_take_screenshot(String testID,String stack_trace)  {
+
+			try{
+
+				//Convert web driver object to TakeScreenshot
+				TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+
+				//Call getScreenshotAs method to create image file
+				File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+				String currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
+
+				String filePath = error_log_base_path + "test-failures/" + 
+						operating_system + "-" + browser + "_" + currentDateTime; 
+
+				String screenshotPath = filePath + "/" + "screenshot.png";
+
+				File DestFile=new File(screenshotPath);
+
+				//Copy file at destination
+				FileUtils.copyFile(SrcFile, DestFile);
+
+				System.out.println("==============================================");
+				System.out.println("[Test ID]");
+				System.out.println(testID);
+				System.out.println("");
+				System.out.println("[Environment]");
+				System.out.println(operating_system + "_" + browser);
+				System.out.println("");
+				System.out.println("[Screenshot ands logs found here]");		
+				System.out.println(filePath);
+				System.out.println("");
+				System.out.println("[Stack trace]");		
+				System.out.println(stack_trace);	
+				System.out.println("");
+
+				if (web_proxy_enabled.equalsIgnoreCase("yes")){
+
+					//Get the HAR data
+					Har har = web_proxy.getHar();
+					File harFile = new File(filePath + "/" + "proxy.har");
+
+					//Write the HAR data
+					har.writeTo(harFile);
+
+				}
+
+				//Output failed scenario name, URL + page title to text file next to screenshot
+				File failed_scenario_details_file = new File(filePath + "/" + "failed_scenario_details.txt");
+
+				FileWriter fw = new FileWriter(failed_scenario_details_file, false);
+
+				try {
+					fw.write("[Test ID]" + System.lineSeparator()  + testID + System.lineSeparator() + System.lineSeparator() +
+							"[Failed URL]" + System.lineSeparator() + webdriver.getCurrentUrl() + System.lineSeparator() + System.lineSeparator() +
+							"[Page Title]" + System.lineSeparator() + webdriver.getTitle() + System.lineSeparator() + System.lineSeparator() +
+							"[Stack trace]" + System.lineSeparator() + stack_trace);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}finally{
+					fw.close();
+				}	
+
+
+			}catch(Throwable t){
+
+				System.out.println("[Error when logging failure]" + t.getMessage()); 
+
+			}
+
+		}		
 		
 
 		public void get_all_scripts() {
@@ -979,88 +1121,8 @@ Key features include:
 
 			}
 
-		}	
-
-		//================================================
-		// Save Screenshots and log info (includes HTTP response code)
-		//================================================
-
-		public void output_logs_and_screenshot(String testID,String stack_trace)  {
-
-			try{
-
-
-				//Convert web driver object to TakeScreenshot
-				TakesScreenshot scrShot =((TakesScreenshot)webdriver);
-
-				//Call getScreenshotAs method to create image file
-				File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-				String currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
-
-				String filePath = System.getProperty("user.dir").replace("\\", "/")  + 
-						"/target/screenshots_logs_on_failure/" + 
-						operating_system + "-" + browser + "_" + currentDateTime; 
-
-				String screenshotPath = filePath + "/" + "screenshot.png";
-
-				File DestFile=new File(screenshotPath);
-
-				//Copy file at destination
-				FileUtils.copyFile(SrcFile, DestFile);
-
-				System.out.println("==============================================");
-				System.out.println("[Test ID]");
-				System.out.println(testID);
-				System.out.println("");
-				System.out.println("[Environment]");
-				System.out.println(operating_system + "_" + browser);
-				System.out.println("");
-				System.out.println("[Screenshot ands logs found here]");		
-				System.out.println(filePath);
-				System.out.println("");
-				System.out.println("[Stack trace]");		
-				System.out.println(stack_trace);	
-				System.out.println("");
-
-				if(driver.get().get_web_proxy() != null){
-
-					//Get the HAR data
-					Har har = web_proxy.getHar();
-					File harFile = new File(filePath + "/" + 
-							operating_system + "_" + 
-							browser + ".har");
-
-					//Write the HAR data
-					har.writeTo(harFile);
-
-				}
-
-				//Output failed scenario name, URL + page title to text file next to screenshot
-				File failed_scenario_details_file = new File(filePath + "/" + "failed_scenario_details.txt");
-
-				FileWriter fw = new FileWriter(failed_scenario_details_file, false);
-
-				try {
-					fw.write("[Test ID]" + System.lineSeparator()  + testID + System.lineSeparator() + System.lineSeparator() +
-							"[Failed URL]" + System.lineSeparator() + webdriver.getCurrentUrl() + System.lineSeparator() + System.lineSeparator() +
-							"[Page Title]" + System.lineSeparator() + webdriver.getTitle() + System.lineSeparator() + System.lineSeparator() +
-							"[Stack trace]" + System.lineSeparator() + stack_trace);
-
-				} catch (IOException e) {
-					e.printStackTrace();
-				}finally{
-					fw.close();
-				}	
-
-
-			}catch(Throwable t){
-
-				System.out.println("[Error when logging failure]" + t.getMessage()); 
-
-			}
-
 		}			
+
 
 
 		private void standard_warning_output(String message){

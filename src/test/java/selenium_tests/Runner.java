@@ -70,8 +70,7 @@ public class Runner {
 			@Optional("") String browser_version
 			) throws Exception{
 
-		
-		
+
 		//System properties set in Maven POM.xml
 		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
 		String selenium_grid_enabled= System.getProperty("selenium.grid.enabled");
@@ -153,7 +152,6 @@ public class Runner {
 		//==========================
 		// Generate report and quit local thread web driver 
 		//==========================	
-
 
 
 		if (driver.get().get_driver_enabled()){
