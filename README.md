@@ -1,18 +1,17 @@
-**This section needs updating!!!**   
-**This framework has been refactored, and some of the information below will be somewhat misleading, mainly the 'Selenium design pattern' section**
-
-
 # Introduction
 
-I created this framework to use as a template for future projects.  
-Although existing projects often have an established (well integrated) framework, there is always room for improvement. This framework does many things well, such as: 
-* Testing across multiple operating systems and browsers in parallel with a single build command
-* Switch on/off Selenium grid with a flag in Maven
-* Consolidates the results into a single Cucumber report  
-[Feature Overview](https://ibb.co/d11ezo)  
-[Scenario breakdown](https://ibb.co/jWXf5T)  
-[Scenario breakdown (with failing step)](https://ibb.co/fHbq5T)  
-* BDD framework which organizes tests by the features they are testing. Each feature is tested with scenarios, which are written in human readable (easy to follow) steps that non-technical people can understand. The Selenium code is triggered by these steps under the hood.
+This Selenium cucumber framework has the following features:
+* Run BDD cucumber scenarios using the TestNG framework and Selenium automating the browser.
+* Uses Maven to supply dependencies and pass high level testing paramers such as test env location, enable/disable web proxy, enable/disable Selenium grid. 
+* Uses testNG and Java ThreadLocal to achieve parrelle processing. 
+  * For example, an eCommerce site can be tested in pareelle against Windows-Edge, Linux-Firefox and Mac-Chrome. 
+* Contains custom selenium methods to drive script creation, which are proven to result in more robust scripts without causing unnecessary wait time. When using these methods to do common operations, additional events will auto trigger such as Ajax event waiting, explicit wait conditions and javascript scrolling.
+* Provides logging on test failure. Each test failure produces a unique log containing failed scenerio name with stack trace, screenshot and HAR file dump. 
+* Routes browser interaction through web_proxy and auto captures and logs requests that resulted in HTTP error codes or performance issues. 
+* Parelle tests can be scalled quickly via testNG, without the need to create additionl classes or code. All results are consolidated into a single Cucumber report at the end of testing. 
+* Data driven testing is supporting via Cucucmber feature files and there is also support for using extenral data files (.xls).  
+* 
+
 * Testing is Data driven through BDD framework and there is also support for external data files (.xls).
 * Generates screenshot on failure including detailed HTTP logs and information about the failed scenario. 
 * Includes support for SOAP UI, which enables SOAP and REST services testing.
