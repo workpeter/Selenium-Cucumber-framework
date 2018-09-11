@@ -112,7 +112,7 @@ Manages various environment configurations (Operating system, browser and browse
 
 ### Selenium design pattern 
 
-**Runner class**
+**Runner class**  
 Parameters provided from the TestNG and Maven XML files help build a unique webdriver with specific capabilities. 
 
 The simplest most efficient way to build a webdriver is to build it once, and then make it static so that it can be referenced by tests in other classes. 
@@ -129,7 +129,7 @@ Each runner then triggers tests (stored in other classes) in parallel.
 All of those tests don't generate a webdriver, they all simply reference the same ThreadLocal container. However rather than the parallel tests all impacting the same webdriver, they are now only impacting their local thread webdriver.   
 Thus you achieve autonomous parallel processing without having to inefficiently recreate webdrivers for each test class.  
 
-**Webdriver_builder class**
+**Webdriver_builder class**  
 This class is a webdriver which is self-configuring based on the parameters sent to it when its launched. 
 
 Key features include:
@@ -151,10 +151,10 @@ HTTP tracking is achieved by routing requests through a proxy and then auto logg
 There are also some utility methods, for example, the method which logs and takes screenshots on failure. Such a method works well when called by a TestNG listener on failure.
 
 
-**Page object model (pom) classes**   
+**Page object model (pom) classes**     
 A java class is created per webpage which contains the pages key DOM objects, and methods to manipulate the page.  
 
-**Feature steps classes**  
+**Feature steps classes**    
 Are the glue which links cucumber feature scenarios to Selenium code. These are kept as abstract as possible, often utilising Selenium code found in page object model classes to drive testing. 
 
 
