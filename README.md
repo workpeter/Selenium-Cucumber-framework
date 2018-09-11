@@ -5,23 +5,29 @@
 * **Peter Anderson (peter.x4000@gmail.com)** 
 
 ## Features
+ 
+This Selenium cucumber framework has the following features:  
 
-This Selenium cucumber framework has the following features:
-* Run BDD cucumber scenarios using the TestNG framework and Selenium automating the browser.
-* Tests are written in common readable language, which connect to backend Selenium code. Test scope can be quickly defined by the use of Cucumber tags.
-* Uses Maven to supply dependencies and pass high-level testing parameters such as test env location, enable/disable web proxy, enable/disable Selenium grid. 
-* Uses TestNG and Java ThreadLocal to achieve parallel processing. 
-  * For example, an eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome. 
-* Contains custom selenium methods to drive script creation, which are proven to result in more robust scripts without causing unnecessary wait time. When using these methods to do common operations, additional events will auto trigger such as Ajax event waiting, explicit wait conditions and javascript scrolling.
-* Provides logging on test failure. Each test failure produces a unique log containing failed scenario name with stack trace, screenshot and HAR file dump. 
-* Routes browser interaction through web_proxy and auto captures and logs requests that resulted in HTTP error codes or performance issues. 
-* Parallel tests can be scaled quickly via TestNG, without the need to create additional classes or code. All results are consolidated into a single Cucumber report at the end of testing. 
-* Data-driven testing is supporting via Cucumber feature files and there is also support for using external data files (.xls).  
-* the framework comes with an example project, which utilises the Selenium page object model. This model promotes code modularisation allowing for more efficient script maintenance. 
+* **BDD Driven:** Reads standard BDD cucumber feature files written in Gerkin. Feature files are linked to Selenium code, which is wrapped within the TestNG framework. This enables web-based test automation based on easy to follow scenarios. 
 
-## Example Outputs
+* **Build Automation:** Maven is used to build and execute the scripts. A common scenario includes triggering a Maven build after a code commit, which in turn will trigger the Selenium tests and provide feedback which is asserted to decide if the build is a success or not. Maven also handles all the library dependencies required by the scripts and is used to pass high-level testing parameters such as test scope, test env URL, enable/disable web proxy, enable/disable Selenium grid.
 
-**Coming soon**
+* **Advanced logging:** A combination of custom methods, web proxy and TestNG listeners, enable a detailed log file and folder per failure. Details such as stack trace, screenshot, HTTP error code (if applicable), slow HTTP resources (if applicable), HAR file dump, Scenario name and environment configuration (i.e. which Operating system and browser) are logged. 
+  * [Example 1](https://en.wikipedia.org/wiki/Java_(programming_language))
+  * [Example 2](https://en.wikipedia.org/wiki/Java_(programming_language))
+
+* **More reliable scripts:** Each request is routed via custom functions which dynamically use explicit waits and javascript scrolling. This has two notable effects. (1) Scripts act more like end users, and (2) the failure rate is massively reduced when interacting with dynamic DOM elements. Script processing speed is very efficient. 
+
+* **Parallel processing:** Using the TestNG XML file and Java ThreadLocal, parallel processing is achieved. The current setup enables the same tests to run with different configurations (operating systems and browsers) at the same time. For example, an eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome.
+
+* **Selenium Grid:** Can be switched on/off within the Maven XML file. When switched on, this framework will automatically launch a remote webdriver based on the configuration details provided and will run configurations in accordance to the TestNG XML file. When switched off, it will instead use the local webdriver. Local webdriver can also run tests in parallel however because tests would run from the same machine, it logically to only test multiple browsers and not operating systems. To test the later, Selenium Grid-enabled is advised. 
+
+* **Data Driven:** Cucumber inherently enables scenarios to be data-driven within the feature file by using the scenario outline feature. However, this framework also contains a class for interacting with excel files, which can be used as a subsite to supply data. When used in conjunction with Cucumber its practical use is to store low-level data and for cucumber to store abstract representational data. This keeps the Cucumber scenarios more human readable.  
+
+* **Code Modulation:** The framework comes with an example project, which utilises the Selenium **page object model**. This model promotes code modularisation allowing for more efficient script maintenance. 
+
+* **Clear automated reporting** The framework uses the master thoughts cucumber reporter and compiles all parallel tests within a single report. The reports are HTML based and can be interacted with to drill down into specific areas.   
+  * [Example](https://en.wikipedia.org/wiki/Java_(programming_language))
 
 ## Built With
 
@@ -49,7 +55,7 @@ There are two key config files:
   
 Manages library dependency, plugins and used to set env URL, switch on/off Selenium grid and Browsermob web proxy capturing.
 
-* TestNG's xml file (environment_configurations_to_test.xml):  
+* TestNG's XML file (environment_configurations_to_test.xml):  
   
 Manages various environment configurations (Operating system, browser and browser version) and parallel testing using multi-threading. 
 
@@ -59,35 +65,35 @@ Manages various environment configurations (Operating system, browser and browse
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Environment config tsts" parallel="tests"
-	thread-count="3">
+    thread-count="3">
 
-	<listeners>
-		<listener class-name="selenium_tests.Listeners"></listener>
-	</listeners>
+    <listeners>
+        <listener class-name="selenium_tests.Listeners"></listener>
+    </listeners>
 
-	<test name="windows chrome">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+    <test name="windows chrome">
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
 
-	<test name="windows firefox">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+    <test name="windows firefox">
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
 
-	<test name="windows edge">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="edge" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+    <test name="windows edge">
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="edge" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
 
 
 </suite> 
@@ -106,10 +112,10 @@ Manages various environment configurations (Operating system, browser and browse
 
 ### Selenium design pattern 
 
-**Runner class**
+**Runner class**  
 Parameters provided from the TestNG and Maven XML files help build a unique webdriver with specific capabilities. 
 
-The simpliest most efficient way to build a webdriver is to build it once, and then make it static so that it can be referenced by tests in other classes. 
+The simplest most efficient way to build a webdriver is to build it once, and then make it static so that it can be referenced by tests in other classes. 
 This avoids other classes having to dynamically build their own webdriver instance, which is inefficient when this process has to be repeated across all the classes containing tests. 
 
 However, the problem with a static webdriver is you only have one, making parallel processing problematic. This is because parallel tests are all interacting with the same static webdriver. This is overcome using ThreadLocal. 
@@ -123,7 +129,7 @@ Each runner then triggers tests (stored in other classes) in parallel.
 All of those tests don't generate a webdriver, they all simply reference the same ThreadLocal container. However rather than the parallel tests all impacting the same webdriver, they are now only impacting their local thread webdriver.   
 Thus you achieve autonomous parallel processing without having to inefficiently recreate webdrivers for each test class.  
 
-**Webdriver_builder class**
+**Webdriver_builder class**  
 This class is a webdriver which is self-configuring based on the parameters sent to it when its launched. 
 
 Key features include:
@@ -138,18 +144,18 @@ Key features include:
 These methods should be called when building test scripts rather than natively calling the webdriver, because they are designed to build more robust scripts and to track HTTP issues.   
       
 Robust scripting is achieved through the auto use of Ajax waiting after events, explicit wait conditions and javascript scrolling. 
-This has proven to reduce the failure rate of test scripts without causing unnecessary test run delay.	  
+This has proven to reduce the failure rate of test scripts without causing unnecessary test run delay.      
    
 HTTP tracking is achieved by routing requests through a proxy and then auto logging requests that result in HTTP error codes or performance issues.   
   
-There are also some utility methods, for example, the method which logs and takes screenshots on failure. Such a method works well when called by a testNG listener on failure.
+There are also some utility methods, for example, the method which logs and takes screenshots on failure. Such a method works well when called by a TestNG listener on failure.
 
 
-**Page object model (pom) classes**   
+**Page object model (pom) classes**     
 A java class is created per webpage which contains the pages key DOM objects, and methods to manipulate the page.  
 
-**Feature steps classes**  
-Are the glue which link cucumber feature scenarios to Selenium code. These are kept as abstract as possible, often utilising Selenium coe found in page object model classes to drive testing. 
+**Feature steps classes**    
+Are the glue which links cucumber feature scenarios to Selenium code. These are kept as abstract as possible, often utilising Selenium code found in page object model classes to drive testing. 
 
 
 
