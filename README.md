@@ -5,27 +5,29 @@
 * **Peter Anderson (peter.x4000@gmail.com)** 
 
 ## Features
+ 
+This Selenium cucumber framework has the following features:  
 
-This Selenium cucumber framework has the following features:
-* **BDD Driven** Reads standard BDD cucumber feature files written in Gerkin. Feature files are linked to Selenium code, which is wrapped within the TestNG framework. This enables web-based test automation based on easy to follow scenarios. 
+* **BDD Driven:** Reads standard BDD cucumber feature files written in Gerkin. Feature files are linked to Selenium code, which is wrapped within the TestNG framework. This enables web-based test automation based on easy to follow scenarios. 
 
-* **Build Automation** Maven is used to build and execute the scripts. A common scenario includes triggering a Maven build after a code commit, which in turn will trigger the Selenium tests and provide feedback which is asserted to decide if the build is a success or not. Maven also handles all the library dependencies required by the scripts and is used pass high-level testing parameters such as test scope, test env URL, enable/disable web proxy, enable/disable Selenium grid.
+* **Build Automation:** Maven is used to build and execute the scripts. A common scenario includes triggering a Maven build after a code commit, which in turn will trigger the Selenium tests and provide feedback which is asserted to decide if the build is a success or not. Maven also handles all the library dependencies required by the scripts and is used to pass high-level testing parameters such as test scope, test env URL, enable/disable web proxy, enable/disable Selenium grid.
 
-* **Advanced logging** Each request is routed via a local proxy and custom logging mechanism. This enables a detailed log file per failure showing a detailed stack trace, screenshot, HTTP error code (if applicable), slow HTTP resources (if applicable), HAR file dump and details regarding the Scenario and environment configuration (i.e. which Operating system and browser). 
+* **Advanced logging:** A combination of custom methods, web proxy and TestNG listeners, enable a detailed log file and folder per failure. Details such as stack trace, screenshot, HTTP error code (if applicable), slow HTTP resources (if applicable), HAR file dump, Scenario name and environment configuration (i.e. which Operating system and browser) are logged. 
+* [Example 1](https://en.wikipedia.org/wiki/Java_(programming_language))
+* [Example 2](https://en.wikipedia.org/wiki/Java_(programming_language))
 
-* **More reliable scripts** Each request is routed via custom functions which use explicit waits and javascript scrolling. This has two notable effects. Scripts act more similar to end users, and the failure rate is massively reduced when interacting with dynamic DOM elements. Script speed is efficient and waits are dynamic. 
+* **More reliable scripts:** Each request is routed via custom functions which dynamically use explicit waits and javascript scrolling. This has two notable effects. (1) Scripts act more like end users, and (2) the failure rate is massively reduced when interacting with dynamic DOM elements. Script processing speed is very efficient. 
 
-* **Parallel processing** Using the TestNG XML file and Java ThreadLocal, parallel processing is achieved. The current setup enables the same tests to run with different configurations (operating systems and browsers) at the same time. For example, an eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome.
+* **Parallel processing:** Using the TestNG XML file and Java ThreadLocal, parallel processing is achieved. The current setup enables the same tests to run with different configurations (operating systems and browsers) at the same time. For example, an eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome.
 
-* **Selenium Grid** Can be switched on/off within the Maven XML file. When switched on, this framework will automatically launch a remote webdriver based on the configuration details provided and will run tests in accordance to the TestNG XML file. When switched off, it will switch to running local webdriver. Local webdriver can also run tests in parallel however because tests would run from the same machine, it advised to only test multiple browsers and not the operating systems. To test the later, Selenium Grid-enabled is advised. 
+* **Selenium Grid:** Can be switched on/off within the Maven XML file. When switched on, this framework will automatically launch a remote webdriver based on the configuration details provided and will run configurations in accordance to the TestNG XML file. When switched off, it will instead use the local webdriver. Local webdriver can also run tests in parallel however because tests would run from the same machine, it logically to only test multiple browsers and not operating systems. To test the later, Selenium Grid-enabled is advised. 
 
-* **Data Driven** Cucumber inherently enables scenarios to be data-driven within the feature file by using the scenario outline feature. However, this framework also contains a class for interacting with excel files, which can be used as a subsite to supply data. When used in conjunction with Cucumber its practical use is to store low-level data and for cucumber to store abstract representational data. This keeps the Cucumber scenarios more human readable.  
+* **Data Driven:** Cucumber inherently enables scenarios to be data-driven within the feature file by using the scenario outline feature. However, this framework also contains a class for interacting with excel files, which can be used as a subsite to supply data. When used in conjunction with Cucumber its practical use is to store low-level data and for cucumber to store abstract representational data. This keeps the Cucumber scenarios more human readable.  
 
-* **Code Modulrasation** The framework comes with an example project, which utilises the Selenium **page object model**. This model promotes code modularisation allowing for more efficient script maintenance. 
+* **Code Modulation:** The framework comes with an example project, which utilises the Selenium **page object model**. This model promotes code modularisation allowing for more efficient script maintenance. 
 
-## Example Outputs
-
-**Coming soon**
+* **Clear automated reporting** The framework uses the master thoughts cucumber reporter and compiles all parallel tests within a single report. The reports are HTML based and can be interacted with to drill down into specific areas.   
+* [Example](https://en.wikipedia.org/wiki/Java_(programming_language))
 
 ## Built With
 
