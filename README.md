@@ -11,7 +11,7 @@ This Selenium cucumber framework has the following features:
 * **BDD Driven:** Reads standard BDD cucumber feature files written in Gerkin. Feature files are linked to Selenium code, which is wrapped within the TestNG framework. This enables web-based test automation based on easy to follow scenarios. 
 
 * **Clear automated reporting** The framework uses the master thoughts cucumber reporter and compiles all parallel tests within a single report. The reports are HTML based and can be interacted with to drill down into specific areas.   
-  * [Example](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html))
+  * [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
 
 * **Build Automation:** Maven is used to build and execute the scripts. A common scenario includes triggering a Maven build after a code commit, which in turn will trigger the Selenium tests and provide feedback which is asserted to decide if the build is a success or not. Maven also handles all the library dependencies required by the scripts and is used to pass high-level testing parameters such as test scope, test env URL, enable/disable web proxy, enable/disable Selenium grid.
 
