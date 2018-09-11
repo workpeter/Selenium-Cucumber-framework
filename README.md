@@ -7,9 +7,23 @@
 ## Features
 
 This Selenium cucumber framework has the following features:
-* Run BDD cucumber scenarios using the TestNG framework and Selenium automating the browser.
-* Tests are written in common readable language, which connect to backend Selenium code. Test scope can be quickly defined by the use of Cucumber tags.
-* Uses Maven to supply dependencies and pass high-level testing parameters such as test env location, enable/disable web proxy, enable/disable Selenium grid. 
+* **BDD Driven** Reads standard BDD cucumber feature files written in Gerkin. Feature files are linked to Selenium code, which is wrapped within the TestNG framework. This enables web based test automation based on easy to follow scenarios. 
+
+* **Build Automation** Maven is used to build and execute the scripts. A common scenario includes triggering a Maven build after a code commit, which in turn will trigger the Selenium tests and provide feedback which is asserted to decide if the build is a success or not. Maven also handles all the library dependencies required by the scripts and is used pass high-level testing parameters such as test scope, test env URL, enable/disable web proxy, enable/disable Selenium grid.
+
+* **Advanced logging** Each request is routed via a local proxy and custom logging mechanism. This enables a detailed log file per failure showing detailed stack trace, screenshot, HTTP error code (if applicable), slow HTTP resources (if applicable), HAR file dump and details regarding the Scenerio and environment configuration (i.e. which Operating system and browser). 
+
+* **More reliable scripts** Each request is routed via custom functions which use explicit waits and javascript scrolling. This has two notiable effects. Scripts act more similiar to end users, and the failure rate is massively reduced when interacting with dynamicing DOM elements. Script speed is efficient and wait times are dynamic. 
+
+* **Parellel procesing** Using the TestNG XML file and Java ThreadLocal, parellel processing is achieved. The current setup enables the same tests to run with different configurations (operating systems and browsers) at the same time. For example:
+	* An eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome.
+
+* **Selenium Grid** Can be switched on/off within the Maven XML file. When switched on, this framework will automatically launch a remote webdriver based on the configuration details provided, and will run tests in accordance to the TestNG XML file. When switched off, it will switch to running local webdriver. Local webdriver can also run tests in parellel however because tests would run from the same machine, it advised to only test muyltuple browsers and not the operating systems. To test the later, Selenium Grid enabled is advised. 
+
+* **Data Driven** Cucumber inherently enables scenarios to be data driven within the feature file by using the scenario outline feature. However this frameowrk also contains a class for interacitng with excel files, which can be used as a subsite to supply data. When used in conjunction with Cucumber its practical use is to store low level data and for cucumber to store abstract representatational data. This keeps the Cucucmber scenearios more human readble.  
+
+* **Data Driven** Cucumber 
+
 * Uses TestNG and Java ThreadLocal to achieve parallel processing. 
   * For example, an eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome. 
 * Contains custom selenium methods to drive script creation, which are proven to result in more robust scripts without causing unnecessary wait time. When using these methods to do common operations, additional events will auto trigger such as Ajax event waiting, explicit wait conditions and javascript scrolling.
