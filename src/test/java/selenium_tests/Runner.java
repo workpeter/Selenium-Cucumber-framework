@@ -148,7 +148,7 @@ public class Runner {
 		}
 
 		//==========================
-		// Generate report and quit local thread web driver 
+		// Generate cucumber report and quit local thread web driver 
 		//==========================	
 
 

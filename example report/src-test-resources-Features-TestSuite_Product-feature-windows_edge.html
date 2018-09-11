@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cucumber-JVM Html Reports - Feature: Products </title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blue/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/skin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/960.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/text.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="blue/favicon.ico" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+
+<style>
+
+h2 {
+	font-size: 24px !important;
+}
+
+.feature-keyword {
+	font-weight: bold;
+}
+
+.feature-description {
+	padding-left: 15px;
+	font-style: italic;
+	background-color: beige;
+}
+
+.feature-role {
+	font-weight: bold;
+}
+
+.feature-action {
+	font-weight: bold;
+}
+
+.feature-value {
+	font-weight: bold;
+}
+
+.feature-tags {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: darkblue;
+}
+
+.element-keyword {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.element-element_name {
+	padding-left: 15px;
+}
+
+.step-keyword {
+	font-weight: bold;
+	padding-left: 50px;
+}
+
+.error_message {
+	background-color: #FFEEEE;
+	padding-left: 50px;
+	border: 1px solid #D88A8A;
+	margin-bottom: 5px;
+	overflow: auto;
+}
+
+.error_collapse {
+	display:none;
+	padding-left: 10px;
+}
+
+.error_collapse + label {
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	cursor: pointer;
+	padding-top: 2px;
+}
+
+.error_collapse + label + * {
+	display: none;
+    padding-left: 25px;
+}
+
+.error_collapse:checked + label + * {
+	display: block;
+}
+
+.error_collapse + label:before {
+	background-color: #4F5150;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+	content: "+";
+	display: block;
+	float: left;
+	line-height: 20px;
+	width: 20px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.error_collapse:checked + label:before {
+	content: "\2212";
+}
+
+.step-duration {
+	float: right;
+	padding-right: 15px;
+}
+
+.passed {
+	background-color: #C5D88A;
+}
+
+.failed {
+	background-color: #D88A8A;
+}
+
+.skipped {
+	background-color: #88AAFF;
+}
+
+.pending {
+	background-color: #FBB907;
+}
+
+.undefined {
+	background-color: #FBB987;
+}
+
+.missing {
+	background-color: #FBB9D7;
+}
+
+table.stats-table {
+	color: black;
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.stats-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: #66CCEE;
+	-moz-border-radius:;
+}
+
+table.stats-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius:;
+}
+
+table.data-table {
+	color: black;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: #d6d6d6;
+	border-collapse: collapse;
+	background-color: beige;
+}
+
+table.data-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: #66CCEE;
+}
+
+table.data-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: beige;
+}
+
+.data {
+	padding-left: 50px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.output-data {
+	padding-left: 50px;
+	background-color: beige;
+	text-indent: 50px;
+}
+
+.doc-string {
+	width: auto;
+	display: inline-block;
+	margin: 10px auto 10px 70px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 10px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 95%;
+}
+
+.graph {
+	margin-bottom: 50px;
+	margin-top: 30px;
+	clear: both;
+	font-family: georgia, serif;
+	font-size: 14px;
+}
+
+.graph-header h3 {
+	margin-bottom: 0px;
+}
+
+.graph-header {
+	text-align: center;
+}
+
+.graph-header p {
+	margin-top: 0px;
+}
+
+.graph .legend td, .graph .legend, .graph .legend tr {
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+.graph .legend {
+	margin-left: 10px;
+}
+
+.graph .legend td {
+	padding-right: 5px;
+}
+
+.graph .legend .color-box {
+	width: 14px;
+	height: 10px;
+	overflow: hidden;
+}
+
+.graph .label {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+table#tablesorter thead tr th {
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body id="top">
+
+     <div id="fullwidth_header">
+     <div class="container_12">
+         <h1 class="grid_4 logo"><a href="feature-overview.html" class='ie6fix'>Cucumber</a></h1>
+
+         <div id="nav">
+             <ul>
+                                  <li><a href="tag-overview.html">Tags</a></li>
+                 <li><a href="feature-overview.html">Feature</a></li>
+                 <li><a href="step-overview.html">Steps</a></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+        <div id="fullwidth_gradient">
+    <div class="container_12">
+        <div class="grid_9 heading">
+            <h2 id="feature-title">Result for <span style="color:#66CCEE;"><i>Products</i></span> in build: 1</h2>
+        </div>
+    </div>
+</div>
+
+    <div class="container_12">
+        <div class="grid_12">
+
+            <div>
+                <table class="stats-table">
+                                        <thead>
+    <tr>
+                    <th></th>
+                <th></th>
+        <th id="stats-header-scenarios" colspan="3">Scenarios</th>
+        <th id="stats-header-steps" colspan="7">Steps</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+            <th id="stats-header-key">Feature</th>
+                            <th id="stats-header-device">Device</th>
+                        <th id="stats-header-scenarios-total">Total</th>
+            <th id="stats-header-scenarios-passed">Passed</th>
+            <th id="stats-header-scenarios-failed">Failed</th>
+            <th id="stats-header-steps-total">Total</th>
+            <th id="stats-header-steps-passed"    style="background-color:#00CE00;">Passed</th>
+            <th id="stats-header-steps-failed"    style="background-color:#FF0000;">Failed</th>
+            <th id="stats-header-steps-skipped"   style="background-color:#88AAFF;">Skipped</th>
+            <th id="stats-header-steps-pending"   style="background-color:#FBB907;">Pending</th>
+            <th id="stats-header-steps-undefined" style="background-color:#FBB957;">Undefined</th>
+            <th id="stats-header-steps-missing"   style="background-color:#FBB9A7;">Missing</th>
+            <th id="stats-header-duration">Duration</th>
+            <th id="stats-header-status">Status</th>
+    </tr>
+</thead>
+                    
+                    
+                    <tr>
+                        <td><a id="stats-Products" href="src-test-resources-Features-TestSuite_Product-feature-windows_edge.html">Products</a></td>
+                                                  <td id="device">windows_edge</td>
+                                                <td id="stats-number-scenarios-Products">21</td>
+                        <td id="stats-number-scenarios-passed-Products">16</td>
+                        <td id="stats-number-scenarios-failed-Products">5</td>
+                        <td id="stats-number-steps-Products">125</td>
+                        <td id="stats-number-steps-passed-Products">117</td>
+                        <td id="stats-number-steps-failed-Products"      style="background-color:#FF0000;" >5</td>
+                        <td id="stats-number-steps-skipped-Products"      style="background-color:#88AAFF;" >3</td>
+                        <td id="stats-number-steps-pending-Products"   >0</td>
+                        <td id="stats-number-steps-undefined-Products" >0</td>
+                        <td id="stats-number-steps-missing-Products"   >0</td>
+                        <td id="stats-duration-Products" style="text-align:right;white-space:nowrap">8m 31s 002ms</td>
+                        <td id="stats-status-Products" style="background-color: #FF0000;">failed</td></tr>
+
+                </table>
+
+            </div>
+
+        <div style="color:black;">
+
+            <div class="feature-tags"></div>
+            <div class="failed"><div class="feature-line"><span class="feature-keyword">Feature: </span>Products</div></div>
+            <i>		 Customer has ability to search for product, sort results and look at specific product data and delivery information.</i>
+
+                            <div class="feature-tags"><a href="Smoke.html">@Smoke</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">Quick scenerio for testing saucelabs selenium grid</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 303ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 026ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: XBOX using search feature</span><span class="step-duration">10s 106ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">814ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">06s 432ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">301ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">045ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 898ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: COOKERS using search feature</span><span class="step-duration">07s 712ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">01s 350ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">06s 215ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">495ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">012ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 651ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: PUSHCHAIR using search feature</span><span class="step-duration">07s 324ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">01s 177ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">05s 623ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">150ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">019ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 762ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: SPIDERMAN using search feature</span><span class="step-duration">06s 709ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">730ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">05s 799ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">195ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">033ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 904ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: FOOTBALL using search feature</span><span class="step-duration">07s 805ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">887ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">05s 674ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">165ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">049ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 991ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: WEIGHTS using search feature</span><span class="step-duration">09s 401ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">651ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">06s 690ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">167ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">042ms</span><pre class="error_message"><input class="error_collapse" id="error_233823208" type="checkbox"><label for="error_233823208">java.lang.AssertionError: expected [true] but found [false]</label><div>	at org.testng.Assert.fail(Assert.java:93)<br/>	at org.testng.Assert.failNotEquals(Assert.java:512)<br/>	at org.testng.Assert.assertTrue(Assert.java:41)<br/>	at org.testng.Assert.assertTrue(Assert.java:51)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_can_see_related_products(Steps_product_feature.java:136)<br/>	at ✽.customer can see related products(src/test/resources/Features/TestSuite_Product.feature:16)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 989ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: JEANS using search feature</span><span class="step-duration">07s 271ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">752ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">05s 817ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">303ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">016ms</span><pre class="error_message"><input class="error_collapse" id="error_982968689" type="checkbox"><label for="error_982968689">java.lang.AssertionError: expected [true] but found [false]</label><div>	at org.testng.Assert.fail(Assert.java:93)<br/>	at org.testng.Assert.failNotEquals(Assert.java:512)<br/>	at org.testng.Assert.assertTrue(Assert.java:41)<br/>	at org.testng.Assert.assertTrue(Assert.java:51)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_can_see_related_products(Steps_product_feature.java:136)<br/>	at ✽.customer can see related products(src/test/resources/Features/TestSuite_Product.feature:16)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product by name</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 538ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: RING using search feature</span><span class="step-duration">07s 010ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of popularity</span><span class="step-duration">813ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer clicks on first product</span><span class="step-duration">04s 053ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">Then  </span><span class="step-name">customer can see important product data</span><span class="step-duration">178ms</span><pre class="error_message"><input class="error_collapse" id="error_1160319510" type="checkbox"><label for="error_1160319510">java.lang.AssertionError: expected [true] but found [false]</label><div>	at org.testng.Assert.fail(Assert.java:93)<br/>	at org.testng.Assert.failNotEquals(Assert.java:512)<br/>	at org.testng.Assert.assertTrue(Assert.java:41)<br/>	at org.testng.Assert.assertTrue(Assert.java:51)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_can_see_important_product_data(Steps_product_feature.java:129)<br/>	at ✽.customer can see important product data(src/test/resources/Features/TestSuite_Product.feature:15)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer can see related products</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 297ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: XBOX using search feature</span><span class="step-duration">07s 018ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">03s 402ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">378ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">02s 981ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">312ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">02s 942ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">297ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 094ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: COOKERS using search feature</span><span class="step-duration">06s 519ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">03s 056ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">307ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">02s 892ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">424ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">02s 415ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">277ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 027ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: PUSHCHAIR using search feature</span><span class="step-duration">07s 426ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">03s 121ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">274ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">03s 299ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">307ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">03s 287ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">312ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 817ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: SPIDERMAN using search feature</span><span class="step-duration">07s 187ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">02s 692ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">290ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">02s 867ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">333ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">03s 039ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">320ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 340ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: FOOTBALL using search feature</span><span class="step-duration">06s 137ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">02s 901ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">314ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">02s 886ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">410ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">02s 922ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">322ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 291ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: WEIGHTS using search feature</span><span class="step-duration">05s 753ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">03s 333ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">339ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">03s 143ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">307ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">02s 836ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">324ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 533ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: JEANS using search feature</span><span class="step-duration">05s 298ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">02s 586ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">290ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">02s 941ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">313ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">02s 463ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">387ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer searches for product and changes list order</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 578ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: RING using search feature</span><span class="step-duration">05s 128ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer sorts by price low-to-high</span><span class="step-duration">02s 889ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price low-to-high</span><span class="step-duration">287ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by price high-to-low</span><span class="step-duration">02s 122ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of price high-to-low</span><span class="step-duration">316ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer sorts by customer rating</span><span class="step-duration">02s 506ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of customer rating</span><span class="step-duration">278ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer changes store location</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : COOKERS</span><span class="step-duration">15s 643ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes store location to : BL0 9JH</span><span class="step-duration">03s 631ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see stock availability</span><span class="step-duration">173ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer changes store location</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : XBOX</span><span class="step-duration">16s 577ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">When  </span><span class="step-name">customer changes store location to : SE6 1SB</span><span class="step-duration">1m 02s 684ms</span><pre class="error_message"><input class="error_collapse" id="error_2131369961" type="checkbox"><label for="error_2131369961">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //button[@class="button button--secondary button--quarter"] (tried for 60 second(s) with 500 milliseconds interval)</label><div>	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.change_store_location(POM_productPage.java:71)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_changes_store_location_to(Steps_product_feature.java:75)<br/>	at ✽.customer changes store location to : SE6 1SB(src/test/resources/Features/TestSuite_Product.feature:53)<br/>Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //button[@class="button button--secondary button--quarter"]<br/>For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: driver.version: unknown<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)<br/>	at java.util.Optional.orElseThrow(Optional.java:290)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.change_store_location(POM_productPage.java:71)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_changes_store_location_to(Steps_product_feature.java:75)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at cucumber.runtime.Utils$1.call(Utils.java:26)<br/>	at cucumber.runtime.Timeout.timeout(Timeout.java:16)<br/>	at cucumber.runtime.Utils.invoke(Utils.java:20)<br/>	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)<br/>	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)<br/>	at cucumber.runner.TestStep.executeStep(TestStep.java:55)<br/>	at cucumber.runner.TestStep.run(TestStep.java:42)<br/>	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)<br/>	at cucumber.runner.TestCase.run(TestCase.java:47)<br/>	at cucumber.runner.Runner.runPickle(Runner.java:44)<br/>	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)<br/>	at selenium_tests.Runner.run_scenario(Runner.java:133)<br/>	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)<br/>	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)<br/>	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)<br/>	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)<br/>	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)<br/>	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)<br/>	at org.testng.TestRunner.privateRun(TestRunner.java:744)<br/>	at org.testng.TestRunner.run(TestRunner.java:602)<br/>	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)<br/>	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br/>	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)<br/>	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)<br/>	at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br/>	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)<br/>	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)<br/>	at java.lang.Thread.run(Thread.java:748)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">customer can see stock availability</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer changes store location</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : PUSHCHAIR</span><span class="step-duration">15s 296ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes store location to : SS1 2TW</span><span class="step-duration">02s 562ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">customer can see stock availability</span><span class="step-duration">058ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                            <div class="feature-tags"><a href="Product.html">@Product</a>,<a href="Retest.html">@Retest</a></div>
+                
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer changes store location</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : SPIDERMAN</span><span class="step-duration">16s 482ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">When  </span><span class="step-name">customer changes store location to : FK7 7TZ</span><span class="step-duration">1m 03s 106ms</span><pre class="error_message"><input class="error_collapse" id="error_206154619" type="checkbox"><label for="error_206154619">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //button[@class="button button--secondary button--quarter"] (tried for 60 second(s) with 500 milliseconds interval)</label><div>	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.change_store_location(POM_productPage.java:71)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_changes_store_location_to(Steps_product_feature.java:75)<br/>	at ✽.customer changes store location to : FK7 7TZ(src/test/resources/Features/TestSuite_Product.feature:53)<br/>Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //button[@class="button button--secondary button--quarter"]<br/>For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: driver.version: unknown<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)<br/>	at java.util.Optional.orElseThrow(Optional.java:290)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.change_store_location(POM_productPage.java:71)<br/>	at selenium_tests.feature_steps.Steps_product_feature.customer_changes_store_location_to(Steps_product_feature.java:75)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at cucumber.runtime.Utils$1.call(Utils.java:26)<br/>	at cucumber.runtime.Timeout.timeout(Timeout.java:16)<br/>	at cucumber.runtime.Utils.invoke(Utils.java:20)<br/>	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)<br/>	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)<br/>	at cucumber.runner.TestStep.executeStep(TestStep.java:55)<br/>	at cucumber.runner.TestStep.run(TestStep.java:42)<br/>	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)<br/>	at cucumber.runner.TestCase.run(TestCase.java:47)<br/>	at cucumber.runner.Runner.runPickle(Runner.java:44)<br/>	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)<br/>	at selenium_tests.Runner.run_scenario(Runner.java:133)<br/>	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)<br/>	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)<br/>	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)<br/>	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)<br/>	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)<br/>	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)<br/>	at org.testng.TestRunner.privateRun(TestRunner.java:744)<br/>	at org.testng.TestRunner.run(TestRunner.java:602)<br/>	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)<br/>	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br/>	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)<br/>	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)<br/>	at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br/>	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)<br/>	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)<br/>	at java.lang.Thread.run(Thread.java:748)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">customer can see stock availability</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+</div>
+
+
+<div class="container_12">
+    <div class="grid_12 hr"></div>
+    <div class="grid_12">
+        <p style="text-align:center">
+            <a href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+            <a href="https://github.com/damianszczepanik/cucumber-reporting">Cucumber reports</a>
+            <br>build: 11-09-2018 15:46:05</p>
+    </div>
+</div>
+
+</body>
+</html>

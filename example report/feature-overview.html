@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cucumber-JVM Html Reports - Feature Overview</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blue/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/skin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/960.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/text.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="blue/favicon.ico" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" >
+    $(document).ready(function() {
+        $("#tablesorter").tablesorter();
+    });
+</script>
+    <script language="javascript">AC_FL_RunContent = 0;</script>
+    <script language="javascript"> DetectFlashVer = 0; </script>
+    <script src="charts/AC_RunActiveContent.js" language="javascript"></script>
+    <script language="JavaScript" type="text/javascript">
+    <!--
+    var requiredMajorVersion = 10;
+    var requiredMinorVersion = 0;
+    var requiredRevision = 45;
+    -->
+    </script>
+
+<style>
+
+h2 {
+	font-size: 24px !important;
+}
+
+.feature-keyword {
+	font-weight: bold;
+}
+
+.feature-description {
+	padding-left: 15px;
+	font-style: italic;
+	background-color: beige;
+}
+
+.feature-role {
+	font-weight: bold;
+}
+
+.feature-action {
+	font-weight: bold;
+}
+
+.feature-value {
+	font-weight: bold;
+}
+
+.feature-tags {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: darkblue;
+}
+
+.element-keyword {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.element-element_name {
+	padding-left: 15px;
+}
+
+.step-keyword {
+	font-weight: bold;
+	padding-left: 50px;
+}
+
+.error_message {
+	background-color: #FFEEEE;
+	padding-left: 50px;
+	border: 1px solid #D88A8A;
+	margin-bottom: 5px;
+	overflow: auto;
+}
+
+.error_collapse {
+	display:none;
+	padding-left: 10px;
+}
+
+.error_collapse + label {
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	cursor: pointer;
+	padding-top: 2px;
+}
+
+.error_collapse + label + * {
+	display: none;
+    padding-left: 25px;
+}
+
+.error_collapse:checked + label + * {
+	display: block;
+}
+
+.error_collapse + label:before {
+	background-color: #4F5150;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+	content: "+";
+	display: block;
+	float: left;
+	line-height: 20px;
+	width: 20px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.error_collapse:checked + label:before {
+	content: "\2212";
+}
+
+.step-duration {
+	float: right;
+	padding-right: 15px;
+}
+
+.passed {
+	background-color: #C5D88A;
+}
+
+.failed {
+	background-color: #D88A8A;
+}
+
+.skipped {
+	background-color: #88AAFF;
+}
+
+.pending {
+	background-color: #FBB907;
+}
+
+.undefined {
+	background-color: #FBB987;
+}
+
+.missing {
+	background-color: #FBB9D7;
+}
+
+table.stats-table {
+	color: black;
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.stats-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: #66CCEE;
+	-moz-border-radius:;
+}
+
+table.stats-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius:;
+}
+
+table.data-table {
+	color: black;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: #d6d6d6;
+	border-collapse: collapse;
+	background-color: beige;
+}
+
+table.data-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: #66CCEE;
+}
+
+table.data-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: beige;
+}
+
+.data {
+	padding-left: 50px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.output-data {
+	padding-left: 50px;
+	background-color: beige;
+	text-indent: 50px;
+}
+
+.doc-string {
+	width: auto;
+	display: inline-block;
+	margin: 10px auto 10px 70px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 10px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 95%;
+}
+
+.graph {
+	margin-bottom: 50px;
+	margin-top: 30px;
+	clear: both;
+	font-family: georgia, serif;
+	font-size: 14px;
+}
+
+.graph-header h3 {
+	margin-bottom: 0px;
+}
+
+.graph-header {
+	text-align: center;
+}
+
+.graph-header p {
+	margin-top: 0px;
+}
+
+.graph .legend td, .graph .legend, .graph .legend tr {
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+.graph .legend {
+	margin-left: 10px;
+}
+
+.graph .legend td {
+	padding-right: 5px;
+}
+
+.graph .legend .color-box {
+	width: 14px;
+	height: 10px;
+	overflow: hidden;
+}
+
+.graph .label {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+table#tablesorter thead tr th {
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body id="top">
+
+     <div id="fullwidth_header">
+     <div class="container_12">
+         <h1 class="grid_4 logo"><a href="feature-overview.html" class='ie6fix'>Cucumber</a></h1>
+
+         <div id="nav">
+             <ul>
+                                  <li><a href="tag-overview.html">Tags</a></li>
+                 <li><a href="feature-overview.html">Feature</a></li>
+                 <li><a href="step-overview.html">Steps</a></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+        <div id="fullwidth_gradient">
+    <div class="heading container_12">
+        <h2><span id="overview-title">Feature Overview for build: 1</span>
+                </h2>
+        <span class="subhead">The following graph shows passing and failing statistics for features in this build.</span>
+    </div>
+</div>
+
+    <div class="container_12">
+        <div class="grid_12">
+
+
+     <div id="flash-charts" style="text-align:center;">
+
+         <table>
+             <tr>
+                 <td>
+         <script language="JavaScript" type="text/javascript">
+<!--
+if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
+    alert("This page requires AC_RunActiveContent.js.");
+} else {
+    var hasRightVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+    if(hasRightVersion) {
+        AC_FL_RunContent(
+            'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,45,2',
+            'width', '480',
+            'height', '300',
+            'scale', 'noscale',
+            'salign', 'TL',
+            'bgcolor', '#bbccff',
+            'wmode', 'opaque',
+            'movie', 'charts/charts',
+            'src', 'charts/charts',
+            'FlashVars', "library_path=charts/charts_library&xml_data=<chart><chart_data><row><null/><string>Passed</string><string>Failed</string><string>Skipped</string><string>Pending</string><string>Undefined</string><string>Missing</string></row><row><string></string><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>1205</number><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>9</number><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>13</number><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>3</number><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>0</number><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>0</number></row></chart_data><chart_label shadow='low' color='ffffff' alpha='95' size='20' position='inside' as_percentage='true'/><chart_pref select='true'/><chart_rect x='90' y='85' width='300' height='200'/><chart_transition type='scale' delay='1' duration='.5' order='category'/><chart_type>donut</chart_type><draw><text layer='foreground' color='2B3856' alpha='60' x='5' y='260' width='250' height='100' size='30'>Steps</text><rect transition='dissolve' layer='background' x='60' y='100' width='360' height='150' fill_alpha='0' line_color='ffffff' line_alpha='25' line_thickness='40' corner_tl='40' corner_tr='40' corner_br='40' corner_bl='40'/><circle transition='dissolve' layer='background' x='240' y='150' radius='150' fill_color='ccddff' fill_alpha='100' line_thickness='0' bevel='bg' blur='blur1'/><rect transition='dissolve' layer='background' shadow='soft' x='65' y='15' width='350' height='35' fill_color='ddeeff' fill_alpha='90' corner_tl='10' corner_tr='10' corner_br='10' corner_bl='10'/></draw><filter><shadow id='low' distance='2' angle='45' color='0' alpha='40' blurX='5' blurY='5'/><shadow id='high' distance='5' angle='45' color='0' alpha='40' blurX='10' blurY='10'/><shadow id='soft' distance='2' angle='45' color='0' alpha='20' blurX='5' blurY='5'/><bevel id='data' angle='45' blurX='5' blurY='5' distance='3' highlightAlpha='15' shadowAlpha='25' type='inner'/><bevel id='bg' angle='45' blurX='50' blurY='50' distance='10' highlightAlpha='35' shadowColor='0000ff' shadowAlpha='25' type='full'/><blur id='blur1' blurX='75' blurY='75' quality='1'/></filter><context_menu full_screen='false'/><legend transition='dissolve' x='90' width='330' bevel='low' fill_alpha='0' line_alpha='0' bullet='circle' size='12' color='000000' alpha='100'/><series_color><color>00CE00</color><color>FF0000</color><color>88AAFF</color><color>FBB907</color><color>FBB957</color><color>FBB9A7</color></series_color><series_explode><number>5</number><number>30</number><number>5</number><number>30</number><number>5</number><number>30</number></series_explode><series transfer='true'/></chart>",
+            'id', 'my_chart',
+            'name', 'my_chart',
+            'menu', 'true',
+            'allowFullScreen', 'true',
+            'allowScriptAccess','sameDomain',
+            'quality', 'high',
+            'align', 'middle',
+            'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+            'play', 'true',
+            'devicefont', 'false'
+            );
+    } else {
+        var alternateContent = 'This content requires the Adobe Flash Player. '
+        + '<u><a href=http://www.macromedia.com/go/getflash/>Get Flash</a></u>.';
+        document.write(alternateContent);
+    }
+}
+// -->
+</script>
+<noscript>
+    <P>This content requires JavaScript.</P>
+</noscript>
+ </td>
+ <td width="10">&nbsp;</td>
+                 <td>
+     <script language="JavaScript" type="text/javascript">
+   <!--
+   if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
+       alert("This page requires AC_RunActiveContent.js.");
+   } else {
+       var hasRightVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+       if(hasRightVersion) {
+           AC_FL_RunContent(
+               'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,45,2',
+               'width', '480',
+               'height', '300',
+               'scale', 'noscale',
+               'salign', 'TL',
+               'bgcolor', '#bbccff',
+               'wmode', 'opaque',
+               'movie', 'charts/charts',
+               'src', 'charts/charts',
+               'FlashVars', "library_path=charts/charts_library&xml_data=<chart><chart_data><row><null/><string>Passed</string><string>Failed</string></row><row><string></string><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>249</number><number shadow='high' bevel='data' line_color='FFFFFF' line_thickness='3' line_alpha='75'>9</number></row></chart_data><chart_grid_h alpha='10' color='ffffff' thickness='2' type='dotted'/><chart_label shadow='low' color='ffffff' alpha='95' size='30' position='inside' as_percentage='true'/><chart_rect x='100' y='50' width='300' height='210' positive_color='000000' positive_alpha='0' negative_color='ff0000' negative_alpha='0'/><chart_transition type='drop' delay='0' duration='3' order='all'/><chart_type>pie</chart_type><draw><rect shadow='bg' layer='background' x='0' y='0' width='480' height='300' fill_color='4c5577' fill_alpha='100' line_alpha='0' line_thickness='0'/><text shadow='high' transition='zoom' delay='1.5' duration='1' color='ffffff' alpha='90' size='30' x='5' y='260' width='250' height='100'>Scenarios</text></draw><filter><shadow id='high' distance='5' angle='45' color='0' alpha='50' blurX='10' blurY='10'/><shadow id='bg' inner='true' quality='2' distance='25' angle='-45' color='000000' alpha='35' blurX='100' blurY='100'/><bevel id='data' angle='45' blurX='30' blurY='30' distance='5' highlightAlpha='25' highlightColor='ffffff' shadowAlpha='40' type='inner'/></filter><context_menu full_screen='false'/><legend transition='dissolve' x='120' y='-80' width='230' bevel='low' fill_alpha='0' line_alpha='0' bullet='circle' size='12' color='ffffff' alpha='100' layout='horizontal'/><series_color><color>00CE00</color><color>FF0000</color><color>88AAFF</color><color>FBB907</color><color>FBB957</color><color>FBB9A7</color></series_color><series_explode><number>0</number><number>20</number></series_explode></chart>",
+               'id', 'my_chart',
+               'name', 'my_chart',
+               'menu', 'true',
+               'allowFullScreen', 'true',
+               'allowScriptAccess','sameDomain',
+               'quality', 'high',
+               'align', 'middle',
+               'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+               'play', 'true',
+               'devicefont', 'false'
+               );
+       } else {
+           var alternateContent = 'This content requires the Adobe Flash Player. '
+           + '<u><a href=http://www.macromedia.com/go/getflash/>Get Flash</a></u>.';
+           document.write(alternateContent);
+       }
+   }
+   // -->
+   </script>
+   <noscript>
+       <P>This content requires JavaScript.</P>
+   </noscript>
+
+ </td>
+ </tr>
+ </table>
+</div>
+
+    <div>
+  <h2 id="feature-statistics-title">Feature Statistics</h2>
+  <table id="tablesorter" class="stats-table">
+            <thead>
+    <tr>
+                    <th></th>
+                <th></th>
+        <th id="stats-header-scenarios" colspan="3">Scenarios</th>
+        <th id="stats-header-steps" colspan="7">Steps</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+            <th id="stats-header-key">Feature</th>
+                            <th id="stats-header-device">Device</th>
+                        <th id="stats-header-scenarios-total">Total</th>
+            <th id="stats-header-scenarios-passed">Passed</th>
+            <th id="stats-header-scenarios-failed">Failed</th>
+            <th id="stats-header-steps-total">Total</th>
+            <th id="stats-header-steps-passed"    style="background-color:#00CE00;">Passed</th>
+            <th id="stats-header-steps-failed"    style="background-color:#FF0000;">Failed</th>
+            <th id="stats-header-steps-skipped"   style="background-color:#88AAFF;">Skipped</th>
+            <th id="stats-header-steps-pending"   style="background-color:#FBB907;">Pending</th>
+            <th id="stats-header-steps-undefined" style="background-color:#FBB957;">Undefined</th>
+            <th id="stats-header-steps-missing"   style="background-color:#FBB9A7;">Missing</th>
+            <th id="stats-header-duration">Duration</th>
+            <th id="stats-header-status">Status</th>
+    </tr>
+</thead>
+
+      <tbody>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Products" href="src-test-resources-Features-TestSuite_Product-feature-windows_chrome.html">Products</a></td>
+                        <td id="device">windows_chrome</td>
+                    <td id="stats-number-scenarios-Products">21</td>
+          <td id="stats-number-scenarios-passed-Products">18</td>
+          <td id="stats-number-scenarios-failed-Products">3</td>
+          <td id="stats-number-steps-Products">125</td>
+          <td id="stats-number-steps-passed-Products">119</td>
+          <td id="stats-number-steps-failed-Products"      style="background-color:#FF0000;" >3</td>
+          <td id="stats-number-steps-skipped-Products"      style="background-color:#88AAFF;" >3</td>
+          <td id="stats-number-steps-pending-Products"   >0</td>
+          <td id="stats-number-steps-undefined-Products" >0</td>
+          <td id="stats-number-steps-missing-Products"   >0</td>
+          <td id="stats-duration-Products" style="text-align:right;white-space:nowrap">7m 21s 314ms</td>
+          <td id="stats-status-Products" style="background-color: #FF0000;">failed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Basket" href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">Basket</a></td>
+                        <td id="device">windows_chrome</td>
+                    <td id="stats-number-scenarios-Basket">18</td>
+          <td id="stats-number-scenarios-passed-Basket">18</td>
+          <td id="stats-number-scenarios-failed-Basket">0</td>
+          <td id="stats-number-steps-Basket">95</td>
+          <td id="stats-number-steps-passed-Basket">92</td>
+          <td id="stats-number-steps-failed-Basket"    >0</td>
+          <td id="stats-number-steps-skipped-Basket"      style="background-color:#88AAFF;" >2</td>
+          <td id="stats-number-steps-pending-Basket"      style="background-color:#FBB907;" >1</td>
+          <td id="stats-number-steps-undefined-Basket" >0</td>
+          <td id="stats-number-steps-missing-Basket"   >0</td>
+          <td id="stats-duration-Basket" style="text-align:right;white-space:nowrap">9m 37s 798ms</td>
+          <td id="stats-status-Basket" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-CategorySearch" href="src-test-resources-Features-TestSuite_categorySearch-feature-windows_chrome.html">CategorySearch</a></td>
+                        <td id="device">windows_chrome</td>
+                    <td id="stats-number-scenarios-CategorySearch">46</td>
+          <td id="stats-number-scenarios-passed-CategorySearch">46</td>
+          <td id="stats-number-scenarios-failed-CategorySearch">0</td>
+          <td id="stats-number-steps-CategorySearch">188</td>
+          <td id="stats-number-steps-passed-CategorySearch">188</td>
+          <td id="stats-number-steps-failed-CategorySearch"    >0</td>
+          <td id="stats-number-steps-skipped-CategorySearch"   >0</td>
+          <td id="stats-number-steps-pending-CategorySearch"   >0</td>
+          <td id="stats-number-steps-undefined-CategorySearch" >0</td>
+          <td id="stats-number-steps-missing-CategorySearch"   >0</td>
+          <td id="stats-duration-CategorySearch" style="text-align:right;white-space:nowrap">8m 27s 880ms</td>
+          <td id="stats-status-CategorySearch" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Homepage" href="src-test-resources-Features-TestSuite_homepage-feature-windows_chrome.html">Homepage</a></td>
+                        <td id="device">windows_chrome</td>
+                    <td id="stats-number-scenarios-Homepage">1</td>
+          <td id="stats-number-scenarios-passed-Homepage">1</td>
+          <td id="stats-number-scenarios-failed-Homepage">0</td>
+          <td id="stats-number-steps-Homepage">2</td>
+          <td id="stats-number-steps-passed-Homepage">2</td>
+          <td id="stats-number-steps-failed-Homepage"    >0</td>
+          <td id="stats-number-steps-skipped-Homepage"   >0</td>
+          <td id="stats-number-steps-pending-Homepage"   >0</td>
+          <td id="stats-number-steps-undefined-Homepage" >0</td>
+          <td id="stats-number-steps-missing-Homepage"   >0</td>
+          <td id="stats-duration-Homepage" style="text-align:right;white-space:nowrap">04s 290ms</td>
+          <td id="stats-status-Homepage" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Products" href="src-test-resources-Features-TestSuite_Product-feature-windows_edge.html">Products</a></td>
+                        <td id="device">windows_edge</td>
+                    <td id="stats-number-scenarios-Products">21</td>
+          <td id="stats-number-scenarios-passed-Products">16</td>
+          <td id="stats-number-scenarios-failed-Products">5</td>
+          <td id="stats-number-steps-Products">125</td>
+          <td id="stats-number-steps-passed-Products">117</td>
+          <td id="stats-number-steps-failed-Products"      style="background-color:#FF0000;" >5</td>
+          <td id="stats-number-steps-skipped-Products"      style="background-color:#88AAFF;" >3</td>
+          <td id="stats-number-steps-pending-Products"   >0</td>
+          <td id="stats-number-steps-undefined-Products" >0</td>
+          <td id="stats-number-steps-missing-Products"   >0</td>
+          <td id="stats-duration-Products" style="text-align:right;white-space:nowrap">8m 31s 002ms</td>
+          <td id="stats-status-Products" style="background-color: #FF0000;">failed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Basket" href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">Basket</a></td>
+                        <td id="device">windows_edge</td>
+                    <td id="stats-number-scenarios-Basket">18</td>
+          <td id="stats-number-scenarios-passed-Basket">18</td>
+          <td id="stats-number-scenarios-failed-Basket">0</td>
+          <td id="stats-number-steps-Basket">95</td>
+          <td id="stats-number-steps-passed-Basket">92</td>
+          <td id="stats-number-steps-failed-Basket"    >0</td>
+          <td id="stats-number-steps-skipped-Basket"      style="background-color:#88AAFF;" >2</td>
+          <td id="stats-number-steps-pending-Basket"      style="background-color:#FBB907;" >1</td>
+          <td id="stats-number-steps-undefined-Basket" >0</td>
+          <td id="stats-number-steps-missing-Basket"   >0</td>
+          <td id="stats-duration-Basket" style="text-align:right;white-space:nowrap">10m 10s 680ms</td>
+          <td id="stats-status-Basket" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-CategorySearch" href="src-test-resources-Features-TestSuite_categorySearch-feature-windows_edge.html">CategorySearch</a></td>
+                        <td id="device">windows_edge</td>
+                    <td id="stats-number-scenarios-CategorySearch">46</td>
+          <td id="stats-number-scenarios-passed-CategorySearch">46</td>
+          <td id="stats-number-scenarios-failed-CategorySearch">0</td>
+          <td id="stats-number-steps-CategorySearch">188</td>
+          <td id="stats-number-steps-passed-CategorySearch">188</td>
+          <td id="stats-number-steps-failed-CategorySearch"    >0</td>
+          <td id="stats-number-steps-skipped-CategorySearch"   >0</td>
+          <td id="stats-number-steps-pending-CategorySearch"   >0</td>
+          <td id="stats-number-steps-undefined-CategorySearch" >0</td>
+          <td id="stats-number-steps-missing-CategorySearch"   >0</td>
+          <td id="stats-duration-CategorySearch" style="text-align:right;white-space:nowrap">8m 22s 870ms</td>
+          <td id="stats-status-CategorySearch" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Homepage" href="src-test-resources-Features-TestSuite_homepage-feature-windows_edge.html">Homepage</a></td>
+                        <td id="device">windows_edge</td>
+                    <td id="stats-number-scenarios-Homepage">1</td>
+          <td id="stats-number-scenarios-passed-Homepage">1</td>
+          <td id="stats-number-scenarios-failed-Homepage">0</td>
+          <td id="stats-number-steps-Homepage">2</td>
+          <td id="stats-number-steps-passed-Homepage">2</td>
+          <td id="stats-number-steps-failed-Homepage"    >0</td>
+          <td id="stats-number-steps-skipped-Homepage"   >0</td>
+          <td id="stats-number-steps-pending-Homepage"   >0</td>
+          <td id="stats-number-steps-undefined-Homepage" >0</td>
+          <td id="stats-number-steps-missing-Homepage"   >0</td>
+          <td id="stats-duration-Homepage" style="text-align:right;white-space:nowrap">02s 712ms</td>
+          <td id="stats-status-Homepage" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Products" href="src-test-resources-Features-TestSuite_Product-feature-windows_firefox.html">Products</a></td>
+                        <td id="device">windows_firefox</td>
+                    <td id="stats-number-scenarios-Products">21</td>
+          <td id="stats-number-scenarios-passed-Products">20</td>
+          <td id="stats-number-scenarios-failed-Products">1</td>
+          <td id="stats-number-steps-Products">125</td>
+          <td id="stats-number-steps-passed-Products">123</td>
+          <td id="stats-number-steps-failed-Products"      style="background-color:#FF0000;" >1</td>
+          <td id="stats-number-steps-skipped-Products"      style="background-color:#88AAFF;" >1</td>
+          <td id="stats-number-steps-pending-Products"   >0</td>
+          <td id="stats-number-steps-undefined-Products" >0</td>
+          <td id="stats-number-steps-missing-Products"   >0</td>
+          <td id="stats-duration-Products" style="text-align:right;white-space:nowrap">6m 39s 140ms</td>
+          <td id="stats-status-Products" style="background-color: #FF0000;">failed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Basket" href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">Basket</a></td>
+                        <td id="device">windows_firefox</td>
+                    <td id="stats-number-scenarios-Basket">18</td>
+          <td id="stats-number-scenarios-passed-Basket">18</td>
+          <td id="stats-number-scenarios-failed-Basket">0</td>
+          <td id="stats-number-steps-Basket">95</td>
+          <td id="stats-number-steps-passed-Basket">92</td>
+          <td id="stats-number-steps-failed-Basket"    >0</td>
+          <td id="stats-number-steps-skipped-Basket"      style="background-color:#88AAFF;" >2</td>
+          <td id="stats-number-steps-pending-Basket"      style="background-color:#FBB907;" >1</td>
+          <td id="stats-number-steps-undefined-Basket" >0</td>
+          <td id="stats-number-steps-missing-Basket"   >0</td>
+          <td id="stats-duration-Basket" style="text-align:right;white-space:nowrap">14m 45s 512ms</td>
+          <td id="stats-status-Basket" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-CategorySearch" href="src-test-resources-Features-TestSuite_categorySearch-feature-windows_firefox.html">CategorySearch</a></td>
+                        <td id="device">windows_firefox</td>
+                    <td id="stats-number-scenarios-CategorySearch">46</td>
+          <td id="stats-number-scenarios-passed-CategorySearch">46</td>
+          <td id="stats-number-scenarios-failed-CategorySearch">0</td>
+          <td id="stats-number-steps-CategorySearch">188</td>
+          <td id="stats-number-steps-passed-CategorySearch">188</td>
+          <td id="stats-number-steps-failed-CategorySearch"    >0</td>
+          <td id="stats-number-steps-skipped-CategorySearch"   >0</td>
+          <td id="stats-number-steps-pending-CategorySearch"   >0</td>
+          <td id="stats-number-steps-undefined-CategorySearch" >0</td>
+          <td id="stats-number-steps-missing-CategorySearch"   >0</td>
+          <td id="stats-duration-CategorySearch" style="text-align:right;white-space:nowrap">10m 36s 948ms</td>
+          <td id="stats-status-CategorySearch" style="background-color: #00CE00;">passed</td>
+          </tr>
+      
+                    
+          
+          <tr>
+          <td style="text-align:left;"><a id="stats-Homepage" href="src-test-resources-Features-TestSuite_homepage-feature-windows_firefox.html">Homepage</a></td>
+                        <td id="device">windows_firefox</td>
+                    <td id="stats-number-scenarios-Homepage">1</td>
+          <td id="stats-number-scenarios-passed-Homepage">1</td>
+          <td id="stats-number-scenarios-failed-Homepage">0</td>
+          <td id="stats-number-steps-Homepage">2</td>
+          <td id="stats-number-steps-passed-Homepage">2</td>
+          <td id="stats-number-steps-failed-Homepage"    >0</td>
+          <td id="stats-number-steps-skipped-Homepage"   >0</td>
+          <td id="stats-number-steps-pending-Homepage"   >0</td>
+          <td id="stats-number-steps-undefined-Homepage" >0</td>
+          <td id="stats-number-steps-missing-Homepage"   >0</td>
+          <td id="stats-duration-Homepage" style="text-align:right;white-space:nowrap">03s 268ms</td>
+          <td id="stats-status-Homepage" style="background-color: #00CE00;">passed</td>
+          </tr>
+            </tbody>
+<tr>
+<th id="stats-total-features" style="background-color:lightgray">12</th>
+  <th id="stats-total-features" style="background-color:lightgray">-</th>
+<th id="stats-total-scenarios" style="background-color:lightgray">258</th>
+<th id="stats-total-scenarios-passed" style="background-color:lightgray">249</th>
+<th id="stats-total-scenarios-failed" style="background-color:lightgray">9</th>
+<th id="stats-total-steps" style="background-color:lightgray">1230</th>
+<th id="stats-total-steps-passed" style="background-color:lightgray">1205</th>
+<th id="stats-total-steps-failed" style="background-color:lightgray">9</th>
+<th id="stats-total-steps-skipped" style="background-color:lightgray">13</th>
+<th id="stats-total-steps-pending" style="background-color:lightgray">3</th>
+<th id="stats-total-steps-undefined" style="background-color:lightgray">0</th>
+<th id="stats-total-steps-missing" style="background-color:lightgray">0</th>
+<th id="stats-total-duration" style="background-color:lightgray;text-align:right;white-space:nowrap">1h 24m 43s 420ms</th>
+<th id="stats-total-totals" style="background-color:lightgray">Totals</th>
+</tr></table>
+    </div>
+
+    </div>
+    </div>
+
+
+<div class="container_12">
+    <div class="grid_12 hr"></div>
+    <div class="grid_12">
+        <p style="text-align:center">
+            <a href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+            <a href="https://github.com/damianszczepanik/cucumber-reporting">Cucumber reports</a>
+            <br>build: 11-09-2018 15:46:05</p>
+    </div>
+</div>
+
+</body>
+</html>

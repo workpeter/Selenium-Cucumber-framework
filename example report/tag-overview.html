@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cucumber-JVM Html Reports - Tag Overview</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blue/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/skin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/960.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/text.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="blue/favicon.ico" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" >
+    $(document).ready(function() {
+        $("#tablesorter").tablesorter();
+    });
+</script>
+    <script language="javascript">AC_FL_RunContent = 0;</script>
+    <script language="javascript"> DetectFlashVer = 0; </script>
+    <script src="charts/AC_RunActiveContent.js" language="javascript"></script>
+    <script language="JavaScript" type="text/javascript">
+        <!--
+        var requiredMajorVersion = 10;
+        var requiredMinorVersion = 0;
+        var requiredRevision = 45;
+        -->
+    </script>
+
+<style>
+
+h2 {
+	font-size: 24px !important;
+}
+
+.feature-keyword {
+	font-weight: bold;
+}
+
+.feature-description {
+	padding-left: 15px;
+	font-style: italic;
+	background-color: beige;
+}
+
+.feature-role {
+	font-weight: bold;
+}
+
+.feature-action {
+	font-weight: bold;
+}
+
+.feature-value {
+	font-weight: bold;
+}
+
+.feature-tags {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: darkblue;
+}
+
+.element-keyword {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.element-element_name {
+	padding-left: 15px;
+}
+
+.step-keyword {
+	font-weight: bold;
+	padding-left: 50px;
+}
+
+.error_message {
+	background-color: #FFEEEE;
+	padding-left: 50px;
+	border: 1px solid #D88A8A;
+	margin-bottom: 5px;
+	overflow: auto;
+}
+
+.error_collapse {
+	display:none;
+	padding-left: 10px;
+}
+
+.error_collapse + label {
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	cursor: pointer;
+	padding-top: 2px;
+}
+
+.error_collapse + label + * {
+	display: none;
+    padding-left: 25px;
+}
+
+.error_collapse:checked + label + * {
+	display: block;
+}
+
+.error_collapse + label:before {
+	background-color: #4F5150;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+	content: "+";
+	display: block;
+	float: left;
+	line-height: 20px;
+	width: 20px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.error_collapse:checked + label:before {
+	content: "\2212";
+}
+
+.step-duration {
+	float: right;
+	padding-right: 15px;
+}
+
+.passed {
+	background-color: #C5D88A;
+}
+
+.failed {
+	background-color: #D88A8A;
+}
+
+.skipped {
+	background-color: #88AAFF;
+}
+
+.pending {
+	background-color: #FBB907;
+}
+
+.undefined {
+	background-color: #FBB987;
+}
+
+.missing {
+	background-color: #FBB9D7;
+}
+
+table.stats-table {
+	color: black;
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.stats-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: #66CCEE;
+	-moz-border-radius:;
+}
+
+table.stats-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius:;
+}
+
+table.data-table {
+	color: black;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: #d6d6d6;
+	border-collapse: collapse;
+	background-color: beige;
+}
+
+table.data-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: #66CCEE;
+}
+
+table.data-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: beige;
+}
+
+.data {
+	padding-left: 50px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.output-data {
+	padding-left: 50px;
+	background-color: beige;
+	text-indent: 50px;
+}
+
+.doc-string {
+	width: auto;
+	display: inline-block;
+	margin: 10px auto 10px 70px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 10px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 95%;
+}
+
+.graph {
+	margin-bottom: 50px;
+	margin-top: 30px;
+	clear: both;
+	font-family: georgia, serif;
+	font-size: 14px;
+}
+
+.graph-header h3 {
+	margin-bottom: 0px;
+}
+
+.graph-header {
+	text-align: center;
+}
+
+.graph-header p {
+	margin-top: 0px;
+}
+
+.graph .legend td, .graph .legend, .graph .legend tr {
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+.graph .legend {
+	margin-left: 10px;
+}
+
+.graph .legend td {
+	padding-right: 5px;
+}
+
+.graph .legend .color-box {
+	width: 14px;
+	height: 10px;
+	overflow: hidden;
+}
+
+.graph .label {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+table#tablesorter thead tr th {
+	cursor: pointer;
+}
+
+</style>
+     <!--[if IE]>
+         <style>
+             .graph .label {
+                    text-align: center;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    display: block;
+                    position: absolute;
+                    right: -5px;
+                    top: 15px;
+                    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+                    right:-15px; top:5px;
+                 }
+         </style>
+         <![endif]-->
+
+</head>
+<body id="top">
+
+     <div id="fullwidth_header">
+     <div class="container_12">
+         <h1 class="grid_4 logo"><a href="feature-overview.html" class='ie6fix'>Cucumber</a></h1>
+
+         <div id="nav">
+             <ul>
+                                  <li><a href="tag-overview.html">Tags</a></li>
+                 <li><a href="feature-overview.html">Feature</a></li>
+                 <li><a href="step-overview.html">Steps</a></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+        <div id="fullwidth_gradient">
+    <div class="heading container_12">
+        <h2><span id="overview-title">Tag Overview for build: 1</span>
+                </h2>
+        <span class="subhead">The following graph shows passing and failing statistics for tags in this build.</span>
+    </div>
+</div>
+
+    <div class="container_12">
+        <div class="grid_12">
+
+        
+                    <div style="text-align:center;"><script language="JavaScript" type="text/javascript">
+            <!--
+            if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
+                alert("This page requires AC_RunActiveContent.js.");
+            } else {
+                var hasRightVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+                if(hasRightVersion) {
+                    AC_FL_RunContent(
+                            'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,45,2',
+                            'width', '600',
+                            'height', '350',
+                            'scale', 'noscale',
+                            'salign', 'TL',
+                            'bgcolor', '#777788',
+                            'wmode', 'opaque',
+                            'movie', 'charts/charts',
+                            'src', 'charts/charts',
+                            'FlashVars', "library_path=charts/charts_library&xml_data=<chart><axis_category shadow='low' size='10' color='FFFFFF' alpha='75' orientation='diagonal_down'/><axis_ticks value_ticks='true' category_ticks='true' minor_count='1'/><axis_value shadow='low' size='10' color='FFFFFF' alpha='75'/><chart_border top_thickness='0' bottom_thickness='2' left_thickness='2' right_thickness='0' /><chart_data><row><null/><string>@Basket</string><string>@CategorySearch</string><string>@Grid</string><string>@Homepage</string><string>@Product</string><string>@Retest</string><string>@Smoke</string></row><row><string>Passed</string><number tooltip='276'>276</number><number tooltip='426'>426</number><number tooltip='6'>6</number><number tooltip='6'>6</number><number tooltip='356'>356</number><number tooltip='422'>422</number><number tooltip='3'>3</number></row><row><string>Failed</string><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='9'>9</number><number tooltip='9'>9</number><number tooltip='0'>0</number></row><row><string>Skipped</string><number tooltip='6'>6</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='7'>7</number><number tooltip='7'>7</number><number tooltip='0'>0</number></row><row><string>Pending</string><number tooltip='3'>3</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number></row><row><string>Undefined</string><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number></row><row><string>Missing</string><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number><number tooltip='0'>0</number></row></chart_data><chart_grid_h thickness='1' type='solid'/><chart_grid_v thickness='1' type='solid'/><chart_rect x='80' y='30' width='470' height='150' positive_color='888888' positive_alpha='50'/><chart_pref rotation_x='15' rotation_y='0' min_x='0' max_x='80' min_y='0' max_y='60'/><chart_type>stacked 3d column</chart_type><filter><shadow id='high' distance='5' angle='45' alpha='35' blurX='15' blurY='15'/><shadow id='low' distance='2' angle='45' alpha='50' blurX='5' blurY='5'/></filter><legend shadow='high' x='75' y='270' width='470' height='50' margin='20' fill_color='000000' fill_alpha='7' line_color='000000' line_alpha='0' line_thickness='0' layout='horizontal' size='12' color='000000' alpha='50'/><tooltip color='ffffcc' alpha='80' size='12' background_color_1='444488' background_alpha='75' shadow='low'/><series_color><color>00CE00</color><color>FF0000</color><color>88AAFF</color><color>FBB907</color><color>FBB957</color><color>FBB9A7</color></series_color><series bar_gap='0' set_gap='20'/></chart>",
+                            'id', 'my_chart',
+                            'name', 'my_chart',
+                            'menu', 'true',
+                            'allowFullScreen', 'true',
+                            'allowScriptAccess','sameDomain',
+                            'quality', 'high',
+                            'align', 'middle',
+                            'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+                            'play', 'true',
+                            'devicefont', 'false'
+                    );
+                } else {
+                    var alternateContent = 'This content requires the Adobe Flash Player. '
+                            + '<u><a href=http://www.macromedia.com/go/getflash/>Get Flash</a></u>.';
+                    document.write(alternateContent);
+                }
+            }
+            // -->
+        </script>
+            <noscript>
+                <P>This content requires JavaScript.</P>
+            </noscript>
+        </div>
+            
+        <div>
+            <br/>
+            <h2>Tag Statistics</h2>
+            <table id="tablesorter" class="stats-table">
+                                <thead>
+    <tr>
+                <th></th>
+        <th id="stats-header-scenarios" colspan="3">Scenarios</th>
+        <th id="stats-header-steps" colspan="7">Steps</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+            <th id="stats-header-key">Tag</th>
+                        <th id="stats-header-scenarios-total">Total</th>
+            <th id="stats-header-scenarios-passed">Passed</th>
+            <th id="stats-header-scenarios-failed">Failed</th>
+            <th id="stats-header-steps-total">Total</th>
+            <th id="stats-header-steps-passed"    style="background-color:#00CE00;">Passed</th>
+            <th id="stats-header-steps-failed"    style="background-color:#FF0000;">Failed</th>
+            <th id="stats-header-steps-skipped"   style="background-color:#88AAFF;">Skipped</th>
+            <th id="stats-header-steps-pending"   style="background-color:#FBB907;">Pending</th>
+            <th id="stats-header-steps-undefined" style="background-color:#FBB957;">Undefined</th>
+            <th id="stats-header-steps-missing"   style="background-color:#FBB9A7;">Missing</th>
+            <th id="stats-header-duration">Duration</th>
+            <th id="stats-header-status">Status</th>
+    </tr>
+</thead>
+
+                <tbody>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="Basket.html">@Basket</a></td>
+                        <td>54</td>
+                        <td>54</td>
+                        <td>0</td>
+                        <td>285</td>
+                        <td>276</td>
+                        <td >0</td>
+                        <td    style="background-color:#88AAFF;" >6</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">34m 33s 992ms</td>
+                        <td style="background-color: #00CE00;">passed</td>
+                    </tr>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="CategorySearch.html">@CategorySearch</a></td>
+                        <td>138</td>
+                        <td>138</td>
+                        <td>0</td>
+                        <td>426</td>
+                        <td>426</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">18m 16s 456ms</td>
+                        <td style="background-color: #00CE00;">passed</td>
+                    </tr>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="Grid.html">@Grid</a></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">10s 271ms</td>
+                        <td style="background-color: #00CE00;">passed</td>
+                    </tr>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="Homepage.html">@Homepage</a></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">10s 271ms</td>
+                        <td style="background-color: #00CE00;">passed</td>
+                    </tr>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="Product.html">@Product</a></td>
+                        <td>60</td>
+                        <td>51</td>
+                        <td>9</td>
+                        <td>372</td>
+                        <td>356</td>
+                        <td   style="background-color:#FF0000;" >9</td>
+                        <td    style="background-color:#88AAFF;" >7</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">22m 08s 790ms</td>
+                        <td style="background-color: #FF0000;">failed</td>
+                    </tr>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="Retest.html">@Retest</a></td>
+                        <td>102</td>
+                        <td>93</td>
+                        <td>9</td>
+                        <td>438</td>
+                        <td>422</td>
+                        <td   style="background-color:#FF0000;" >9</td>
+                        <td    style="background-color:#88AAFF;" >7</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">23m 12s 424ms</td>
+                        <td style="background-color: #FF0000;">failed</td>
+                    </tr>
+                
+                                        
+                    <tr>
+                        <td style="text-align:left;"><a href="Smoke.html">@Smoke</a></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">22s 666ms</td>
+                        <td style="background-color: #00CE00;">passed</td>
+                    </tr>
+                                </tbody>
+
+                <tr>
+                    <th style="background-color:lightgray;">7</th>
+                    <th style="background-color:lightgray;">363</th>
+                    <th style="background-color:lightgray;">345</th>
+                    <th style="background-color:lightgray;">18</th>
+                    <th style="background-color:lightgray;">1536</th>
+                    <th style="background-color:lightgray;">1495</th>
+                    <th style="background-color:lightgray;">18</th>
+                    <th style="background-color:lightgray;">20</th>
+                    <th style="background-color:lightgray;">3</th>
+                    <th style="background-color:lightgray;">0</th>
+                    <th style="background-color:lightgray;">0</th>
+                    <th style="background-color:lightgray;text-align:right;white-space:nowrap">1h 38m 54s 874ms</th>
+                    <th style="background-color:lightgray;">Totals</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+        
+<div class="container_12">
+    <div class="grid_12 hr"></div>
+    <div class="grid_12">
+        <p style="text-align:center">
+            <a href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+            <a href="https://github.com/damianszczepanik/cucumber-reporting">Cucumber reports</a>
+            <br>build: 11-09-2018 15:46:05</p>
+    </div>
+</div>
+
+</body>
+</html>

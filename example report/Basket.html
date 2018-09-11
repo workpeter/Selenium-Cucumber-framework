@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cucumber-JVM Html Reports - Tag: @Basket </title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blue/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/skin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/960.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/text.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="blue/favicon.ico" />
+<style>
+
+h2 {
+	font-size: 24px !important;
+}
+
+.feature-keyword {
+	font-weight: bold;
+}
+
+.feature-description {
+	padding-left: 15px;
+	font-style: italic;
+	background-color: beige;
+}
+
+.feature-role {
+	font-weight: bold;
+}
+
+.feature-action {
+	font-weight: bold;
+}
+
+.feature-value {
+	font-weight: bold;
+}
+
+.feature-tags {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: darkblue;
+}
+
+.element-keyword {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.element-element_name {
+	padding-left: 15px;
+}
+
+.step-keyword {
+	font-weight: bold;
+	padding-left: 50px;
+}
+
+.error_message {
+	background-color: #FFEEEE;
+	padding-left: 50px;
+	border: 1px solid #D88A8A;
+	margin-bottom: 5px;
+	overflow: auto;
+}
+
+.error_collapse {
+	display:none;
+	padding-left: 10px;
+}
+
+.error_collapse + label {
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	cursor: pointer;
+	padding-top: 2px;
+}
+
+.error_collapse + label + * {
+	display: none;
+    padding-left: 25px;
+}
+
+.error_collapse:checked + label + * {
+	display: block;
+}
+
+.error_collapse + label:before {
+	background-color: #4F5150;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+	content: "+";
+	display: block;
+	float: left;
+	line-height: 20px;
+	width: 20px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.error_collapse:checked + label:before {
+	content: "\2212";
+}
+
+.step-duration {
+	float: right;
+	padding-right: 15px;
+}
+
+.passed {
+	background-color: #C5D88A;
+}
+
+.failed {
+	background-color: #D88A8A;
+}
+
+.skipped {
+	background-color: #88AAFF;
+}
+
+.pending {
+	background-color: #FBB907;
+}
+
+.undefined {
+	background-color: #FBB987;
+}
+
+.missing {
+	background-color: #FBB9D7;
+}
+
+table.stats-table {
+	color: black;
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.stats-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: #66CCEE;
+	-moz-border-radius:;
+}
+
+table.stats-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius:;
+}
+
+table.data-table {
+	color: black;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: #d6d6d6;
+	border-collapse: collapse;
+	background-color: beige;
+}
+
+table.data-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: #66CCEE;
+}
+
+table.data-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: beige;
+}
+
+.data {
+	padding-left: 50px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.output-data {
+	padding-left: 50px;
+	background-color: beige;
+	text-indent: 50px;
+}
+
+.doc-string {
+	width: auto;
+	display: inline-block;
+	margin: 10px auto 10px 70px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 10px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 95%;
+}
+
+.graph {
+	margin-bottom: 50px;
+	margin-top: 30px;
+	clear: both;
+	font-family: georgia, serif;
+	font-size: 14px;
+}
+
+.graph-header h3 {
+	margin-bottom: 0px;
+}
+
+.graph-header {
+	text-align: center;
+}
+
+.graph-header p {
+	margin-top: 0px;
+}
+
+.graph .legend td, .graph .legend, .graph .legend tr {
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+.graph .legend {
+	margin-left: 10px;
+}
+
+.graph .legend td {
+	padding-right: 5px;
+}
+
+.graph .legend .color-box {
+	width: 14px;
+	height: 10px;
+	overflow: hidden;
+}
+
+.graph .label {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+table#tablesorter thead tr th {
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body id="top">
+
+     <div id="fullwidth_header">
+     <div class="container_12">
+         <h1 class="grid_4 logo"><a href="feature-overview.html" class='ie6fix'>Cucumber</a></h1>
+
+         <div id="nav">
+             <ul>
+                                  <li><a href="tag-overview.html">Tags</a></li>
+                 <li><a href="feature-overview.html">Feature</a></li>
+                 <li><a href="step-overview.html">Steps</a></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+        <div id="fullwidth_gradient">
+    <div class="container_12">
+        <div class="grid_9 heading">
+            <h2 id="feature-title">Result for <span style="color:#66CCEE;"><i>@Basket</i></span> in build: 1</h2>
+        </div>
+    </div>
+</div>
+
+    <div class="container_12">
+        <div class="grid_12">
+
+            <div>
+                <table class="stats-table">
+                                        <thead>
+    <tr>
+                <th></th>
+        <th id="stats-header-scenarios" colspan="3">Scenarios</th>
+        <th id="stats-header-steps" colspan="7">Steps</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+            <th id="stats-header-key">Tag</th>
+                        <th id="stats-header-scenarios-total">Total</th>
+            <th id="stats-header-scenarios-passed">Passed</th>
+            <th id="stats-header-scenarios-failed">Failed</th>
+            <th id="stats-header-steps-total">Total</th>
+            <th id="stats-header-steps-passed"    style="background-color:#00CE00;">Passed</th>
+            <th id="stats-header-steps-failed"    style="background-color:#FF0000;">Failed</th>
+            <th id="stats-header-steps-skipped"   style="background-color:#88AAFF;">Skipped</th>
+            <th id="stats-header-steps-pending"   style="background-color:#FBB907;">Pending</th>
+            <th id="stats-header-steps-undefined" style="background-color:#FBB957;">Undefined</th>
+            <th id="stats-header-steps-missing"   style="background-color:#FBB9A7;">Missing</th>
+            <th id="stats-header-duration">Duration</th>
+            <th id="stats-header-status">Status</th>
+    </tr>
+</thead>
+                    <tr>
+                        <td><a href="Basket.html">@Basket</a></td>
+                        <td>54</td>
+                        <td>54</td>
+                        <td>0</td>
+                        <td>285</td>
+                        <td>276</td>
+                        <td >0</td>
+                        <td    style="background-color:#88AAFF;" >6</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">34m 33s 992ms</td>
+                        <td style="background-color: #00CE00;">passed</td></tr>
+
+                </table>
+
+            </div>
+
+        <div style="color:black;">
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">Customer views empty basket</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 187ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 475ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">empty basket is shown</span><span class="step-duration">423ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : XBOX</span><span class="step-duration">12s 937ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">04s 043ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 769ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">503ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : COOKERS</span><span class="step-duration">11s 843ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 092ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 860ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">914ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : PUSHCHAIR</span><span class="step-duration">20s 806ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">06s 039ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">07s 173ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">893ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : SPIDERMAN</span><span class="step-duration">15s 129ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 729ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 256ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">554ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">13s 263ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">04s 175ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 615ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">831ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">15s 450ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 277ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 887ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">519ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">15s 464ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 697ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 935ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">897ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : RING</span><span class="step-duration">12s 550ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="pending"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">779ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">12s 860ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: FOOTBALL to basket twice</span><span class="step-duration">06s 981ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 397ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">692ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">05s 477ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">502ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">13s 785ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: WEIGHTS to basket twice</span><span class="step-duration">06s 290ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 737ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">514ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">04s 604ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">559ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">13s 977ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: JEANS to basket twice</span><span class="step-duration">06s 593ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 689ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">614ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">04s 402ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">626ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 022ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: PUSHCHAIR using search feature</span><span class="step-duration">05s 720ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">03s 466ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">03s 083ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 812ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">863ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 076ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: SPIDERMAN using search feature</span><span class="step-duration">04s 915ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">10s 172ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">13s 396ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 900ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">01s 004ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 110ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: FOOTBALL using search feature</span><span class="step-duration">05s 338ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">04s 129ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">03s 696ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 493ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">550ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 966ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: XBOX using search feature</span><span class="step-duration">06s 997ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">22s 403ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">24s 306ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 404ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">613ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">04s 560ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">800ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 994ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: COOKERS using search feature</span><span class="step-duration">05s 292ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">20s 365ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">19s 866ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 257ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">890ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">04s 213ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">01s 178ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 258ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: JEANS using search feature</span><span class="step-duration">04s 836ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">18s 636ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">19s 748ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 457ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">988ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">04s 235ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">479ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">Customer views empty basket</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">05s 334ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 689ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">empty basket is shown</span><span class="step-duration">815ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : XBOX</span><span class="step-duration">21s 108ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 481ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 521ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">351ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : COOKERS</span><span class="step-duration">16s 434ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">02s 993ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 520ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">582ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : PUSHCHAIR</span><span class="step-duration">15s 736ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 607ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 507ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">448ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : SPIDERMAN</span><span class="step-duration">15s 312ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 297ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 367ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">453ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">15s 848ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 436ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 896ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">368ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">15s 368ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 259ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 539ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">396ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">15s 136ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 442ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 915ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">461ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : RING</span><span class="step-duration">14s 605ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="pending"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">659ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">15s 290ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: FOOTBALL to basket twice</span><span class="step-duration">06s 058ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 064ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">418ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">04s 374ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">376ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">14s 389ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: WEIGHTS to basket twice</span><span class="step-duration">05s 652ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 667ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">640ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">04s 157ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">352ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">13s 944ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: JEANS to basket twice</span><span class="step-duration">06s 125ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 158ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">367ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">04s 580ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">324ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 899ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: PUSHCHAIR using search feature</span><span class="step-duration">09s 280ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">03s 719ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">03s 465ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 277ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">469ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 865ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: SPIDERMAN using search feature</span><span class="step-duration">06s 028ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">13s 541ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">13s 242ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 314ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">495ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 602ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: FOOTBALL using search feature</span><span class="step-duration">06s 617ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">02s 954ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">02s 773ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 744ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">370ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 389ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: XBOX using search feature</span><span class="step-duration">06s 663ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">28s 161ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">31s 320ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">07s 186ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">359ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">03s 180ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">425ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 674ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: COOKERS using search feature</span><span class="step-duration">05s 702ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">27s 194ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">23s 451ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 503ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">527ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">03s 522ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">333ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 113ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: JEANS using search feature</span><span class="step-duration">04s 880ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">25s 478ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">27s 686ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 328ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">346ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">04s 386ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">359ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">Customer views empty basket</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 681ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 472ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">empty basket is shown</span><span class="step-duration">01s 570ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : XBOX</span><span class="step-duration">13s 735ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">06s 965ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 827ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">01s 814ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : COOKERS</span><span class="step-duration">14s 368ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 028ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 078ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">489ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : PUSHCHAIR</span><span class="step-duration">15s 248ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">05s 806ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 429ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">02s 420ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : SPIDERMAN</span><span class="step-duration">17s 490ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">04s 464ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 529ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">481ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">21s 145ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 838ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 449ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">579ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">24s 362ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">05s 816ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 411ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">443ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">15s 646ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">03s 666ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">07s 752ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">03s 108ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : RING</span><span class="step-duration">17s 320ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="pending"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">672ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">17s 945ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: FOOTBALL to basket twice</span><span class="step-duration">08s 996ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">07s 812ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">542ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">09s 095ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">668ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">13s 923ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: WEIGHTS to basket twice</span><span class="step-duration">07s 453ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">06s 939ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">03s 511ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">04s 510ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">466ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">17s 381ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product: JEANS to basket twice</span><span class="step-duration">05s 920ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 836ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">503ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">03s 765ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">714ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">12s 399ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: PUSHCHAIR using search feature</span><span class="step-duration">04s 544ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">05s 311ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">03s 880ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 091ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">647ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">09s 692ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: SPIDERMAN using search feature</span><span class="step-duration">05s 383ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">18s 768ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">30s 429ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 719ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">916ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 732ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: FOOTBALL using search feature</span><span class="step-duration">08s 723ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">08s 161ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">10s 194ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 823ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">06s 626ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">10s 626ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: XBOX using search feature</span><span class="step-duration">07s 396ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">1m 04s 808ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">47s 681ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">07s 693ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">04s 610ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">03s 923ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">443ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">11s 602ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: COOKERS using search feature</span><span class="step-duration">05s 463ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">40s 141ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">46s 529ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">05s 318ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">618ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">03s 750ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">497ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">04s 656ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: JEANS using search feature</span><span class="step-duration">06s 146ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">51s 096ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">26s 082ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">24s 084ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">614ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">03s 627ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">09s 944ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                    </div>
+    </div>
+
+
+<div class="container_12">
+    <div class="grid_12 hr"></div>
+    <div class="grid_12">
+        <p style="text-align:center">
+            <a href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+            <a href="https://github.com/damianszczepanik/cucumber-reporting">Cucumber reports</a>
+            <br>build: 11-09-2018 15:46:05</p>
+    </div>
+</div>
+
+</body>
+</html>

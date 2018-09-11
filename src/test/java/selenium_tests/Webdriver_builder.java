@@ -876,7 +876,6 @@ Key features include:
 								"};" +
 						"xhr.send();");
 
-
 			}catch(Throwable t){
 
 				standard_warning_output(t.getMessage());
@@ -886,7 +885,7 @@ Key features include:
 				long endTime = System.currentTimeMillis();
 				long duration = (endTime - startTime); 
 				//System.out.println("waiting for AJAX took: " + duration + "MS");
-
+				
 			}
 
 		}	
@@ -1079,51 +1078,6 @@ Key features include:
 
 		}		
 		
-
-		public void get_all_scripts() {
-
-			wait_for_ajax_to_finish();
-
-			try{
-
-				//String scriptToExecute = "return performance.getEntries({initiatorType : \"script\"});";
-				String scriptToExecute = "return performance.getEntriesByType(\"resource\");";
-
-				String netData = ((JavascriptExecutor)webdriver).executeScript(scriptToExecute).toString();
-				String[] resourceNames = netData.split("name=");
-
-				//========================================
-				// Output resource details
-				//========================================
-				String[] _resourceNames = new String[resourceNames.length];
-
-				System.out.println("==================================================");
-
-				int scriptCounter = 0;
-
-				for (int i=1;i<resourceNames.length;i++){
-
-					if (resourceNames[i].contains("initiatorType=script")){
-
-						_resourceNames[i] = resourceNames[i].split(", ")[0];
-						System.out.println(_resourceNames[i]);
-						scriptCounter++;
-					}
-
-				}
-				System.out.println("==================================================");
-				System.out.println(scriptCounter + " scripts executed by " + webdriver.getCurrentUrl());
-
-
-			}catch(Throwable t){
-
-				standard_warning_output(t.getMessage());
-
-			}
-
-		}			
-
-
 
 		private void standard_warning_output(String message){
 
