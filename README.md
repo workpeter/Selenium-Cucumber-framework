@@ -1,4 +1,4 @@
-# Cucumber Selenium framework
+# Selenium Cucumber framework
 
 ## Author
 
