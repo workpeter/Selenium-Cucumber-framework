@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 39, Failures: 1, Errors: 0, Skipped: 10, Time elapsed: 568.943 s <<< FAILURE! - in TestSuite
+run_scenario(selenium_tests.Runner)  Time elapsed: 79.387 s  <<< FAILURE!
+java.lang.AssertionError: expected [1] but found [2]
+

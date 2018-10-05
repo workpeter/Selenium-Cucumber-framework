@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="10" guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Environment config tsts]" parallel="tests">
+  <listeners>
+    <listener class-name="selenium_tests.Listeners"/>
+  </listeners>
+  <test name="windows chrome - just Product feature(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="operating_system" value="windows"/>
+    <parameter name="tags" value="@Product"/>
+    <classes>
+      <class name="selenium_tests.Runner">
+        <methods>
+          <include name="tear_down"/>
+          <include name="run_scenario" invocation-numbers="6 7"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- selenium_tests.Runner -->
+    </classes>
+  </test> <!-- windows chrome - just Product feature(failed) -->
+  <test name="windows chrome - Tests with Homepage or Basket tags(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="operating_system" value="windows"/>
+    <parameter name="tags" value="@Homepage or @Basket"/>
+    <classes>
+      <class name="selenium_tests.Runner">
+        <methods>
+          <include name="tear_down"/>
+          <include name="run_scenario" invocation-numbers="5 7 8 9 10 11 15 16 17"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- selenium_tests.Runner -->
+    </classes>
+  </test> <!-- windows chrome - Tests with Homepage or Basket tags(failed) -->
+</suite> <!-- Failed suite [Environment config tsts] -->

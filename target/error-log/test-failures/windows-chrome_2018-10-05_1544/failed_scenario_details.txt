@@ -1,0 +1,19 @@
+[Test ID]
+Customer views basket with x2 products, totalling x4 quantity then removes 1st product
+
+[Failed URL]
+https://www.argos.co.uk/basket?rt=async&storeId=10151&GiftMode=Reset&action=OrderItemDisplay%3FstoreId%3D10151&langId=110
+
+[Page Title]
+Trolley
+
+[Stack trace]
+java.lang.AssertionError: expected [1] but found [2]
+	at org.testng.Assert.fail(Assert.java:93)
+	at org.testng.Assert.failNotEquals(Assert.java:512)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:134)
+	at org.testng.Assert.assertEquals(Assert.java:115)
+	at org.testng.Assert.assertEquals(Assert.java:388)
+	at org.testng.Assert.assertEquals(Assert.java:398)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:90)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)

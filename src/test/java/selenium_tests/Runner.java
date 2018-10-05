@@ -51,7 +51,8 @@ recreate webdrivers for each test class.
 @CucumberOptions( 
 		//Tags (Send using Maven:[clean verify -Dcucumber.options="-t @Retest"]
 		features = "src/test/resources/Features/",
-		glue={"selenium_tests"}
+		glue={"selenium_tests"},
+		tags={"not @Homepage"}
 		//Plugin (Json plugin dynamically created per test env. Used for reporting)
 		)
 public class Runner {
@@ -61,8 +62,9 @@ public class Runner {
 	private volatile static int testID;
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters({"operating_system","browser","browser_version"})
+	@Parameters({"tags","operating_system","browser","browser_version"})
 	public void setup(
+			@Optional("") String tags,
 			String operating_system,
 			String browser,
 			@Optional("") String browser_version
@@ -78,19 +80,6 @@ public class Runner {
 		// Output build configurations being tested
 		//==========================	
 
-		synchronized(this){testID++;}
-
-		//Output once
-		if (testID == 1){
-			System.out.println("Test URL: " + System.getProperty("env.qa.url"));	
-			System.out.println("Web Proxy Enabled: " + web_proxy_enabled);		
-			System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
-			if (selenium_grid_enabled.equals("yes")) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
-		}
-
-		System.out.println("");
-		System.out.println("Starting Test: (" + operating_system + " " +  browser + ")");
-		
 		driver.set(null);
 		driver.set(new Webdriver_builder(
 				operating_system, 
@@ -102,9 +91,25 @@ public class Runner {
 
 		driver.get().set_home_url(System.getProperty("env.qa.url"));
 
-		create_unique_json_file(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"});
+		rewrite_cucumber_options(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"}, true);
+		rewrite_cucumber_options(this.getClass(), "tags", new String [] {tags}, false);
+
+
+		//Output once
+		synchronized(this){
+			if (++testID == 1){
+				System.out.println("Test URL: " + System.getProperty("env.qa.url"));	
+				System.out.println("Web Proxy Enabled: " + web_proxy_enabled);		
+				System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
+				if (selenium_grid_enabled.equals("yes")) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
+			}
+		}
+		
+		System.out.println("");
+		System.out.println("Starting Test: (" + operating_system + " " +  browser + ")");	
 
 		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+		
 
 	}
 
@@ -117,21 +122,21 @@ public class Runner {
 		try{
 			return testNGCucumberRunner.provideScenarios();
 		}catch(Exception e){
-			
+
 			if (driver.get() == null) System.out.println("There was a problem initialising the Webdriver");
-				
+
 			throw e;
 
 		}
 	}
-	
+
 	@Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
 	public void run_scenario(PickleEventWrapper pickleEvent, CucumberFeatureWrapper cucumberFeature) throws Throwable {
 
 		driver.get().esm.clear_captured_proxy_data();
 
 		testNGCucumberRunner.runScenario(pickleEvent.getPickleEvent());
-		
+
 
 	}
 
@@ -179,11 +184,15 @@ public class Runner {
 
 	static volatile boolean firstThread = true;
 
-	private synchronized void create_unique_json_file(Class<?> clazz, String key, Object newValue) throws Exception{  
+	private synchronized void rewrite_cucumber_options(Class<?> clazz, String key, Object newValue, boolean requireOffset) throws Exception{  
 
-		//Slightly offset each parralel thread so each gets unique CucumberOptions (.json file name)
-		if (!firstThread) Thread.sleep(6000);
-		firstThread = false;
+		if (requireOffset){
+
+			//Slightly offset each parralel thread so each gets unique CucumberOptions (.json file name)
+			if (!firstThread) Thread.sleep(6000);
+			firstThread = false;
+
+		}
 
 		Annotation options = clazz.getAnnotation(CucumberOptions.class);                   //get the CucumberOptions annotation  
 		InvocationHandler proxyHandler = Proxy.getInvocationHandler(options);              //setup handler so we can update Annotation using reflection. Basically creates a proxy for the Cucumber Options class
@@ -194,6 +203,7 @@ public class Runner {
 		memberValues.remove(key);                                                          //renove the key entry...don't worry, we'll add it back
 		memberValues.put(key,newValue);     
 		//add the new key-value pair. The annotation is now updated.
+
 
 
 	}  

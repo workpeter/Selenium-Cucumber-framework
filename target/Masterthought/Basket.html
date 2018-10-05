@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cucumber-JVM Html Reports - Tag: @Basket </title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blue/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/skin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/960.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/text.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="blue/favicon.ico" />
+<style>
+
+h2 {
+	font-size: 24px !important;
+}
+
+.feature-keyword {
+	font-weight: bold;
+}
+
+.feature-description {
+	padding-left: 15px;
+	font-style: italic;
+	background-color: beige;
+}
+
+.feature-role {
+	font-weight: bold;
+}
+
+.feature-action {
+	font-weight: bold;
+}
+
+.feature-value {
+	font-weight: bold;
+}
+
+.feature-tags {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: darkblue;
+}
+
+.element-keyword {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.element-element_name {
+	padding-left: 15px;
+}
+
+.step-keyword {
+	font-weight: bold;
+	padding-left: 50px;
+}
+
+.error_message {
+	background-color: #FFEEEE;
+	padding-left: 50px;
+	border: 1px solid #D88A8A;
+	margin-bottom: 5px;
+	overflow: auto;
+}
+
+.error_collapse {
+	display:none;
+	padding-left: 10px;
+}
+
+.error_collapse + label {
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	cursor: pointer;
+	padding-top: 2px;
+}
+
+.error_collapse + label + * {
+	display: none;
+    padding-left: 25px;
+}
+
+.error_collapse:checked + label + * {
+	display: block;
+}
+
+.error_collapse + label:before {
+	background-color: #4F5150;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+	content: "+";
+	display: block;
+	float: left;
+	line-height: 20px;
+	width: 20px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.error_collapse:checked + label:before {
+	content: "\2212";
+}
+
+.step-duration {
+	float: right;
+	padding-right: 15px;
+}
+
+.passed {
+	background-color: #C5D88A;
+}
+
+.failed {
+	background-color: #D88A8A;
+}
+
+.skipped {
+	background-color: #88AAFF;
+}
+
+.pending {
+	background-color: #FBB907;
+}
+
+.undefined {
+	background-color: #FBB987;
+}
+
+.missing {
+	background-color: #FBB9D7;
+}
+
+table.stats-table {
+	color: black;
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.stats-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: #66CCEE;
+	-moz-border-radius:;
+}
+
+table.stats-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius:;
+}
+
+table.data-table {
+	color: black;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: #d6d6d6;
+	border-collapse: collapse;
+	background-color: beige;
+}
+
+table.data-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: #66CCEE;
+}
+
+table.data-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: beige;
+}
+
+.data {
+	padding-left: 50px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.output-data {
+	padding-left: 50px;
+	background-color: beige;
+	text-indent: 50px;
+}
+
+.doc-string {
+	width: auto;
+	display: inline-block;
+	margin: 10px auto 10px 70px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 10px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 95%;
+}
+
+.graph {
+	margin-bottom: 50px;
+	margin-top: 30px;
+	clear: both;
+	font-family: georgia, serif;
+	font-size: 14px;
+}
+
+.graph-header h3 {
+	margin-bottom: 0px;
+}
+
+.graph-header {
+	text-align: center;
+}
+
+.graph-header p {
+	margin-top: 0px;
+}
+
+.graph .legend td, .graph .legend, .graph .legend tr {
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+.graph .legend {
+	margin-left: 10px;
+}
+
+.graph .legend td {
+	padding-right: 5px;
+}
+
+.graph .legend .color-box {
+	width: 14px;
+	height: 10px;
+	overflow: hidden;
+}
+
+.graph .label {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+table#tablesorter thead tr th {
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body id="top">
+
+     <div id="fullwidth_header">
+     <div class="container_12">
+         <h1 class="grid_4 logo"><a href="feature-overview.html" class='ie6fix'>Cucumber</a></h1>
+
+         <div id="nav">
+             <ul>
+                                  <li><a href="tag-overview.html">Tags</a></li>
+                 <li><a href="feature-overview.html">Feature</a></li>
+                 <li><a href="step-overview.html">Steps</a></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+        <div id="fullwidth_gradient">
+    <div class="container_12">
+        <div class="grid_9 heading">
+            <h2 id="feature-title">Result for <span style="color:#66CCEE;"><i>@Basket</i></span> in build: 1</h2>
+        </div>
+    </div>
+</div>
+
+    <div class="container_12">
+        <div class="grid_12">
+
+            <div>
+                <table class="stats-table">
+                                        <thead>
+    <tr>
+                <th></th>
+        <th id="stats-header-scenarios" colspan="3">Scenarios</th>
+        <th id="stats-header-steps" colspan="7">Steps</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+            <th id="stats-header-key">Tag</th>
+                        <th id="stats-header-scenarios-total">Total</th>
+            <th id="stats-header-scenarios-passed">Passed</th>
+            <th id="stats-header-scenarios-failed">Failed</th>
+            <th id="stats-header-steps-total">Total</th>
+            <th id="stats-header-steps-passed"    style="background-color:#00CE00;">Passed</th>
+            <th id="stats-header-steps-failed"    style="background-color:#FF0000;">Failed</th>
+            <th id="stats-header-steps-skipped"   style="background-color:#88AAFF;">Skipped</th>
+            <th id="stats-header-steps-pending"   style="background-color:#FBB907;">Pending</th>
+            <th id="stats-header-steps-undefined" style="background-color:#FBB957;">Undefined</th>
+            <th id="stats-header-steps-missing"   style="background-color:#FBB9A7;">Missing</th>
+            <th id="stats-header-duration">Duration</th>
+            <th id="stats-header-status">Status</th>
+    </tr>
+</thead>
+                    <tr>
+                        <td><a href="Basket.html">@Basket</a></td>
+                        <td>18</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>95</td>
+                        <td>58</td>
+                        <td   style="background-color:#FF0000;" >8</td>
+                        <td    style="background-color:#88AAFF;" >28</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">9m 01s 941ms</td>
+                        <td style="background-color: #FF0000;">failed</td></tr>
+
+                </table>
+
+            </div>
+
+        <div style="color:black;">
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">Customer views empty basket</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">06s 433ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 410ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">empty basket is shown</span><span class="step-duration">425ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : XBOX</span><span class="step-duration">15s 115ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">02s 187ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">03s 799ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">558ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : COOKERS</span><span class="step-duration">11s 541ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">01s 958ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 248ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">385ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : PUSHCHAIR</span><span class="step-duration">11s 427ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">01s 667ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">04s 285ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">356ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : SPIDERMAN</span><span class="step-duration">10s 128ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">02s 006ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">03s 993ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">446ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">09s 934ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">1m 01s 303ms</span><pre class="error_message"><input class="error_collapse" id="error_888597466" type="checkbox"><label for="error_888597466">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //button[@class="button button--full button--secondary"] (tried for 60 second(s) with 500 milliseconds interval)</label><div>	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_popupBasket.checkContinueShopping(POM_popupBasket.java:17)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:55)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:25)<br/>	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)<br/>Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //button[@class="button button--full button--secondary"]<br/>For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: driver.version: unknown<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)<br/>	at java.util.Optional.orElseThrow(Optional.java:290)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_popupBasket.checkContinueShopping(POM_popupBasket.java:17)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:55)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:25)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at cucumber.runtime.Utils$1.call(Utils.java:26)<br/>	at cucumber.runtime.Timeout.timeout(Timeout.java:16)<br/>	at cucumber.runtime.Utils.invoke(Utils.java:20)<br/>	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)<br/>	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)<br/>	at cucumber.runner.TestStep.executeStep(TestStep.java:55)<br/>	at cucumber.runner.TestStep.run(TestStep.java:42)<br/>	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)<br/>	at cucumber.runner.TestCase.run(TestCase.java:47)<br/>	at cucumber.runner.Runner.runPickle(Runner.java:44)<br/>	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)<br/>	at selenium_tests.Runner.run_scenario(Runner.java:138)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)<br/>	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)<br/>	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)<br/>	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)<br/>	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)<br/>	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)<br/>	at org.testng.TestRunner.privateRun(TestRunner.java:744)<br/>	at org.testng.TestRunner.run(TestRunner.java:602)<br/>	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)<br/>	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br/>	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)<br/>	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)<br/>	at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br/>	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)<br/>	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)<br/>	at java.lang.Thread.run(Thread.java:748)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">09s 407ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">01s 892ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">03s 799ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">483ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">08s 106ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">1m 448ms</span><pre class="error_message"><input class="error_collapse" id="error_411384260" type="checkbox"><label for="error_411384260">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //button[@class=" add-to-trolley-button button button--primary button--full"] (tried for 60 second(s) with 500 milliseconds interval)</label><div>	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:25)<br/>	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)<br/>Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //button[@class=" add-to-trolley-button button button--primary button--full"]<br/>For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: driver.version: unknown<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)<br/>	at java.util.Optional.orElseThrow(Optional.java:290)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:25)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at cucumber.runtime.Utils$1.call(Utils.java:26)<br/>	at cucumber.runtime.Timeout.timeout(Timeout.java:16)<br/>	at cucumber.runtime.Utils.invoke(Utils.java:20)<br/>	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)<br/>	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)<br/>	at cucumber.runner.TestStep.executeStep(TestStep.java:55)<br/>	at cucumber.runner.TestStep.run(TestStep.java:42)<br/>	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)<br/>	at cucumber.runner.TestCase.run(TestCase.java:47)<br/>	at cucumber.runner.Runner.runPickle(Runner.java:44)<br/>	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)<br/>	at selenium_tests.Runner.run_scenario(Runner.java:138)<br/>	at sun.reflect.GeneratedMethodAccessor63.invoke(Unknown Source)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)<br/>	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)<br/>	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)<br/>	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)<br/>	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)<br/>	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)<br/>	at org.testng.TestRunner.privateRun(TestRunner.java:744)<br/>	at org.testng.TestRunner.run(TestRunner.java:602)<br/>	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)<br/>	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br/>	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)<br/>	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)<br/>	at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br/>	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)<br/>	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)<br/>	at java.lang.Thread.run(Thread.java:748)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x1 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : RING</span><span class="step-duration">07s 806ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="pending"><span class="step-keyword">And  </span><span class="step-name">adds product to basket</span><span class="step-duration">416ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 1 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : FOOTBALL</span><span class="step-duration">07s 731ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds product: FOOTBALL to basket twice</span><span class="step-duration">561ms</span><pre class="error_message"><input class="error_collapse" id="error_348384663" type="checkbox"><label for="error_348384663">org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (1092, -70)</label><div>  (Session info: chrome=69.0.3497.100)<br/>  (Driver info: chromedriver=70.0.3538.16 (16ed95b41bb05e565b11fb66ac33c660b721f778),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)<br/>Command duration or timeout: 0 milliseconds<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: org.openqa.selenium.chrome.ChromeDriver<br/>Capabilities {acceptInsecureCerts: true, acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 70.0.3538.16 (16ed95b41bb05..., userDataDir: C:\Users\WORKPE~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:63886}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: accept, unhandledPromptBehavior: accept, version: 69.0.3497.100, webStorageEnabled: true}<br/>Session ID: b9284317eb958366e8ed3def43acc816<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br/>	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)<br/>	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)<br/>	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)<br/>	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)<br/>	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)<br/>	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br/>	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)<br/>	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)<br/>	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:392)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket_twice(Steps_basket_feature.java:32)<br/>	at ✽.adds product: FOOTBALL to basket twice(src/test/resources/Features/TestSuite_basket.feature:32)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : WEIGHTS</span><span class="step-duration">12s 282ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds product: WEIGHTS to basket twice</span><span class="step-duration">929ms</span><pre class="error_message"><input class="error_collapse" id="error_718271614" type="checkbox"><label for="error_718271614">org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (1092, -881)</label><div>  (Session info: chrome=69.0.3497.100)<br/>  (Driver info: chromedriver=70.0.3538.16 (16ed95b41bb05e565b11fb66ac33c660b721f778),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)<br/>Command duration or timeout: 0 milliseconds<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: org.openqa.selenium.chrome.ChromeDriver<br/>Capabilities {acceptInsecureCerts: true, acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 70.0.3538.16 (16ed95b41bb05..., userDataDir: C:\Users\WORKPE~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:63886}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: accept, unhandledPromptBehavior: accept, version: 69.0.3497.100, webStorageEnabled: true}<br/>Session ID: b9284317eb958366e8ed3def43acc816<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br/>	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)<br/>	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)<br/>	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)<br/>	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)<br/>	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)<br/>	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br/>	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)<br/>	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)<br/>	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:392)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket_twice(Steps_basket_feature.java:32)<br/>	at ✽.adds product: WEIGHTS to basket twice(src/test/resources/Features/TestSuite_basket.feature:32)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x1 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on product page : JEANS</span><span class="step-duration">06s 548ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds product: JEANS to basket twice</span><span class="step-duration">1m 715ms</span><pre class="error_message"><input class="error_collapse" id="error_694448838" type="checkbox"><label for="error_694448838">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //button[@class=" add-to-trolley-button button button--primary button--full"] (tried for 60 second(s) with 500 milliseconds interval)</label><div>	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket_twice(Steps_basket_feature.java:32)<br/>	at ✽.adds product: JEANS to basket twice(src/test/resources/Features/TestSuite_basket.feature:32)<br/>Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //button[@class=" add-to-trolley-button button button--primary button--full"]<br/>For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: driver.version: unknown<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)<br/>	at java.util.Optional.orElseThrow(Optional.java:290)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket_twice(Steps_basket_feature.java:32)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at cucumber.runtime.Utils$1.call(Utils.java:26)<br/>	at cucumber.runtime.Timeout.timeout(Timeout.java:16)<br/>	at cucumber.runtime.Utils.invoke(Utils.java:20)<br/>	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)<br/>	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)<br/>	at cucumber.runner.TestStep.executeStep(TestStep.java:55)<br/>	at cucumber.runner.TestStep.run(TestStep.java:42)<br/>	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)<br/>	at cucumber.runner.TestCase.run(TestCase.java:47)<br/>	at cucumber.runner.Runner.runPickle(Runner.java:44)<br/>	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)<br/>	at selenium_tests.Runner.run_scenario(Runner.java:138)<br/>	at sun.reflect.GeneratedMethodAccessor63.invoke(Unknown Source)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)<br/>	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)<br/>	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)<br/>	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)<br/>	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)<br/>	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)<br/>	at org.testng.TestRunner.privateRun(TestRunner.java:744)<br/>	at org.testng.TestRunner.run(TestRunner.java:602)<br/>	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)<br/>	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br/>	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)<br/>	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)<br/>	at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br/>	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)<br/>	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)<br/>	at java.lang.Thread.run(Thread.java:748)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer changes quantity of first product to x10</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 10 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">02s 622ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: PUSHCHAIR using search feature</span><span class="step-duration">03s 445ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">01s 780ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">01s 565ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">03s 399ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">517ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 188ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: SPIDERMAN using search feature</span><span class="step-duration">03s 304ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">01s 695ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">01s 500ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">08s 594ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">375ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x2 quantity</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 137ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: FOOTBALL using search feature</span><span class="step-duration">03s 527ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x1 quantity</span><span class="step-duration">01s 802ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x1 quantity</span><span class="step-duration">01s 478ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">03s 391ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 2 quantity is shown</span><span class="step-duration">471ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 144ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: XBOX using search feature</span><span class="step-duration">03s 977ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">03s 535ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">03s 423ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">03s 551ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">476ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">633ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">1m 379ms</span><pre class="error_message"><input class="error_collapse" id="error_404632887" type="checkbox"><label for="error_404632887">java.lang.AssertionError: expected [1] but found [2]</label><div>	at org.testng.Assert.fail(Assert.java:93)<br/>	at org.testng.Assert.failNotEquals(Assert.java:512)<br/>	at org.testng.Assert.assertEqualsImpl(Assert.java:134)<br/>	at org.testng.Assert.assertEquals(Assert.java:115)<br/>	at org.testng.Assert.assertEquals(Assert.java:388)<br/>	at org.testng.Assert.assertEquals(Assert.java:398)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:90)<br/>	at ✽.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">03s 020ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: COOKERS using search feature</span><span class="step-duration">02s 922ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">1m 03s 921ms</span><pre class="error_message"><input class="error_collapse" id="error_331013366" type="checkbox"><label for="error_331013366">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //button[@class="button button--full button--secondary"] (tried for 60 second(s) with 500 milliseconds interval)</label><div>	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_popupBasket.checkContinueShopping(POM_popupBasket.java:17)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:55)<br/>	at selenium_tests.page_object_model.POM_productResults.add_first_product_to_Basket_via_productResults(POM_productResults.java:30)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_first_product_to_basket_x_quantity(Steps_basket_feature.java:40)<br/>	at ✽.adds first product to basket x2 quantity(src/test/resources/Features/TestSuite_basket.feature:64)<br/>Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //button[@class="button button--full button--secondary"]<br/>For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: driver.version: unknown<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)<br/>	at java.util.Optional.orElseThrow(Optional.java:290)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)<br/>	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)<br/>	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_present(Webdriver_builder.java:491)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.focus_on(Webdriver_builder.java:707)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:390)<br/>	at selenium_tests.page_object_model.POM_popupBasket.checkContinueShopping(POM_popupBasket.java:17)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:55)<br/>	at selenium_tests.page_object_model.POM_productResults.add_first_product_to_Basket_via_productResults(POM_productResults.java:30)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_first_product_to_basket_x_quantity(Steps_basket_feature.java:40)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br/>	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at cucumber.runtime.Utils$1.call(Utils.java:26)<br/>	at cucumber.runtime.Timeout.timeout(Timeout.java:16)<br/>	at cucumber.runtime.Utils.invoke(Utils.java:20)<br/>	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)<br/>	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)<br/>	at cucumber.runner.TestStep.executeStep(TestStep.java:55)<br/>	at cucumber.runner.TestStep.run(TestStep.java:42)<br/>	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)<br/>	at cucumber.runner.TestCase.run(TestCase.java:47)<br/>	at cucumber.runner.Runner.runPickle(Runner.java:44)<br/>	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)<br/>	at selenium_tests.Runner.run_scenario(Runner.java:138)<br/>	at sun.reflect.GeneratedMethodAccessor63.invoke(Unknown Source)<br/>	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br/>	at java.lang.reflect.Method.invoke(Method.java:498)<br/>	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)<br/>	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)<br/>	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)<br/>	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)<br/>	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)<br/>	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)<br/>	at org.testng.TestRunner.privateRun(TestRunner.java:744)<br/>	at org.testng.TestRunner.run(TestRunner.java:602)<br/>	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)<br/>	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br/>	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)<br/>	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)<br/>	at java.util.concurrent.FutureTask.run(FutureTask.java:266)<br/>	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)<br/>	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)<br/>	at java.lang.Thread.run(Thread.java:748)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_basket-feature-windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="Basket.html">@Basket</a></div>
+                <div class="failed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">Customer views basket with x2 products, totalling x4 quantity then removes 1st product</span></div>
+                                    <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">customer is on homepage</span><span class="step-duration">02s 815ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer searches by product: JEANS using search feature</span><span class="step-duration">02s 983ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="failed"><span class="step-keyword">And  </span><span class="step-name">adds first product to basket x2 quantity</span><span class="step-duration">03s 615ms</span><pre class="error_message"><input class="error_collapse" id="error_1174644475" type="checkbox"><label for="error_1174644475">org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (1092, -42)</label><div>  (Session info: chrome=69.0.3497.100)<br/>  (Driver info: chromedriver=70.0.3538.16 (16ed95b41bb05e565b11fb66ac33c660b721f778),platform=Windows NT 10.0.17134 x86_64) (WARNING: The server did not provide any stacktrace information)<br/>Command duration or timeout: 0 milliseconds<br/>Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'<br/>System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'<br/>Driver info: org.openqa.selenium.chrome.ChromeDriver<br/>Capabilities {acceptInsecureCerts: true, acceptSslCerts: true, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 70.0.3538.16 (16ed95b41bb05..., userDataDir: C:\Users\WORKPE~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:63886}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: accept, unhandledPromptBehavior: accept, version: 69.0.3497.100, webStorageEnabled: true}<br/>Session ID: b9284317eb958366e8ed3def43acc816<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)<br/>	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)<br/>	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)<br/>	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)<br/>	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)<br/>	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)<br/>	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)<br/>	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br/>	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)<br/>	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)<br/>	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)<br/>	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:392)<br/>	at selenium_tests.page_object_model.POM_productPage.adds_product_to_basket_via_productPage(POM_productPage.java:54)<br/>	at selenium_tests.page_object_model.POM_productResults.add_first_product_to_Basket_via_productResults(POM_productResults.java:30)<br/>	at selenium_tests.feature_steps.Steps_basket_feature.adds_first_product_to_basket_x_quantity(Steps_basket_feature.java:40)<br/>	at ✽.adds first product to basket x2 quantity(src/test/resources/Features/TestSuite_basket.feature:64)<br/></div></pre></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">And  </span><span class="step-name">adds second product to basket x2 quantity</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer views basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 2 products and 4 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">customer removes firt product from basket</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">basket with 1 products and 2 quantity is shown</span><span class="step-duration">000ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                    </div>
+    </div>
+
+
+<div class="container_12">
+    <div class="grid_12 hr"></div>
+    <div class="grid_12">
+        <p style="text-align:center">
+            <a href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+            <a href="https://github.com/damianszczepanik/cucumber-reporting">Cucumber reports</a>
+            <br>build: 05-10-2018 15:45:47</p>
+    </div>
+</div>
+
+</body>
+</html>

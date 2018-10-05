@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Environment config tsts" parallel="tests"
-	thread-count="3">
+	thread-count="10">
 
 	<listeners>
 		<listener class-name="selenium_tests.Listeners"></listener>
 	</listeners>
 
-	<test name="windows chrome">
+	<test name="windows chrome - just Product feature">
+		<parameter name="tags" value="@Product" />
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="selenium_tests.Runner" />
 		</classes>
 	</test>
-
-	<test name="windows firefox">
+	
+	<test name="windows chrome - Tests with Homepage or Basket tags">
+		<parameter name="tags" value="@Homepage or @Basket" />
 		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="firefox" />
+		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="selenium_tests.Runner" />
 		</classes>
-	</test>
+	</test>	
+	
+<!-- 	<test name="windows firefox - no tags (all features)"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="firefox" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 
-	<test name="windows edge">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="edge" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+<!-- 	<test name="windows edge - no tags (all features)"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="edge" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 
 
 </suite> 
