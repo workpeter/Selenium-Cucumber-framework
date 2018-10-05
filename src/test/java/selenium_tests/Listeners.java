@@ -96,7 +96,7 @@ public class Listeners implements ITestListener {
 		driver.get().esm.log_test_failure_and_take_screenshot(
 				Listeners.scenario.get().getName(),
 				get_stack_trace(iTestResult));	
-
+		
 
 	}
 

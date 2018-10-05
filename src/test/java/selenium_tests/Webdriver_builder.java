@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
+import org.openqa.selenium.logging.*;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.*;
@@ -32,29 +33,32 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.logging.Level;
 
 public class Webdriver_builder implements WebDriver {
 
 	private WebDriver webdriver;
 	private MutableCapabilities options;
-	private final String operating_system;
-	private final String browser;
-	private final String web_proxy_enabled;
 	private BrowserMobProxyServer web_proxy;
 	private Proxy seleniumProxy;
 	private WebDriverWait wait;
 
-	private final int max_wait_time = 60;
-	private final int performance_issue_tracking_threshold = 5;
+	private final String operating_system;
+	private final String browser;
+	private final String web_proxy_enabled;
+	private final String chrome_logging_enabled;
+	private String home_url;
+
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
-	private String home_url;
-	
 	private String error_log_base_path = System.getProperty("user.dir").replace("\\", "/")  + 
 			"/target/error-log/";
 
-/*
+	private final int max_wait_time = 60;
+	private final int performance_issue_tracking_threshold = 5;	
+
+	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -63,7 +67,7 @@ This class is a webdriver which is self-configuring based on the parameters sent
 Key features include:
 (1) Can be a local or remote web driver and includes added driver capabilities 
 	typically used in testing such as bypassing certification issues.
-	
+
 	When used as a remote driver it acts as a hub and can be any 
 	operating system, browsers and browser version that are supported by your nodes.
 
@@ -77,7 +81,7 @@ Key features include:
 	These methods should be called when building test scripts rather than natively calling 
 	the webdriver, because they are designed to build more robust scripts and 
 	to track HTTP issues. 
-    
+
    	Robust scripting is achieved through the auto use of Ajax waiting after events, 
    	explicit wait conditions and javascript scrolling. 
    	This has proven to reduce the failure rate of test scripts without 
@@ -89,19 +93,26 @@ Key features include:
 	There are also some utility methods, for example, the method which logs and takes 
 	screenshots on failure. 
 	Such a method works well when called by a testNG listener on failure.
-	
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/	
+	 */	
 
 	@SuppressWarnings("deprecation")
-	public Webdriver_builder(String operating_system, String browser, String browser_version,
-			String web_proxy_enabled, String selenium_grid_enabled, String selenium_grid_hub)
+	public Webdriver_builder(	
+			String operating_system, 
+			String browser, 
+			String browser_version,
+			String selenium_grid_enabled, 
+			String selenium_grid_hub,
+			String web_proxy_enabled, 
+			String chrome_logging_enabled)
 					throws MalformedURLException {
 
 		this.operating_system = operating_system;
 		this.browser = browser;
 		this.web_proxy_enabled = web_proxy_enabled; 
+		this.chrome_logging_enabled = chrome_logging_enabled;
 
 
 		// ==================================
@@ -192,6 +203,19 @@ Key features include:
 			//options.setHeadless(true); 
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
+
+
+			//code for Chrome browser logging
+			if(chrome_logging_enabled.equalsIgnoreCase("yes")){
+
+				DesiredCapabilities caps = DesiredCapabilities.chrome();
+				LoggingPreferences logPrefs = new LoggingPreferences();
+				logPrefs.enable(LogType.BROWSER, Level.SEVERE);
+				//logPrefs.enable(LogType.BROWSER, Level.WARNING);
+				caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+				options.merge(caps);
+			}
+
 
 			break;
 
@@ -885,7 +909,7 @@ Key features include:
 				long endTime = System.currentTimeMillis();
 				long duration = (endTime - startTime); 
 				//System.out.println("waiting for AJAX took: " + duration + "MS");
-				
+
 			}
 
 		}	
@@ -900,8 +924,36 @@ Key features include:
 		}
 
 
+		public void find_severe_browser_messages() {
+
+			if(chrome_logging_enabled.equalsIgnoreCase("yes")){
+
+				long startTime = System.currentTimeMillis();
+				
+				LogEntries logEntries = webdriver.manage().logs().get(LogType.BROWSER);
+
+				for (LogEntry entry : logEntries) {
+
+					//skip outputting the non intrusive 404 Ajax call we insert which checks if the pages Ajax calls have completed
+					if (entry.getMessage().contains("selenium_call")) continue;
+
+					System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+					//do something useful with the data
+				}
+				
+				long endTime = System.currentTimeMillis();
+				long duration = (endTime - startTime); 
+				//System.out.println("waiting for log scan took: " + duration + "MS");
+				
+			}
+		}	
+
+
 		public void find_http_errors() throws IOException{
 
+			
+			find_severe_browser_messages();
+			
 			if (web_proxy_enabled.equalsIgnoreCase("yes")){
 
 				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
@@ -912,12 +964,12 @@ Key features include:
 
 						String message = 
 								"[Error:" + 
-								entry.getResponse().getStatus() + "] " +
-								entry.getRequest().getMethod() + " " +
+										entry.getResponse().getStatus() + "] " +
+										entry.getRequest().getMethod() + " " +
 										entry.getRequest().getUrl()  + " : via:" +
 										entries.get(0).getRequest().getUrl() 
 										+ System.lineSeparator();
-						
+
 						System.out.print(message);
 						log_http_issues(message,1);
 
@@ -941,7 +993,7 @@ Key features include:
 
 						String message =
 								"[Performance warning:" + 
-								entry.getTime() + "ms] " +
+										entry.getTime() + "ms] " +
 										entry.getRequest().getMethod() + " : " +
 										entry.getRequest().getUrl()  + " : " +  
 										entry.getResponse().getStatus() 
@@ -1077,7 +1129,7 @@ Key features include:
 			}
 
 		}		
-		
+
 
 		private void standard_warning_output(String message){
 

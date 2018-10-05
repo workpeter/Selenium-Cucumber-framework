@@ -72,9 +72,12 @@ public class Runner {
 
 
 		//System properties set in Maven POM.xml
-		String web_proxy_enabled= System.getProperty("browsermob.proxy.enabled");
-		String selenium_grid_enabled= System.getProperty("selenium.grid.enabled");
+
+		String selenium_grid_enabled = System.getProperty("selenium.grid.enabled");
 		String selenium_grid_hub = System.getProperty("selenium.grid.hub");
+		String web_proxy_enabled = System.getProperty("browsermob.proxy.enabled");	
+		String chrome_logging_enabled = System.getProperty("chrome.logging.enabled");	
+		
 
 		//==========================
 		// Output build configurations being tested
@@ -85,9 +88,11 @@ public class Runner {
 				operating_system, 
 				browser, 
 				browser_version, 
-				web_proxy_enabled, 
 				selenium_grid_enabled,
-				selenium_grid_hub));
+				selenium_grid_hub,
+				web_proxy_enabled,
+				chrome_logging_enabled));
+
 
 		driver.get().set_home_url(System.getProperty("env.qa.url"));
 
@@ -99,8 +104,10 @@ public class Runner {
 		synchronized(this){
 			if (++testID == 1){
 				System.out.println("Test URL: " + System.getProperty("env.qa.url"));	
-				System.out.println("Web Proxy Enabled: " + web_proxy_enabled);		
 				System.out.println("Selenium Grid Enabled: " + selenium_grid_enabled );	
+				System.out.println("Web Proxy Enabled: " + web_proxy_enabled);	
+				System.out.println("Chrome logging enabled: " + chrome_logging_enabled);					
+		
 				if (selenium_grid_enabled.equals("yes")) System.out.println("Selenium Grid hub: " + selenium_grid_hub );		
 			}
 		}

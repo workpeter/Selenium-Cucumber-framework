@@ -16,14 +16,14 @@
 		</classes>
 	</test>
 	
-	<test name="windows chrome - Tests with Homepage or Basket tags">
-		<parameter name="tags" value="@Homepage or @Basket" />
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>	
+<!-- 	<test name="windows chrome - Tests with Homepage or Basket tags"> -->
+<!-- 		<parameter name="tags" value="@Homepage or @Basket" /> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="chrome" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test>	 -->
 	
 <!-- 	<test name="windows firefox - no tags (all features)"> -->
 <!-- 		<parameter name="operating_system" value="windows" /> -->

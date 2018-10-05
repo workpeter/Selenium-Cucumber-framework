@@ -12,6 +12,7 @@
 		<selenium.grid.enabled>no</selenium.grid.enabled>
 		<selenium.grid.hub>http://tester125:c2fd0b81-7ee7-4944-84fa-459ab46c8742@ondemand.saucelabs.com:80/wd/hub</selenium.grid.hub>
 		<browsermob.proxy.enabled>yes</browsermob.proxy.enabled>
+		<chrome.logging.enabled>yes</chrome.logging.enabled>
 	</properties>
 
 	<dependencies>
@@ -175,6 +176,7 @@
 						<selenium.grid.enabled>${selenium.grid.enabled}</selenium.grid.enabled>
 						<selenium.grid.hub>${selenium.grid.hub}</selenium.grid.hub>
 						<browsermob.proxy.enabled>${browsermob.proxy.enabled}</browsermob.proxy.enabled>
+						<chrome.logging.enabled>${chrome.logging.enabled}</chrome.logging.enabled>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
