@@ -16,7 +16,7 @@ To actual make those steps do something, an automation tester (like me) will 'gl
 The beauty of this approach is when the results are shared, the code is hidden, and the report focuses on the easy-to-follow business steps, which are highlighted with a pass or fail.     
 * [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
   
-Using this framework has many advantages, which are listed below in the feature list. However, the main benefit is to provide a stable testing solution faster.
+Using this framework has many advantages, which are listed below in the feature list. However, the main benefit is to provide a stable and fast test solution.
 
 This framework comes with example tests for the www.argos.co.uk website. The tests are organised using 'page object modelling' style, which is recommended because it promotes code modularisation making it reusable and easier to manage.    
 
