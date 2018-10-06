@@ -4,6 +4,16 @@
 
 * **Peter Anderson (peter.x4000@gmail.com)** 
 
+## Built With
+
+* [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) - Programming language
+* [Selenium (inc. Selenium Grid)](https://en.wikipedia.org/wiki/Selenium_(software)) - Automate web applications
+* [Cucumber-JVM](https://github.com/cucumber/cucumber-jvm) - Java implementation of Cucumber
+* [Maven](https://en.wikipedia.org/wiki/Apache_Maven) - Build automation tool
+* [TestNG](https://en.wikipedia.org/wiki/TestNG) - Testing framework
+* [Browsermob web proxy](https://github.com/lightbody/browsermob-proxy) - Web proxy to capture HTTP content
+* [Master Thoughts](https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting) - Provides pretty html reports for Cucumber
+
 ## Introduction
 
 A common approach is to trigger Selenium tests using Maven, either as part of a complete build solution or just as a convenient way to compile your tests and manage your dependencies.   
@@ -53,16 +63,6 @@ Every parallel test that runs continuously outputs its result into its own JSON 
 
 * **Data Driven:**  
 Cucumber comes with data-driven capabilities within the feature files. However, this framework also provides a means to pull data from excel files too. When Cucumber is used as a data driver, the actual data values appear in the test step names. This is sometimes helpful, but sometimes too much information. One smart method is to use an abstract data references such as "VIP Customer 1", then link that to a row in Excel which pulls all the low-level details for your test. That way the test report shows the high-level data which is useful but hides the low-level incidental data. 
-
-## Built With
-
-* [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) - Programming language
-* [Selenium (inc. Selenium Grid)](https://en.wikipedia.org/wiki/Selenium_(software)) - Automate web applications
-* [Cucumber-JVM](https://github.com/cucumber/cucumber-jvm) - Java implementation of Cucumber
-* [Maven](https://en.wikipedia.org/wiki/Apache_Maven) - Build automation tool
-* [TestNG](https://en.wikipedia.org/wiki/TestNG) - Testing framework
-* [Browsermob web proxy](https://github.com/lightbody/browsermob-proxy) - Web proxy to capture HTTP content
-* [Master Thoughts](https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting) - Provides pretty html reports for Cucumber
 
 ## Running the tests
 
