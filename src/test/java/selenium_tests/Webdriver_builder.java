@@ -28,6 +28,7 @@ import net.lightbody.bmp.core.har.Har;
 import net.lightbody.bmp.core.har.HarEntry;
 import net.lightbody.bmp.proxy.CaptureType;
 import org.testng.SkipException;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -45,8 +46,7 @@ public class Webdriver_builder implements WebDriver {
 
 	private final String operating_system;
 	private final String browser;
-	private final String web_proxy_enabled;
-	private final String chrome_logging_enabled;
+
 	private String home_url;
 
 
@@ -55,8 +55,11 @@ public class Webdriver_builder implements WebDriver {
 	private String error_log_base_path = System.getProperty("user.dir").replace("\\", "/")  + 
 			"/target/error-log/";
 
-	private final int max_wait_time = 60;
-	private final int performance_issue_tracking_threshold = 5;	
+	private final int max_wait_time = 15;
+	private final int messsage_level_threshold = 0;
+	private final int millisecond_performance_threshold = 5000;
+
+
 
 	/*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
@@ -111,9 +114,6 @@ Key features include:
 
 		this.operating_system = operating_system;
 		this.browser = browser;
-		this.web_proxy_enabled = web_proxy_enabled; 
-		this.chrome_logging_enabled = chrome_logging_enabled;
-
 
 		// ==================================
 		// Selenium Grid not Enabled: - will run on current machine. Will attempt
@@ -136,7 +136,7 @@ Key features include:
 			// Set driver capabilities and launch local driver
 			// ==================================
 
-			set_driver_options();
+			set_driver_options(web_proxy_enabled,chrome_logging_enabled);
 
 			switch (this.browser.toLowerCase()) {
 			case "chrome": 	this.webdriver = new ChromeDriver((ChromeOptions)options); break;
@@ -158,7 +158,7 @@ Key features include:
 			// Set driver capabilities and do not launch remote driver
 			// ==================================
 
-			set_driver_options();
+			set_driver_options(web_proxy_enabled,chrome_logging_enabled);
 
 			// Set capabilityType, which is used to find grid node with matching
 			// capabilities
@@ -188,7 +188,7 @@ Key features include:
 	}
 
 
-	private void set_driver_options(){
+	private void set_driver_options(String web_proxy_enabled, String chrome_logging_enabled){
 
 		switch (this.browser.toLowerCase()) {
 		case "chrome":
@@ -210,12 +210,12 @@ Key features include:
 
 				DesiredCapabilities caps = DesiredCapabilities.chrome();
 				LoggingPreferences logPrefs = new LoggingPreferences();
+
 				logPrefs.enable(LogType.BROWSER, Level.SEVERE);
-				//logPrefs.enable(LogType.BROWSER, Level.WARNING);
+				logPrefs.enable(LogType.BROWSER, Level.WARNING);
 				caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 				options.merge(caps);
 			}
-
 
 			break;
 
@@ -416,8 +416,9 @@ Key features include:
 			webdriver.findElement(target).click();
 
 			wait_for_ajax_to_finish();
-			find_http_errors();
-			find_slow_http(performance_issue_tracking_threshold);
+
+			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
+			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
 
 		}
 
@@ -429,10 +430,51 @@ Key features include:
 			webdriver.findElement(target).sendKeys(textToSend);
 
 			wait_for_ajax_to_finish();
-			find_http_errors();
-			find_slow_http(performance_issue_tracking_threshold);
+
+			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
+			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
 
 		}
+
+
+		public void select_list_value_by_index(By target,int index) throws Exception{
+
+			focus_on(target);
+
+			Select select = new Select(webdriver.findElement(target));
+			select.selectByIndex(index);
+
+			wait_for_ajax_to_finish();
+
+			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
+			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
+
+		}
+
+		public void select_list_value_by_text(By target,String text) throws Exception{
+
+			focus_on(target);
+
+			Select select = new Select(webdriver.findElement(target));
+			select.selectByVisibleText(text);
+
+			wait_for_ajax_to_finish();
+
+			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
+			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
+
+			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
+			int iWaitTime = 0;
+			while(!get_list_item_text(target).contains(text)){
+				Thread.sleep(500);
+				iWaitTime++;
+
+				//System.out.println(iWaitTime + " polling element" + target);
+				if (iWaitTime==10){break;}
+			}	
+
+		}
+
 
 		public String get_text(By target) throws Exception {
 
@@ -448,43 +490,8 @@ Key features include:
 
 			return webdriver.findElement(target).getAttribute("innerHTML");
 
-		}	
+		}		
 
-		public void select_list_value_by_index(By target,int index) throws Exception{
-
-			focus_on(target);
-
-			Select select = new Select(webdriver.findElement(target));
-			select.selectByIndex(index);
-
-			wait_for_ajax_to_finish();
-			find_http_errors();
-			find_slow_http(performance_issue_tracking_threshold);
-
-		}
-
-		public void select_list_value_by_text(By target,String text) throws Exception{
-
-			focus_on(target);
-
-			Select select = new Select(webdriver.findElement(target));
-			select.selectByVisibleText(text);
-
-			wait_for_ajax_to_finish();
-			find_http_errors();
-			find_slow_http(performance_issue_tracking_threshold);
-
-			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
-			int iWaitTime = 0;
-			while(!get_list_item_text(target).contains(text)){
-				Thread.sleep(500);
-				iWaitTime++;
-
-				//System.out.println(iWaitTime + " polling element" + target);
-				if (iWaitTime==10){break;}
-			}	
-
-		}
 
 		public String get_list_item_text(By target) throws Exception {
 
@@ -517,7 +524,7 @@ Key features include:
 		}	
 
 		//===========================
-		// Actions which if fail should give warning, but are not critical to stop test execution
+		// Actions which if fail, should CATCH warning, but are not critical to stop test execution
 		//===========================
 
 		public void clear_text(By target) {
@@ -727,7 +734,6 @@ Key features include:
 
 		public void focus_on(By target) throws Exception  {
 
-
 			wait_until_present(target);
 
 			//======Focusing Start ======
@@ -914,140 +920,129 @@ Key features include:
 
 		}	
 
+
+		//===========================
+		// Logging related methods
+		//===========================		
+
 		public void clear_captured_proxy_data(){
 
-			if (web_proxy_enabled.equalsIgnoreCase("yes")){
+			if(web_proxy == null) return;
 
-				web_proxy.newHar();
-
-			}	
-		}
-
-
-		public void find_severe_browser_messages() {
-
-			if(chrome_logging_enabled.equalsIgnoreCase("yes")){
-
-				long startTime = System.currentTimeMillis();
-				
-				LogEntries logEntries = webdriver.manage().logs().get(LogType.BROWSER);
-
-				for (LogEntry entry : logEntries) {
-
-					//skip outputting the non intrusive 404 Ajax call we insert which checks if the pages Ajax calls have completed
-					if (entry.getMessage().contains("selenium_call")) continue;
-
-					System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
-					//do something useful with the data
-				}
-				
-				long endTime = System.currentTimeMillis();
-				long duration = (endTime - startTime); 
-				//System.out.println("waiting for log scan took: " + duration + "MS");
-				
-			}
-		}	
-
-
-		public void find_http_errors() throws IOException{
-
-			
-			find_severe_browser_messages();
-			
-			if (web_proxy_enabled.equalsIgnoreCase("yes")){
-
-				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
-				for (HarEntry entry : entries) {
-
-					if (entry.getResponse().getStatus() >= 400 & 
-							!entry.getRequest().getUrl().contains("selenium_call")){
-
-						String message = 
-								"[Error:" + 
-										entry.getResponse().getStatus() + "] " +
-										entry.getRequest().getMethod() + " " +
-										entry.getRequest().getUrl()  + " : via:" +
-										entries.get(0).getRequest().getUrl() 
-										+ System.lineSeparator();
-
-						System.out.print(message);
-						log_http_issues(message,1);
-
-
-					}
-
-				}
-
-			}
+			web_proxy.newHar();
 
 		}
 
-		public void find_slow_http(long seconds) throws IOException{
 
-			if (web_proxy_enabled.equalsIgnoreCase("yes")){
+		private void log_chrome_browser_warnings_and_errors(int messsage_level_threshold) throws IOException {
 
-				List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
-				for (HarEntry entry : entries) {
+			long startTime = System.currentTimeMillis();
 
-					if (entry.getTime()>= (seconds * 1000)){
+			//messsage_level_threshold 0 - warning and Severe
+			//messsage_level_threshold 1 - severe
 
-						String message =
-								"[Performance warning:" + 
-										entry.getTime() + "ms] " +
-										entry.getRequest().getMethod() + " : " +
-										entry.getRequest().getUrl()  + " : " +  
-										entry.getResponse().getStatus() 
-										+ System.lineSeparator();
 
-						System.out.print(message);
-						log_http_issues(message,2);
+			LogEntries logEntries = webdriver.manage().logs().get(LogType.BROWSER);
 
-					}
+			for (LogEntry entry : logEntries) {
 
-				}
+				//skip outputting the non intrusive 404 Ajax call we insert which checks if the pages Ajax calls have completed
+				if (entry.getMessage().contains("selenium_call")) continue;
 
+				//if level 1 selected, dont show warning messages
+				if (messsage_level_threshold == 1 && entry.getLevel().equals(Level.WARNING)) continue;
+
+
+				String log_output = 
+						"[Chrome message:" + " Issues detected on URL:" + webdriver.getCurrentUrl() + System.lineSeparator() + 
+						new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage() 
+						+ System.lineSeparator() + System.lineSeparator();
+
+
+				//System.out.print(log_output);
+				write_to_static_log_file(log_output,"chrome-browser-warnings-errors/" + operating_system);			
+
+			}
+
+
+			long endTime = System.currentTimeMillis();
+			long duration = (endTime - startTime); 
+
+			if (duration > 100){
+				System.out.println("warning: time to execute log_chrome_browser_warnings_and_errors took: " + duration + "MS");
 			}
 
 		}	
 
-		public void log_http_issues(String issue_message, int type) throws IOException  {
 
-			FileWriter fw = null ;
+		private void log_http_error_codes_and_slow_http_elements(long millisecond_performance_threshold) throws IOException{
 
-			//functional
-			if (type ==1){
+			long startTime = System.currentTimeMillis();
+
+			if(web_proxy == null) return;
+
+			String log_output; 
+
+			List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
+			for (HarEntry entry : entries) {
+
+				if (entry.getResponse().getStatus() >= 400 & 
+						!entry.getRequest().getUrl().contains("selenium_call")){
+
+					log_output = 	
+							"[HTTP Error code:" + 
+									entry.getResponse().getStatus() + "] " +
+									entry.getRequest().getMethod() + " " +
+									entry.getRequest().getUrl()  + " : via:" +
+									entries.get(0).getRequest().getUrl() 
+									+ System.lineSeparator();
+
+					//System.out.print(log_output);
+					write_to_static_log_file(log_output,"http-error-codes/" + operating_system + "-" + browser);
 
 
-				String file_path_http_error_codes = error_log_base_path + "http-error-codes/" + 
-						operating_system + "-" + browser; 
+				}
 
-				File file_http_error_codes = new File(file_path_http_error_codes + 
-						"/" + "log.txt");
 
-				FileUtils.touch(file_http_error_codes);
+				if (entry.getTime()>= (millisecond_performance_threshold)){
 
-				fw = new FileWriter(file_http_error_codes, true);
+					log_output = 	
+							"[Slow HTTP element:" + 
+									entry.getTime() + "ms] " +
+									entry.getRequest().getMethod() + " : " +
+									entry.getRequest().getUrl()  + " : " +  
+									entry.getResponse().getStatus() 
+									+ System.lineSeparator();
+
+					//System.out.print(log_output);
+					write_to_static_log_file(log_output,"http-slow-resources/" + operating_system + "-" + browser);
+
+				}
 
 			}
 
-			//performance
-			if (type ==2){
 
+			long endTime = System.currentTimeMillis();
+			long duration = (endTime - startTime); 
 
-				String file_path_http_slow_resources = error_log_base_path + "http-slow-resources/" + 
-						operating_system + "-" + browser; 	
-
-				File file_http_slow_resources = new File(file_path_http_slow_resources + 
-						"/" + "log.txt");
-
-				FileUtils.touch(file_http_slow_resources);
-
-				fw = new FileWriter(file_http_slow_resources, true);
-
+			if (duration > 100){
+				System.out.println("warning: time to execute log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
 			}
+
+		}
+
+
+		public void write_to_static_log_file(String log_output, String log_dir) throws IOException  {
+
+			FileWriter fw = null;
+
+			File file_log_dir = new File(error_log_base_path + log_dir + "/" + "log.txt");
+			FileUtils.touch(file_log_dir);
+
+			fw = new FileWriter(file_log_dir, true);
 
 			try {
-				fw.write(issue_message + System.lineSeparator());
+				fw.write(log_output + System.lineSeparator());
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -1069,6 +1064,7 @@ Key features include:
 
 				String currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
 
+				//dynamic log file per failure (using dat/time)
 				String filePath = error_log_base_path + "test-failures/" + 
 						operating_system + "-" + browser + "_" + currentDateTime; 
 
@@ -1083,6 +1079,12 @@ Key features include:
 				System.out.println("[Test ID]");
 				System.out.println(testID);
 				System.out.println("");
+				System.out.println("[Failed URL]");	
+				System.out.println(webdriver.getCurrentUrl());
+				System.out.println("");		
+				System.out.println("[Page Title]");	
+				System.out.println(webdriver.getTitle());
+				System.out.println("");					
 				System.out.println("[Environment]");
 				System.out.println(operating_system + "_" + browser);
 				System.out.println("");
@@ -1093,16 +1095,6 @@ Key features include:
 				System.out.println(stack_trace);	
 				System.out.println("");
 
-				if (web_proxy_enabled.equalsIgnoreCase("yes")){
-
-					//Get the HAR data
-					Har har = web_proxy.getHar();
-					File harFile = new File(filePath + "/" + "proxy.har");
-
-					//Write the HAR data
-					har.writeTo(harFile);
-
-				}
 
 				//Output failed scenario name, URL + page title to text file next to screenshot
 				File failed_scenario_details_file = new File(filePath + "/" + "failed_scenario_details.txt");
@@ -1120,6 +1112,16 @@ Key features include:
 				}finally{
 					fw.close();
 				}	
+
+
+				if(web_proxy == null) return;
+
+				//Get the HAR data
+				Har har = web_proxy.getHar();
+				File harFile = new File(filePath + "/" + "proxy.har");
+
+				//Write the HAR data
+				har.writeTo(harFile);
 
 
 			}catch(Throwable t){

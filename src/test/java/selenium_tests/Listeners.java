@@ -15,32 +15,6 @@ public class Listeners implements ITestListener {
 
 	public static ThreadLocal<Scenario> scenario = new ThreadLocal<Scenario>();
 
-	//private Scenario scenario;
-
-	//==========================
-	// If testNG registers a test as NOT a success then output logs and screenshot
-	//==========================	
-
-	@Override
-	public void onTestFailure(ITestResult iTestResult) {
-
-		test_fail_logger(iTestResult);
-	}
-
-	@Override
-	public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
-		test_fail_logger(iTestResult);
-
-	}
-
-	@Override
-	public void onTestSkipped(ITestResult iTestResult) {
-
-		test_fail_logger(iTestResult);
-
-	}
-
 
 	@Override public void onTestStart(ITestResult arg0) {
 
@@ -55,15 +29,22 @@ public class Listeners implements ITestListener {
 
 
 	}
+	
+	//==========================
+	// If testNG registers a test as NOT a success then output logs and screenshot
+	//==========================	
 
+	@Override public void onTestFailure(ITestResult iTestResult) { log_test_failure( iTestResult);}
+	@Override public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {log_test_failure(iTestResult);}
+	@Override public void onTestSkipped(ITestResult iTestResult) {log_test_failure(iTestResult);}
 
+	//blank overides
 	@Override public void onTestSuccess(ITestResult iTestResult) {}
 	@Override public void onFinish(ITestContext arg0) {}
 	@Override public void onStart(ITestContext arg0) {
 
 
 	}
-
 
 	//==========================
 	// Cucumber hook
@@ -87,17 +68,16 @@ public class Listeners implements ITestListener {
 
 	}
 
-	private void test_fail_logger(ITestResult iTestResult ){
+	private void log_test_failure(ITestResult iTestResult ){
 
 		//Dont output log if cucumber didnt register scenario failure
 		if(Listeners.scenario.get() != null && !Listeners.scenario.get().isFailed()) return;
 
 		//Call webriver logger and include the cucumber scenario name and testNG stack trace
-		driver.get().esm.log_test_failure_and_take_screenshot(
-				Listeners.scenario.get().getName(),
-				get_stack_trace(iTestResult));	
+		driver.get().esm.log_test_failure_and_take_screenshot(Listeners.scenario.get().getName(),get_stack_trace(iTestResult));	
 		
 
 	}
+
 
 }
