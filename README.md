@@ -4,28 +4,55 @@
 
 * **Peter Anderson (peter.x4000@gmail.com)** 
 
+## Introduction
+
+A common approach is to trigger Selenium tests using Maven, either as part of a complete build solution or just as a convenient way to compile your tests and manage your dependencies.   
+
+Selenium at its core is just a browser automation tool, and so a test framework like TestNG is required in order to encapsulate Selenium code into discrete tests, provide features such as assertions, control execution flow, test configuration, data providers, parallel execution, reporting etc.   
+When Cucumber is added to the mix, it acts as an abstract layer that sits on top of Selenium and TestNG. Cucumber provides the means to write human-readable tests and group them into scenarios which describe how to use your business features.   
+To actual make those steps do something, an automation tester (like me) will 'glue' those steps to Selenium code.   
+The beauty of this approach is when the results are shared, the code is hidden, and the report focuses on the easy-to-follow business steps, which are highlighted with a pass or fail.     
+* [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
+  
+Using this framework has many advantages, which are listed below in the feature list. However, the main benefit is to provide a stable testing solution faster.
+
+This framework comes with example tests for the www.argos.co.uk website. The tests are organised using 'page object modelling' style, which is recommended because it promotes code modularisation making it reusable and easier to manage.    
+
+
 ## Features
  
-This Selenium cucumber framework has the following features:  
 
-* **BDD Driven:** Reads standard BDD cucumber feature files written in Gerkin. Feature files are linked to Selenium code, which is wrapped within the TestNG framework. This enables web-based test automation based on easy to follow scenarios. 
+* **Scaleable web drivers**  
+At its heart, this framework has two classes which manage both the creation and configuration of WebDrivers.  
+In the TestNG configuration file the tester defines how many WebDrivers they want running, their scope, browser type and expected operating system. When the framework is launch, these drivers will be dynamically created (no coding required) and will automatically begin to execute your Cucumber tests. 
 
-* **Clear automated reporting** The framework uses the master thoughts cucumber reporter and compiles all parallel tests within a single report. The reports are HTML based and can be interacted with to drill down into specific areas.   
-  * [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
+* **Selenium Grid support**  
+Whilst the TestNG configuration file is used for configuring WebDrivers, the Maven POM file is used to do more high-level configuration such as switching on/off Selenium grid. If for example, you wanted to test Chrome, Firefox and Edge in parallel you can do this locally without Grid. However, you would be limited to one operating system. If you decided to switch on Selenium grid, this framework will automatically use your nodes to execute tests, meaning you can configure your WebDrivers to use different operating systems too.  
 
-* **Build Automation:** Maven is used to build and execute the scripts. A common scenario includes triggering a Maven build after a code commit, which in turn will trigger the Selenium tests and provide feedback which is asserted to decide if the build is a success or not. Maven also handles all the library dependencies required by the scripts and is used to pass high-level testing parameters such as test scope, test env URL, enable/disable web proxy, enable/disable Selenium grid.
+* **Parallel Execution:**   
+By providing more than one test condition in the TestNG configuration file, you also have the option to run these tests in parallel. Meaning you could run different Cucumber scenarios in parallel, or even run the same scenarios but with different operating system/browsers in parallel. It's very flexible. 
 
-* **Advanced logging:** A combination of custom methods, web proxy and TestNG listeners, enable a detailed log file and folder per failure. Details such as stack trace, screenshot, HTTP error code (if applicable), slow HTTP resources (if applicable), HAR file dump, Scenario name and environment configuration (i.e. which Operating system and browser) are logged. 
+* **Enhanced web drivers**  
+When this framework creates WebDrivers for you it does many things under the hood. Such as: 
+  * Dynamically download and configure browser drivers for any major browser. 
+  * Provide enhanced capabilities such as capturing browser logs and HTTP traffic
+  * Provides custom methods for writing scripts, which are more reliable and realistic. For example, when clicking on an element, the framework will first wait until its present, scroll it into view and ensure its visible before clicking on it. 
+  * Dynamic waiting is a crucial feature built into each custom method. This ensures script dynamically wait for elements to be in the right condition before proceeding. To assist with this, the methods also wait until Ajax calls have completed, to ensure the page is fully loaded. This technique greatly improves script robustness, and the use of dynamic rather than static wait times means the script run very efficiently. 
+  * Every WebDriver launched is wrapped in a 'threadLocal' container called "webdriver". Meaning all scripts can reference this webdriver object to manipulate the webdriver, however, they will only influence their own webdriver without causing conflicts with other webdrivers. This makes writing each script straightforward. 
 
-* **More reliable scripts:** Each request is routed via custom functions which dynamically use explicit waits and javascript scrolling. This has two notable effects. (1) Scripts act more like end users, and (2) the failure rate is massively reduced when interacting with dynamic DOM elements. Script processing speed is very efficient. 
+* **Advanced logging:**     
+This framework does logging in two ways. The main way is using listeners which detect failures, then outputs log files containing trace logs, scenario name, failed URL, and also screenshot. Each failure has its own log file which are categorised by browser type and operating system.   
+The second method is triggered when the custom methods are used. When custom methods are triggered, they also perform checks and are able to detect things like browser warning/errors (including **javascript issues**), HTTP client/server errors and slow web elements.  
+This level of logging can be switched on/off globally via the Maven POM file. 
 
-* **Parallel processing:** Using the TestNG XML file and Java ThreadLocal, parallel processing is achieved. The current setup enables the same tests to run with different configurations (operating systems and browsers) at the same time. For example, an eCommerce site can be tested in parallel against Windows-Edge, Linux-Firefox, and Mac-Chrome.
+* **Clear automated reporting**  
+Every parallel test that runs continuously outputs its result into its own JSON file. As each test completes, these JSON files are read by a custom Cucumber reporter, which turns them into a pretty and interactive report. This single report combines the results of all tests and allows you to drill down into specific features, tests and even stack traces. 
+* [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
 
-* **Selenium Grid:** Can be switched on/off within the Maven XML file. When switched on, this framework will automatically launch a remote webdriver based on the configuration details provided and will run configurations in accordance to the TestNG XML file. When switched off, it will instead use the local webdriver. Local webdriver can also run tests in parallel however because tests would run from the same machine, it logically to only test multiple browsers and not operating systems. To test the later, Selenium Grid-enabled is advised. 
+* **Data Driven:**
 
-* **Data Driven:** Cucumber inherently enables scenarios to be data-driven within the feature file by using the scenario outline feature. However, this framework also contains a class for interacting with excel files, which can be used as a subsite to supply data. When used in conjunction with Cucumber its practical use is to store low-level data and for cucumber to store abstract representational data. This keeps the Cucumber scenarios more human readable.  
+Cucumber inherently id data-driven when your feature file scenarios contain data lines (using the scenario outline feature). However, this framework also provides a means to pull data from excel files too. When Cucumber is used as a data driver, the actual data values appear in the test step names. This is sometimes helpful, but sometimes too much information. One smart method is to use an abstract data references such as "VIP Customer 1", then link that to a row in Excel which pulls all the low-level details for your test. That way the test report shows the high-level data which is useful but hides the low-level incidental data. 
 
-* **Code Modulation:** The framework comes with an example project, which utilises the Selenium **page object model**. This model promotes code modularisation allowing for more efficient script maintenance. 
 
 ## Built With
 
@@ -39,73 +66,18 @@ This Selenium cucumber framework has the following features:
 
 ## Running the tests
 
-Below is a typical maven command to trigger the test. The cucumber.options tag can be omitted to trigger all cucumber scenarios or set to trigger specific tests.   
+Below is a typical maven command to trigger the test.
 
 Run with:
 ```bash
-   mvn clean verify -Dcucumber.options="-t @Smoke"
-```
-
-### Configuration
-
-There are two key config files:
-* Maven's pom.xml file:  
-  
-Manages library dependency, plugins and used to set env URL, switch on/off Selenium grid and Browsermob web proxy capturing.
-
-* TestNG's XML file (environment_configurations_to_test.xml):  
-  
-Manages various environment configurations (Operating system, browser and browser version) and parallel testing using multi-threading. 
-
-### TestNG's xml file (environment_configurations_to_test.xml): 
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Environment config tsts" parallel="tests"
-    thread-count="3">
-
-    <listeners>
-        <listener class-name="selenium_tests.Listeners"></listener>
-    </listeners>
-
-    <test name="windows chrome">
-        <parameter name="operating_system" value="windows" />
-        <parameter name="browser" value="chrome" />
-        <classes>
-            <class name="selenium_tests.Runner" />
-        </classes>
-    </test>
-
-    <test name="windows firefox">
-        <parameter name="operating_system" value="windows" />
-        <parameter name="browser" value="firefox" />
-        <classes>
-            <class name="selenium_tests.Runner" />
-        </classes>
-    </test>
-
-    <test name="windows edge">
-        <parameter name="operating_system" value="windows" />
-        <parameter name="browser" value="edge" />
-        <classes>
-            <class name="selenium_tests.Runner" />
-        </classes>
-    </test>
-
-
-</suite> 
+   mvn clean verify"
 ```
 
 ### Steps
 
-* Maven triggers build. 
-* Fail-safe plugin triggers TestNG and looks at TestNG's XML file. 
-* TestNG's XML file will trigger tests via the runner() class. The example included in this framework runs 3 configurations in parallel. 
-* The runner is responsible for generating a ThreadLocal webdriver, executing cucumber scenarios using the TestNG framework and triggering Cucumber report.
-* Cucumber scenarios are driven by Selenium using page object model and custom methods. 
-* TestNG listeners trigger logging on test failure. 
-* HTTP error code and performance analysis is done automatically when web_proxy is turned on and test scripts use the custom methods to drive testing.  
+* Maven is triggered, things get compiled and tests run. 
+* The Maven Fail-safe plugin triggers the TestNG framework, which in turn looks at the TestNG config file which defines the test scope.
+* Each test configuration launches a Runner() instance, which launches Cucumber Scenarios using TestNG.  
 
 
 ### Selenium design pattern 
