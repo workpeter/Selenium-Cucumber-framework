@@ -8,9 +8,11 @@
 
 A common approach is to trigger Selenium tests using Maven, either as part of a complete build solution or just as a convenient way to compile your tests and manage your dependencies.   
 
-Selenium at its core is just a browser automation tool, and so a test framework like TestNG is required in order to encapsulate Selenium code into discrete tests, provide features such as assertions, control execution flow, test configuration, data providers, parallel execution, reporting etc.   
+Selenium at its core is just a browser automation tool, and so a test framework like TestNG is required in order to encapsulate Selenium code into discrete tests, provide features such as assertions, control execution flow, test configuration, data providers, parallel execution, reporting etc.     
+
 When Cucumber is added to the mix, it acts as an abstract layer that sits on top of Selenium and TestNG. Cucumber provides the means to write human-readable tests and group them into scenarios which describe how to use your business features.   
-To actual make those steps do something, an automation tester (like me) will 'glue' those steps to Selenium code.   
+To actual make those steps do something, an automation tester (like me) will 'glue' those steps to Selenium code.     
+
 The beauty of this approach is when the results are shared, the code is hidden, and the report focuses on the easy-to-follow business steps, which are highlighted with a pass or fail.     
 * [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
   
