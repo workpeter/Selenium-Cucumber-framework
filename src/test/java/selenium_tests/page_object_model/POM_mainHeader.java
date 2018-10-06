@@ -80,14 +80,14 @@ public final class POM_mainHeader {
 		POM_popup.escPopup(); 
 
 		switch(category){
-		case "TECHNOLOGY": {driver.get().esm.move_mouse_to_element(LinkTechnology); break;}
-		case "HOME AND GARDEN": {driver.get().esm.move_mouse_to_element(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {driver.get().esm.move_mouse_to_element(LinkBabyAndNursery); break;}
-		case "TOYS": {driver.get().esm.move_mouse_to_element(LinkToys); break;}
-		case "SPORTS AND LEISURE": {driver.get().esm.move_mouse_to_element(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {driver.get().esm.move_mouse_to_element(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {driver.get().esm.move_mouse_to_element(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {driver.get().esm.move_mouse_to_element(LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {driver.get().esm.move_to_element(LinkTechnology); break;}
+		case "HOME AND GARDEN": {driver.get().esm.move_to_element(LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {driver.get().esm.move_to_element(LinkBabyAndNursery); break;}
+		case "TOYS": {driver.get().esm.move_to_element(LinkToys); break;}
+		case "SPORTS AND LEISURE": {driver.get().esm.move_to_element(LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {driver.get().esm.move_to_element(LinkHealthAndBeauty); break;}
+		case "CLOTHING": {driver.get().esm.move_to_element(LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {driver.get().esm.move_to_element(LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	

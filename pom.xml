@@ -11,8 +11,8 @@
 		<env.qa.url>http://www.argos.co.uk</env.qa.url>
 		<selenium.grid.enabled>no</selenium.grid.enabled>
 		<selenium.grid.hub>http://tester125:c2fd0b81-7ee7-4944-84fa-459ab46c8742@ondemand.saucelabs.com:80/wd/hub</selenium.grid.hub>
-		<browsermob.proxy.enabled>yes</browsermob.proxy.enabled>
-		<chrome.logging.enabled>yes</chrome.logging.enabled>
+		<browsermob.proxy.enabled>no</browsermob.proxy.enabled>
+		<chrome.logging.enabled>no</chrome.logging.enabled>
 	</properties>
 
 	<dependencies>

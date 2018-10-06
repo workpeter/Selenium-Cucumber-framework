@@ -41,6 +41,11 @@ public class Steps_product_feature {
 	public void customer_clicks_on_first_product() throws Throwable {
 	    
 		POM_productPage.click_on_first_product();
+		
+		Assert.assertTrue(driver.get().esm.check_text_exists("Click to zoom"));
+		
+		
+		
 			
 	}
 
@@ -80,7 +85,7 @@ public class Steps_product_feature {
 	@Then("^product page is shown$")
 	public void product_page_is_shown() throws Throwable {
 		
-		Assert.assertTrue(driver.get().esm.check_text_exists("About this product"));
+		Assert.assertTrue(driver.get().esm.check_text_exists("Click to zoom"));
 		Assert.assertTrue(driver.get().esm.check_element_exists(POM_productPage.txtProductPrice));
 		Assert.assertTrue(driver.get().esm.get_text(POM_productPage.txtProductPrice).contains("£"));
 	}
@@ -125,8 +130,9 @@ public class Steps_product_feature {
 
 		Assert.assertTrue(driver.get().esm.check_element_exists(POM_productPage.txtPrice));		
 		Assert.assertTrue(driver.get().esm.check_element_exists(POM_productPage.txtProductDescription));	
-		Assert.assertTrue(driver.get().esm.verify_image(POM_productPage.imgProduct));			
-		Assert.assertTrue(driver.get().esm.check_element_exists(POM_productPage.linkProductOwner));		
+		Assert.assertTrue(driver.get().esm.verify_image(POM_productPage.imgProduct));	
+		Assert.assertTrue(driver.get().esm.check_text_exists("Click to zoom"));
+
 
 	}	
 	

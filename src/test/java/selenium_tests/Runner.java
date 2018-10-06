@@ -16,6 +16,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Map;
+import java.util.UUID;
 
 /*
 The runner class is launched via the testNG XML file. 
@@ -61,6 +62,7 @@ public class Runner {
 	private TestNGCucumberRunner testNGCucumberRunner;
 	private volatile static int testID;
 
+	
 	@BeforeClass(alwaysRun = true)
 	@Parameters({"tags","operating_system","browser","browser_version"})
 	public void setup(
@@ -96,7 +98,9 @@ public class Runner {
 
 		driver.get().set_home_url(System.getProperty("env.qa.url"));
 
-		rewrite_cucumber_options(this.getClass(), "plugin", new String [] {"json:target/" + operating_system + "_" + browser + ".json"}, true);
+		String uniqueID = UUID.randomUUID().toString();
+		
+		rewrite_cucumber_options(this.getClass(), "plugin", new String [] {"json:target/" + uniqueID + "_" + operating_system + "_" + browser + ".json"}, true);
 		rewrite_cucumber_options(this.getClass(), "tags", new String [] {tags}, false);
 
 
@@ -167,6 +171,8 @@ public class Runner {
 		if (driver.get().get_driver_enabled()){
 
 			Report_generator.GenerateMasterthoughtReport();	
+			
+			
 
 			try {
 				driver.get().quit();

@@ -200,7 +200,7 @@ Key features include:
 			((ChromeOptions)options).setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 			((ChromeOptions)options).addArguments("start-maximized");
 			((ChromeOptions)options).addArguments("disable-infobars");
-			//options.setHeadless(true); 
+			//((ChromeOptions)options).setHeadless(true);
 
 			if (web_proxy_enabled.equalsIgnoreCase("yes")) options = set_web_proxy(options);
 
@@ -208,13 +208,12 @@ Key features include:
 			//code for Chrome browser logging
 			if(chrome_logging_enabled.equalsIgnoreCase("yes")){
 
-				DesiredCapabilities caps = DesiredCapabilities.chrome();
 				LoggingPreferences logPrefs = new LoggingPreferences();
-
 				logPrefs.enable(LogType.BROWSER, Level.SEVERE);
 				logPrefs.enable(LogType.BROWSER, Level.WARNING);
-				caps.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-				options.merge(caps);
+
+				((ChromeOptions)options).setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+
 			}
 
 			break;
@@ -411,7 +410,7 @@ Key features include:
 
 		public void click(By target) throws Exception  {
 
-			focus_on(target);
+			move_to_element(target);
 
 			webdriver.findElement(target).click();
 
@@ -424,7 +423,8 @@ Key features include:
 
 		public void send_keys(By target,String textToSend) throws Exception {
 
-			focus_on(target);
+			move_to_element(target);
+			
 			clear_text(target);
 
 			webdriver.findElement(target).sendKeys(textToSend);
@@ -439,7 +439,7 @@ Key features include:
 
 		public void select_list_value_by_index(By target,int index) throws Exception{
 
-			focus_on(target);
+			move_to_element(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByIndex(index);
@@ -453,7 +453,7 @@ Key features include:
 
 		public void select_list_value_by_text(By target,String text) throws Exception{
 
-			focus_on(target);
+			move_to_element(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByVisibleText(text);
@@ -478,7 +478,7 @@ Key features include:
 
 		public String get_text(By target) throws Exception {
 
-			focus_on(target);
+			move_to_element(target);
 
 			return webdriver.findElement(target).getText();
 
@@ -486,7 +486,7 @@ Key features include:
 
 		public String get_inner_html(By target) throws Exception{
 
-			focus_on(target);
+			move_to_element(target);
 
 			return webdriver.findElement(target).getAttribute("innerHTML");
 
@@ -495,7 +495,7 @@ Key features include:
 
 		public String get_list_item_text(By target) throws Exception {
 
-			focus_on(target);
+			move_to_element(target);
 
 			Select select = new Select(webdriver.findElement(target));
 
@@ -504,6 +504,7 @@ Key features include:
 		}
 
 		public boolean check_text_exists(String text) throws Exception {
+
 
 			return webdriver.getPageSource().toLowerCase().contains(text.toLowerCase());
 
@@ -517,7 +518,7 @@ Key features include:
 
 		}	
 
-		public void wait_until_present(By target) throws Exception {
+		public void wait_until_exists(By target) throws Exception {
 
 			wait.until(ExpectedConditions.presenceOfElementLocated(target));
 
@@ -731,16 +732,37 @@ Key features include:
 
 		}	
 
+		
+		public void move_to_element(By target) throws Exception  {
 
-		public void focus_on(By target) throws Exception  {
+			scroll_into_view(target);
+			highLight_element(target);
 
-			wait_until_present(target);
+			try{
+
+				Actions action = new Actions(webdriver);
+				action.moveToElement(webdriver.findElement(target)).build().perform();
+
+			}catch(Throwable t){
+
+				standard_warning_output(t.getMessage());
+
+			}
+			
+
+		}		
+		
+		
+		public void scroll_into_view(By target) throws Exception  {
+
+			wait_until_exists(target);
 
 			//======Focusing Start ======
 			try{
 				WebElement element = webdriver.findElement(target);
+				
 				((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-
+	
 			}catch(Throwable t){
 
 				standard_warning_output(t.getMessage());
@@ -750,7 +772,7 @@ Key features include:
 
 			wait_until_visible(target);
 
-			wait_for_ajax_to_finish();
+			//wait_for_ajax_to_finish();
 
 
 		}
@@ -804,22 +826,6 @@ Key features include:
 		}	
 
 
-		public void move_mouse_to_element(By target) throws Exception  {
-
-			focus_on(target);
-
-			try{
-
-				Actions action = new Actions(webdriver);
-				action.moveToElement(webdriver.findElement(target)).build().perform();
-
-			}catch(Throwable t){
-
-				standard_warning_output(t.getMessage());
-
-			}
-
-		}	
 
 		public void highLight_element(By target)  {
 
@@ -936,14 +942,21 @@ Key features include:
 
 		private void log_chrome_browser_warnings_and_errors(int messsage_level_threshold) throws IOException {
 
+		
+			//only run if Chrome browser
+			if (!browser.toLowerCase().equals("chrome")) return;
+			
 			long startTime = System.currentTimeMillis();
 
 			//messsage_level_threshold 0 - warning and Severe
 			//messsage_level_threshold 1 - severe
 
-
+			
+			StringBuilder log_output =new StringBuilder(""); 
+			
+			int log_count = 0 ;
+		
 			LogEntries logEntries = webdriver.manage().logs().get(LogType.BROWSER);
-
 			for (LogEntry entry : logEntries) {
 
 				//skip outputting the non intrusive 404 Ajax call we insert which checks if the pages Ajax calls have completed
@@ -953,23 +966,26 @@ Key features include:
 				if (messsage_level_threshold == 1 && entry.getLevel().equals(Level.WARNING)) continue;
 
 
-				String log_output = 
-						"[Chrome message:" + " Issues detected on URL:" + webdriver.getCurrentUrl() + System.lineSeparator() + 
+				log_output.append("[Chrome message:" + " Issues detected on URL:" + webdriver.getCurrentUrl() + System.lineSeparator() + 
 						new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage() 
-						+ System.lineSeparator() + System.lineSeparator();
-
-
-				//System.out.print(log_output);
-				write_to_static_log_file(log_output,"chrome-browser-warnings-errors/" + operating_system);			
+						+ System.lineSeparator() + System.lineSeparator());
+				
+				log_count++;
 
 			}
 
+			if (log_output.length() != 0){
+				//System.out.print(log_output);
+				
+				write_to_static_log_file(log_output,"chrome-browser-warnings-errors/" + operating_system);	
+			}
 
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
 
-			if (duration > 100){
-				System.out.println("warning: time to execute log_chrome_browser_warnings_and_errors took: " + duration + "MS");
+
+			if (duration > 500){
+				System.out.println("Chrome browser logs overhead: reading " + log_count + " logs with log_chrome_browser_warnings_and_errors took: " + duration + "MS");
 			}
 
 		}	
@@ -981,58 +997,65 @@ Key features include:
 
 			if(web_proxy == null) return;
 
-			String log_output; 
-
+			StringBuilder log_output1 =new StringBuilder("");  
+			StringBuilder log_output2 =new StringBuilder("");  
+			
+			int log_count = 0;
+			
 			List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
 			for (HarEntry entry : entries) {
 
 				if (entry.getResponse().getStatus() >= 400 & 
 						!entry.getRequest().getUrl().contains("selenium_call")){
 
-					log_output = 	
+					log_output1.append(
 							"[HTTP Error code:" + 
 									entry.getResponse().getStatus() + "] " +
 									entry.getRequest().getMethod() + " " +
 									entry.getRequest().getUrl()  + " : via:" +
 									entries.get(0).getRequest().getUrl() 
-									+ System.lineSeparator();
-
-					//System.out.print(log_output);
-					write_to_static_log_file(log_output,"http-error-codes/" + operating_system + "-" + browser);
-
+									+ System.lineSeparator());
 
 				}
 
 
 				if (entry.getTime()>= (millisecond_performance_threshold)){
 
-					log_output = 	
+					log_output2.append(
 							"[Slow HTTP element:" + 
 									entry.getTime() + "ms] " +
 									entry.getRequest().getMethod() + " : " +
 									entry.getRequest().getUrl()  + " : " +  
 									entry.getResponse().getStatus() 
-									+ System.lineSeparator();
-
-					//System.out.print(log_output);
-					write_to_static_log_file(log_output,"http-slow-resources/" + operating_system + "-" + browser);
+									+ System.lineSeparator());
 
 				}
+				
+				log_count++;
+			}
 
+
+			if (log_output1.length() != 0){
+				//System.out.print(log_output1);
+				write_to_static_log_file(log_output1,"http-error-codes/" + operating_system + "-" + browser);	
+			}
+			if (log_output2.length() != 0){
+				//System.out.print(log_output2);
+				write_to_static_log_file(log_output2,"http-slow-resources/" + operating_system + "-" + browser);
 			}
 
 
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
 
-			if (duration > 100){
-				System.out.println("warning: time to execute log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
-			}
-
+			if (duration > 500){
+				System.out.println("warning: reading " + log_count + " logs with log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
+			}	
+			
 		}
 
 
-		public void write_to_static_log_file(String log_output, String log_dir) throws IOException  {
+		private void write_to_static_log_file(StringBuilder log_output, String log_dir) throws IOException  {
 
 			FileWriter fw = null;
 
@@ -1062,11 +1085,12 @@ Key features include:
 				//Call getScreenshotAs method to create image file
 				File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
-				String currentDateTime = new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
+				String uniqueID = UUID.randomUUID().toString();
+				
 
 				//dynamic log file per failure (using dat/time)
 				String filePath = error_log_base_path + "test-failures/" + 
-						operating_system + "-" + browser + "_" + currentDateTime; 
+						operating_system + "-" + browser + "_" + uniqueID; 
 
 				String screenshotPath = filePath + "/" + "screenshot.png";
 

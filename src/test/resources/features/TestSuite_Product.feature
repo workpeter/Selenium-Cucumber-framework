@@ -3,7 +3,7 @@ Feature: Products
 
 
 
-  @Product @Retest
+  @Product 
   Scenario Outline: customer searches for product by name 
   	Given customer is on homepage
     When customer searches by product: <Product> using search feature
@@ -13,15 +13,15 @@ Feature: Products
 	And customer can see related products
    Examples:
     | Product 					|
+    | JEANS 					|   
+    | RING					 	|     
     | XBOX		 				|
     | COOKERS 					|
     | PUSHCHAIR 				|
     | SPIDERMAN					|
     | FOOTBALL 					|
     | WEIGHTS					|
-    | JEANS 					|        
-    | RING					 	| 	
-	
+  
   @Product
   Scenario Outline: customer searches for product and changes list order
   	Given customer is on homepage
@@ -44,7 +44,7 @@ Feature: Products
     | RING					 	| 	
     
      
-  @Product  @Retest
+  @Product  
   Scenario Outline: customer changes store location
 	Given customer is on product page : <Product>
 	When customer changes store location to : <Postcode>

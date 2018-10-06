@@ -7,17 +7,51 @@
 		<listener class-name="selenium_tests.Listeners"></listener>
 	</listeners>
 
-	<test name="windows chrome - just Product feature">
-		<parameter name="tags" value="@Product" />
+	<test name="windows chrome - no tags (all features)">
 		<parameter name="operating_system" value="windows" />
 		<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="selenium_tests.Runner" />
 		</classes>
 	</test>
-	
-<!-- 	<test name="windows chrome - Tests with Homepage or Basket tags"> -->
-<!-- 		<parameter name="tags" value="@Homepage or @Basket" /> -->
+
+	<test name="windows firefox - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
+
+	<test name="windows edge - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="edge" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
+
+<!-- 	<test name="windows chrome - just Product feature"> -->
+<!-- 		<parameter name="tags" value="@Product" /> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="chrome" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
+
+
+<!-- 	<test name="windows chrome - just Homepage feature"> -->
+<!-- 		<parameter name="tags" value="@Homepage" /> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="chrome" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test>	 -->
+
+<!-- 	<test name="windows chrome - just Basket feature"> -->
+<!-- 		<parameter name="tags" value="@Basket" /> -->
 <!-- 		<parameter name="operating_system" value="windows" /> -->
 <!-- 		<parameter name="browser" value="chrome" /> -->
 <!-- 		<classes> -->
@@ -25,23 +59,15 @@
 <!-- 		</classes> -->
 <!-- 	</test>	 -->
 	
-<!-- 	<test name="windows firefox - no tags (all features)"> -->
+<!-- 	<test name="windows chrome - just CategorySearch feature"> -->
+<!-- 		<parameter name="tags" value="@CategorySearch" /> -->
 <!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="firefox" /> -->
+<!-- 		<parameter name="browser" value="chrome" /> -->
 <!-- 		<classes> -->
 <!-- 			<class name="selenium_tests.Runner" /> -->
 <!-- 		</classes> -->
-<!-- 	</test> -->
-
-<!-- 	<test name="windows edge - no tags (all features)"> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="edge" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="selenium_tests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
-
-
+<!-- 	</test>			 -->
+	
 </suite> 
 
 

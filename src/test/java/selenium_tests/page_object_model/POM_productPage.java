@@ -6,7 +6,7 @@ import static selenium_tests.Runner.driver;
 
 public final class POM_productPage  {
 
-	public static By linkProduct = By.xpath("//a[@class=\"ac-product-link ac-product-card__details\"]");
+	public static By linkProduct = By.xpath("(//a[@class=\"ac-product-link ac-product-card__image\"])[1]");
 	public static By linkChangeStore = By.xpath("//class[@class=\"a xs-5--none change-store\"]");	
 	public static By linkChangePostcode =By.xpath("//*[@id=\"branch\"]/div[5]/div[2]/div/span");	
 	public static By linkProductOwner = By.xpath("//a[@itemprop=\"brand\"]");	
@@ -28,9 +28,7 @@ public final class POM_productPage  {
 		
 		POM_popup.escPopup(); 
 		driver.get().esm.click(linkProduct);
-		
-		
-	
+
 	}
 
 	
