@@ -18,7 +18,7 @@ The beauty of this approach is when the results are shared, the code is hidden, 
   
 Using this framework has many advantages, which are listed below in the feature list. However, the main benefit is to provide a stable and fast test solution.
 
-This framework comes with example tests for the www.argos.co.uk website. The tests are organised using 'page object modelling' style, which is recommended because it promotes code modularisation making it reusable and easier to manage.    
+This framework comes with example tests for the www.argos.co.uk website. The tests are written using 'page object modelling' style, which is recommended because it promotes code modularisation allowing for reusable code and easier to maintain scripts.    
 
 
 ## Features
