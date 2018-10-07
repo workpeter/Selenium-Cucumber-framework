@@ -37,7 +37,9 @@ This framework comes with example tests for the www.argos.co.uk website. The tes
 When this framework creates WebDrivers for you it does many things under the hood. Such as: 
     * Dynamically download and configure the browser drivers for any major browser and operating system. 
     * Provide enhanced capabilities such as capturing browser logs and HTTP traffic (including **Javascript errors**)
-    * Provides alternative methods for common user actions (click, select, etc) with the aim of making them more reliable. A technique is applied whereby the methods will first focus on the element and then check for any dynamic page reactions before interacting with it. Afterwards, an additional check is applied to any additional Ajax calls being made. The result of these checks **greatly reduces Selenium script failures** and the overhead is minimal (around 200MS). This is still much faster than a typical human reaction.  
+    * Ability to switch between local and remote webdriver (Selenium Grid)
+    * Route common user actions (click, select, etc) through custom methods in order to make them more reliable. Additional checks include verifying element exists and waiting for Ajax call completions.   
+    * Provide dozens of custom methods for common script solution thus reducing the number of code lines required in tests and encouraging standardisation.  
     * Every WebDriver launched is wrapped in a 'threadLocal' container called "webdriver". Meaning all scripts can reference this webdriver object to manipulate the webdriver, however, they will only influence their own webdriver without causing conflicts with other WebDrivers. This makes writing each script straightforward. 
  
 * **Scaleable web drivers**  
