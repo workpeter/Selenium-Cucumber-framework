@@ -36,9 +36,8 @@ This framework comes with example tests for the www.argos.co.uk website. The tes
  * **Enhanced web drivers**  
 When this framework creates WebDrivers for you it does many things under the hood. Such as: 
     * Dynamically download and configure the browser drivers for any major browser and operating system. 
-    * Provide enhanced capabilities such as capturing browser logs and HTTP traffic (including **Javascript issues**)
-    * Provides custom methods for writing scripts, which are more reliable and realistic. For example, when clicking on an element, the framework will first wait until its present, scroll it into view and ensure its visible before clicking on it. 
-    * Dynamic waiting is a crucial feature built into each custom method. This ensures script dynamically wait for elements to be in the right condition before proceeding. To assist with this, the methods also wait until Ajax calls have completed, to ensure the page is fully loaded. This technique greatly improves script robustness, and the use of dynamic rather than static wait times means the script run very efficiently. 
+    * Provide enhanced capabilities such as capturing browser logs and HTTP traffic (including **Javascript errors**)
+    * Provides alternative methods for common user actions (click, select, etc) with the aim of making them more reliable. A technique is applied whereby the methods will first focus on the element and then check for any dynamic page reactions before interacting with it. Afterwards, an additional check is applied to any additional Ajax calls being made. The result of these checks **greatly reduces Selenium script failures** and the overhead is minimal (around 200MS). This is still much faster than a typical human reaction.  
     * Every WebDriver launched is wrapped in a 'threadLocal' container called "webdriver". Meaning all scripts can reference this webdriver object to manipulate the webdriver, however, they will only influence their own webdriver without causing conflicts with other WebDrivers. This makes writing each script straightforward. 
  
 * **Scaleable web drivers**  
@@ -54,7 +53,7 @@ Whilst the TestNG configuration file is used for configuring WebDrivers, the Mav
 
 * **Advanced logging:**     
 This framework does logging in two ways. The main way is using listeners which detect failures, then outputs log files containing trace logs, scenario name, failed URL, and also screenshot. Each failure has its own log file which are categorised by browser type and operating system.   
-The second method is triggered when the custom methods are used. When triggered, they run checks on browser warning/errors (including **javascript issues**), HTTP error code detection and slow web element detection.  
+The second method is triggered when the custom methods are used. When triggered, they run checks on browser warning/errors (including **javascript errors**), HTTP error code detection and slow web element detection.  
 This level of logging can be switched on/off globally via the Maven POM file. 
 
 * **Clear automated reporting**  
