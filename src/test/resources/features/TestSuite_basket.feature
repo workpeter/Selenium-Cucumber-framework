@@ -57,7 +57,7 @@ Feature: Basket
     | FOOTBALL 					| 2				| 2			|
 
     
-  @Basket @retest
+  @Basket 
   Scenario Outline: Customer views basket with x2 products, totalling x4 quantity then removes 1st product
 	Given customer is on homepage
     When customer searches by product: <Product> using search feature

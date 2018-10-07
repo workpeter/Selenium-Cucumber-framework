@@ -19,6 +19,8 @@ public class Steps_product_feature {
 		
 		//Goto Homepage
 		driver.get().esm.goto_home_url();
+		driver.get().esm.delete_cookies();
+		
 		POM_popup.escPopup(); 
 		
 		customer_searches_by_product_using_search_feature(product);

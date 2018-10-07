@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Cucumber-JVM Html Reports - Tag: @retest </title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="blue/css/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/skin/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/960.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="blue/css/text.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="blue/favicon.ico" />
+<style>
+
+h2 {
+	font-size: 24px !important;
+}
+
+.feature-keyword {
+	font-weight: bold;
+}
+
+.feature-description {
+	padding-left: 15px;
+	font-style: italic;
+	background-color: beige;
+}
+
+.feature-role {
+	font-weight: bold;
+}
+
+.feature-action {
+	font-weight: bold;
+}
+
+.feature-value {
+	font-weight: bold;
+}
+
+.feature-tags {
+	padding-top: 10px;
+	padding-left: 15px;
+	color: darkblue;
+}
+
+.element-keyword {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.element-element_name {
+	padding-left: 15px;
+}
+
+.step-keyword {
+	font-weight: bold;
+	padding-left: 50px;
+}
+
+.error_message {
+	background-color: #FFEEEE;
+	padding-left: 50px;
+	border: 1px solid #D88A8A;
+	margin-bottom: 5px;
+	overflow: auto;
+}
+
+.error_collapse {
+	display:none;
+	padding-left: 10px;
+}
+
+.error_collapse + label {
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+	cursor: pointer;
+	padding-top: 2px;
+}
+
+.error_collapse + label + * {
+	display: none;
+    padding-left: 25px;
+}
+
+.error_collapse:checked + label + * {
+	display: block;
+}
+
+.error_collapse + label:before {
+	background-color: #4F5150;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #FFFFFF;
+	content: "+";
+	display: block;
+	float: left;
+	line-height: 20px;
+	width: 20px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+.error_collapse:checked + label:before {
+	content: "\2212";
+}
+
+.step-duration {
+	float: right;
+	padding-right: 15px;
+}
+
+.passed {
+	background-color: #C5D88A;
+}
+
+.failed {
+	background-color: #D88A8A;
+}
+
+.skipped {
+	background-color: #88AAFF;
+}
+
+.pending {
+	background-color: #FBB907;
+}
+
+.undefined {
+	background-color: #FBB987;
+}
+
+.missing {
+	background-color: #FBB9D7;
+}
+
+table.stats-table {
+	color: black;
+	width: 100%;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+table.stats-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: #66CCEE;
+	-moz-border-radius:;
+}
+
+table.stats-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+	-moz-border-radius:;
+}
+
+table.data-table {
+	color: black;
+	border-width: 1px;
+	border-spacing: 2px;
+	border-style: outset;
+	border-color: #d6d6d6;
+	border-collapse: collapse;
+	background-color: beige;
+}
+
+table.data-table th {
+	color: black;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: #66CCEE;
+}
+
+table.data-table td {
+	color: black;
+	text-align: center;
+	border-width: 1px;
+	padding: 5px;
+	border-style: inset;
+	border-color: #d6d6d6;
+	background-color: beige;
+}
+
+.data {
+	padding-left: 50px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.output-data {
+	padding-left: 50px;
+	background-color: beige;
+	text-indent: 50px;
+}
+
+.doc-string {
+	width: auto;
+	display: inline-block;
+	margin: 10px auto 10px 70px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255, 0.35);
+	border-radius: 10px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 95%;
+}
+
+.graph {
+	margin-bottom: 50px;
+	margin-top: 30px;
+	clear: both;
+	font-family: georgia, serif;
+	font-size: 14px;
+}
+
+.graph-header h3 {
+	margin-bottom: 0px;
+}
+
+.graph-header {
+	text-align: center;
+}
+
+.graph-header p {
+	margin-top: 0px;
+}
+
+.graph .legend td, .graph .legend, .graph .legend tr {
+	padding: 0px;
+	margin: 0px;
+	border-collapse: collapse;
+}
+
+.graph .legend {
+	margin-left: 10px;
+}
+
+.graph .legend td {
+	padding-right: 5px;
+}
+
+.graph .legend .color-box {
+	width: 14px;
+	height: 10px;
+	overflow: hidden;
+}
+
+.graph .label {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	position: absolute;
+	right: -5px;
+	top: 15px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+}
+
+table#tablesorter thead tr th {
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body id="top">
+
+     <div id="fullwidth_header">
+     <div class="container_12">
+         <h1 class="grid_4 logo"><a href="feature-overview.html" class='ie6fix'>Cucumber</a></h1>
+
+         <div id="nav">
+             <ul>
+                                  <li><a href="tag-overview.html">Tags</a></li>
+                 <li><a href="feature-overview.html">Feature</a></li>
+                 <li><a href="step-overview.html">Steps</a></li>
+             </ul>
+         </div>
+     </div>
+</div>
+
+        <div id="fullwidth_gradient">
+    <div class="container_12">
+        <div class="grid_9 heading">
+            <h2 id="feature-title">Result for <span style="color:#66CCEE;"><i>@retest</i></span> in build: 1</h2>
+        </div>
+    </div>
+</div>
+
+    <div class="container_12">
+        <div class="grid_12">
+
+            <div>
+                <table class="stats-table">
+                                        <thead>
+    <tr>
+                <th></th>
+        <th id="stats-header-scenarios" colspan="3">Scenarios</th>
+        <th id="stats-header-steps" colspan="7">Steps</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+            <th id="stats-header-key">Tag</th>
+                        <th id="stats-header-scenarios-total">Total</th>
+            <th id="stats-header-scenarios-passed">Passed</th>
+            <th id="stats-header-scenarios-failed">Failed</th>
+            <th id="stats-header-steps-total">Total</th>
+            <th id="stats-header-steps-passed"    style="background-color:#00CE00;">Passed</th>
+            <th id="stats-header-steps-failed"    style="background-color:#FF0000;">Failed</th>
+            <th id="stats-header-steps-skipped"   style="background-color:#88AAFF;">Skipped</th>
+            <th id="stats-header-steps-pending"   style="background-color:#FBB907;">Pending</th>
+            <th id="stats-header-steps-undefined" style="background-color:#FBB957;">Undefined</th>
+            <th id="stats-header-steps-missing"   style="background-color:#FBB9A7;">Missing</th>
+            <th id="stats-header-duration">Duration</th>
+            <th id="stats-header-status">Status</th>
+    </tr>
+</thead>
+                    <tr>
+                        <td><a href="retest.html">@retest</a></td>
+                        <td>42</td>
+                        <td>42</td>
+                        <td>0</td>
+                        <td>210</td>
+                        <td>210</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td >0</td>
+                        <td style="text-align:right;white-space:nowrap">5m 28s 542ms</td>
+                        <td style="background-color: #00CE00;">passed</td></tr>
+
+                </table>
+
+            </div>
+
+        <div style="color:black;">
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">697ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: televisions and accessories</span><span class="step-duration">05s 382ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">393ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: hdmi-cables-and-optical-cables</span><span class="step-duration">01s 926ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">458ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">789ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: televisions and accessories</span><span class="step-duration">03s 046ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">319ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: tv-remote-controls</span><span class="step-duration">592ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 995ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">01s 235ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Laptops and PCs</span><span class="step-duration">02s 772ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">315ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: Gaming laptops and PCs</span><span class="step-duration">03s 056ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">541ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">945ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Laptops and PCs</span><span class="step-duration">03s 377ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">302ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: imacs</span><span class="step-duration">798ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 781ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">01s 009ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: living room furniture</span><span class="step-duration">05s 566ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">03s 838ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: armchairs-and-chairs</span><span class="step-duration">02s 204ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">715ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">950ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: living room furniture</span><span class="step-duration">05s 511ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">03s 928ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: cd-and-dvd-storage</span><span class="step-duration">02s 413ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">586ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">01s 029ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Bedding</span><span class="step-duration">06s 245ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">04s 315ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: duvets</span><span class="step-duration">02s 382ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">393ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">01s 037ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Bedding</span><span class="step-duration">02s 698ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">06s 767ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: pillows</span><span class="step-duration">01s 969ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">705ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">01s 062ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Travel</span><span class="step-duration">02s 627ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">260ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: pushchairs</span><span class="step-duration">02s 581ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">713ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">01s 146ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Travel</span><span class="step-duration">03s 428ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">255ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: baby-carriers</span><span class="step-duration">01s 962ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">417ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">860ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: safety and health</span><span class="step-duration">03s 266ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">220ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: baby health</span><span class="step-duration">02s 964ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">683ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">07s 524ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Womens</span><span class="step-duration">03s 966ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">381ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: accessories</span><span class="step-duration">02s 623ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">346ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">01s 190ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Womens</span><span class="step-duration">02s 065ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">194ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: dresses</span><span class="step-duration">01s 985ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">348ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-21b015c99ee4_windows_firefox.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">01s 019ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Mens</span><span class="step-duration">02s 421ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">196ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: coats-and-jackets</span><span class="step-duration">01s 872ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">412ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">818ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: televisions and accessories</span><span class="step-duration">03s 679ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">440ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: hdmi-cables-and-optical-cables</span><span class="step-duration">367ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 209ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">766ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: televisions and accessories</span><span class="step-duration">04s 502ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">189ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: tv-remote-controls</span><span class="step-duration">436ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 364ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">835ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Laptops and PCs</span><span class="step-duration">03s 094ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">544ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: Gaming laptops and PCs</span><span class="step-duration">01s 803ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">898ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">784ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Laptops and PCs</span><span class="step-duration">03s 961ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">230ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: imacs</span><span class="step-duration">01s 278ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">421ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">797ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: living room furniture</span><span class="step-duration">03s 067ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">179ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: armchairs-and-chairs</span><span class="step-duration">01s 960ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">404ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">940ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: living room furniture</span><span class="step-duration">03s 162ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">455ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: cd-and-dvd-storage</span><span class="step-duration">471ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 108ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">822ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Bedding</span><span class="step-duration">03s 362ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">406ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: duvets</span><span class="step-duration">402ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 539ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">954ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Bedding</span><span class="step-duration">03s 190ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">291ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: pillows</span><span class="step-duration">02s 677ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">606ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">01s 117ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Travel</span><span class="step-duration">02s 991ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">196ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: pushchairs</span><span class="step-duration">405ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 730ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">890ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Travel</span><span class="step-duration">03s 197ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">482ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: baby-carriers</span><span class="step-duration">02s 359ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">635ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">932ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: safety and health</span><span class="step-duration">03s 072ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">386ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: baby health</span><span class="step-duration">02s 418ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">493ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">970ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Womens</span><span class="step-duration">03s 169ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">336ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: accessories</span><span class="step-duration">436ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 605ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">01s 012ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Womens</span><span class="step-duration">03s 128ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">310ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: dresses</span><span class="step-duration">01s 704ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">553ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-02882ecaac89_windows_edge.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">909ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Mens</span><span class="step-duration">03s 493ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">235ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: coats-and-jackets</span><span class="step-duration">323ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 296ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">972ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: televisions and accessories</span><span class="step-duration">02s 745ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">285ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: hdmi-cables-and-optical-cables</span><span class="step-duration">485ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 078ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">01s 096ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: televisions and accessories</span><span class="step-duration">02s 753ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">390ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: tv-remote-controls</span><span class="step-duration">533ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">02s 049ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">01s 124ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Laptops and PCs</span><span class="step-duration">02s 814ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">426ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: Gaming laptops and PCs</span><span class="step-duration">01s 662ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">770ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: TECHNOLOGY in the menu</span><span class="step-duration">982ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Laptops and PCs</span><span class="step-duration">02s 461ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">285ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: imacs</span><span class="step-duration">595ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 427ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">991ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: living room furniture</span><span class="step-duration">02s 512ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">455ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: armchairs-and-chairs</span><span class="step-duration">01s 610ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">554ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">01s 075ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: living room furniture</span><span class="step-duration">02s 130ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">526ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: cd-and-dvd-storage</span><span class="step-duration">490ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 822ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">01s 090ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Bedding</span><span class="step-duration">02s 512ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">546ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: duvets</span><span class="step-duration">01s 519ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">533ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: HOME AND GARDEN in the menu</span><span class="step-duration">804ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Bedding</span><span class="step-duration">02s 094ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">980ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: pillows</span><span class="step-duration">720ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 470ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">928ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Travel</span><span class="step-duration">02s 985ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">408ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: pushchairs</span><span class="step-duration">01s 721ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">01s 366ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">01s 163ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Travel</span><span class="step-duration">02s 778ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">581ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: baby-carriers</span><span class="step-duration">01s 760ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">522ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: BABY AND NURSERY in the menu</span><span class="step-duration">866ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: safety and health</span><span class="step-duration">02s 714ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">641ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: baby health</span><span class="step-duration">01s 705ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">441ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">01s 246ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Womens</span><span class="step-duration">02s 455ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">01s 001ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: accessories</span><span class="step-duration">01s 944ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">881ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">01s 159ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Womens</span><span class="step-duration">03s 041ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">500ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: dresses</span><span class="step-duration">02s 070ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">605ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                            <div style="margin-bottom:20px;width:100%">
+                    <div><a href="src-test-resources-Features-TestSuite_categorySearch-feature-d4df0868e25d_windows_chrome.html">View Feature File</a></div>
+                
+                <div class="feature-tags"><a href="CategorySearch.html">@CategorySearch</a>,<a href="retest.html">@retest</a></div>
+                <div class="passed"><span class="element-keyword">Scenario Outline: </span><span class="element-name">customer navigates to subcategory via category menu hover feature then goes to niche-category</span></div>
+                                    <div class="passed"><span class="step-keyword">When  </span><span class="step-name">customer hovers on category: CLOTHING in the menu</span><span class="step-duration">01s 294ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on sub-category: Mens</span><span class="step-duration">02s 959ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">category splash screen is shown</span><span class="step-duration">501ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">And  </span><span class="step-name">clicks on niche-category via category splash screen: coats-and-jackets</span><span class="step-duration">02s 190ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                    <div class="passed"><span class="step-keyword">Then  </span><span class="step-name">results of matching products are shown by order of relevance</span><span class="step-duration">489ms</span></div>
+                    
+                                        <div class="output-data">
+                                        </div>
+                                <div class="passed"><span class="step-keyword">After </span><i>Listeners.save_cucumber_scenario_details(Scenario)</i><span class="step-duration"></span></div>
+                </div>
+                    </div>
+    </div>
+
+
+<div class="container_12">
+    <div class="grid_12 hr"></div>
+    <div class="grid_12">
+        <p style="text-align:center">
+            <a href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+            <a href="https://github.com/damianszczepanik/cucumber-reporting">Cucumber reports</a>
+            <br>build: 07-10-2018 21:18:55</p>
+    </div>
+</div>
+
+</body>
+</html>

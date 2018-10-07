@@ -1,10 +1,6 @@
 package selenium_tests.page_object_model;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-
-import java.util.*;
-import static selenium_tests.Runner.driver;
 
 public final class POM_basket {
 

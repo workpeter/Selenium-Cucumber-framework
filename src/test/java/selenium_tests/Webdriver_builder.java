@@ -1,5 +1,7 @@
 package selenium_tests;
 
+import java.awt.AWTException;
+import java.awt.Robot;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -46,6 +48,7 @@ public class Webdriver_builder implements WebDriver {
 
 	private final String operating_system;
 	private final String browser;
+	private final String chrome_logging_enabled;
 
 	private String home_url;
 
@@ -53,9 +56,9 @@ public class Webdriver_builder implements WebDriver {
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
 	private String error_log_base_path = System.getProperty("user.dir").replace("\\", "/")  + 
-			"/target/error-log/";
+			"/target/CAPTURED-ERRORS/";
 
-	private final int max_wait_time = 150;
+	private final int max_wait_time = 15;
 	private final int messsage_level_threshold = 0;
 	private final int millisecond_performance_threshold = 5000;
 
@@ -114,6 +117,9 @@ Key features include:
 
 		this.operating_system = operating_system;
 		this.browser = browser;
+		this.chrome_logging_enabled = chrome_logging_enabled; 
+
+
 
 		// ==================================
 		// Selenium Grid not Enabled: - will run on current machine. Will attempt
@@ -281,7 +287,6 @@ Key features include:
 
 		web_proxy.newHar();
 
-
 		return options;
 
 	}
@@ -403,28 +408,27 @@ Key features include:
 
 		public void click(By target) throws Exception  {
 
-
 			try{
 
-				move_to_element_and_verify(target);
+				wait_until_exists(target);
 				webdriver.findElement(target).click();
 
 
 				//[Fail-safe] 
 				//Sometimes standard click doesn't work (more notable in Edge browser) 
 				//Rather than fail the test due to a script issue, try alternative click method. 
-				//If that too fails, then fail the test. 
+				//If that too fails, then fail the test. Note: Alternative method is still user-like, just has less verification checks
 			}catch(Throwable t){
 
 				try{
-
+					
 					Actions action = new Actions(webdriver);
-					action.moveToElement(webdriver.findElement(target)).click().build().perform();
+					action.moveToElement(webdriver.findElement(target)).pause(1000).click().build().perform();
 
 				}catch(Throwable t2){
 
 					throw new Exception(
-							"[Standard click error]" + System.lineSeparator() + 
+							System.lineSeparator() + "[Standard click error]" + System.lineSeparator() + 
 							t.getMessage() + System.lineSeparator() + 
 							"[Alternative Action click error]" + System.lineSeparator() + 
 							t2.getMessage());
@@ -441,11 +445,9 @@ Key features include:
 		}
 
 
-
 		public void send_keys(By target,String textToSend) throws Exception {
 
-			move_to_element_and_verify(target);
-
+			wait_until_exists(target);
 			clear_text(target);
 
 			webdriver.findElement(target).sendKeys(textToSend);
@@ -461,7 +463,7 @@ Key features include:
 
 		public void select_list_value_by_index(By target,int index) throws Exception{
 
-			move_to_element_and_verify(target);
+			wait_until_exists(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByIndex(index);
@@ -475,7 +477,7 @@ Key features include:
 
 		public void select_list_value_by_text(By target,String text) throws Exception{
 
-			move_to_element_and_verify(target);
+			wait_until_exists(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByVisibleText(text);
@@ -501,7 +503,7 @@ Key features include:
 
 		public String get_text(By target) throws Exception {
 
-			move_to_element_and_verify(target);
+			wait_until_exists(target);
 
 			return webdriver.findElement(target).getText();
 
@@ -509,7 +511,7 @@ Key features include:
 
 		public String get_inner_html(By target) throws Exception{
 
-			move_to_element_and_verify(target);
+			wait_until_exists(target);
 
 			return webdriver.findElement(target).getAttribute("innerHTML");
 
@@ -518,7 +520,7 @@ Key features include:
 
 		public String get_list_item_text(By target) throws Exception {
 
-			move_to_element_and_verify(target);
+			wait_until_exists(target);
 
 			Select select = new Select(webdriver.findElement(target));
 
@@ -546,7 +548,8 @@ Key features include:
 			wait.until(ExpectedConditions.presenceOfElementLocated(target));
 
 		}	
-
+		
+		
 		//===========================
 		// Actions which if fail, should CATCH warning, but are not critical to stop test execution
 		//===========================
@@ -718,35 +721,21 @@ Key features include:
 		}
 
 
-		public void goto_new_tab() {
+		public void move_to_element_and_wait(By target) throws Exception  {
+
+			long startTime = System.currentTimeMillis();
+
+			wait_until_exists(target);
 
 			try{
 
-				String parentWindow;
-				String childWindow;
+				//Do JS scroll too because sometimes action moveToElement is unreliable on its own. Espcially in firefox
+				WebElement element = webdriver.findElement(target);
+				((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
 
-				parentWindow = webdriver.getWindowHandle();
-				childWindow = null;
+				Actions action = new Actions(webdriver);
+				action.moveToElement(webdriver.findElement(target)).perform();
 
-				Set <String> allWindows =  webdriver.getWindowHandles();
-
-				//Only attempt to switch to RecentTab, if a new tab exists. 
-				for(String wHandle: allWindows){
-
-					if (wHandle != parentWindow) {
-
-						childWindow = wHandle;
-					}
-				}
-
-				int attempts=1;
-				if (!childWindow.equals(parentWindow)){
-					while(webdriver.getWindowHandle().equals(parentWindow)) {
-						webdriver.switchTo().window(childWindow);
-						//Reporter.log("Switch window attempt:" +  attempts,true);
-						attempts++;
-					}
-				}
 
 			}catch(Throwable t){
 
@@ -754,40 +743,7 @@ Key features include:
 
 			}
 
-		}	
-
-
-		public void move_to_element_and_verify(By target) throws Exception  {
-
-
-			long startTime = System.currentTimeMillis();
-
-			wait_until_exists(target);
-
-
-			try{
-
-				Actions action = new Actions(webdriver);
-				action.moveToElement(webdriver.findElement(target)).build().perform();
-
-			}catch(Throwable t){
-
-				//If standard Action move fails, use javascript alternative.
-				try{
-					WebElement element = webdriver.findElement(target);
-
-					((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-					Thread.sleep(200);
-
-				}catch(Throwable t2){
-
-					standard_warning_output(t.getMessage());
-					standard_warning_output(t2.getMessage());
-
-				}
-			}
-
-			//After moving the view, ensure unexpected javascript behaviour isn't obscuring the element. 
+			//After moving to the element, wait for javascript events to finish. 
 			wait_for_ajax_to_finish();
 			wait_element_visible(target);
 			highLight_element(target);
@@ -796,9 +752,9 @@ Key features include:
 			long duration = (endTime - startTime); 
 
 			if (duration > 5000){
-				
+
 				System.out.println("[warning] " + browser + " Execution time for move_to_element_and_verify took: " + duration + "MS");
-			
+
 			}	
 		}		
 
@@ -871,9 +827,9 @@ Key features include:
 
 				//With some browsers, a page needs to be open before attepting to clear cookies otherwise will result in failure.
 				if (webdriver.getCurrentUrl().equals("data:,") || webdriver.getCurrentUrl().equals("about:blank")) {
-					
+
 					goto_home_url();
-					
+
 				}
 
 				webdriver.manage().deleteAllCookies();
@@ -951,6 +907,43 @@ Key features include:
 
 		}	
 
+		public void goto_new_tab() {
+
+			try{
+
+				String parentWindow;
+				String childWindow;
+
+				parentWindow = webdriver.getWindowHandle();
+				childWindow = null;
+
+				Set <String> allWindows =  webdriver.getWindowHandles();
+
+				//Only attempt to switch to RecentTab, if a new tab exists. 
+				for(String wHandle: allWindows){
+
+					if (wHandle != parentWindow) {
+
+						childWindow = wHandle;
+					}
+				}
+
+				int attempts=1;
+				if (!childWindow.equals(parentWindow)){
+					while(webdriver.getWindowHandle().equals(parentWindow)) {
+						webdriver.switchTo().window(childWindow);
+						//Reporter.log("Switch window attempt:" +  attempts,true);
+						attempts++;
+					}
+				}
+
+			}catch(Throwable t){
+
+				standard_warning_output(t.getMessage());
+
+			}
+
+		}	
 
 		//===========================
 		// Logging related methods
@@ -967,8 +960,8 @@ Key features include:
 
 		private void log_chrome_browser_warnings_and_errors(int messsage_level_threshold) throws IOException {
 
-
-			//only run if Chrome browser
+			//only run if enabled and Chrome browser
+			if(!chrome_logging_enabled.equalsIgnoreCase("yes")) return;
 			if (!browser.toLowerCase().equals("chrome")) return;
 
 			long startTime = System.currentTimeMillis();
@@ -1013,8 +1006,8 @@ Key features include:
 
 				System.out.println("[warning] reading " + log_count + " logs with log_chrome_browser_warnings_and_errors took: " + duration + "MS");
 			}
-			
-			
+
+
 		}	
 
 

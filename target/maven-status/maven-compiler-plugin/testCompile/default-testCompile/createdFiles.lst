@@ -9,6 +9,7 @@ selenium_tests\page_object_model\POM_productPage.class
 selenium_tests\page_object_model\POM_productResults.class
 selenium_tests\feature_steps\Steps_homepage_feature.class
 selenium_tests\Webdriver_builder.class
+selenium_tests\page_object_model\POM_homepage.class
 selenium_tests\Webdriver_builder$Enhanced_selenium_methods.class
 selenium_tests\page_object_model\POM_popupBasket.class
 selenium_tests\feature_steps\Steps_product_feature.class

@@ -100,7 +100,7 @@ public class Runner {
 
 		String uniqueID = UUID.randomUUID().toString();
 		
-		rewrite_cucumber_options(this.getClass(), "plugin", new String [] {"json:target/" + uniqueID + "_" + operating_system + "_" + browser + ".json"}, true);
+		rewrite_cucumber_options(this.getClass(), "plugin", new String [] {"json:target/" + uniqueID + "_" + operating_system + "_" + browser + ".json","rerun:rerun/failed_scenarios.txt"}, true);
 		rewrite_cucumber_options(this.getClass(), "tags", new String [] {tags}, false);
 
 
@@ -216,7 +216,6 @@ public class Runner {
 		memberValues.remove(key);                                                          //renove the key entry...don't worry, we'll add it back
 		memberValues.put(key,newValue);     
 		//add the new key-value pair. The annotation is now updated.
-
 
 
 	}  

@@ -143,7 +143,6 @@ public class Steps_basket_feature  {
 
 		driver.get().esm.wait_until_exists(POM_basket.dropQuantity);
 
-
 		//convert expected cucumber values from strings to integers
 		int iproductCountExpected = Integer.valueOf(productCount);
 		int iquantityCountExpected = Integer.valueOf(quantityCount);	
@@ -154,23 +153,23 @@ public class Steps_basket_feature  {
 
 		List<WebElement> rows = driver.get().esm.get_all_matching_elements(POM_basket.dropQuantity);
 
-		
 		Iterator<WebElement> iter = rows.iterator();
 		while (iter.hasNext()) {
 
 			WebElement element = iter.next();
 
+
+			if (!element.isDisplayed()) continue;
+
 			Select select = new Select(element);
 
 			String dropDownValue = select.getFirstSelectedOption().getText().replaceAll("\\s+","");
 
-			//Avoid counting invisible elements
-			if (dropDownValue.length()>0){
-				
-				productCountActual++;
 
-				quantityCountActual = quantityCountActual + Integer.valueOf(dropDownValue);
-			}
+			productCountActual++;
+			quantityCountActual = quantityCountActual + Integer.valueOf(dropDownValue);
+
+
 
 		}	
 
