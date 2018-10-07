@@ -81,7 +81,9 @@ Run with:
 
 ### Example test configurations
 
-**Parallel execution of browsers. Each browser executes all scenarios**
+**Parallel execution of browsers. Each browser executes all scenarios**  
+Note: With Selenium Grid switched on in Maven, its possible to change operating systems and browser versions (assuming you have the nodes to supports those configurations).  
+
 ~~~
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
@@ -171,4 +173,49 @@ Run with:
 </suite> 
 ~~~ 
  
- 
+### Project structure
+~~~
+C:.
+|   .classpath
+|   .project
+|   environment_configurations_to_test.xml
+|   pom.xml
+|   README.md
+|
+\---src
+    +---main
+    |   +---java
+    |   |   \---myApp
+    |   \---resources
+    \---test
+        +---java
+        |   \---selenium_tests
+        |       |   External_data_reader.java
+        |       |   Listeners.java
+        |       |   Report_generator.java
+        |       |   Runner.java
+        |       |   Webdriver_builder.java
+        |       |
+        |       +---feature_steps
+        |       |       Steps_basket_feature.java
+        |       |       Steps_categorySearch_feature.java
+        |       |       Steps_homepage_feature.java
+        |       |       Steps_product_feature.java
+        |       |
+        |       \---page_object_model
+        |               POM_basket.java
+        |               POM_categorySplashPage.java
+        |               POM_mainHeader.java
+        |               POM_popup.java
+        |               POM_popupBasket.java
+        |               POM_productPage.java
+        |               POM_productResults.java
+        |
+        \---resources
+            +---data
+            \---features
+                    TestSuite_basket.feature
+                    TestSuite_categorySearch.feature
+                    TestSuite_homepage.feature
+                    TestSuite_Product.feature
+~~~
