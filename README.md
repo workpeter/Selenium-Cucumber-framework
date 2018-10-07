@@ -79,6 +79,96 @@ Run with:
 * The Maven Fail-safe plugin triggers the TestNG framework, which in turn looks at the TestNG config file which defines the test scope.
 * Each test configuration launches a Runner() instance, which launches Cucumber Scenarios using TestNG.  
 
+### Example test configurations
+
+**Parallel execution of browsers. Each browser executes all scenarios**
+~~~
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Environment config tsts" parallel="tests"
+	thread-count="10">
+
+	<listeners>
+		<listener class-name="selenium_tests.Listeners"></listener>
+	</listeners>
+
+	<test name="windows chrome - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
+
+	<test name="windows firefox - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
+
+	<test name="windows edge - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="edge" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
+	
+</suite> 
+~~~
+
+**Parallel execution of features. Each instance of Chrome targets a specific feature**
+~~~
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Environment config tsts" parallel="tests"
+	thread-count="10">
+
+	<listeners>
+		<listener class-name="selenium_tests.Listeners"></listener>
+	</listeners>
 
 
+	<test name="windows chrome - just Product feature">
+		<parameter name="tags" value="@Product" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
+
+
+	<test name="windows chrome - just Homepage feature">
+		<parameter name="tags" value="@Homepage" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>	
+
+	<test name="windows chrome - just Basket feature">
+		<parameter name="tags" value="@Basket" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>	
+	
+	<test name="windows chrome - just CategorySearch feature">
+		<parameter name="tags" value="@CategorySearch" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>			
+	
+</suite> 
+~~~ 
+ 
  
