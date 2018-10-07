@@ -13,48 +13,5 @@ public final class POM_productResults  {
 	public static By btnChooseOptionsFirstProduct = By.xpath("(//a[@class=\"ac-product-cta__button ac-product-cta__button--secondary\"])[1]");	
 	public static By btnChooseOptionsSecondProduct = By.xpath("(//a[@class=\"ac-product-cta__button ac-product-cta__button--secondary\"])[2]");	
 
-//	public static void add_first_product_to_Basket_via_productResults(int quantity) throws Throwable {
-//
-//		for (int i=0;i< quantity;i++){
-//
-//			POM_popup.escPopup(); 
-//
-//			if(!driver.get().esm.check_element_exists(btnChooseOptionsFirstProduct)){
-//
-//				driver.get().esm.click(btnAddToBasketFirstProduct);
-//				POM_popupBasket.checkContinueShopping();
-//
-//			}else{
-//				driver.get().esm.click(btnChooseOptionsFirstProduct);
-//				
-//				POM_productPage.adds_product_to_basket_via_productPage();
-//				driver.get().navigate().back();
-//			}
-//
-//		}
-//
-//	}
-
-//	public static void add_second_product_to_Basket_via_productResults(int quantity) throws Throwable {
-//
-//		for (int i=0;i< quantity;i++){
-//
-//			POM_popup.escPopup(); //if required
-//
-//			if(!driver.get().esm.check_element_exists(btnChooseOptionsSecondProduct)){
-//
-//				driver.get().esm.click(btnAddToBasketSecondProduct);
-//				POM_popupBasket.checkContinueShopping();
-//
-//			}else{
-//				driver.get().esm.click(btnChooseOptionsSecondProduct);
-//				POM_productPage.adds_product_to_basket_via_productPage();
-//				driver.get().navigate().back();
-//				
-//			}
-//
-//		}
-//
-//	}
 
 }

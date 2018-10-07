@@ -13,7 +13,7 @@ public final class POM_popupBasket {
 
 		POM_popup.escPopup();
 		
-		driver.get().esm.wait_until_invisible(loadingWheel);
+		driver.get().esm.wait_element_invisible(loadingWheel);
 		driver.get().esm.click(btnContinueShopping);
 
 	}

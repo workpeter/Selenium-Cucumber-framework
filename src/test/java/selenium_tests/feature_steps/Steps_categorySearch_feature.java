@@ -40,18 +40,18 @@ public class Steps_categorySearch_feature  {
 		POM_popup.escPopup(); 
 
 		switch(category){
-		case "TECHNOLOGY": {driver.get().esm.move_to_element(POM_mainHeader.LinkTechnology); break;}
-		case "HOME AND GARDEN": {driver.get().esm.move_to_element(POM_mainHeader.LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {driver.get().esm.move_to_element(POM_mainHeader.LinkBabyAndNursery); break;}
-		case "TOYS": {driver.get().esm.move_to_element(POM_mainHeader.LinkToys); break;}
-		case "SPORTS AND LEISURE": {driver.get().esm.move_to_element(POM_mainHeader.LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {driver.get().esm.move_to_element(POM_mainHeader.LinkHealthAndBeauty); break;}
-		case "CLOTHING": {driver.get().esm.move_to_element(POM_mainHeader.LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {driver.get().esm.move_to_element(POM_mainHeader.LinkJewelleryAndWatches); break;}
+		case "TECHNOLOGY": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkTechnology); break;}
+		case "HOME AND GARDEN": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkHomeAndGarden); break;}
+		case "BABY AND NURSERY": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkBabyAndNursery); break;}
+		case "TOYS": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkToys); break;}
+		case "SPORTS AND LEISURE": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkSportsAndLeisure); break;}
+		case "HEALTH AND BEAUTY": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkHealthAndBeauty); break;}
+		case "CLOTHING": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkClothing); break;}
+		case "JEWELLERY AND WATCHES": {driver.get().esm.move_to_element_and_verify(POM_mainHeader.LinkJewelleryAndWatches); break;}
 		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
 		}
 	
-		driver.get().esm.wait_until_visible(POM_mainHeader.popupMenu);
+		driver.get().esm.wait_element_visible(POM_mainHeader.popupMenu);
 		
 		this.category = category;
 		

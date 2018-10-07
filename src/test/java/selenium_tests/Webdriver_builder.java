@@ -55,7 +55,7 @@ public class Webdriver_builder implements WebDriver {
 	private String error_log_base_path = System.getProperty("user.dir").replace("\\", "/")  + 
 			"/target/error-log/";
 
-	private final int max_wait_time = 15;
+	private final int max_wait_time = 150;
 	private final int messsage_level_threshold = 0;
 	private final int millisecond_performance_threshold = 5000;
 
@@ -392,14 +392,6 @@ Key features include:
 		//===========================
 
 
-		public void goto_url(String URL) throws Exception  {
-
-			webdriver.get(URL);
-
-			wait_for_ajax_to_finish();
-
-		}
-
 		public void goto_home_url() throws Exception  {
 
 			webdriver.get(home_url);
@@ -408,30 +400,51 @@ Key features include:
 
 		}
 
+
 		public void click(By target) throws Exception  {
 
-			click(target,true);
-			
-		}
-		
-		public void click(By target, boolean bool_move_to_element) throws Exception  {
 
-			if (bool_move_to_element) move_to_element(target);
+			try{
 
-			webdriver.findElement(target).click();
+				move_to_element_and_verify(target);
+				webdriver.findElement(target).click();
+
+
+				//[Fail-safe] 
+				//Sometimes standard click doesn't work (more notable in Edge browser) 
+				//Rather than fail the test due to a script issue, try alternative click method. 
+				//If that too fails, then fail the test. 
+			}catch(Throwable t){
+
+				try{
+
+					Actions action = new Actions(webdriver);
+					action.moveToElement(webdriver.findElement(target)).click().build().perform();
+
+				}catch(Throwable t2){
+
+					throw new Exception(
+							"[Standard click error]" + System.lineSeparator() + 
+							t.getMessage() + System.lineSeparator() + 
+							"[Alternative Action click error]" + System.lineSeparator() + 
+							t2.getMessage());
+
+				}
+
+			}
 
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
-			
+
 			wait_for_ajax_to_finish();
 
 		}
-	
-		
+
+
 
 		public void send_keys(By target,String textToSend) throws Exception {
 
-			move_to_element(target);
+			move_to_element_and_verify(target);
 
 			clear_text(target);
 
@@ -439,30 +452,30 @@ Key features include:
 
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
-			
+
 			wait_for_ajax_to_finish();		
-			
+
 
 		}
 
 
 		public void select_list_value_by_index(By target,int index) throws Exception{
 
-			move_to_element(target);
+			move_to_element_and_verify(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByIndex(index);
 
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
-			
+
 			wait_for_ajax_to_finish();	
 
 		}
 
 		public void select_list_value_by_text(By target,String text) throws Exception{
 
-			move_to_element(target);
+			move_to_element_and_verify(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByVisibleText(text);
@@ -472,7 +485,7 @@ Key features include:
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
 
 			wait_for_ajax_to_finish();
-			
+
 			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 			int iWaitTime = 0;
 			while(!get_list_item_text(target).contains(text)){
@@ -488,7 +501,7 @@ Key features include:
 
 		public String get_text(By target) throws Exception {
 
-			move_to_element(target);
+			move_to_element_and_verify(target);
 
 			return webdriver.findElement(target).getText();
 
@@ -496,7 +509,7 @@ Key features include:
 
 		public String get_inner_html(By target) throws Exception{
 
-			move_to_element(target);
+			move_to_element_and_verify(target);
 
 			return webdriver.findElement(target).getAttribute("innerHTML");
 
@@ -505,7 +518,7 @@ Key features include:
 
 		public String get_list_item_text(By target) throws Exception {
 
-			move_to_element(target);
+			move_to_element_and_verify(target);
 
 			Select select = new Select(webdriver.findElement(target));
 
@@ -656,7 +669,7 @@ Key features include:
 
 		}	
 
-		public void wait_until_visible(By target) {
+		public void wait_element_visible(By target) {
 
 			try{
 
@@ -670,7 +683,7 @@ Key features include:
 			}
 		}
 
-		public void wait_until_invisible(By target) {
+		public void wait_element_invisible(By target) {
 
 			try{
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(target));
@@ -681,7 +694,7 @@ Key features include:
 			}
 		}
 
-		public void wait_until_clickable(By target) {
+		public void wait_element_clickable(By target) {
 
 			try{
 				wait.until(ExpectedConditions.elementToBeClickable(target));
@@ -692,7 +705,7 @@ Key features include:
 			}
 		}	
 
-		public void wait_until_not_clickable(By target) {
+		public void wait_element_not_clickable(By target) {
 
 
 			try{
@@ -705,7 +718,7 @@ Key features include:
 		}
 
 
-		public void goto_new_tab_if_exists() {
+		public void goto_new_tab() {
 
 			try{
 
@@ -744,25 +757,13 @@ Key features include:
 		}	
 
 
-		public void move_to_element(By target) throws Exception  {
+		public void move_to_element_and_verify(By target) throws Exception  {
+
+
+			long startTime = System.currentTimeMillis();
 
 			wait_until_exists(target);
 
-			//moveToElement bug in Firefox driver, use javascript workround
-			//================================================
-			if (browser.equals("firefox")){
-				try{
-					WebElement element = webdriver.findElement(target);
-
-					((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-					Thread.sleep(200);
-					
-				}catch(Throwable t){
-
-					standard_warning_output(t.getMessage());
-					
-				}
-			}
 
 			try{
 
@@ -771,14 +772,34 @@ Key features include:
 
 			}catch(Throwable t){
 
-				standard_warning_output(t.getMessage());
+				//If standard Action move fails, use javascript alternative.
+				try{
+					WebElement element = webdriver.findElement(target);
+
+					((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
+					Thread.sleep(200);
+
+				}catch(Throwable t2){
+
+					standard_warning_output(t.getMessage());
+					standard_warning_output(t2.getMessage());
+
+				}
 			}
 
-
-			wait_until_visible(target);
+			//After moving the view, ensure unexpected javascript behaviour isn't obscuring the element. 
+			wait_for_ajax_to_finish();
+			wait_element_visible(target);
 			highLight_element(target);
 
+			long endTime = System.currentTimeMillis();
+			long duration = (endTime - startTime); 
 
+			if (duration > 5000){
+				
+				System.out.println("[warning] " + browser + " Execution time for move_to_element_and_verify took: " + duration + "MS");
+			
+			}	
 		}		
 
 
@@ -848,13 +869,15 @@ Key features include:
 
 			try{
 
-				if (webdriver.getCurrentUrl().equals("data:,") || 
-						webdriver.getCurrentUrl().equals("about:blank")){
-
-					return;
+				//With some browsers, a page needs to be open before attepting to clear cookies otherwise will result in failure.
+				if (webdriver.getCurrentUrl().equals("data:,") || webdriver.getCurrentUrl().equals("about:blank")) {
+					
+					goto_home_url();
+					
 				}
 
 				webdriver.manage().deleteAllCookies();
+				//webdriver.navigate().refresh();
 
 			}catch(Throwable t){
 
@@ -987,9 +1010,11 @@ Key features include:
 
 
 			if (duration > 5000){
-				System.out.println("Chrome browser logs overhead: reading " + log_count + " logs with log_chrome_browser_warnings_and_errors took: " + duration + "MS");
-			}
 
+				System.out.println("[warning] reading " + log_count + " logs with log_chrome_browser_warnings_and_errors took: " + duration + "MS");
+			}
+			
+			
 		}	
 
 
@@ -1051,7 +1076,7 @@ Key features include:
 			long duration = (endTime - startTime); 
 
 			if (duration > 5000){
-				System.out.println("warning: reading " + log_count + " logs with log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
+				System.out.println("[warning] reading " + log_count + " logs with log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
 			}	
 
 		}

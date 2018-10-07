@@ -7,69 +7,68 @@
 		<listener class-name="selenium_tests.Listeners"></listener>
 	</listeners>
 
-	<test name="windows chrome - no tags (all features)">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
 
-	<test name="windows firefox - no tags (all features)">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+<!-- ===== TESTING ALL BROWSERS ========================================= -->
 
-	<test name="windows edge - no tags (all features)">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="edge" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
-	
-	
-<!-- 	<test name="windows chrome - just retest feature"> -->
-<!-- 		<parameter name="tags" value="@retest" /> -->
+<!-- 	<test name="windows chrome - no tags (all features)"> -->
 <!-- 		<parameter name="operating_system" value="windows" /> -->
 <!-- 		<parameter name="browser" value="chrome" /> -->
 <!-- 		<classes> -->
 <!-- 			<class name="selenium_tests.Runner" /> -->
 <!-- 		</classes> -->
-<!-- 	</test>	 -->
+<!-- 	</test> -->
 
-
-<!-- 	<test name="windows chrome - just Basket feature"> -->
-<!-- 		<parameter name="tags" value="@Basket" /> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="chrome" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="selenium_tests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test>		 -->
-	
-	
-<!-- 	<test name="windows edge - just Basket feature"> -->
-<!-- 		<parameter name="tags" value="@Basket" /> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="edge" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="selenium_tests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test>			 -->
-	
-<!-- 	<test name="windows firefox - just Basket feature"> -->
-<!-- 		<parameter name="tags" value="@Basket" /> -->
+<!-- 	<test name="windows firefox - no tags (all features)"> -->
 <!-- 		<parameter name="operating_system" value="windows" /> -->
 <!-- 		<parameter name="browser" value="firefox" /> -->
 <!-- 		<classes> -->
 <!-- 			<class name="selenium_tests.Runner" /> -->
 <!-- 		</classes> -->
-<!-- 	</test>		 -->
+<!-- 	</test> -->
+
+<!-- 	<test name="windows edge - no tags (all features)"> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="edge" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test> -->
 	
+	
+<!-- ===== TESTING BASKET FEATURE ========================================= -->
+
+
+	<test name="windows chrome - just Basket feature">
+		<parameter name="tags" value="@Basket" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>		
+	
+	
+	<test name="windows edge - just Basket feature">
+		<parameter name="tags" value="@Basket" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="edge" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>			
+	
+	<test name="windows firefox - just Basket feature">
+		<parameter name="tags" value="@Basket" />
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>		
+	
+
+
+<!-- ===== TESTING PARALLEL FEATURE ========================================= -->
 
 <!-- 	<test name="windows chrome - just Product feature"> -->
 <!-- 		<parameter name="tags" value="@Product" /> -->
@@ -106,7 +105,23 @@
 <!-- 		<classes> -->
 <!-- 			<class name="selenium_tests.Runner" /> -->
 <!-- 		</classes> -->
-<!-- 	</test>			 -->
+<!-- 	</test>		 -->
+	
+	
+<!-- ===== RETEST ========================================= -->	
+	
+<!-- 	<test name="windows chrome - just restest"> -->
+<!-- 		<parameter name="tags" value="@retest" /> -->
+<!-- 		<parameter name="operating_system" value="windows" /> -->
+<!-- 		<parameter name="browser" value="chrome" /> -->
+<!-- 		<classes> -->
+<!-- 			<class name="selenium_tests.Runner" /> -->
+<!-- 		</classes> -->
+<!-- 	</test>		 -->
+	
+	
+	
+		
 	
 </suite> 
 

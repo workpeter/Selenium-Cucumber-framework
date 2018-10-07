@@ -33,29 +33,5 @@ public final class POM_categorySplashPage  {
 
 	}
 
-//	public static void clickNicheCategory_viaCategorySplashPage(String nicheCategory) throws Exception{
-//
-//		POM_popup.escPopup(); 
-//
-//		switch(nicheCategory){
-//		case "hdmi-cables-and-optical-cables": {driver.get().esm.click(LinkHDMIandCables); break;}
-//		case "tv-remote-controls": {driver.get().esm.click(LinkTVremoteControls); break;}
-//		case "Gaming laptops and PCs": {driver.get().esm.click(LinkGaminglaptopsAndPCs); break;}
-//		case "imacs": {driver.get().esm.click(LinkiMacs); break;}
-//		case "armchairs-and-chairs": {driver.get().esm.click(LinkArmchairsAndChairs); break;}
-//		case "cd-and-dvd-storage": {driver.get().esm.click(LinkCDandDVDstorage); break;}
-//		case "duvets": {driver.get().esm.click(LinkDuvets); break;}
-//		case "pillows": {driver.get().esm.click(LinkPillows); break;}
-//		case "pushchairs": {driver.get().esm.click(LinkPushchairs); break;}
-//		case "baby-carriers": {driver.get().esm.click(LinkBabycarriers); break;}
-//		case "baby health": {driver.get().esm.click(LinkBabyHealth); break;}
-//		case "accessories": {driver.get().esm.click(LinkAccessories); break;}
-//		case "dresses": {driver.get().esm.click(LinkDresses); break;}
-//		case "coats-and-jackets": {driver.get().esm.click(LinkCoatsAndJackets); break;}
-//
-//		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
-//		}
-//
-//	}
 
 }

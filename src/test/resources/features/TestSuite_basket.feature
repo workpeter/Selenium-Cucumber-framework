@@ -70,9 +70,9 @@ Feature: Basket
 	
    Examples:
     | Product 					| ProductCount	| Quantity	| ProductCountUpdated	| QuantityUpdated	|
-    | XBOX		 				| 2				| 4			| 1						| 2					|
     | COOKERS 					| 2				| 4			| 1						| 2					|
-    | JEANS 					| 2				| 4			| 1 					| 2					|      
+    | JEANS 					| 2				| 4			| 1 					| 2					|  
+    | XBOX		 				| 2				| 4			| 1						| 2					|    
 
 
 

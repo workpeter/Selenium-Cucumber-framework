@@ -89,9 +89,9 @@ public class Steps_product_feature {
 		POM_popup.escPopup(); 
 		
 		driver.get().esm.send_keys(POM_productPage.txtPostCode,postcode);
-		driver.get().esm.wait_until_invisible(POM_productPage.loadingWheel);
+		driver.get().esm.wait_element_invisible(POM_productPage.loadingWheel);
 		driver.get().esm.click(POM_productPage.btnCheckPostcode);
-		driver.get().esm.wait_until_invisible(POM_productPage.btnCheckPostcode);
+		driver.get().esm.wait_element_invisible(POM_productPage.btnCheckPostcode);
 		
 		
 	}
