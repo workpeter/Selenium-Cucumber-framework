@@ -35,11 +35,11 @@ This framework comes with example tests for the www.argos.co.uk website. The tes
  
  * **Enhanced web drivers**  
 When this framework creates WebDrivers for you it does many things under the hood. Such as: 
-  * Dynamically download and configure the browser drivers for any major browser and operating system. 
-  * Provide enhanced capabilities such as capturing browser logs and HTTP traffic (including **Javascript issues**)
-  * Provides custom methods for writing scripts, which are more reliable and realistic. For example, when clicking on an element, the framework will first wait until its present, scroll it into view and ensure its visible before clicking on it. 
-  * Dynamic waiting is a crucial feature built into each custom method. This ensures script dynamically wait for elements to be in the right condition before proceeding. To assist with this, the methods also wait until Ajax calls have completed, to ensure the page is fully loaded. This technique greatly improves script robustness, and the use of dynamic rather than static wait times means the script run very efficiently. 
-  * Every WebDriver launched is wrapped in a 'threadLocal' container called "webdriver". Meaning all scripts can reference this webdriver object to manipulate the webdriver, however, they will only influence their own webdriver without causing conflicts with other WebDrivers. This makes writing each script straightforward. 
+    * Dynamically download and configure the browser drivers for any major browser and operating system. 
+    * Provide enhanced capabilities such as capturing browser logs and HTTP traffic (including **Javascript issues**)
+    * Provides custom methods for writing scripts, which are more reliable and realistic. For example, when clicking on an element, the framework will first wait until its present, scroll it into view and ensure its visible before clicking on it. 
+    * Dynamic waiting is a crucial feature built into each custom method. This ensures script dynamically wait for elements to be in the right condition before proceeding. To assist with this, the methods also wait until Ajax calls have completed, to ensure the page is fully loaded. This technique greatly improves script robustness, and the use of dynamic rather than static wait times means the script run very efficiently. 
+    * Every WebDriver launched is wrapped in a 'threadLocal' container called "webdriver". Meaning all scripts can reference this webdriver object to manipulate the webdriver, however, they will only influence their own webdriver without causing conflicts with other WebDrivers. This makes writing each script straightforward. 
  
 * **Scaleable web drivers**  
 At its heart, this framework has two classes which manage both the creation and configuration of WebDrivers.  
@@ -59,7 +59,7 @@ This level of logging can be switched on/off globally via the Maven POM file.
 
 * **Clear automated reporting**  
 Every parallel test that runs continuously outputs its result into its own JSON file. As each test completes, these JSON files are compiled into a custom Cucumber reporter, which converts them into a pretty and interactive report. This single report combines the results of all tests and allows you to drill down into specific features, tests and even stack traces. 
-* [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
+    * [Example Report](https://cdn.rawgit.com/workpeter/cucumber-selenium-framework/731b904d/example%20report/feature-overview.html)
 
 * **Data Driven:**  
 Cucumber comes with data-driven capabilities within the feature files. However, this framework also provides a means to pull data from excel files too. When Cucumber is used as a data driver, the actual data values appear in the test step names. This is sometimes helpful, but sometimes too much information. One smart method is to use an abstract data references such as "VIP Customer 1", then link that to a row in Excel which pulls all the low-level details for your test. That way the test report shows the high-level data which is useful but hides the low-level incidental data. 
