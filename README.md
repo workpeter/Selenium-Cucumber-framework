@@ -73,11 +73,11 @@ Run with:
    mvn clean verify"
 ```
 
-### Steps
+### Run steps
 
-* Maven is triggered, things get compiled and tests run. 
-* The Maven Fail-safe plugin triggers the TestNG framework, which in turn looks at the TestNG config file which defines the test scope.
-* Each test configuration launches a Runner() instance, which launches Cucumber Scenarios using TestNG.  
+1) Maven is triggered, things get compiled and tests run. 
+2) The Maven Fail-safe plugin triggers the TestNG framework, which in turn looks at the TestNG config file which defines the test scope.
+3) Each test configuration launches a Runner() instance, which launches Cucumber Scenarios using TestNG.  
 
 ### Example test configurations
 
