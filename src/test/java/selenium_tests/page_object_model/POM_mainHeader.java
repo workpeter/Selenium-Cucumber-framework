@@ -56,98 +56,98 @@ public final class POM_mainHeader {
 			
 	}
 	
-	public static void clickCategory(String category) throws Exception{
-		
-		POM_popup.escPopup(); 
-		
-		switch(category){
-		case "TECHNOLOGY": {driver.get().esm.click(LinkTechnology); break;}
-		case "HOME AND GARDEN": {driver.get().esm.click(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {driver.get().esm.click(LinkBabyAndNursery); break;}
-		case "TOYS": {driver.get().esm.click(LinkToys); break;}
-		case "SPORTS AND LEISURE": {driver.get().esm.click(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {driver.get().esm.click(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {driver.get().esm.click(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {driver.get().esm.click(LinkJewelleryAndWatches); break;}
-		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
-		}
-		
-	}
+//	public static void clickCategory(String category) throws Exception{
+//		
+//		POM_popup.escPopup(); 
+//		
+//		switch(category){
+//		case "TECHNOLOGY": {driver.get().esm.click(LinkTechnology); break;}
+//		case "HOME AND GARDEN": {driver.get().esm.click(LinkHomeAndGarden); break;}
+//		case "BABY AND NURSERY": {driver.get().esm.click(LinkBabyAndNursery); break;}
+//		case "TOYS": {driver.get().esm.click(LinkToys); break;}
+//		case "SPORTS AND LEISURE": {driver.get().esm.click(LinkSportsAndLeisure); break;}
+//		case "HEALTH AND BEAUTY": {driver.get().esm.click(LinkHealthAndBeauty); break;}
+//		case "CLOTHING": {driver.get().esm.click(LinkClothing); break;}
+//		case "JEWELLERY AND WATCHES": {driver.get().esm.click(LinkJewelleryAndWatches); break;}
+//		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
+//		}
+//		
+//	}
 	
 	
-	public static void mouseToCategory(String category) throws Exception{
-		
-		POM_popup.escPopup(); 
-
-		switch(category){
-		case "TECHNOLOGY": {driver.get().esm.move_to_element(LinkTechnology); break;}
-		case "HOME AND GARDEN": {driver.get().esm.move_to_element(LinkHomeAndGarden); break;}
-		case "BABY AND NURSERY": {driver.get().esm.move_to_element(LinkBabyAndNursery); break;}
-		case "TOYS": {driver.get().esm.move_to_element(LinkToys); break;}
-		case "SPORTS AND LEISURE": {driver.get().esm.move_to_element(LinkSportsAndLeisure); break;}
-		case "HEALTH AND BEAUTY": {driver.get().esm.move_to_element(LinkHealthAndBeauty); break;}
-		case "CLOTHING": {driver.get().esm.move_to_element(LinkClothing); break;}
-		case "JEWELLERY AND WATCHES": {driver.get().esm.move_to_element(LinkJewelleryAndWatches); break;}
-		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
-		}
+//	public static void mouseToCategory(String category) throws Exception{
+//		
+//		POM_popup.escPopup(); 
+//
+//		switch(category){
+//		case "TECHNOLOGY": {driver.get().esm.move_to_element(LinkTechnology); break;}
+//		case "HOME AND GARDEN": {driver.get().esm.move_to_element(LinkHomeAndGarden); break;}
+//		case "BABY AND NURSERY": {driver.get().esm.move_to_element(LinkBabyAndNursery); break;}
+//		case "TOYS": {driver.get().esm.move_to_element(LinkToys); break;}
+//		case "SPORTS AND LEISURE": {driver.get().esm.move_to_element(LinkSportsAndLeisure); break;}
+//		case "HEALTH AND BEAUTY": {driver.get().esm.move_to_element(LinkHealthAndBeauty); break;}
+//		case "CLOTHING": {driver.get().esm.move_to_element(LinkClothing); break;}
+//		case "JEWELLERY AND WATCHES": {driver.get().esm.move_to_element(LinkJewelleryAndWatches); break;}
+//		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
+//		}
+//	
+//		driver.get().esm.wait_until_visible(popupMenu);
+//
+//	}
 	
-		driver.get().esm.wait_until_visible(popupMenu);
-
-	}
+//	public static void clickSubCategory(String category) throws Exception{
+//		
+//		POM_popup.escPopup(); 
+//		
+//		switch(category){
+//		case "televisions and accessories": {driver.get().esm.click(LinkTelevisionsAndAccessories); break;}
+//		case "Laptops and PCs": {driver.get().esm.click(LinkLaptopsAndPCs); break;}
+//		case "living room furniture": {driver.get().esm.click(LinkLivingRoomFurniture); break;}
+//		case "Bedding": {driver.get().esm.click(LinkBedding); break;}
+//		case "Travel": {driver.get().esm.click(LinkTravel); break;}
+//		case "safety and health": {driver.get().esm.click(LinkSafetyAndHealth); break;}
+//		case "Womens": {driver.get().esm.click(LinkWomenClothing); break;}
+//		case "Mens": {driver.get().esm.click(LinkMenClothing); break;}
+//		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
+//		}	
+//
+//	}
 	
-	public static void clickSubCategory(String category) throws Exception{
-		
-		POM_popup.escPopup(); 
-		
-		switch(category){
-		case "televisions and accessories": {driver.get().esm.click(LinkTelevisionsAndAccessories); break;}
-		case "Laptops and PCs": {driver.get().esm.click(LinkLaptopsAndPCs); break;}
-		case "living room furniture": {driver.get().esm.click(LinkLivingRoomFurniture); break;}
-		case "Bedding": {driver.get().esm.click(LinkBedding); break;}
-		case "Travel": {driver.get().esm.click(LinkTravel); break;}
-		case "safety and health": {driver.get().esm.click(LinkSafetyAndHealth); break;}
-		case "Womens": {driver.get().esm.click(LinkWomenClothing); break;}
-		case "Mens": {driver.get().esm.click(LinkMenClothing); break;}
-		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
-		}	
-
-	}
+//	public static void clickNicheCategory_viaMainheader(String nicheCategory) throws Exception{
+//		
+//		POM_popup.escPopup(); 
+//		
+//		switch(nicheCategory){
+//
+//		case "Dash Cams": {driver.get().esm.click(LinkDashCams); break;}
+//		case "Sofas": {driver.get().esm.click(LinkSofas); break;}
+//		case "Pushchairs": {driver.get().esm.click(LinkPushchairs); break;}
+//		case "Batteries And Rechargeable Batteries": {driver.get().esm.click(LinkBatteries); break;}
+//		case "Treadmills": {driver.get().esm.click(LinkTreadmills); break;}
+//		case "Hair Dryers": {driver.get().esm.click(LinkHairDryers); break;}
+//		case "Bras": {driver.get().esm.click(LinkBras); break;}
+//		case "Ladies' Earrings": {driver.get().esm.click(LinkLadiesEarrings); break;}
+//		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
+//		}
+//	
+//	}
 	
-	public static void clickNicheCategory_viaMainheader(String nicheCategory) throws Exception{
-		
-		POM_popup.escPopup(); 
-		
-		switch(nicheCategory){
-
-		case "Dash Cams": {driver.get().esm.click(LinkDashCams); break;}
-		case "Sofas": {driver.get().esm.click(LinkSofas); break;}
-		case "Pushchairs": {driver.get().esm.click(LinkPushchairs); break;}
-		case "Batteries And Rechargeable Batteries": {driver.get().esm.click(LinkBatteries); break;}
-		case "Treadmills": {driver.get().esm.click(LinkTreadmills); break;}
-		case "Hair Dryers": {driver.get().esm.click(LinkHairDryers); break;}
-		case "Bras": {driver.get().esm.click(LinkBras); break;}
-		case "Ladies' Earrings": {driver.get().esm.click(LinkLadiesEarrings); break;}
-		default: Assert.fail("Category not defined in Selenium page object model (POM) - contact tester");
-		}
+//	public static void enter_term_in_search_bar_and_click(String category) throws Exception{
+//		
+//		POM_popup.escPopup(); 
+//		
+//		driver.get().esm.send_keys(txtSearchBar,category);
+//		driver.get().esm.click(btnSearch);
+//		
+//	}	
 	
-	}
-	
-	public static void enter_term_in_search_bar_and_click(String category) throws Exception{
-		
-		POM_popup.escPopup(); 
-		
-		driver.get().esm.send_keys(txtSearchBar,category);
-		driver.get().esm.click(btnSearch);
-		
-	}	
-	
-	public static void openBasket() throws Exception{
-		
-		POM_popup.escPopup(); 	
-		
-		driver.get().esm.scroll_top_page();
-		driver.get().esm.click(btnBasket);	
-		
-	}	
+//	public static void openBasket() throws Exception{
+//		
+//		POM_popup.escPopup(); 	
+//		
+//		driver.get().esm.scroll_top_page();
+//		driver.get().esm.click(btnBasket);	
+//		
+//	}	
 	
 }

@@ -410,29 +410,38 @@ Key features include:
 
 		public void click(By target) throws Exception  {
 
-			move_to_element(target);
+			click(target,true);
+			
+		}
+		
+		public void click(By target, boolean bool_move_to_element) throws Exception  {
+
+			if (bool_move_to_element) move_to_element(target);
 
 			webdriver.findElement(target).click();
 
-			wait_for_ajax_to_finish();
-
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
+			
+			wait_for_ajax_to_finish();
 
 		}
+	
+		
 
 		public void send_keys(By target,String textToSend) throws Exception {
 
 			move_to_element(target);
-			
+
 			clear_text(target);
 
 			webdriver.findElement(target).sendKeys(textToSend);
 
-			wait_for_ajax_to_finish();
-
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
+			
+			wait_for_ajax_to_finish();		
+			
 
 		}
 
@@ -444,10 +453,10 @@ Key features include:
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByIndex(index);
 
-			wait_for_ajax_to_finish();
-
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
+			
+			wait_for_ajax_to_finish();	
 
 		}
 
@@ -458,11 +467,12 @@ Key features include:
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByVisibleText(text);
 
-			wait_for_ajax_to_finish();
 
 			log_chrome_browser_warnings_and_errors(messsage_level_threshold);
 			log_http_error_codes_and_slow_http_elements(millisecond_performance_threshold);
 
+			wait_for_ajax_to_finish();
+			
 			//[Fail-safe] Poll until dropDown menu text changes to what we expect.
 			int iWaitTime = 0;
 			while(!get_list_item_text(target).contains(text)){
@@ -651,6 +661,7 @@ Key features include:
 			try{
 
 				wait.until(ExpectedConditions.visibilityOfElementLocated(target));
+
 			}
 			catch (Throwable t){
 
@@ -732,11 +743,26 @@ Key features include:
 
 		}	
 
-		
+
 		public void move_to_element(By target) throws Exception  {
 
-			scroll_into_view(target);
-			highLight_element(target);
+			wait_until_exists(target);
+
+			//moveToElement bug in Firefox driver, use javascript workround
+			//================================================
+			if (browser.equals("firefox")){
+				try{
+					WebElement element = webdriver.findElement(target);
+
+					((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
+					Thread.sleep(500);
+					
+				}catch(Throwable t){
+
+					standard_warning_output(t.getMessage());
+					
+				}
+			}
 
 			try{
 
@@ -746,44 +772,22 @@ Key features include:
 			}catch(Throwable t){
 
 				standard_warning_output(t.getMessage());
-
 			}
-			
 
-		}		
-		
-		
-		public void scroll_into_view(By target) throws Exception  {
-
-			wait_until_exists(target);
-
-			//======Focusing Start ======
-			try{
-				WebElement element = webdriver.findElement(target);
-				
-				((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-	
-			}catch(Throwable t){
-
-				standard_warning_output(t.getMessage());
-
-			}
-			//======Focusing End ======
 
 			wait_until_visible(target);
+			highLight_element(target);
 
-			//wait_for_ajax_to_finish();
 
+		}		
 
-		}
 
 		public void scroll_by_pixel(int pixels) {
 
 			try{
 
 				((JavascriptExecutor) webdriver).executeScript("window.scrollBy(0," + pixels +")", "");
-
-				wait_for_ajax_to_finish();
+				Thread.sleep(500);
 
 			}catch(Throwable t){
 
@@ -798,8 +802,7 @@ Key features include:
 			try{
 
 				((JavascriptExecutor) webdriver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-
-				wait_for_ajax_to_finish();
+				Thread.sleep(500);
 
 			}catch(Throwable t){
 
@@ -814,8 +817,7 @@ Key features include:
 			try{
 
 				((JavascriptExecutor) webdriver).executeScript("window.scrollTo(0, 0)");
-
-				wait_for_ajax_to_finish();
+				Thread.sleep(500);
 
 			}catch(Throwable t){
 
@@ -942,20 +944,20 @@ Key features include:
 
 		private void log_chrome_browser_warnings_and_errors(int messsage_level_threshold) throws IOException {
 
-		
+
 			//only run if Chrome browser
 			if (!browser.toLowerCase().equals("chrome")) return;
-			
+
 			long startTime = System.currentTimeMillis();
 
 			//messsage_level_threshold 0 - warning and Severe
 			//messsage_level_threshold 1 - severe
 
-			
+
 			StringBuilder log_output =new StringBuilder(""); 
-			
+
 			int log_count = 0 ;
-		
+
 			LogEntries logEntries = webdriver.manage().logs().get(LogType.BROWSER);
 			for (LogEntry entry : logEntries) {
 
@@ -969,14 +971,14 @@ Key features include:
 				log_output.append("[Chrome message:" + " Issues detected on URL:" + webdriver.getCurrentUrl() + System.lineSeparator() + 
 						new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage() 
 						+ System.lineSeparator() + System.lineSeparator());
-				
+
 				log_count++;
 
 			}
 
 			if (log_output.length() != 0){
 				//System.out.print(log_output);
-				
+
 				write_to_static_log_file(log_output,"chrome-browser-warnings-errors/" + operating_system);	
 			}
 
@@ -999,9 +1001,9 @@ Key features include:
 
 			StringBuilder log_output1 =new StringBuilder("");  
 			StringBuilder log_output2 =new StringBuilder("");  
-			
+
 			int log_count = 0;
-			
+
 			List<HarEntry> entries = web_proxy.getHar().getLog().getEntries();
 			for (HarEntry entry : entries) {
 
@@ -1030,7 +1032,7 @@ Key features include:
 									+ System.lineSeparator());
 
 				}
-				
+
 				log_count++;
 			}
 
@@ -1051,7 +1053,7 @@ Key features include:
 			if (duration > 500){
 				System.out.println("warning: reading " + log_count + " logs with log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
 			}	
-			
+
 		}
 
 
@@ -1086,7 +1088,7 @@ Key features include:
 				File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 
 				String uniqueID = UUID.randomUUID().toString();
-				
+
 
 				//dynamic log file per failure (using dat/time)
 				String filePath = error_log_base_path + "test-failures/" + 

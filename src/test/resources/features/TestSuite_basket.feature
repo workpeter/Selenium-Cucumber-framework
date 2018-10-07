@@ -1,7 +1,7 @@
 Feature: Basket 
 		 Customer has ability to View basket and add/update/delete products.
 
-  @Basket 
+  @Basket
   Scenario: Customer views empty basket
 	Given customer is on homepage
 	When customer views basket
@@ -57,7 +57,7 @@ Feature: Basket
     | FOOTBALL 					| 2				| 2			|
 
     
-  @Basket 
+  @Basket @retest
   Scenario Outline: Customer views basket with x2 products, totalling x4 quantity then removes 1st product
 	Given customer is on homepage
     When customer searches by product: <Product> using search feature

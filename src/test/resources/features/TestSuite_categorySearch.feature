@@ -20,7 +20,7 @@ Feature: CategorySearch
     | CLOTHING 					|        
     | JEWELLERY AND WATCHES 	| 	
 
-  @CategorySearch @Retest  
+  @CategorySearch 
  Scenario Outline: customer navigates to subcategory via category menu hover feature then goes to niche-category
 	When customer hovers on category: <Category> in the menu
 	And clicks on sub-category: <Sub-category>
@@ -78,7 +78,7 @@ Feature: CategorySearch
     | JEWELLERY				 	| JEWLERY					|
 
 
-  @CategorySearch @Retest
+  @CategorySearch 
   Scenario Outline: customer searches for unrecognised category
 	When customer searches for unrecognised category: <Category> using search feature
 	Then no search results page is shown

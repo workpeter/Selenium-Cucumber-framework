@@ -1,5 +1,6 @@
 package selenium_tests.feature_steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -7,6 +8,11 @@ import selenium_tests.page_object_model.*;
 
 import static selenium_tests.Runner.driver;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class Steps_basket_feature  {
@@ -15,43 +21,95 @@ public class Steps_basket_feature  {
 	public void customer_views_basket() throws Throwable {
 
 		POM_popup.escPopup(); 
-		POM_mainHeader.openBasket();
+		driver.get().esm.scroll_top_page();
+		driver.get().esm.click(POM_mainHeader.btnBasket);	
 		
 	}
 
 	@When("^adds product to basket$")
 	public void adds_product_to_basket() throws Throwable {
 
-		POM_productPage.adds_product_to_basket_via_productPage();
+		POM_popup.escPopup(); 
+		
+		driver.get().esm.scroll_bottom_page();
+
+		if (!driver.get().esm.check_text_exists("Not available online")){
+			driver.get().esm.click(POM_productPage.btnAddToBasket, false);
+			POM_popupBasket.checkContinueShopping();
+		}else{
+			System.out.println("[Skipping next scenerio step/s] This item is not available online to add to basket");
+			throw new PendingException();
+		}
 
 	}
 
 	@When("^adds product: (.+) to basket twice$")
 	public void adds_product_to_basket_twice(String product) throws Throwable {
 
-		POM_productPage.adds_product_to_basket_via_productPage();
-		POM_productPage.adds_product_to_basket_via_productPage();
+		adds_product_to_basket();
+		adds_product_to_basket();
 
 	}
 
 	@When("^adds first product to basket x(\\d+) quantity$")
 	public void adds_first_product_to_basket_x_quantity(int quantity) throws Throwable {
 
-		POM_productResults.add_first_product_to_Basket_via_productResults(quantity);
 
+		for (int i=0;i< quantity;i++){
+
+			POM_popup.escPopup(); 
+
+			if(!driver.get().esm.check_element_exists(POM_productResults.btnChooseOptionsFirstProduct)){
+
+				driver.get().esm.click(POM_productResults.btnAddToBasketFirstProduct);
+				POM_popupBasket.checkContinueShopping();
+
+			}else{
+				driver.get().esm.click(POM_productResults.btnChooseOptionsFirstProduct);
+				
+				adds_product_to_basket();
+				driver.get().navigate().back();
+			}
+
+		}	
+		
+		
+		
 	}
 
 	@When("^adds second product to basket x(\\d+) quantity$")
 	public void adds_second_product_to_basket_x_quantity(int quantity) throws Throwable {
 
-		POM_productResults.add_second_product_to_Basket_via_productResults(quantity);
+		for (int i=0;i< quantity;i++){
+
+			POM_popup.escPopup(); //if required
+
+			if(!driver.get().esm.check_element_exists(POM_productResults.btnChooseOptionsSecondProduct)){
+
+				driver.get().esm.click(POM_productResults.btnAddToBasketSecondProduct);
+				POM_popupBasket.checkContinueShopping();
+
+			}else{
+				driver.get().esm.click(POM_productResults.btnChooseOptionsSecondProduct);
+				adds_product_to_basket();
+				driver.get().navigate().back();
+				
+			}
+
+		}
 
 	}
 	
 	@When("customer removes firt product from basket")
 	public void customer_removes_firt_product_from_basket() throws Throwable {
 
-		POM_basket.remove_first_product_from_basket();
+		POM_popup.escPopup();
+		
+		if (driver.get().esm.check_element_exists(POM_basket.btnRemove)){
+			driver.get().esm.click(POM_basket.btnRemove);
+		}else{
+			driver.get().esm.click(POM_basket.btnRemoveAlternative);
+		}
 	    
 	}
 	
@@ -59,7 +117,8 @@ public class Steps_basket_feature  {
 	@When("customer changes quantity of first product to x(\\d+)")
 	public void customer_changes_quantity_of_first_product_to_x(int quantity) throws Throwable {
 	
-		POM_basket.change_quantity_first_product(quantity);
+		POM_popup.escPopup();
+		driver.get().esm.select_list_value_by_text(POM_basket.dropQuantity,String.valueOf(quantity));
 		
 	}
 	
@@ -81,14 +140,34 @@ public class Steps_basket_feature  {
 	public void basket_with_products_and_quantity_is_shown(String productCount, String quantityCount) throws Throwable {
 
 		POM_popup.escPopup();
-		POM_basket.wait_for_basket_to_load();
+		
+		driver.get().esm.wait_until_visible(POM_basket.dropQuantity);
+		
 
 		//convert expected cucumber values from strings to integers
-		int iproductCount = Integer.valueOf(productCount);
-		int iquantityCount = Integer.valueOf(quantityCount);	
+		int iproductCountExpected = Integer.valueOf(productCount);
+		int iquantityCountExpected = Integer.valueOf(quantityCount);	
 
-		Assert.assertEquals(POM_basket.productCount(), iproductCount);
-		Assert.assertEquals(POM_basket.quantityCount(), iquantityCount);	
+		
+		int productCountActual = driver.get().esm.count_matching_elements(POM_basket.dropQuantity);
+		int quantityCountActual = 0; 
+		
+		List<WebElement> rows = driver.get().esm.get_all_matching_elements(POM_basket.dropQuantity);
+
+		Iterator<WebElement> iter = rows.iterator();
+		while (iter.hasNext()) {
+
+			WebElement element = iter.next();
+			
+			Select select = new Select(element);
+			quantityCountActual = quantityCountActual + Integer.valueOf(select.getFirstSelectedOption().getText().replaceAll("\\s+",""));
+			
+			//System.out.println("quantity of product: " + quantityCount);
+		}	
+		
+		
+		Assert.assertEquals(productCountActual, iproductCountExpected);
+		Assert.assertEquals(quantityCountActual, iquantityCountExpected);	
 
 
 	}

@@ -29,7 +29,10 @@ public class Steps_product_feature {
 	@When("^customer searches by product: (.+) using search feature$")
 	public void customer_searches_by_product_using_search_feature(String product) throws Throwable {
 
-		POM_mainHeader.enter_term_in_search_bar_and_click(product);
+		POM_popup.escPopup(); 
+		
+		driver.get().esm.send_keys(POM_mainHeader.txtSearchBar,product);
+		driver.get().esm.click(POM_mainHeader.btnSearch);
 		
 		Assert.assertTrue(driver.get().esm.check_text_exists("Filter by"));
 		
@@ -40,7 +43,8 @@ public class Steps_product_feature {
 	@When("^customer clicks on first product$")
 	public void customer_clicks_on_first_product() throws Throwable {
 	    
-		POM_productPage.click_on_first_product();
+		POM_popup.escPopup(); 
+		driver.get().esm.click(POM_productPage.linkProduct);
 		
 		Assert.assertTrue(driver.get().esm.check_text_exists("Click to zoom"));
 		
@@ -52,7 +56,9 @@ public class Steps_product_feature {
 	@When("^customer sorts by price low-to-high$")
 	public void customer_sorts_by_price_low_to_high() throws Throwable {
 
-		POM_productPage.sort_products("Price: Low - High");
+		
+		POM_popup.escPopup(); 
+		driver.get().esm.select_list_value_by_text(POM_productPage.dropSort,"Price: Low - High");	
 		
 	}
 
@@ -60,7 +66,8 @@ public class Steps_product_feature {
 	@When("^customer sorts by price high-to-low$")
 	public void customer_sorts_by_price_high_to_low() throws Throwable {
 
-		POM_productPage.sort_products("Price: High - Low");
+		POM_popup.escPopup(); 
+		driver.get().esm.select_list_value_by_text(POM_productPage.dropSort,"Price: High - Low\"");			
 		
 		
 	}
@@ -68,8 +75,10 @@ public class Steps_product_feature {
 	@When("^customer sorts by customer rating$")
 	public void customer_sorts_by_customer_rating() throws Throwable {
 
-	
-		POM_productPage.sort_products("Customer Rating");
+		
+		POM_popup.escPopup(); 
+		driver.get().esm.select_list_value_by_text(POM_productPage.dropSort,"Customer Rating");			
+		
 		
 	}
 	
@@ -77,7 +86,13 @@ public class Steps_product_feature {
 	public void customer_changes_store_location_to(String postcode) throws Throwable {
 	  
 		
-		POM_productPage.change_store_location(postcode);
+		POM_popup.escPopup(); 
+		
+		driver.get().esm.send_keys(POM_productPage.txtPostCode,postcode);
+		driver.get().esm.wait_until_invisible(POM_productPage.loadingWheel);
+		driver.get().esm.click(POM_productPage.btnCheckPostcode);
+		driver.get().esm.wait_until_invisible(POM_productPage.btnCheckPostcode);
+		
 		
 	}
 	
