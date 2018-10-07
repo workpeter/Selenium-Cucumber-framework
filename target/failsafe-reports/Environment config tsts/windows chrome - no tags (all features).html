@@ -1,0 +1,1625 @@
+<html>
+<head>
+<title>TestNG:  windows chrome - no tags (all features)</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>windows chrome - no tags (all features)</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>80/3/2</td>
+</tr><tr>
+<td>Started on:</td><td>Sun Oct 07 01:14:31 BST 2018</td>
+</tr>
+<tr><td>Total time:</td><td>1522 seconds (1522645 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x4 quantity then removes 1st product", "Basket"<br/>
+<a href="#Output-457435888" onClick='toggleBox("Output-457435888", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-457435888" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-457435888">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: XBOX using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x2 quantity (PASSED : 5s)</div><br/>
+<div "result">adds second product to basket x2 quantity (PASSED : 3s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 2 products and 4 quantity is shown (PASSED : 0s)</div><br/>
+<div "result">customer removes firt product from basket (PASSED : 0s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (FAILED : 15s)</div><br/>
+</div>
+</td>
+<td><div><pre>java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:163)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div><a href='#' onClick='toggleBox("stack-trace457435888", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace457435888'><pre>java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:163)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div></td>
+<td>41</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x4 quantity then removes 1st product", "Basket"<br/>
+<a href="#Output-564269650" onClick='toggleBox("Output-564269650", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-564269650" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-564269650">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: COOKERS using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x2 quantity (PASSED : 16s)</div><br/>
+<div "result">adds second product to basket x2 quantity (PASSED : 16s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 2 products and 4 quantity is shown (PASSED : 0s)</div><br/>
+<div "result">customer removes firt product from basket (PASSED : 0s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (FAILED : 16s)</div><br/>
+</div>
+</td>
+<td><div><pre>java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:163)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div><a href='#' onClick='toggleBox("stack-trace564269650", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace564269650'><pre>java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:163)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div></td>
+<td>64</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x4 quantity then removes 1st product", "Basket"<br/>
+<a href="#Output-1296132042" onClick='toggleBox("Output-1296132042", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1296132042" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1296132042">
+<div "result">customer is on homepage (PASSED : 5s)</div><br/>
+<div "result">customer searches by product: JEANS using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x2 quantity (PASSED : 17s)</div><br/>
+<div "result">adds second product to basket x2 quantity (PASSED : 21s)</div><br/>
+<div "result">customer views basket (PASSED : 5s)</div><br/>
+<div "result">basket with 2 products and 4 quantity is shown (PASSED : 0s)</div><br/>
+<div "result">customer removes firt product from basket (PASSED : 0s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (FAILED : 16s)</div><br/>
+</div>
+</td>
+<td><div><pre>java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:163)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1296132042", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1296132042'><pre>java.lang.NumberFormatException: For input string: &quot;&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:592)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at selenium_tests.feature_steps.Steps_basket_feature.basket_with_products_and_quantity_is_shown(Steps_basket_feature.java:163)
+	at ?.basket with 1 products and 2 quantity is shown(src/test/resources/Features/TestSuite_basket.feature:69)
+</pre></div></td>
+<td>73</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-869363069" onClick='toggleBox("Output-869363069", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-869363069" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-869363069">
+<div "result">customer is on homepage (PASSED : 9s)</div><br/>
+<div "result">customer searches by product: JEANS using search feature (PASSED : 6s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 7s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-2009137399" onClick='toggleBox("Output-2009137399", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2009137399" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2009137399">
+<div "result">customer is on homepage (PASSED : 5s)</div><br/>
+<div "result">customer searches by product: RING using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 4s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 6s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1046610550" onClick='toggleBox("Output-1046610550", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1046610550" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1046610550">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: XBOX using search feature (PASSED : 8s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 7s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1725312211" onClick='toggleBox("Output-1725312211", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1725312211" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1725312211">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: COOKERS using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 7s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>26</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-134345621" onClick='toggleBox("Output-134345621", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-134345621" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-134345621">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches by product: PUSHCHAIR using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1938242265" onClick='toggleBox("Output-1938242265", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1938242265" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1938242265">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: SPIDERMAN using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 7s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-1033439418" onClick='toggleBox("Output-1033439418", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1033439418" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1033439418">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches by product: FOOTBALL using search feature (PASSED : 8s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 4s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>22</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product by name", "Products"<br/>
+<a href="#Output-520083903" onClick='toggleBox("Output-520083903", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-520083903" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-520083903">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: WEIGHTS using search feature (PASSED : 7s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 2s)</div><br/>
+<div "result">customer clicks on first product (PASSED : 5s)</div><br/>
+<div "result">customer can see important product data (PASSED : 0s)</div><br/>
+<div "result">customer can see related products (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1909936925" onClick='toggleBox("Output-1909936925", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1909936925" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1909936925">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: XBOX using search feature (PASSED : 8s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-977104452" onClick='toggleBox("Output-977104452", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-977104452" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-977104452">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: COOKERS using search feature (PASSED : 4s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1548878879" onClick='toggleBox("Output-1548878879", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1548878879" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1548878879">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: PUSHCHAIR using search feature (PASSED : 6s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 2s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-413653308" onClick='toggleBox("Output-413653308", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-413653308" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-413653308">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: SPIDERMAN using search feature (PASSED : 7s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1430422269" onClick='toggleBox("Output-1430422269", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1430422269" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1430422269">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: FOOTBALL using search feature (PASSED : 8s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>27</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1133323330" onClick='toggleBox("Output-1133323330", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1133323330" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1133323330">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: WEIGHTS using search feature (PASSED : 5s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-103591148" onClick='toggleBox("Output-103591148", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-103591148" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-103591148">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: JEANS using search feature (PASSED : 6s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for product and changes list order", "Products"<br/>
+<a href="#Output-1854103900" onClick='toggleBox("Output-1854103900", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1854103900" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1854103900">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: RING using search feature (PASSED : 5s)</div><br/>
+<div "result">customer sorts by price low-to-high (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of price low-to-high (PASSED : 0s)</div><br/>
+<div "result">customer sorts by price high-to-low (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of price high-to-low (PASSED : 0s)</div><br/>
+<div "result">customer sorts by customer rating (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of customer rating (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-542305264" onClick='toggleBox("Output-542305264", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-542305264" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-542305264">
+<div "result">customer is on product page : COOKERS (PASSED : 12s)</div><br/>
+<div "result">customer changes store location to : BL0 9JH (PASSED : 1s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-1594648587" onClick='toggleBox("Output-1594648587", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1594648587" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1594648587">
+<div "result">customer is on product page : XBOX (PASSED : 14s)</div><br/>
+<div "result">customer changes store location to : SE6 1SB (PASSED : 3s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-1869461624" onClick='toggleBox("Output-1869461624", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1869461624" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1869461624">
+<div "result">customer is on product page : PUSHCHAIR (PASSED : 13s)</div><br/>
+<div "result">customer changes store location to : SS1 2TW (PASSED : 4s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer changes store location", "Products"<br/>
+<a href="#Output-86132690" onClick='toggleBox("Output-86132690", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-86132690" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-86132690">
+<div "result">customer is on product page : SPIDERMAN (PASSED : 12s)</div><br/>
+<div "result">customer changes store location to : FK7 7TZ (PASSED : 2s)</div><br/>
+<div "result">customer can see stock availability (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>17</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views empty basket", "Basket"<br/>
+<a href="#Output-982018280" onClick='toggleBox("Output-982018280", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-982018280" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-982018280">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">empty basket is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1201808704" onClick='toggleBox("Output-1201808704", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1201808704" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1201808704">
+<div "result">customer is on product page : XBOX (PASSED : 15s)</div><br/>
+<div "result">adds product to basket (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 5s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1831956993" onClick='toggleBox("Output-1831956993", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1831956993" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1831956993">
+<div "result">customer is on product page : COOKERS (PASSED : 15s)</div><br/>
+<div "result">adds product to basket (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1698886990" onClick='toggleBox("Output-1698886990", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1698886990" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1698886990">
+<div "result">customer is on product page : PUSHCHAIR (PASSED : 12s)</div><br/>
+<div "result">adds product to basket (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-73913410" onClick='toggleBox("Output-73913410", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-73913410" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-73913410">
+<div "result">customer is on product page : SPIDERMAN (PASSED : 12s)</div><br/>
+<div "result">adds product to basket (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1958243476" onClick='toggleBox("Output-1958243476", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1958243476" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1958243476">
+<div "result">customer is on product page : FOOTBALL (PASSED : 13s)</div><br/>
+<div "result">adds product to basket (PASSED : 3s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1200675653" onClick='toggleBox("Output-1200675653", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1200675653" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1200675653">
+<div "result">customer is on product page : WEIGHTS (PASSED : 14s)</div><br/>
+<div "result">adds product to basket (PASSED : 3s)</div><br/>
+<div "result">customer views basket (PASSED : 5s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-2085472255" onClick='toggleBox("Output-2085472255", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2085472255" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2085472255">
+<div "result">customer is on product page : JEANS (PASSED : 14s)</div><br/>
+<div "result">adds product to basket (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-328569457" onClick='toggleBox("Output-328569457", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-328569457" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-328569457">
+<div "result">customer is on product page : FOOTBALL (PASSED : 12s)</div><br/>
+<div "result">adds product: FOOTBALL to basket twice (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 0s)</div><br/>
+<div "result">customer changes quantity of first product to x10 (PASSED : 1s)</div><br/>
+<div "result">basket with 1 products and 10 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>25</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-1386753715" onClick='toggleBox("Output-1386753715", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1386753715" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1386753715">
+<div "result">customer is on product page : WEIGHTS (PASSED : 14s)</div><br/>
+<div "result">adds product: WEIGHTS to basket twice (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 5s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 1s)</div><br/>
+<div "result">customer changes quantity of first product to x10 (PASSED : 2s)</div><br/>
+<div "result">basket with 1 products and 10 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>29</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-343680198" onClick='toggleBox("Output-343680198", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-343680198" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-343680198">
+<div "result">customer is on product page : JEANS (PASSED : 12s)</div><br/>
+<div "result">adds product: JEANS to basket twice (PASSED : 5s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 1 products and 2 quantity is shown (PASSED : 0s)</div><br/>
+<div "result">customer changes quantity of first product to x10 (PASSED : 1s)</div><br/>
+<div "result">basket with 1 products and 10 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>26</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-122180041" onClick='toggleBox("Output-122180041", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-122180041" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-122180041">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: PUSHCHAIR using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x1 quantity (PASSED : 2s)</div><br/>
+<div "result">adds second product to basket x1 quantity (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 2 products and 2 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>17</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-1884882340" onClick='toggleBox("Output-1884882340", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1884882340" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1884882340">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches by product: SPIDERMAN using search feature (PASSED : 3s)</div><br/>
+<div "result">adds first product to basket x1 quantity (PASSED : 2s)</div><br/>
+<div "result">adds second product to basket x1 quantity (PASSED : 1s)</div><br/>
+<div "result">customer views basket (PASSED : 4s)</div><br/>
+<div "result">basket with 2 products and 2 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>17</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x2 products, totalling x2 quantity", "Basket"<br/>
+<a href="#Output-1691902389" onClick='toggleBox("Output-1691902389", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1691902389" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1691902389">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer searches by product: FOOTBALL using search feature (PASSED : 4s)</div><br/>
+<div "result">adds first product to basket x1 quantity (PASSED : 3s)</div><br/>
+<div "result">adds second product to basket x1 quantity (PASSED : 2s)</div><br/>
+<div "result">customer views basket (PASSED : 3s)</div><br/>
+<div "result">basket with 2 products and 2 quantity is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1762359817" onClick='toggleBox("Output-1762359817", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1762359817" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1762359817">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer clicks on category: TECHNOLOGY in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1050616107" onClick='toggleBox("Output-1050616107", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1050616107" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1050616107">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer clicks on category: HOME AND GARDEN in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1963823771" onClick='toggleBox("Output-1963823771", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1963823771" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1963823771">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer clicks on category: BABY AND NURSERY in the menu (PASSED : 4s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1636799121" onClick='toggleBox("Output-1636799121", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1636799121" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1636799121">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer clicks on category: TOYS in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-472300166" onClick='toggleBox("Output-472300166", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-472300166" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-472300166">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer clicks on category: SPORTS AND LEISURE in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-1709785272" onClick='toggleBox("Output-1709785272", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1709785272" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1709785272">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer clicks on category: HEALTH AND BEAUTY in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-452447784" onClick='toggleBox("Output-452447784", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-452447784" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-452447784">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer clicks on category: CLOTHING in the menu (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches by category using category menu", "CategorySearch"<br/>
+<a href="#Output-633640372" onClick='toggleBox("Output-633640372", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-633640372" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-633640372">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer clicks on category: JEWELLERY AND WATCHES in the menu (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1981342756" onClick='toggleBox("Output-1981342756", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1981342756" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1981342756">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: televisions and accessories (PASSED : 4s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: hdmi-cables-and-optical-cables (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1622575655" onClick='toggleBox("Output-1622575655", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1622575655" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1622575655">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: televisions and accessories (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: tv-remote-controls (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1095967941" onClick='toggleBox("Output-1095967941", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1095967941" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1095967941">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Laptops and PCs (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: Gaming laptops and PCs (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-386482168" onClick='toggleBox("Output-386482168", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-386482168" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-386482168">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Laptops and PCs (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: imacs (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1798479640" onClick='toggleBox("Output-1798479640", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1798479640" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1798479640">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: living room furniture (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: armchairs-and-chairs (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-373709169" onClick='toggleBox("Output-373709169", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-373709169" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-373709169">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: living room furniture (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: cd-and-dvd-storage (PASSED : 0s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1947034510" onClick='toggleBox("Output-1947034510", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1947034510" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1947034510">
+<div "result">customer is on homepage (PASSED : 4s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Bedding (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 2s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: duvets (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-825273997" onClick='toggleBox("Output-825273997", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-825273997" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-825273997">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Bedding (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: pillows (PASSED : 0s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 2s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-311671429" onClick='toggleBox("Output-311671429", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-311671429" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-311671429">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Travel (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: pushchairs (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1071770248" onClick='toggleBox("Output-1071770248", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1071770248" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1071770248">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on sub-category: Travel (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: baby-carriers (PASSED : 0s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 3s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-890887633" onClick='toggleBox("Output-890887633", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-890887633" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-890887633">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Womens (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: accessories (PASSED : 0s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1438283288" onClick='toggleBox("Output-1438283288", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1438283288" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1438283288">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Womens (PASSED : 2s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: dresses (PASSED : 0s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-928015463" onClick='toggleBox("Output-928015463", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-928015463" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-928015463">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on sub-category: Mens (PASSED : 3s)</div><br/>
+<div "result">category splash screen is shown (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via category splash screen: coats-and-jackets (PASSED : 1s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 3s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-253771444" onClick='toggleBox("Output-253771444", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-253771444" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-253771444">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: TECHNOLOGY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via main header: Dash Cams (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-626709582" onClick='toggleBox("Output-626709582", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-626709582" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-626709582">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HOME AND GARDEN in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via main header: Sofas (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-1646796885" onClick='toggleBox("Output-1646796885", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1646796885" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1646796885">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Pushchairs (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-1851402363" onClick='toggleBox("Output-1851402363", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1851402363" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1851402363">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: TOYS in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via main header: Batteries And Rechargeable Batteries (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-177561343" onClick='toggleBox("Output-177561343", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-177561343" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-177561343">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: SPORTS AND LEISURE in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via main header: Treadmills (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-1974471831" onClick='toggleBox("Output-1974471831", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1974471831" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1974471831">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: HEALTH AND BEAUTY in the menu (PASSED : 0s)</div><br/>
+<div "result">clicks on niche-category via main header: Hair Dryers (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-616768664" onClick='toggleBox("Output-616768664", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-616768664" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-616768664">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: CLOTHING in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Bras (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to niche-category via category menu hover feature", "CategorySearch"<br/>
+<a href="#Output-1035808404" onClick='toggleBox("Output-1035808404", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1035808404" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1035808404">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer hovers on category: JEWELLERY AND WATCHES in the menu (PASSED : 1s)</div><br/>
+<div "result">clicks on niche-category via main header: Ladies&#x27; Earrings (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of relevance (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-1976042785" onClick='toggleBox("Output-1976042785", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1976042785" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1976042785">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with TECNOLOGY using search feature (PASSED : 5s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 1s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-929030982" onClick='toggleBox("Output-929030982", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-929030982" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-929030982">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with GARDON using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-1757129248" onClick='toggleBox("Output-1757129248", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1757129248" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1757129248">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with NERSERY using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-84540219" onClick='toggleBox("Output-84540219", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-84540219" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-84540219">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with TOIS using search feature (PASSED : 4s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-530482854" onClick='toggleBox("Output-530482854", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-530482854" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-530482854">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with LESSURE using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-894356171" onClick='toggleBox("Output-894356171", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-894356171" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-894356171">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with helth using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-225446103" onClick='toggleBox("Output-225446103", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-225446103" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-225446103">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with CLOTHIN using search feature (PASSED : 2s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for category using misspelling", "CategorySearch"<br/>
+<a href="#Output-1965611941" onClick='toggleBox("Output-1965611941", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1965611941" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1965611941">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches and misspells &lt;category&gt; with JEWLERY using search feature (PASSED : 3s)</div><br/>
+<div "result">results of matching products are shown by order of popularity (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-515959020" onClick='toggleBox("Output-515959020", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-515959020" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-515959020">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: gdfgdfe using search feature (PASSED : 4s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-1468416958" onClick='toggleBox("Output-1468416958", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1468416958" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1468416958">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: 12332432 using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-487145681" onClick='toggleBox("Output-487145681", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-487145681" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-487145681">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: xxxxxxx using search feature (PASSED : 12s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-2133480526" onClick='toggleBox("Output-2133480526", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2133480526" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2133480526">
+<div "result">customer is on homepage (PASSED : 13s)</div><br/>
+<div "result">customer searches for unrecognised category: TBYSPOS using search feature (PASSED : 17s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-1631341114" onClick='toggleBox("Output-1631341114", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1631341114" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1631341114">
+<div "result">customer is on homepage (PASSED : 14s)</div><br/>
+<div "result">customer searches for unrecognised category: SPOSPO using search feature (PASSED : 18s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>33</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-1038648143" onClick='toggleBox("Output-1038648143", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1038648143" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1038648143">
+<div "result">customer is on homepage (PASSED : 12s)</div><br/>
+<div "result">customer searches for unrecognised category: AND AND AND using search feature (PASSED : 19s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-660202981" onClick='toggleBox("Output-660202981", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-660202981" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-660202981">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: OR OR OR using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer searches for unrecognised category", "CategorySearch"<br/>
+<a href="#Output-332911618" onClick='toggleBox("Output-332911618", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-332911618" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-332911618">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">customer searches for unrecognised category: @@@ using search feature (PASSED : 2s)</div><br/>
+<div "result">no search results page is shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer able to see all key features on homepage", "Homepage"<br/>
+<a href="#Output-1875444808" onClick='toggleBox("Output-1875444808", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1875444808" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1875444808">
+<div "result">customer is on homepage (PASSED : 2s)</div><br/>
+<div "result">all key homepage elements are shown (PASSED : 0s)</div><br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Customer views basket with x1 products, totalling x1 quantity", "Basket"<br/>
+<a href="#Output-1257766738" onClick='toggleBox("Output-1257766738", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1257766738" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1257766738">
+<div "result">customer is on product page : RING (PASSED : 13s)</div><br/>
+<div "result">adds product to basket (PENDING : 0s)</div><br/>
+<div "result">customer views basket (SKIPPED)</div><br/>
+<div "result">basket with 1 products and 1 quantity is shown (SKIPPED)</div><br/>
+</div>
+</td>
+<td><div><pre>org.testng.SkipException: cucumber.api.PendingException: TODO: implement me
+	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:41)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+
+	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:52)
+	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:59)
+	at selenium_tests.Runner.run_scenario(Runner.java:149)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: cucumber.api.PendingException: TODO: implement me
+	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:41)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+... Removed 15 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1257766738", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1257766738'><pre>org.testng.SkipException: cucumber.api.PendingException: TODO: implement me
+	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:41)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+
+	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:52)
+	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:59)
+	at selenium_tests.Runner.run_scenario(Runner.java:149)
+	at sun.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)
+	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: cucumber.api.PendingException: TODO: implement me
+	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:41)
+	at ?.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)
+</pre></div></td>
+<td>15</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+<tr>
+<td title='selenium_tests.Runner.run_scenario()'><b>run_scenario</b><br>Test class: selenium_tests.Runner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "customer navigates to subcategory via category menu hover feature then goes to niche-category", "CategorySearch"<br/>
+<a href="#Output-1714787199" onClick='toggleBox("Output-1714787199", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1714787199" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1714787199">
+<div "result">customer is on homepage (PASSED : 3s)</div><br/>
+<div "result">customer hovers on category: BABY AND NURSERY in the menu (PASSED : 15s)</div><br/>
+<div "result">clicks on sub-category: safety and health (FAILED : 15s)</div><br/>
+<div "result">category splash screen is shown (SKIPPED)</div><br/>
+<div "result">clicks on niche-category via category splash screen: baby health (SKIPPED)</div><br/>
+<div "result">results of matching products are shown by order of relevance (SKIPPED)</div><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //a[@href=&quot;/browse/baby-and-nursery/safety-and-health/c:29003/&quot;] (tried for 15 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_exists(Webdriver_builder.java:533)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.move_to_element(Webdriver_builder.java:749)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:419)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:413)
+	at selenium_tests.feature_steps.Steps_categorySearch_feature.clicks_on_a_sub_category(Steps_categorySearch_feature.java:71)
+	at ?.clicks on sub-category: safety and health(src/test/resources/Features/TestSuite_categorySearch.feature:26)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //a[@href=&quot;/browse/baby-and-nursery/safety-and-health/c:29003/&quot;]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_exists(Webdriver_builder.java:533)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.move_to_element(Webdriver_builder.java:749)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:419)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:413)
+	at selenium_tests.feature_steps.Steps_categorySearch_feature.clicks_on_a_sub_category(Steps_categorySearch_feature.java:71)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)
+	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:55)
+	at cucumber.runner.TestStep.run(TestStep.java:42)
+	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)
+	at cucumber.runner.TestCase.run(TestCase.java:47)
+	at cucumber.runner.Runner.runPickle(Runner.java:44)
+	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)
+	at selenium_tests.Runner.run_scenario(Runner.java:149)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1714787199", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1714787199'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //a[@href=&quot;/browse/baby-and-nursery/safety-and-health/c:29003/&quot;] (tried for 15 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_exists(Webdriver_builder.java:533)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.move_to_element(Webdriver_builder.java:749)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:419)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:413)
+	at selenium_tests.feature_steps.Steps_categorySearch_feature.clicks_on_a_sub_category(Steps_categorySearch_feature.java:71)
+	at ?.clicks on sub-category: safety and health(src/test/resources/Features/TestSuite_categorySearch.feature:26)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //a[@href=&quot;/browse/baby-and-nursery/safety-and-health/c:29003/&quot;]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:248)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.wait_until_exists(Webdriver_builder.java:533)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.move_to_element(Webdriver_builder.java:749)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:419)
+	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:413)
+	at selenium_tests.feature_steps.Steps_categorySearch_feature.clicks_on_a_sub_category(Steps_categorySearch_feature.java:71)
+	at sun.reflect.GeneratedMethodAccessor29.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:48)
+	at cucumber.runtime.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:55)
+	at cucumber.runner.TestStep.run(TestStep.java:42)
+	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:53)
+	at cucumber.runner.TestCase.run(TestCase.java:47)
+	at cucumber.runner.Runner.runPickle(Runner.java:44)
+	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:56)
+	at selenium_tests.Runner.run_scenario(Runner.java:149)
+	at sun.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:744)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)
+	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></div></td>
+<td>34</td>
+<td>selenium_tests.Runner@59f99ea</td></tr>
+</table><p>
+</body>
+</html>

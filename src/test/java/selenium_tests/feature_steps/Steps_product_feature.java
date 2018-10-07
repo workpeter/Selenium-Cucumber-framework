@@ -67,7 +67,7 @@ public class Steps_product_feature {
 	public void customer_sorts_by_price_high_to_low() throws Throwable {
 
 		POM_popup.escPopup(); 
-		driver.get().esm.select_list_value_by_text(POM_productPage.dropSort,"Price: High - Low\"");			
+		driver.get().esm.select_list_value_by_text(POM_productPage.dropSort,"Price: High - Low");			
 		
 		
 	}

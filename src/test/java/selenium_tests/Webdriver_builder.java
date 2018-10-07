@@ -755,7 +755,7 @@ Key features include:
 					WebElement element = webdriver.findElement(target);
 
 					((JavascriptExecutor) webdriver).executeScript("arguments[0].scrollIntoView(true);", element);
-					Thread.sleep(500);
+					Thread.sleep(200);
 					
 				}catch(Throwable t){
 
@@ -986,7 +986,7 @@ Key features include:
 			long duration = (endTime - startTime); 
 
 
-			if (duration > 500){
+			if (duration > 5000){
 				System.out.println("Chrome browser logs overhead: reading " + log_count + " logs with log_chrome_browser_warnings_and_errors took: " + duration + "MS");
 			}
 
@@ -1050,7 +1050,7 @@ Key features include:
 			long endTime = System.currentTimeMillis();
 			long duration = (endTime - startTime); 
 
-			if (duration > 500){
+			if (duration > 5000){
 				System.out.println("warning: reading " + log_count + " logs with log_http_error_codes_and_slow_http_elements took: " + duration + "MS");
 			}	
 
