@@ -88,36 +88,36 @@ Note: With Selenium Grid switched on in Maven, its possible to change operating 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Environment config tsts" parallel="tests"
-	thread-count="10">
+    thread-count="10">
 
-	<listeners>
-		<listener class-name="selenium_tests.Listeners"></listener>
-	</listeners>
+    <listeners>
+        <listener class-name="selenium_tests.Listeners"></listener>
+    </listeners>
 
-	<test name="windows chrome - no tags (all features)">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+    <test name="windows chrome - no tags (all features)">
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
 
-	<test name="windows firefox - no tags (all features)">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+    <test name="windows firefox - no tags (all features)">
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
 
-	<test name="windows edge - no tags (all features)">
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="edge" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
-	
+    <test name="windows edge - no tags (all features)">
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="edge" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
+    
 </suite> 
 ~~~
 
@@ -126,54 +126,64 @@ Note: With Selenium Grid switched on in Maven, its possible to change operating 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Environment config tsts" parallel="tests"
-	thread-count="10">
+    thread-count="10">
 
-	<listeners>
-		<listener class-name="selenium_tests.Listeners"></listener>
-	</listeners>
-
-
-	<test name="windows chrome - just Product feature">
-		<parameter name="tags" value="@Product" />
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>
+    <listeners>
+        <listener class-name="selenium_tests.Listeners"></listener>
+    </listeners>
 
 
-	<test name="windows chrome - just Homepage feature">
-		<parameter name="tags" value="@Homepage" />
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>	
+    <test name="windows chrome - just Product feature">
+        <parameter name="tags" value="@Product" />
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>
 
-	<test name="windows chrome - just Basket feature">
-		<parameter name="tags" value="@Basket" />
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>	
-	
-	<test name="windows chrome - just CategorySearch feature">
-		<parameter name="tags" value="@CategorySearch" />
-		<parameter name="operating_system" value="windows" />
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="selenium_tests.Runner" />
-		</classes>
-	</test>			
-	
+
+    <test name="windows chrome - just Homepage feature">
+        <parameter name="tags" value="@Homepage" />
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>    
+
+    <test name="windows chrome - just Basket feature">
+        <parameter name="tags" value="@Basket" />
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>    
+    
+    <test name="windows chrome - just CategorySearch feature">
+        <parameter name="tags" value="@CategorySearch" />
+        <parameter name="operating_system" value="windows" />
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="selenium_tests.Runner" />
+        </classes>
+    </test>            
+    
 </suite> 
 ~~~ 
  
 ### Project structure
+
+* The Cucumber feature files have **.feature** extension. This is where the human readable tests are written/stored.
+* The actual Selenium test code is in the **feature_steps** folder. 
+* The Runner class 'glues' Cucumber and Selenium together by matching the step names. The Runner class also:
+  * Is the main class triggered by TestNG. When triggered, an instance is created. Multiple instances mean parallel tests. This is configured in the TestNG XML file (environment_configurations_to_test.xml).
+  * Ues the Webdriver_builder class to dynamically build an enhanced webdriver per instance.
+  * Triggers Cucumber scenarios using the TestNG framework.
+* The files in the page_object_model folder are used for storing DOM locator references. These references are shared by multiple scripts and means maintenance is centralised. 
+* Step modularisation is inherently achieved using Cucumber steps, therefore it's not required within page_object_model files. This also simplifies the code. 
+
 ~~~
 C:.
 |   .classpath
