@@ -23,6 +23,10 @@ public class Steps_basket_feature  {
 		POM_popup.escPopup(); 
 		driver.get().esm.scroll_top_page();
 		driver.get().esm.click(POM_mainHeader.btnBasket);	
+		
+		Assert.assertTrue(
+				driver.get().esm.check_text_exists("your trolley") ||
+				driver.get().esm.check_text_exists("my trolley"));
 
 	}
 
@@ -34,8 +38,12 @@ public class Steps_basket_feature  {
 		driver.get().esm.scroll_bottom_page();
 
 		if (!driver.get().esm.check_text_exists("Not available online")){
+			
 			driver.get().esm.click(POM_productPage.btnAddToBasket);
-			POM_popupBasket.checkContinueShopping();
+			driver.get().esm.wait_element_invisible(POM_popupBasket.loadingWheel);
+			driver.get().esm.click(POM_popupBasket.btnContinueShopping);
+			
+			
 		}else{
 			System.out.println("[Skipping next scenerio step/s] This item is not available online to add to basket");
 			throw new PendingException();
@@ -62,7 +70,8 @@ public class Steps_basket_feature  {
 			if(!driver.get().esm.check_element_exists(POM_productResults.btnChooseOptionsFirstProduct)){
 
 				driver.get().esm.click(POM_productResults.btnAddToBasketFirstProduct);
-				POM_popupBasket.checkContinueShopping();
+				driver.get().esm.wait_element_invisible(POM_popupBasket.loadingWheel);
+				driver.get().esm.click(POM_popupBasket.btnContinueShopping);
 
 			}else{
 				driver.get().esm.click(POM_productResults.btnChooseOptionsFirstProduct);
@@ -87,7 +96,8 @@ public class Steps_basket_feature  {
 			if(!driver.get().esm.check_element_exists(POM_productResults.btnChooseOptionsSecondProduct)){
 
 				driver.get().esm.click(POM_productResults.btnAddToBasketSecondProduct);
-				POM_popupBasket.checkContinueShopping();
+				driver.get().esm.wait_element_invisible(POM_popupBasket.loadingWheel);
+				driver.get().esm.click(POM_popupBasket.btnContinueShopping);
 
 			}else{
 				driver.get().esm.click(POM_productResults.btnChooseOptionsSecondProduct);
@@ -129,7 +139,6 @@ public class Steps_basket_feature  {
 		POM_popup.escPopup(); 
 
 		Assert.assertTrue(
-
 				driver.get().esm.check_text_exists("Your trolley is currently empty") ||
 				driver.get().esm.check_text_exists("your shopping trolley is empty"));
 
@@ -141,7 +150,7 @@ public class Steps_basket_feature  {
 
 		POM_popup.escPopup();
 
-		driver.get().esm.wait_until_exists(POM_basket.dropQuantity);
+		driver.get().esm.wait_element_exists(POM_basket.dropQuantity);
 
 		//convert expected cucumber values from strings to integers
 		int iproductCountExpected = Integer.valueOf(productCount);

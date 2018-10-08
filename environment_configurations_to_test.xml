@@ -10,21 +10,21 @@
 
 <!-- ===== TEST BROWSERS IN PARALLEL  ========================================= -->
 
-<!-- 	<test name="windows chrome - no tags (all features)"> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="chrome" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="selenium_tests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="windows chrome - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
 
-<!-- 	<test name="windows firefox - no tags (all features)"> -->
-<!-- 		<parameter name="operating_system" value="windows" /> -->
-<!-- 		<parameter name="browser" value="firefox" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="selenium_tests.Runner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<test name="windows firefox - no tags (all features)">
+		<parameter name="operating_system" value="windows" />
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="selenium_tests.Runner" />
+		</classes>
+	</test>
 
 	<test name="windows edge - no tags (all features)">
 		<parameter name="operating_system" value="windows" />

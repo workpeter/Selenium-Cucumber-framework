@@ -3,8 +3,8 @@ package selenium_tests.page_object_model;
 import org.openqa.selenium.*;
 
 public final class POM_basket {
+	
 
-	public static By txtH1 = By.xpath("//*[@id=\"emptytrolleylister\"]/div[1]/h1");
 	public static By dropQuantity = By.xpath("//select[starts-with(@id,'quantity')]");
 	public static By txtPrice = By.xpath("//span[@class=\"price\"]");
 	public static By btnRemove = By.xpath("//input[@value=\"Remove\"]");	

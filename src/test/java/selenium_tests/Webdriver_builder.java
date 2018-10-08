@@ -2,6 +2,7 @@ package selenium_tests;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -51,7 +52,6 @@ public class Webdriver_builder implements WebDriver {
 	private final String chrome_logging_enabled;
 
 	private String home_url;
-
 
 	private static String os_name = System.getProperty("os.name").toLowerCase();
 
@@ -113,7 +113,7 @@ Key features include:
 			String selenium_grid_hub,
 			String web_proxy_enabled, 
 			String chrome_logging_enabled)
-					throws MalformedURLException {
+					throws MalformedURLException, AWTException {
 
 		this.operating_system = operating_system;
 		this.browser = browser;
@@ -184,8 +184,9 @@ Key features include:
 
 		}
 
-
+		this.webdriver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 		this.webdriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		
 		this.webdriver.manage().window().setSize(new Dimension(1080, 1920));
 		this.webdriver.manage().window().maximize();
 
@@ -408,31 +409,30 @@ Key features include:
 
 		public void click(By target) throws Exception  {
 
+			wait_element_exists(target);
+
 			try{
 
-				wait_until_exists(target);
 				webdriver.findElement(target).click();
 
-
-				//[Fail-safe] 
-				//Sometimes standard click doesn't work (more notable in Edge browser) 
-				//Rather than fail the test due to a script issue, try alternative click method. 
-				//If that too fails, then fail the test. Note: Alternative method is still user-like, just has less verification checks
 			}catch(Throwable t){
 
-				try{
+
+                //[Warning] Only use this Javascript workaround in very limited circumstances as it's not user-realistic. 
+                //In the example of "Element is obscured" thrown by the Edge browser, this is a bug in the driver rather than 
+                //an actual DOM element obscuring the click. Therefore javascript click is used as a workaround. 
+                //If the findElement click failed for another reason (i.e. a genuine reason), then an exception should 
+				//correctly be thrown and the test marked as failed. 
+				if (t.getMessage().contains("Element is obscured") && t.getMessage().contains("edge")){
+
+					System.out.println("Known bug with Edge browser detected 'Element is obscured', using workaround javascript click");
 					
-					Actions action = new Actions(webdriver);
-					action.moveToElement(webdriver.findElement(target)).pause(1000).click().build().perform();
-
-				}catch(Throwable t2){
-
-					throw new Exception(
-							System.lineSeparator() + "[Standard click error]" + System.lineSeparator() + 
-							t.getMessage() + System.lineSeparator() + 
-							"[Alternative Action click error]" + System.lineSeparator() + 
-							t2.getMessage());
-
+					WebElement element = webdriver.findElement(target); 
+					JavascriptExecutor executor = (JavascriptExecutor)webdriver; 
+					executor.executeScript("arguments[0].click();", element);
+		
+				}else{
+					throw new Exception(t.getMessage());  
 				}
 
 			}
@@ -447,7 +447,7 @@ Key features include:
 
 		public void send_keys(By target,String textToSend) throws Exception {
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 			clear_text(target);
 
 			webdriver.findElement(target).sendKeys(textToSend);
@@ -463,7 +463,7 @@ Key features include:
 
 		public void select_list_value_by_index(By target,int index) throws Exception{
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByIndex(index);
@@ -477,7 +477,7 @@ Key features include:
 
 		public void select_list_value_by_text(By target,String text) throws Exception{
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 
 			Select select = new Select(webdriver.findElement(target));
 			select.selectByVisibleText(text);
@@ -503,7 +503,7 @@ Key features include:
 
 		public String get_text(By target) throws Exception {
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 
 			return webdriver.findElement(target).getText();
 
@@ -511,7 +511,7 @@ Key features include:
 
 		public String get_inner_html(By target) throws Exception{
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 
 			return webdriver.findElement(target).getAttribute("innerHTML");
 
@@ -520,7 +520,7 @@ Key features include:
 
 		public String get_list_item_text(By target) throws Exception {
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 
 			Select select = new Select(webdriver.findElement(target));
 
@@ -543,13 +543,13 @@ Key features include:
 
 		}	
 
-		public void wait_until_exists(By target) throws Exception {
+		public void wait_element_exists(By target) throws Exception {
 
 			wait.until(ExpectedConditions.presenceOfElementLocated(target));
 
 		}	
-		
-		
+
+
 		//===========================
 		// Actions which if fail, should CATCH warning, but are not critical to stop test execution
 		//===========================
@@ -725,7 +725,7 @@ Key features include:
 
 			long startTime = System.currentTimeMillis();
 
-			wait_until_exists(target);
+			wait_element_exists(target);
 
 			try{
 
@@ -843,35 +843,21 @@ Key features include:
 
 		}
 
+
 		public void wait_for_page_load() {
 
 			try{
 
-				JavascriptExecutor javascriptExecutor = (JavascriptExecutor) webdriver;
-
-				int iWaitTime = 0;
-				int iWaitFinish = 200;	
-
-				while (!javascriptExecutor.executeScript("return document.readyState")
-						.toString().equals("complete")) {
-
-					Thread.sleep(500);
-					iWaitTime++;
-
-					//System.out.println(iWaitTime + "/" + iWaitFinish + " Waiting for page to load (AJAX not included)");
-
-					//fail-safe 
-					if (iWaitTime==iWaitFinish){break;}
-				}
+				new WebDriverWait(webdriver, 30).until((ExpectedCondition<Boolean>) wd ->
+				((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
 
 			}catch(Throwable t){
 
 				standard_warning_output(t.getMessage());
 
 			}
-
-
 		}
+
 
 		public void wait_for_ajax_to_finish() {
 

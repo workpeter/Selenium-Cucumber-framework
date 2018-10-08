@@ -5,17 +5,8 @@ import static selenium_tests.Runner.driver;
 
 public final class POM_popupBasket {
 
-	private static By btnContinueShopping = By.xpath("//button[@class=\"button button--full button--secondary\"]");	
-	private static By loadingWheel = By.xpath("//div[@class=\"ac-loading-wheel ac-loading-wheel--contained\"]");
+	public static By btnContinueShopping = By.xpath("//button[@class=\"button button--full button--secondary\"]");	
+	public static By loadingWheel = By.xpath("//div[@class=\"ac-loading-wheel ac-loading-wheel--contained\"]");
 	
-	public static void checkContinueShopping() throws Exception{
-
-		POM_popup.escPopup();
-		
-		driver.get().esm.wait_element_invisible(loadingWheel);
-		driver.get().esm.click(btnContinueShopping);
-
-	}
-
 
 }

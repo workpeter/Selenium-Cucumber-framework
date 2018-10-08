@@ -4,6 +4,19 @@
   <listeners>
     <listener class-name="selenium_tests.Listeners"/>
   </listeners>
+  <test name="windows edge - no tags (all features)(failed)" parallel="tests">
+    <parameter name="browser" value="edge"/>
+    <parameter name="operating_system" value="windows"/>
+    <classes>
+      <class name="selenium_tests.Runner">
+        <methods>
+          <include name="tear_down"/>
+          <include name="run_scenario" invocation-numbers="28 37"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- selenium_tests.Runner -->
+    </classes>
+  </test> <!-- windows edge - no tags (all features)(failed) -->
   <test name="windows chrome - no tags (all features)(failed)" parallel="tests">
     <parameter name="browser" value="chrome"/>
     <parameter name="operating_system" value="windows"/>
@@ -17,19 +30,6 @@
       </class> <!-- selenium_tests.Runner -->
     </classes>
   </test> <!-- windows chrome - no tags (all features)(failed) -->
-  <test name="windows edge - no tags (all features)(failed)" parallel="tests">
-    <parameter name="browser" value="edge"/>
-    <parameter name="operating_system" value="windows"/>
-    <classes>
-      <class name="selenium_tests.Runner">
-        <methods>
-          <include name="tear_down"/>
-          <include name="run_scenario" invocation-numbers="28 30 34"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- selenium_tests.Runner -->
-    </classes>
-  </test> <!-- windows edge - no tags (all features)(failed) -->
   <test name="windows firefox - no tags (all features)(failed)" parallel="tests">
     <parameter name="browser" value="firefox"/>
     <parameter name="operating_system" value="windows"/>

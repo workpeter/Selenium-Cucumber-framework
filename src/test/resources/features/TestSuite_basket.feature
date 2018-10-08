@@ -26,7 +26,7 @@ Feature: Basket
     | RING					 	| 1				| 1			|	
 
 
-  @Basket
+  @Basket @retest
   Scenario Outline:  Customer views basket with x1 products, totalling x2 quantity
 	Given customer is on product page : <Product>
 	And adds product: <Product> to basket twice
@@ -37,8 +37,8 @@ Feature: Basket
 	
    Examples:
     | Product 					| ProductCount	| Quantity	| QuantityUpdated	|
+    | WEIGHTS					| 1				| 2			| 10				|     
     | FOOTBALL 					| 1				| 2			| 10				| 
-    | WEIGHTS					| 1				| 2			| 10				| 
     | JEANS 					| 1				| 2			| 10				|       
 
     

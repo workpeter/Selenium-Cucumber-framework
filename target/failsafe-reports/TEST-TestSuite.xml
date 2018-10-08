@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="TestSuite" time="1,464.276" tests="258" errors="0" skipped="5" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-failsafe-plugin/xsd/failsafe-test-report.xsd" name="TestSuite" time="2,007.735" tests="258" errors="0" skipped="4" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_161\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\WORKPE~1\AppData\Local\Temp\surefire4533983577733896503\surefirebooter4422064836874759894.jar C:\Users\workpeter\AppData\Local\Temp\surefire4533983577733896503 2018-10-07T20-54-42_563-jvmRun1 surefire3921144412032512956tmp surefire_08900287880125364696tmp"/>
+    <property name="sun.java.command" value="C:\Users\WORKPE~1\AppData\Local\Temp\surefire1909725666334821679\surefirebooter692017723592534579.jar C:\Users\workpeter\AppData\Local\Temp\surefire1909725666334821679 2018-10-08T01-39-38_640-jvmRun1 surefire2146917493183665926tmp surefire_06404775152848373201tmp"/>
     <property name="surefire.test.class.path" value="C:\Users\workpeter\Documents\Eclipse-workspace\cucumber-selenium-framework\target\test-classes;C:\Users\workpeter\Documents\Eclipse-workspace\cucumber-selenium-framework\target\ARGOS-1.1.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-java\3.12.0\selenium-java-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-api\3.12.0\selenium-api-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\3.12.0\selenium-chrome-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\3.12.0\selenium-edge-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\3.12.0\selenium-firefox-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\3.12.0\selenium-ie-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-opera-driver\3.12.0\selenium-opera-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\3.12.0\selenium-remote-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\3.12.0\selenium-safari-driver-3.12.0.jar;C:\Users\workpeter\.m2\repository\org\seleniumhq\selenium\selenium-support\3.12.0\selenium-support-3.12.0.jar;C:\Users\workpeter\.m2\repository\net\bytebuddy\byte-buddy\1.8.3\byte-buddy-1.8.3.jar;C:\Users\workpeter\.m2\repository\org\apache\commons\commons-exec\1.3\commons-exec-1.3.jar;C:\Users\workpeter\.m2\repository\commons-codec\commons-codec\1.10\commons-codec-1.10.jar;C:\Users\workpeter\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\workpeter\.m2\repository\com\google\code\gson\gson\2.8.2\gson-2.8.2.jar;C:\Users\workpeter\.m2\repository\org\apache\httpcomponents\httpclient\4.5.3\httpclient-4.5.3.jar;C:\Users\workpeter\.m2\repository\org\apache\httpcomponents\httpcore\4.4.6\httpcore-4.4.6.jar;C:\Users\workpeter\.m2\repository\com\squareup\okhttp3\okhttp\3.9.1\okhttp-3.9.1.jar;C:\Users\workpeter\.m2\repository\com\squareup\okio\okio\1.13.0\okio-1.13.0.jar;C:\Users\workpeter\.m2\repository\io\github\bonigarcia\webdrivermanager\2.2.5\webdrivermanager-2.2.5.jar;C:\Users\workpeter\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;C:\Users\workpeter\.m2\repository\commons-io\commons-io\2.6\commons-io-2.6.jar;C:\Users\workpeter\.m2\repository\org\apache\commons\commons-lang3\3.7\commons-lang3-3.7.jar;C:\Users\workpeter\.m2\repository\org\rauschig\jarchivelib\0.8.0\jarchivelib-0.8.0.jar;C:\Users\workpeter\.m2\repository\org\apache\commons\commons-compress\1.14\commons-compress-1.14.jar;C:\Users\workpeter\.m2\repository\org\jsoup\jsoup\1.11.3\jsoup-1.11.3.jar;C:\Users\workpeter\.m2\repository\org\testng\testng\6.11\testng-6.11.jar;C:\Users\workpeter\.m2\repository\com\beust\jcommander\1.64\jcommander-1.64.jar;C:\Users\workpeter\.m2\repository\org\yaml\snakeyaml\1.17\snakeyaml-1.17.jar;C:\Users\workpeter\.m2\repository\io\cucumber\cucumber-testng\3.0.2\cucumber-testng-3.0.2.jar;C:\Users\workpeter\.m2\repository\io\cucumber\cucumber-core\3.0.2\cucumber-core-3.0.2.jar;C:\Users\workpeter\.m2\repository\io\cucumber\cucumber-html\0.2.7\cucumber-html-0.2.7.jar;C:\Users\workpeter\.m2\repository\io\cucumber\tag-expressions\1.1.1\tag-expressions-1.1.1.jar;C:\Users\workpeter\.m2\repository\io\cucumber\cucumber-expressions\5.0.19\cucumber-expressions-5.0.19.jar;C:\Users\workpeter\.m2\repository\io\cucumber\datatable\1.0.3\datatable-1.0.3.jar;C:\Users\workpeter\.m2\repository\io\cucumber\datatable-dependencies\1.0.3\datatable-dependencies-1.0.3.jar;C:\Users\workpeter\.m2\repository\io\cucumber\cucumber-java\3.0.2\cucumber-java-3.0.2.jar;C:\Users\workpeter\.m2\repository\io\cucumber\gherkin\5.1.0\gherkin-5.1.0.jar;C:\Users\workpeter\.m2\repository\io\cucumber\gherkin-jvm-deps\1.0.4\gherkin-jvm-deps-1.0.4.jar;C:\Users\workpeter\.m2\repository\net\masterthought\cucumber-reporting\1.1.0\cucumber-reporting-1.1.0.jar;C:\Users\workpeter\.m2\repository\org\apache\logging\log4j\log4j-api\2.5\log4j-api-2.5.jar;C:\Users\workpeter\.m2\repository\org\apache\logging\log4j\log4j-core\2.5\log4j-core-2.5.jar;C:\Users\workpeter\.m2\repository\org\apache\velocity\velocity\1.7\velocity-1.7.jar;C:\Users\workpeter\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar;C:\Users\workpeter\.m2\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar;C:\Users\workpeter\.m2\repository\velocity-tools\velocity-tools\1.4\velocity-tools-1.4.jar;C:\Users\workpeter\.m2\repository\joda-time\joda-time\2.9.1\joda-time-2.9.1.jar;C:\Users\workpeter\.m2\repository\net\lingala\zip4j\zip4j\1.3.2\zip4j-1.3.2.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\plugins\maven-gpg-plugin\1.6\maven-gpg-plugin-1.6.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-repository-metadata\2.2.1\maven-repository-metadata-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\sonatype\plexus\plexus-sec-dispatcher\1.4\plexus-sec-dispatcher-1.4.jar;C:\Users\workpeter\.m2\repository\org\sonatype\plexus\plexus-cipher\1.4\plexus-cipher-1.4.jar;C:\Users\workpeter\.m2\repository\net\lightbody\bmp\browsermob-core\2.1.5\browsermob-core-2.1.5.jar;C:\Users\workpeter\.m2\repository\net\lightbody\bmp\littleproxy\1.1.0-beta-bmp-17\littleproxy-1.1.0-beta-bmp-17.jar;C:\Users\workpeter\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.8.9\jackson-core-2.8.9.jar;C:\Users\workpeter\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.8.9\jackson-databind-2.8.9.jar;C:\Users\workpeter\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.8.9\jackson-annotations-2.8.9.jar;C:\Users\workpeter\.m2\repository\dnsjava\dnsjava\2.1.8\dnsjava-2.1.8.jar;C:\Users\workpeter\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.25\jcl-over-slf4j-1.7.25.jar;C:\Users\workpeter\.m2\repository\com\jcraft\jzlib\1.1.3\jzlib-1.1.3.jar;C:\Users\workpeter\.m2\repository\io\netty\netty-all\4.0.51.Final\netty-all-4.0.51.Final.jar;C:\Users\workpeter\.m2\repository\org\bouncycastle\bcprov-jdk15on\1.58\bcprov-jdk15on-1.58.jar;C:\Users\workpeter\.m2\repository\org\bouncycastle\bcpkix-jdk15on\1.58\bcpkix-jdk15on-1.58.jar;C:\Users\workpeter\.m2\repository\net\lightbody\bmp\mitm\2.1.5\mitm-2.1.5.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\plugins\maven-surefire-plugin\2.21.0\maven-surefire-plugin-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\surefire\maven-surefire-common\2.21.0\maven-surefire-common-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\plugin-tools\maven-plugin-annotations\3.5\maven-plugin-annotations-3.5.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\surefire\surefire-api\2.21.0\surefire-api-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\surefire\surefire-logger-api\2.21.0\surefire-logger-api-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\surefire\surefire-booter\2.21.0\surefire-booter-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-plugin-descriptor\2.2.1\maven-plugin-descriptor-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-toolchain\2.2.1\maven-toolchain-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\plugins\maven-failsafe-plugin\2.21.0\maven-failsafe-plugin-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\plugins\maven-compiler-plugin\3.7.0\maven-compiler-plugin-3.7.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-plugin-api\3.0\maven-plugin-api-3.0.jar;C:\Users\workpeter\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\1.4.2\sisu-inject-plexus-1.4.2.jar;C:\Users\workpeter\.m2\repository\org\sonatype\sisu\sisu-inject-bean\1.4.2\sisu-inject-bean-1.4.2.jar;C:\Users\workpeter\.m2\repository\org\sonatype\sisu\sisu-guice\2.1.7\sisu-guice-2.1.7-noaop.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-artifact\3.0\maven-artifact-3.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-core\3.0\maven-core-3.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-settings\3.0\maven-settings-3.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-settings-builder\3.0\maven-settings-builder-3.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-model-builder\3.0\maven-model-builder-3.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-aether-provider\3.0\maven-aether-provider-3.0.jar;C:\Users\workpeter\.m2\repository\org\sonatype\aether\aether-impl\1.7\aether-impl-1.7.jar;C:\Users\workpeter\.m2\repository\org\sonatype\aether\aether-spi\1.7\aether-spi-1.7.jar;C:\Users\workpeter\.m2\repository\org\sonatype\aether\aether-api\1.7\aether-api-1.7.jar;C:\Users\workpeter\.m2\repository\org\sonatype\aether\aether-util\1.7\aether-util-1.7.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.14\plexus-interpolation-1.14.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.3\plexus-classworlds-2.2.3.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\shared\maven-shared-utils\3.1.0\maven-shared-utils-3.1.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\shared\maven-shared-incremental\1.1\maven-shared-incremental-1.1.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-java\0.9.2\plexus-java-0.9.2.jar;C:\Users\workpeter\.m2\repository\org\ow2\asm\asm\6.0_BETA\asm-6.0_BETA.jar;C:\Users\workpeter\.m2\repository\com\thoughtworks\qdox\qdox\2.0-M7\qdox-2.0-M7.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-compiler-api\2.8.2\plexus-compiler-api-2.8.2.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-compiler-manager\2.8.2\plexus-compiler-manager-2.8.2.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-compiler-javac\2.8.2\plexus-compiler-javac-2.8.2.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\plugins\maven-install-plugin\2.5.2\maven-install-plugin-2.5.2.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-project\2.2.1\maven-project-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-profile\2.2.1\maven-profile-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-plugin-registry\2.2.1\maven-plugin-registry-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9-stable-1\plexus-container-default-1.0-alpha-9-stable-1.jar;C:\Users\workpeter\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\workpeter\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-model\2.2.1\maven-model-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\maven-artifact-manager\2.2.1\maven-artifact-manager-2.2.1.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-beta-6\wagon-provider-api-1.0-beta-6.jar;C:\Users\workpeter\.m2\repository\backport-util-concurrent\backport-util-concurrent\3.1\backport-util-concurrent-3.1.jar;C:\Users\workpeter\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.15\plexus-utils-3.0.15.jar;C:\Users\workpeter\.m2\repository\com\google\guava\guava\24.0-jre\guava-24.0-jre.jar;C:\Users\workpeter\.m2\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\workpeter\.m2\repository\org\checkerframework\checker-compat-qual\2.0.0\checker-compat-qual-2.0.0.jar;C:\Users\workpeter\.m2\repository\com\google\errorprone\error_prone_annotations\2.1.3\error_prone_annotations-2.1.3.jar;C:\Users\workpeter\.m2\repository\com\google\j2objc\j2objc-annotations\1.1\j2objc-annotations-1.1.jar;C:\Users\workpeter\.m2\repository\org\codehaus\mojo\animal-sniffer-annotations\1.14\animal-sniffer-annotations-1.14.jar;C:\Users\workpeter\.m2\repository\org\apache\poi\poi\3.7\poi-3.7.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\surefire\surefire-testng-utils\2.21.0\surefire-testng-utils-2.21.0.jar;C:\Users\workpeter\.m2\repository\org\apache\maven\surefire\surefire-grouper\2.21.0\surefire-grouper-2.21.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\workpeter"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\WORKPE~1\AppData\Local\Temp\surefire4533983577733896503\surefirebooter4422064836874759894.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\WORKPE~1\AppData\Local\Temp\surefire1909725666334821679\surefirebooter692017723592534579.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_161\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_161\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_161\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -65,363 +65,276 @@
     <property name="env.qa.url" value="http://www.argos.co.uk"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.306"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.137"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.356"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.771"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.582"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.332"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.039"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.103"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.228"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.347"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.259"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.429"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.605"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.67"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.429"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.026"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.235"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.434"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.736"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.977"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.164"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.081"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.133"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.518"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.961"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.209"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.938"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.926"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.649"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.837"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.807"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.566"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.484"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.897"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.138"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.606"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.559"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.195"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.212"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.616"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.225"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.077"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.16"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.506"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.554"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.584"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.033"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.975"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.825"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.725"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.99"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.618"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="17.301"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.978"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.168"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="15.106"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.171"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.681"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.303"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.632"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.73"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.127"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.236"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.065"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.811"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.465"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.668"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.853"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.044"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.644"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.426"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.168"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.148"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.505"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.158"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.98"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.368"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.08"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.091"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.686"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.955"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.183"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.306"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.055"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.417"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.693"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.887"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.075"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.84"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.543"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.135"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.549"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.706"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.523"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.334"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="15.414"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.847"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.641"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="15.517"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.696"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.935"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="17.897"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.274"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.159"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="17.483"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.469"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.267"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="15.662"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.177"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.382"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.279"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.523"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.25"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.131"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.326"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.18"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.541"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.212"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.331"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.018"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.492"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.966"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.76"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.781"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.918"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.652"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.525"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.587"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="14.612"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.562"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.501"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.093"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.475"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.768"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.052"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.306"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.393"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.294"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.07"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="17.465"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.824"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.836"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.735"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.808"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="16.018"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.5"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.797"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="14.785"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.653"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="18.325"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.308"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.63"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.489"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.218"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.989"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.808"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.825"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.657"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.105"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.69"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.475"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="0">
-    <skipped message="cucumber.api.PendingException: TODO: implement me&#10;	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:42)&#10;	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)&#10;"/>
+    <skipped message="cucumber.api.PendingException: TODO: implement me&#10;	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:49)&#10;	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)&#10;"/>
     <system-out><![CDATA[[Skipping next scenerio step/s] This item is not available online to add to basket
 ]]></system-out>
   </testcase>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.679"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.263"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.46"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.82"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.05"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="0">
-    <skipped message="cucumber.api.PendingException: TODO: implement me&#10;	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:42)&#10;	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)&#10;"/>
+    <skipped message="cucumber.api.PendingException: TODO: implement me&#10;	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:49)&#10;	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)&#10;"/>
     <system-out><![CDATA[[Skipping next scenerio step/s] This item is not available online to add to basket
 ]]></system-out>
   </testcase>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.736"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="18.223"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.674"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.19"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.462"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.48"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.141"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="0">
-    <skipped message="cucumber.api.PendingException: TODO: implement me&#10;	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:42)&#10;	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)&#10;"/>
+    <skipped message="cucumber.api.PendingException: TODO: implement me&#10;	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:49)&#10;	at ✽.adds product to basket(src/test/resources/Features/TestSuite_basket.feature:14)&#10;"/>
     <system-out><![CDATA[[Skipping next scenerio step/s] This item is not available online to add to basket
 ]]></system-out>
   </testcase>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.626"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.376"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="25.127"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.199"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.972"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="22.205"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.074"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="17.134"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.998"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.535"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="23.101"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.181"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="32.109"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="14.891"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.496"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.002"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="48.432"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.732"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.984"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="0">
-    <skipped message="[Standard click error]&#10;Stale element reference (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html&#10;Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;&#10;System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;&#10;Driver info: org.openqa.selenium.edge.EdgeDriver&#10;Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}&#10;Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7&#10;[Alternative Action click error]&#10;Invalid argument (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;&#10;System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;&#10;Driver info: org.openqa.selenium.edge.EdgeDriver&#10;Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}&#10;Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7"/>
-    <system-out><![CDATA[trying alternative click
-==============================================
-[Test ID]
-Customer views basket with x1 products, totalling x2 quantity
-
-[Failed URL]
-http://www.argos.co.uk/product/6044273
-
-[Page Title]
-Buy Opti Vinyl Barbell Dumbbell Set - 35kg | Dumbbells | Argos
-
-[Environment]
-windows_edge
-
-[Screenshot ands logs found here]
-C:/Users/workpeter/Documents/Eclipse-workspace/cucumber-selenium-framework/target/CAPTURED-ERRORS/test-failures/windows-edge_7c0dc9b2-c049-40f6-882e-19fc2fc56011
-
-[Stack trace]
-java.lang.Exception: [Standard click error]
-Stale element reference (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}
-Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7
-[Alternative Action click error]
-Invalid argument (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}
-Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7
-	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:436)
-	at selenium_tests.page_object_model.POM_popupBasket.checkContinueShopping(POM_popupBasket.java:16)
-	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket(Steps_basket_feature.java:39)
-	at selenium_tests.feature_steps.Steps_basket_feature.adds_product_to_basket_twice(Steps_basket_feature.java:51)
-	at ?.adds product: WEIGHTS to basket twice(src/test/resources/Features/TestSuite_basket.feature:32)
-
-
-]]></system-out>
+    <skipped message="Stale element reference (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html&#10;Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;&#10;System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;&#10;Driver info: org.openqa.selenium.edge.EdgeDriver&#10;Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}&#10;Session ID: 6AB90BB7-E1DD-4EA0-BCCC-BABADCF8E228"/>
   </testcase>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.015"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="15.235"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.984"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="14.385"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.984"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.24"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.672"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.664"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0">
-    <skipped message="[Standard click error]&#10;Element not displayed (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;&#10;System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;&#10;Driver info: org.openqa.selenium.edge.EdgeDriver&#10;Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}&#10;Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7&#10;[Alternative Action click error]&#10;Invalid argument (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;&#10;System info: host: &apos;DESKTOP-KQS99BN&apos;, ip: &apos;192.168.0.17&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_161&apos;&#10;Driver info: org.openqa.selenium.edge.EdgeDriver&#10;Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}&#10;Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7"/>
-    <system-out><![CDATA[trying alternative click
-trying alternative click
-==============================================
-[Test ID]
-Customer views basket with x2 products, totalling x2 quantity
-
-[Failed URL]
-http://www.argos.co.uk/search/football/
-
-[Page Title]
-Results for football in Sports and leisure, Sports, Football, Footballs
-
-[Environment]
-windows_edge
-
-[Screenshot ands logs found here]
-C:/Users/workpeter/Documents/Eclipse-workspace/cucumber-selenium-framework/target/CAPTURED-ERRORS/test-failures/windows-edge_2a7d81fb-9489-43a7-850f-265e831613a0
-
-[Stack trace]
-java.lang.Exception: [Standard click error]
-Element not displayed (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}
-Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7
-[Alternative Action click error]
-Invalid argument (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'DESKTOP-KQS99BN', ip: '192.168.0.17', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Capabilities {InPrivate: false, acceptSslCerts: true, applicationCacheEnabled: true, browserName: MicrosoftEdge, browserVersion: 42.17134.1.0, javascriptEnabled: true, locationContextEnabled: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10, takesElementScreenshot: true, takesScreenshot: true, webStorageEnabled: true}
-Session ID: 9EB5843A-59CE-4632-97DA-3114293344B7
-	at selenium_tests.Webdriver_builder$Enhanced_selenium_methods.click(Webdriver_builder.java:436)
-	at selenium_tests.page_object_model.POM_popupBasket.checkContinueShopping(POM_popupBasket.java:16)
-	at selenium_tests.feature_steps.Steps_basket_feature.adds_second_product_to_basket_x_quantity(Steps_basket_feature.java:91)
-	at ?.adds second product to basket x1 quantity(src/test/resources/Features/TestSuite_basket.feature:50)
-
-
-]]></system-out>
-  </testcase>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="15.498"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="19.877"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.949"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="22.878"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.593"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.812"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.007"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.182"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.029"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.075"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.545"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.254"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.78"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.246"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.435"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.602"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.352"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.35"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.143"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.175"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.036"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.152"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.207"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.744"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.937"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.548"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.757"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.135"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.302"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.476"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.233"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.096"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.066"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.942"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.808"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.743"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.434"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.371"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.749"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.424"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.772"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.521"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.074"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.367"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.869"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.562"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.991"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.872"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.931"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.728"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.771"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.538"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.42"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.112"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.827"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.238"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.562"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.149"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.609"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.994"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.039"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.658"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.886"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.859"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.113"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.138"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.004"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.508"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.172"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.561"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.899"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.87"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.836"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.15"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.445"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.115"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.537"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.646"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.998"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.629"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.484"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.534"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.113"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.509"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.088"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.459"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.6"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.307"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.579"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.573"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.028"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.299"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.743"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.757"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.069"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.851"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.856"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.213"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.748"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.478"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.235"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.368"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.071"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.649"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.086"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.39"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.132"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.611"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.387"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.108"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.136"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.2"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.786"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.074"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.426"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.369"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.839"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="16.818"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.346"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.423"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.608"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.019"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.196"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.467"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.588"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.019"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.743"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.499"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.301"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.538"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.254"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.328"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.415"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.48"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.583"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.654"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.125"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.798"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.133"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.295"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.916"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.73"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.482"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.286"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.918"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.811"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.31"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.156"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.477"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.259"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.3"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.784"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.733"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.957"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.98"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.856"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.582"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.182"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.625"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.363"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.6"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.733"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.18"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.101"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.72"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.462"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.33"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.764"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.635"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.558"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.084"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.32"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.947"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.89"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.908"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.373"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.982"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.505"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.015"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.72"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.457"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.96"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.661"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.163"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.393"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.771"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.837"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.57"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.889"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.138"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.613"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.209"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.125"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.394"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.027"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.403"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.917"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.932"/>
   <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.948"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.641"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.667"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.177"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.368"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.246"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.136"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.291"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.571"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.993"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.857"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.618"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.294"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.009"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.87"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.167"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.013"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.292"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.135"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.053"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.858"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.357"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.16"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.134"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.021"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.71"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.28"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.756"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.636"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.299"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.251"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.903"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.411"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.567"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.556"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.757"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.636"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.421"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="0.511"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.243"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.762"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.211"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.514"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="1.23"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="2.671"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.677"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.076"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.828"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="30.228"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.724"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.112"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.507"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.375"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="13.182"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.184"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.722"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.9"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.074"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.413"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.327"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.428"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.573"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.604"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.999"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="5.299"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.337"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.379"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="4.832"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.578"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.132"/>
-  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.582"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="3.004"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.084"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.757"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.085"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.572"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.68"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="14.8"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="22.113"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.381"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.081"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.212"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="19.361"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="24.583"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="22.194"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="23.403"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.787"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="49.918"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="11.083"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.323"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.168"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.337"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.922"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="8.208"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.705"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="14.823"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="19.7"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.962"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.826"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.466"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="6.717"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="7.099"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="9.445"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="12.151"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="18.378"/>
+  <testcase name="run_scenario" classname="selenium_tests.Runner" time="10.298"/>
 </testsuite>

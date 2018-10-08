@@ -20,7 +20,7 @@ Feature: CategorySearch
     | CLOTHING 					|        
     | JEWELLERY AND WATCHES 	| 	
 
-  @CategorySearch @retest	
+  @CategorySearch 	
  Scenario Outline: customer navigates to subcategory via category menu hover feature then goes to niche-category
 	When customer hovers on category: <Category> in the menu
 	And clicks on sub-category: <Sub-category>
