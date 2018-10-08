@@ -236,17 +236,17 @@ C:.
 This is a style for developing Selenium scripts, which is advised regardless if using a framework like this or not.
 In coding, it's always good practice to create modularised, reusable code contained within classes and/or methods. This makes code maintenance easier and enforces standardisations.  
 
-page object modelling follows this principle. The idea is to create a class for each webpage, and within it save DOM element locations and common methods/operations performed on that page.   
+page-object-modelling follows this principle. The idea is to create a class for each webpage, and within it save DOM element locations and common methods/operations performed on that page.   
 
-Personally, I do page object modelling with static modifiers allowing me to directly reference DOM elements from scripts without having to create an instance of the page object model class. A small thing, but reduces unnecessary lines of code. And whenever a DOM affecting multiple scripts updates, I only need to update the reference in one place.  
+Personally, I do page-object-modelling with static modifiers allowing me to directly reference DOM elements from scripts without having to create an instance of the page-object-model class. A small thing, but reduces unnecessary lines of code. And whenever a DOM affecting multiple scripts updates, I only need to update the reference in one place.  
 
-When it comes to using Cucumber, I don't put common steps within the page object modelling classes anymore. I used to, but then I realised Cucumber inherently forces you to break your tests in discrete steps using @Given @When @Then. These steps are reusable and are grouped within a feature so they are related to each other in scope. I used to keep the code within these steps abstract and reference a page object model method to do the work, but then I noticed for every step I was creating two methods (one in Cucumber and the other in a page object model class). This created redundant code, which took longer to debug.  And so I would only recommend putting methods in a page object model class if a BDD framework wasn't being used.    
+When it comes to using Cucumber, I don't put common steps within the page-object-modelling classes anymore. I used to, but then I realised Cucumber inherently forces you to break your tests in discrete steps using @Given @When @Then. These steps are reusable and are grouped within a feature so they are related to each other in scope. I used to keep the code within these steps abstract and call a page-object-model method to do the work, but then I noticed for every step I was creating two methods (one in Cucumber and the other in a page-object-model class). This created redundant code, which took longer to debug.  And so I would only recommend putting methods in a page-object-model class if a BDD framework wasn't being used.    
 
 Example page object model class
 ~~~
 import org.openqa.selenium.By;
 
-public final class Ok {
+public final class POM_exampleClass {
 
 	public static final By example1 = By.xpath("//*[@id=\"searchTerm\"]");
 	public static final By example2 = By.xpath("//span[@class=\"price\"]");
