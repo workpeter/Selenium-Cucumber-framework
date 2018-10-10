@@ -71,7 +71,7 @@ Below is a typical maven command to trigger the test.
 
 Run with:
 ```bash
-   mvn clean verify"
+   mvn clean verify
 ```
 
 ### Run steps
