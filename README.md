@@ -1,5 +1,11 @@
 # Selenium Cucumber framework
 
+## Update
+
+I will be rewriting this early next year. 
+There are much needed code design/pattern improvements to be made.
+I will also be uploading a C# version too.
+
 ## Author
 
 * **Peter Anderson (peter.x4000@gmail.com)** 
