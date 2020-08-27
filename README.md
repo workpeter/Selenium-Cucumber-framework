@@ -2,7 +2,7 @@
 
 ## Update
 
-I will be rewriting this early next year. 
+I will be rewriting this early next year (ETA 2021). 
 There are much needed code design/pattern improvements to be made.
 I will also be uploading a C# version too.
 
